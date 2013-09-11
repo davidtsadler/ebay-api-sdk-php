@@ -13,6 +13,20 @@ module.exports = function(grunt) {
             dest: '.tmp/downloads'
         },
 
+        transform: {
+            options: {
+                dest: '.tmp/transformed'
+            },
+            dist: {
+                wsdls: '<%= download.dest %>',
+                ebay: '<%= ebay %>' 
+            },
+            test: {
+                wsdls: 'test/fixtures/downloads',
+                ebay: grunt.file.readJSON('test/fixtures/ebay.json')
+            }
+        },
+
         jshint: {
             all: ['Gruntfile.js', 'ebay.json', 'test/*.js'],
             options: {
@@ -40,11 +54,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('test', ['jshint', 'nodeunit']);
+    grunt.registerTask('test', [
+        'jshint',
+        'clean',
+        'transform:test',
+        'nodeunit'
+    ]);
 
     grunt.registerTask('build', [
         'jshint',
         'clean:dist',
         'download',
+        'transform:dist'
     ]);
 };

@@ -1,0 +1,12 @@
+{
+    "services": [
+        {
+            "name": "finding",
+            "versions": ["1"]
+        },
+        {
+            "name": "trading",
+            "versions": ["3", "2", "1"]
+        }
+    ]
+}
