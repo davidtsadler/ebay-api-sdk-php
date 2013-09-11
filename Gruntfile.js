@@ -3,8 +3,18 @@
 module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
+        ebay: grunt.file.readJSON('ebay.json'),
+
+        clean: {
+            dist: ['.tmp', 'dist']
+        },
+
+        download: {
+            dest: '.tmp/downloads'
+        },
+
         jshint: {
-            all: ['Gruntfile.js', 'test/*.js'],
+            all: ['Gruntfile.js', 'ebay.json', 'test/*.js'],
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -28,6 +38,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadTasks('tasks');
 
     grunt.registerTask('test', ['jshint', 'nodeunit']);
+
+    grunt.registerTask('build', [
+        'jshint',
+        'clean:dist',
+        'download',
+    ]);
 };
