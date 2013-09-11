@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
     var fs = require('fs');
     var path = require('path');
