@@ -5,18 +5,30 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
 
-<xsl:output method="text" encoding="UTF-8" />
+<xsl:output method="text" encoding="UTF-8"/>
 
+<xsl:include href="classes_doc.xsl"/>
+
+<xsl:param name="service" required="yes" as="xs:string"/>
 <xsl:param name="destDirectory" required="yes" as="xs:string"/>
 
 <xsl:template match="/">
-  <xsl:apply-templates select="//xs:complexType" mode="create-php-file"/>
+  <xsl:variable name="classes" as="element()+">
+    <xsl:apply-templates select="//xs:complexType" mode="classes-doc"/>
+  </xsl:variable>
+  <xsl:apply-templates select="$classes" mode="php"/>
 </xsl:template>
 
-<xsl:template match="//xs:complexType" mode="create-php-file">
-  <xsl:result-document href="{$destDirectory}/{@name}.php">
-    <xsl:text>&lt;?php&#xa;</xsl:text>
-  </xsl:result-document>
+<xsl:template match="class" mode="php">
+  <xsl:message select="."/>
+  <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
+
+namespace DTS\EBay\<xsl:copy-of select="concat(upper-case(substring($service,1,1)),substring($service,2))"/>
+
+class <xsl:value-of select="@className" />
+{
+}
+</xsl:result-document>
 </xsl:template>
 
 </xsl:stylesheet>

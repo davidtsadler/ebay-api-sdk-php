@@ -48,7 +48,7 @@ exports.transform = {
 
         test.expect(1);
 
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'ComplexType.php')), 'Transformed PHP file should exist.');
+        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'PHPComplexType.php')), 'Transformed PHP file should exist.');
 
         test.done();
     },
@@ -59,8 +59,8 @@ exports.transform = {
 
         test.expect(1);
 
-        var actual = grunt.file.read(path.join('.tmp/transformed', service.name, version, 'ComplexType.php'));
-        var expected = grunt.file.read('test/expected/ComplexType.php');
+        var actual = grunt.file.read(path.join('.tmp/transformed', service.name, version, 'PHPComplexType.php'));
+        var expected = grunt.file.read('test/expected/PHPComplexType.php');
         test.equal(actual, expected, 'should generate PHP');
 
         test.done();

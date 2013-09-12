@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
 
-    <xs:schema>
-        <xs:complexType name="ComplexType">
-        </xs:complexType>
-    </xs:schema>
+  <xs:schema>
+    <xs:complexType name="PHPComplexType">
+    </xs:complexType>
+  </xs:schema>
 
 </wsdl:definitions>

@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 
         grunt.file.mkdir(phpPath);
 
-        saxonb(wsdl, 'xsl/sdk.xsl', phpPath, function (err) { 
+        saxonb(wsdl, 'xsl/sdk.xsl', service.name, phpPath, function (err) { 
             if (err) {
                 callback(err);
             } else {
@@ -53,11 +53,12 @@ module.exports = function(grunt) {
         });
     }
 
-    function saxonb(xml, xsl, destDirectory, callback) {
+    function saxonb(xml, xsl, service, destDirectory, callback) {
         var cmd = 'saxonb-xslt ' + [
             '-ext:on',
             '-s:' + path.resolve(xml),
             '-xsl:' + path.resolve(xsl),
+            'service=' + service,
             'destDirectory=' + destDirectory
         ].join(' ');
 
