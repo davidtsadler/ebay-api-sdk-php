@@ -1,7 +1,7 @@
 {
     "services": [
         {
-            "name": "finding",
+            "name": "finding_api",
             "versions": ["1"]
         },
         {

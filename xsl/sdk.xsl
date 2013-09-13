@@ -23,7 +23,7 @@
 <xsl:template match="class" mode="php">
   <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
 
-namespace DTS\EBay\<xsl:copy-of select="concat(upper-case(substring($service,1,1)),substring($service,2))"/>
+namespace dts\ebay\<xsl:copy-of select="$service"/>;
 
 class <xsl:value-of select="@className" />
 {

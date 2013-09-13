@@ -1,6 +1,6 @@
 <?php
 
-namespace DTS\EBay\Finding
+namespace dts\ebay\finding_api;
 
 class PHPComplexType
 {
