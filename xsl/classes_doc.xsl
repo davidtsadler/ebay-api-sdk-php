@@ -7,6 +7,16 @@
 <xsl:template match="*:complexType" mode="classes-doc">
   <xsl:element name="class">
     <xsl:attribute name="className"><xsl:copy-of select="@name"/></xsl:attribute>
+    <xsl:if test="*:complexContent/xs:extension">
+      <xsl:attribute name="extends">
+        <xsl:apply-templates select="xs:complexContent/xs:extension" mode="extends"/>
+      </xsl:attribute>
+    </xsl:if>
   </xsl:element>
 </xsl:template>
+
+<xsl:template match="*:extension" mode="extends">
+  <xsl:value-of select="substring-after(@base, ':')"/>
+</xsl:template>
+
 </xsl:stylesheet>

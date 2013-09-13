@@ -23,12 +23,19 @@
 <xsl:template match="class" mode="php">
   <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
 
-namespace dts\ebay\<xsl:copy-of select="$service"/>;
+namespace dts\ebaysdk\<xsl:copy-of select="$service"/>;
 
-class <xsl:value-of select="@className" />
+class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="extends"/>
 {
 }
 </xsl:result-document>
+</xsl:template>
+
+<xsl:template match="class" mode="extends">
+  <xsl:choose>
+    <xsl:when test="@extends"> extends \dts\ebaysdk\<xsl:copy-of select="$service"/>\<xsl:value-of select="@extends"/></xsl:when>
+    <xsl:otherwise> extends \dts\ebaysdk\base\Base</xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>

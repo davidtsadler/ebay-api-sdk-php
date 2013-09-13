@@ -7,10 +7,16 @@
   <wsdl:types>
     <xs:schema>
 
-      <xs:complexType name="PHPComplexType">
+      <xs:complexType name="ComplexType">
+        <xs:complexContent>
+          <xs:extension base="tns:AnotherType">
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
 
-      <xsd:complexType name="PHP-XSD-ComplexType">
+      <xsd:complexType name="AnotherType">
+        <xs:complexContent>
+        </xs:complexContent>
       </xsd:complexType>
 
       <!-- 

@@ -48,8 +48,8 @@ exports.transform = {
 
         test.expect(2);
 
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'PHPComplexType.php')), 'Transformed PHP file should exist for xs:complexType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'PHP-XSD-ComplexType.php')), 'Transformed PHP file should exist for xsd:complexType.');
+        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'ComplexType.php')), 'Transformed PHP file should exist for xs:complexType.');
+        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'AnotherType.php')), 'Transformed PHP file should exist for xsd:complexType.');
 
         test.done();
     },
@@ -57,12 +57,17 @@ exports.transform = {
     phpIsGenerated: function (test) {
         var service = this.ebay.services[0];
         var version = service.versions[0];
+        var testPath = path.join('.tmp/transformed', service.name, version);
 
-        test.expect(1);
+        test.expect(2);
 
-        var actual = grunt.file.read(path.join('.tmp/transformed', service.name, version, 'PHPComplexType.php'));
-        var expected = grunt.file.read('test/expected/PHPComplexType.php');
-        test.equal(actual, expected, 'should generate PHP');
+        var actual = grunt.file.read(path.join(testPath, 'ComplexType.php'));
+        var expected = grunt.file.read('test/expected/ComplexType.php');
+        test.equal(actual, expected, 'should generate expected PHP for ComplexType class.');
+
+        actual = grunt.file.read(path.join(testPath, 'AnotherType.php'));
+        expected = grunt.file.read('test/expected/AnotherType.php');
+        test.equal(actual, expected, 'should generate PHP for AnotherType class.');
 
         test.done();
     }
