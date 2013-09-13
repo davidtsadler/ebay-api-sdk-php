@@ -38,7 +38,7 @@
         {
             "name": "shopping",
             "src": "http://developer.ebay.com/webservices/<VERSION>/ShoppingService.wsdl",
-            "versions": ["837", "835", "833", "831"]
+            "versions": ["837", "833", "831"]
         },
         {
             "name": "merchandising",
