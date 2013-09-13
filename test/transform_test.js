@@ -46,9 +46,10 @@ exports.transform = {
         var service = this.ebay.services[0];
         var version = service.versions[0];
 
-        test.expect(1);
+        test.expect(2);
 
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'PHPComplexType.php')), 'Transformed PHP file should exist.');
+        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'PHPComplexType.php')), 'Transformed PHP file should exist for xs:complexType.');
+        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'PHP-XSD-ComplexType.php')), 'Transformed PHP file should exist for xsd:complexType.');
 
         test.done();
     },

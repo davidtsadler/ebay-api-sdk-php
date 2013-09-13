@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsd="http://testing-namespace"
   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
 
   <wsdl:types>
@@ -8,6 +9,9 @@
 
       <xs:complexType name="PHPComplexType">
       </xs:complexType>
+
+      <xsd:complexType name="PHP-XSD-ComplexType">
+      </xsd:complexType>
 
       <!-- 
         These elements contain complexType with no names.

@@ -15,7 +15,7 @@
 
 <xsl:template match="/">
   <xsl:variable name="classes" as="element()+">
-    <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/xs:complexType" mode="classes-doc"/>
+    <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:complexType" mode="classes-doc"/>
   </xsl:variable>
   <xsl:apply-templates select="$classes" mode="php"/>
 </xsl:template>
