@@ -3,9 +3,29 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
 
-  <xs:schema>
-    <xs:complexType name="PHPComplexType">
-    </xs:complexType>
-  </xs:schema>
+  <wsdl:types>
+    <xs:schema>
 
+      <xs:complexType name="PHPComplexType">
+      </xs:complexType>
+
+      <!-- 
+        These elements contain complexType with no names.
+        If we transform these by mistake we will end up trying to create two files with 
+        the same name which results in the error below.
+
+        Cannot write more than one result document to the same URI
+      -->
+      <xs:element>
+        <xs:complexType>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element>
+        <xs:complexType>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:schema>
+  </wsdl:types>
 </wsdl:definitions>
