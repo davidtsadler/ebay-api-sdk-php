@@ -25,6 +25,11 @@
 
 namespace dts\ebaysdk\<xsl:copy-of select="$service"/>;
 
+/**
+ *<xsl:apply-templates select="property" mode="property-list">
+    <xsl:sort select="@name"/>
+  </xsl:apply-templates>
+ */
 class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="extends"/>
 {
 }
@@ -36,6 +41,10 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
     <xsl:when test="@extends"> extends \dts\ebaysdk\<xsl:copy-of select="$service"/>\<xsl:value-of select="@extends"/></xsl:when>
     <xsl:otherwise> extends \dts\ebaysdk\base\Base</xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="property" mode="property-list">
+ * @property $<xsl:value-of select="@name"/>
 </xsl:template>
 
 </xsl:stylesheet>

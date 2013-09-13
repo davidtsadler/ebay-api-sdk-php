@@ -10,13 +10,19 @@
       <xs:complexType name="ComplexType">
         <xs:complexContent>
           <xs:extension base="tns:AnotherType">
+            <xs:sequence>
+              <xs:element name="foo"/>
+              <xs:element name="bar"/>
+            </xs:sequence>
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
 
       <xsd:complexType name="AnotherType">
-        <xs:complexContent>
-        </xs:complexContent>
+        <xs:sequence>
+          <xs:element name="foo"/>
+          <xs:element name="bar"/>
+        </xs:sequence>
       </xsd:complexType>
 
       <!-- 
