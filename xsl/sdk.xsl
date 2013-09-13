@@ -21,7 +21,6 @@
 </xsl:template>
 
 <xsl:template match="class" mode="php">
-  <xsl:message select="."/>
   <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
 
 namespace DTS\EBay\<xsl:copy-of select="concat(upper-case(substring($service,1,1)),substring($service,2))"/>
