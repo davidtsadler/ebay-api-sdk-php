@@ -34,10 +34,7 @@
             <xs:sequence>
               <xs:element name="BISH" type="xs:string"/>
               <xs:element name="BOSHBish" type="xs:string"/>
-              <xs:element name="BishBosh" type="xs:string"/>
-              <xs:element name="foo" type="xs:string"/>
               <xs:element name="eBay" type="xs:string"/>
-              <xs:element name="bar" type="xs:string"/>
               <xs:element name="AnotherType" type="tns:AnotherType"/>
               <xs:element name="uri" type="xs:anyURI"/>
               <xs:element name="binary" type="xs:base64Binary"/>

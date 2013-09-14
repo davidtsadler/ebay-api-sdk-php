@@ -5,11 +5,9 @@ namespace dts\ebaysdk\finding_api;
 /**
  *
  * @property AnotherType $anotherType
- * @property string $bar
  * @property string $binary
  * @property string $binaryArr
  * @property string $bish
- * @property string $bishBosh
  * @property boolean $boolean
  * @property boolean $booleanArr
  * @property string $boshBish
@@ -28,7 +26,6 @@ namespace dts\ebaysdk\finding_api;
  * @property EnumTokenType(string) $enumTokenArr
  * @property double $float
  * @property double $floatArr
- * @property string $foo
  * @property int $integer
  * @property int $integerArr
  * @property int $long
