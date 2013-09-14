@@ -32,7 +32,11 @@
         <xs:complexContent>
           <xs:extension base="tns:AnotherType">
             <xs:sequence>
+              <xs:element name="BISH"/>
+              <xs:element name="BOSHBish"/>
+              <xs:element name="BishBosh"/>
               <xs:element name="foo"/>
+              <xs:element name="eBay"/>
               <xs:element name="bar"/>
             </xs:sequence>
           </xs:extension>

@@ -23,7 +23,16 @@
 
 <xsl:template match="*:element" mode="properties">
   <xsl:element name="property">
-    <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
+    <!-- 
+      Converts
+        FooBar into fooBar.
+        FOO into foo.
+        foo into foo.
+        FOOBar into fooBar.
+        eBay into eBay.
+    -->
+    <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
+    <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
   </xsl:element>
 </xsl:template>
 
