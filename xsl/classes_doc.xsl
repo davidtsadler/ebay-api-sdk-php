@@ -23,6 +23,15 @@
 </xsl:template>
 
 <xsl:template match="*:element|*:attribute" mode="properties">
+  <xsl:variable name="type" select="substring-after(@type, ':')" as="xs:string"/>
+  <xsl:variable name="restriction" as="xs:string">
+    <xsl:choose>
+      <xsl:when test="//*:simpleType[@name=$type]/*:restriction/@base">
+        <xsl:value-of select="substring-after(//*:simpleType[@name=$type]/*:restriction/@base, ':')"/>
+      </xsl:when>
+      <xsl:otherwise><xsl:text/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:element name="property">
     <!-- 
       Converts
@@ -34,7 +43,7 @@
     -->
     <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
     <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
-    <xsl:attribute name="type" select="dts:type_to_datatype(substring-after(@type, ':'))"/>
+    <xsl:attribute name="type" select="dts:type_to_datatype($type, $restriction)"/>
   </xsl:element>
 </xsl:template>
 
@@ -73,6 +82,7 @@
 
 <xsl:function name="dts:type_to_datatype" as="xs:string">
   <xsl:param name="type" as="xs:string"/>
+  <xsl:param name="restriction" as="xs:string"/>
   <xsl:choose>
     <xsl:when test="$type='base64Binary'">
       <xsl:text>string</xsl:text>
@@ -112,6 +122,9 @@
     </xsl:when>
     <xsl:when test="$type='anyURI'">
       <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:when test="$restriction != ''">
+      <xsl:value-of select="concat($type, '(', dts:type_to_datatype($restriction, ''), ')')"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$type"/>

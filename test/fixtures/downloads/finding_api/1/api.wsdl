@@ -52,6 +52,8 @@
               <xs:element name="string" type="xs:string"/>
               <xs:element name="time" type="xs:time"/>
               <xs:element name="token" type="xs:token"/>
+              <xs:element name="enumString" type="tns:EnumStringType"/>
+              <xs:element name="enumToken" type="tns:EnumTokenType"/>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -68,9 +70,8 @@
         <xs:attribute name="stringArr" type="xs:string"/>
         <xs:attribute name="timeArr" type="xs:time"/>
         <xs:attribute name="tokenArr" type="xs:token"/>
-        <!-- TODO
-        <xs:attribute name="enumTokenArr" type="EnumTokenType"/>
-        TODO -->
+        <xs:attribute name="enumStringArr" type="tns:EnumStringType"/>
+        <xs:attribute name="enumTokenArr" type="tns:EnumTokenType"/>
       </xs:complexType>
 
       <xs:complexType name="DecimalType">
@@ -114,23 +115,23 @@
           </xs:extension>
         </xs:simpleContent>
       </xs:complexType>
-<!-- TODO
-      <xs:simpleType name="EnumDecimalType">
-        <xs:restriction base="xs:decimal">
-          <xs:enumeration value="1"/>
-          <xs:enumeration value="2"/>
-          <xs:enumeration value="3"/>
-        </xs:restriction>
-      </xs:simpleType>
 
-      <xs:simpleType name="EnumTokenType">
-        <xs:restriction base="xs:token">
+      <xs:simpleType name="EnumStringType">
+        <xs:restriction base="xs:string">
           <xs:enumeration value="One"/>
           <xs:enumeration value="Two"/>
           <xs:enumeration value="Three"/>
         </xs:restriction>
       </xs:simpleType>
-TODO -->
+
+      <xs:simpleType name="EnumTokenType">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Four"/>
+          <xs:enumeration value="Five"/>
+          <xs:enumeration value="Six"/>
+        </xs:restriction>
+      </xs:simpleType>
+
       <!-- 
         These elements contain complexType with no names.
         If we transform these by mistake we will end up trying to create two files with 

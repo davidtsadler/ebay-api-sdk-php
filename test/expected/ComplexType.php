@@ -22,6 +22,10 @@ namespace dts\ebaysdk\finding_api;
  * @property string $duration
  * @property string $durationArr
  * @property string $eBay
+ * @property EnumStringType(string) $enumString
+ * @property EnumStringType(string) $enumStringArr
+ * @property EnumTokenType(string) $enumToken
+ * @property EnumTokenType(string) $enumTokenArr
  * @property double $float
  * @property double $floatArr
  * @property string $foo
