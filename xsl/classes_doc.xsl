@@ -18,7 +18,7 @@
 </xsl:template>
 
 <xsl:template match="*:extension" mode="extends">
-  <xsl:value-of select="dts:base_to_type(substring-after(@base, ':'))"/>
+  <xsl:value-of select="dts:base_to_extends(substring-after(@base, ':'))"/>
 </xsl:template>
 
 <xsl:template match="*:element" mode="properties">
@@ -33,10 +33,11 @@
     -->
     <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
     <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
+    <xsl:attribute name="type" select="dts:attribute_type_to_type(substring-after(@type, ':'))"/>
   </xsl:element>
 </xsl:template>
 
-<xsl:function name="dts:base_to_type" as="xs:string">
+<xsl:function name="dts:base_to_extends" as="xs:string">
   <xsl:param name="base" as="xs:string"/>
   <xsl:choose>
     <xsl:when test="$base='base64Binary'">
@@ -65,6 +66,54 @@
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="$base"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
+
+<xsl:function name="dts:attribute_type_to_type" as="xs:string">
+  <xsl:param name="type" as="xs:string"/>
+  <xsl:choose>
+    <xsl:when test="$type='base64Binary'">
+      <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='boolean'">
+      <xsl:text>boolean</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='dateTime'">
+      <xsl:text>DateTime</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='decimal'">
+      <xsl:text>int</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='double'">
+      <xsl:text>double</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='duration'">
+      <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='float'">
+      <xsl:text>double</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='int'">
+      <xsl:text>int</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='long'">
+      <xsl:text>int</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='string'">
+      <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='time'">
+      <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='token'">
+      <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='anyURI'">
+      <xsl:text>string</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$type"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>

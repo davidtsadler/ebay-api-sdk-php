@@ -9,8 +9,8 @@
 
       <xsd:complexType name="AnotherType">
         <xs:sequence>
-          <xs:element name="foo"/>
-          <xs:element name="bar"/>
+          <xs:element name="foo" type="xs:string"/>
+          <xs:element name="bar" type="xs:string"/>
         </xs:sequence>
       </xsd:complexType>
 
@@ -32,12 +32,26 @@
         <xs:complexContent>
           <xs:extension base="tns:AnotherType">
             <xs:sequence>
-              <xs:element name="BISH"/>
-              <xs:element name="BOSHBish"/>
-              <xs:element name="BishBosh"/>
-              <xs:element name="foo"/>
-              <xs:element name="eBay"/>
-              <xs:element name="bar"/>
+              <xs:element name="BISH" type="xs:string"/>
+              <xs:element name="BOSHBish" type="xs:string"/>
+              <xs:element name="BishBosh" type="xs:string"/>
+              <xs:element name="foo" type="xs:string"/>
+              <xs:element name="eBay" type="xs:string"/>
+              <xs:element name="bar" type="xs:string"/>
+              <xs:element name="boolean" type="xs:boolean"/>
+              <xs:element name="integer" type="xs:int"/>
+              <xs:element name="string" type="xs:string"/>
+              <xs:element name="token" type="xs:token"/>
+              <xs:element name="DateTime" type="xs:dateTime"/>
+              <xs:element name="duration" type="xs:duration"/>
+              <xs:element name="long" type="xs:long"/>
+              <xs:element name="uri" type="xs:anyURI"/>
+              <xs:element name="binary" type="xs:base64Binary"/>
+              <xs:element name="decimal" type="xs:decimal"/>
+              <xs:element name="double" type="xs:double"/>
+              <xs:element name="float" type="xs:float"/>
+              <xs:element name="time" type="xs:time"/>
+              <xs:element name="AnotherType" type="tns:AnotherType"/>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>

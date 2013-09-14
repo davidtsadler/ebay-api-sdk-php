@@ -52,7 +52,7 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 </xsl:template>
 
 <xsl:template match="property" mode="property-list">
- * @property $<xsl:value-of select="@name"/>
+ * @property <xsl:value-of select="@type"/> $<xsl:value-of select="@name"/>
 </xsl:template>
 
 </xsl:stylesheet>
