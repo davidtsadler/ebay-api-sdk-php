@@ -38,6 +38,14 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 
 <xsl:template match="class" mode="extends">
   <xsl:choose>
+    <xsl:when test="@extends='Base64BinaryType' or 
+                    @extends='BooleanType' or
+                    @extends='DecimalType' or
+                    @extends='DoubleType' or
+                    @extends='IntegerType' or
+                    @extends='StringType' or
+                    @extends='TokenType' or
+                    @extends='URIType'"> extends \dts\ebaysdk\types\<xsl:value-of select="@extends"/></xsl:when>
     <xsl:when test="@extends"> extends \dts\ebaysdk\<xsl:copy-of select="$service"/>\<xsl:value-of select="@extends"/></xsl:when>
     <xsl:otherwise> extends \dts\ebaysdk\base\Base</xsl:otherwise>
   </xsl:choose>

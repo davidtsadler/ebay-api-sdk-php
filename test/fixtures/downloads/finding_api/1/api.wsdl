@@ -7,6 +7,27 @@
   <wsdl:types>
     <xs:schema>
 
+      <xsd:complexType name="AnotherType">
+        <xs:sequence>
+          <xs:element name="foo"/>
+          <xs:element name="bar"/>
+        </xs:sequence>
+      </xsd:complexType>
+
+      <xs:complexType name="Base64BinaryType">
+        <xs:simpleContent>
+          <xs:extension base="xs:base64Binary">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="BooleanType">
+        <xs:simpleContent>
+          <xs:extension base="xs:boolean">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
       <xs:complexType name="ComplexType">
         <xs:complexContent>
           <xs:extension base="tns:AnotherType">
@@ -18,12 +39,47 @@
         </xs:complexContent>
       </xs:complexType>
 
-      <xsd:complexType name="AnotherType">
-        <xs:sequence>
-          <xs:element name="foo"/>
-          <xs:element name="bar"/>
-        </xs:sequence>
-      </xsd:complexType>
+      <xs:complexType name="DecimalType">
+        <xs:simpleContent>
+          <xs:extension base="xs:decimal">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="DoubleType">
+				<xs:simpleContent>
+          <xs:extension base="xs:double">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="IntegerType">
+        <xs:simpleContent>
+          <xs:extension base="xs:int">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="StringType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="TokenType">
+        <xs:simpleContent>
+          <xs:extension base="xs:token">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="URIType">
+        <xs:simpleContent>
+          <xs:extension base="xs:anyURI">
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
 
       <!-- 
         These elements contain complexType with no names.
