@@ -32,6 +32,9 @@ namespace dts\ebaysdk\<xsl:copy-of select="$service"/>;
  */
 class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="extends"/>
 {
+    public function __construct()
+    {
+    }
 }
 </xsl:result-document>
 </xsl:template>
