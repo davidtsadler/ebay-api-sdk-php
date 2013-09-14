@@ -38,23 +38,39 @@
               <xs:element name="foo" type="xs:string"/>
               <xs:element name="eBay" type="xs:string"/>
               <xs:element name="bar" type="xs:string"/>
-              <xs:element name="boolean" type="xs:boolean"/>
-              <xs:element name="integer" type="xs:int"/>
-              <xs:element name="string" type="xs:string"/>
-              <xs:element name="token" type="xs:token"/>
-              <xs:element name="DateTime" type="xs:dateTime"/>
-              <xs:element name="duration" type="xs:duration"/>
-              <xs:element name="long" type="xs:long"/>
+              <xs:element name="AnotherType" type="tns:AnotherType"/>
               <xs:element name="uri" type="xs:anyURI"/>
               <xs:element name="binary" type="xs:base64Binary"/>
+              <xs:element name="boolean" type="xs:boolean"/>
+              <xs:element name="DateTime" type="xs:dateTime"/>
               <xs:element name="decimal" type="xs:decimal"/>
               <xs:element name="double" type="xs:double"/>
+              <xs:element name="duration" type="xs:duration"/>
               <xs:element name="float" type="xs:float"/>
+              <xs:element name="integer" type="xs:int"/>
+              <xs:element name="long" type="xs:long"/>
+              <xs:element name="string" type="xs:string"/>
               <xs:element name="time" type="xs:time"/>
-              <xs:element name="AnotherType" type="tns:AnotherType"/>
+              <xs:element name="token" type="xs:token"/>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
+        <xs:attribute name="uriArr" type="xs:anyURI"/>
+        <xs:attribute name="binaryArr" type="xs:base64Binary"/>
+        <xs:attribute name="booleanArr" type="xs:boolean"/>
+        <xs:attribute name="DateTimeArr" type="xs:dateTime"/>
+        <xs:attribute name="decimalArr" type="xs:decimal"/>
+        <xs:attribute name="doubleArr" type="xs:double"/>
+        <xs:attribute name="durationArr" type="xs:duration"/>
+        <xs:attribute name="floatArr" type="xs:float"/>
+        <xs:attribute name="integerArr" type="xs:int"/>
+        <xs:attribute name="longArr" type="xs:long"/>
+        <xs:attribute name="stringArr" type="xs:string"/>
+        <xs:attribute name="timeArr" type="xs:time"/>
+        <xs:attribute name="tokenArr" type="xs:token"/>
+        <!-- TODO
+        <xs:attribute name="enumTokenArr" type="EnumTokenType"/>
+        TODO -->
       </xs:complexType>
 
       <xs:complexType name="DecimalType">
@@ -98,7 +114,23 @@
           </xs:extension>
         </xs:simpleContent>
       </xs:complexType>
+<!-- TODO
+      <xs:simpleType name="EnumDecimalType">
+        <xs:restriction base="xs:decimal">
+          <xs:enumeration value="1"/>
+          <xs:enumeration value="2"/>
+          <xs:enumeration value="3"/>
+        </xs:restriction>
+      </xs:simpleType>
 
+      <xs:simpleType name="EnumTokenType">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="One"/>
+          <xs:enumeration value="Two"/>
+          <xs:enumeration value="Three"/>
+        </xs:restriction>
+      </xs:simpleType>
+TODO -->
       <!-- 
         These elements contain complexType with no names.
         If we transform these by mistake we will end up trying to create two files with 

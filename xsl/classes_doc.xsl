@@ -14,14 +14,15 @@
       </xsl:attribute>
     </xsl:if>
     <xsl:apply-templates select=".//*:element" mode="properties"/>
+    <xsl:apply-templates select=".//*:attribute" mode="properties"/>
   </xsl:element>
 </xsl:template>
 
 <xsl:template match="*:extension" mode="extends">
-  <xsl:value-of select="dts:base_to_extends(substring-after(@base, ':'))"/>
+  <xsl:value-of select="dts:base_to_datatype(substring-after(@base, ':'))"/>
 </xsl:template>
 
-<xsl:template match="*:element" mode="properties">
+<xsl:template match="*:element|*:attribute" mode="properties">
   <xsl:element name="property">
     <!-- 
       Converts
@@ -33,11 +34,11 @@
     -->
     <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
     <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
-    <xsl:attribute name="type" select="dts:attribute_type_to_type(substring-after(@type, ':'))"/>
+    <xsl:attribute name="type" select="dts:type_to_datatype(substring-after(@type, ':'))"/>
   </xsl:element>
 </xsl:template>
 
-<xsl:function name="dts:base_to_extends" as="xs:string">
+<xsl:function name="dts:base_to_datatype" as="xs:string">
   <xsl:param name="base" as="xs:string"/>
   <xsl:choose>
     <xsl:when test="$base='base64Binary'">
@@ -70,7 +71,7 @@
   </xsl:choose>
 </xsl:function>
 
-<xsl:function name="dts:attribute_type_to_type" as="xs:string">
+<xsl:function name="dts:type_to_datatype" as="xs:string">
   <xsl:param name="type" as="xs:string"/>
   <xsl:choose>
     <xsl:when test="$type='base64Binary'">
