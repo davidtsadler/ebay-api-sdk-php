@@ -34,6 +34,10 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 {
     public function __construct()
     {
+        $properties = array(<xsl:apply-templates select="property" mode="property-info">
+          <xsl:sort select="@name"/>
+        </xsl:apply-templates>
+        );
     }
 }
 </xsl:result-document>
@@ -55,7 +59,23 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 </xsl:template>
 
 <xsl:template match="property" mode="property-list">
- * @property <xsl:value-of select="@type"/> $<xsl:value-of select="@name"/>
+ * @property <xsl:value-of select="@property-type"/> $<xsl:value-of select="@name"/>
+</xsl:template>
+
+<xsl:template match="property" mode="property-info">
+            '<xsl:value-of select="@name"/>' => array(
+                'type' => '<xsl:value-of select="@actual-type"/>',
+                'isAttribute' => <xsl:value-of select="@is-attribute"/>
+  <xsl:text>
+</xsl:text>
+  <xsl:choose>
+    <xsl:when test="position()=last()">
+      <xsl:text>            )</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>            ),</xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>

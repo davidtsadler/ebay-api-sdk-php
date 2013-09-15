@@ -9,5 +9,7 @@ class DoubleType extends \dts\ebaysdk\types\DoubleType
 {
     public function __construct()
     {
+        $properties = array(
+        );
     }
 }

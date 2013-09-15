@@ -43,7 +43,11 @@
     -->
     <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
     <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
-    <xsl:attribute name="type" select="dts:type_to_datatype($type, $restriction)"/>
+    <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction)"/>
+    <xsl:attribute name="is-attribute" select="local-name()='attribute'"/>
+    <xsl:attribute name="actual-type" select="if ($restriction != '')
+                                                then dts:type_to_datatype($restriction, '')
+                                                else dts:type_to_datatype($type, '')"/>
   </xsl:element>
 </xsl:template>
 
@@ -94,7 +98,7 @@
       <xsl:text>DateTime</xsl:text>
     </xsl:when>
     <xsl:when test="$type='decimal'">
-      <xsl:text>int</xsl:text>
+      <xsl:text>integer</xsl:text>
     </xsl:when>
     <xsl:when test="$type='double'">
       <xsl:text>double</xsl:text>
@@ -106,10 +110,10 @@
       <xsl:text>double</xsl:text>
     </xsl:when>
     <xsl:when test="$type='int'">
-      <xsl:text>int</xsl:text>
+      <xsl:text>integer</xsl:text>
     </xsl:when>
     <xsl:when test="$type='long'">
-      <xsl:text>int</xsl:text>
+      <xsl:text>integer</xsl:text>
     </xsl:when>
     <xsl:when test="$type='string'">
       <xsl:text>string</xsl:text>

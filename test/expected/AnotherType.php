@@ -11,5 +11,15 @@ class AnotherType extends \dts\ebaysdk\base\Base
 {
     public function __construct()
     {
+        $properties = array(
+            'bar' => array(
+                'type' => 'string',
+                'isAttribute' => false
+            ),
+            'foo' => array(
+                'type' => 'string',
+                'isAttribute' => false
+            )
+        );
     }
 }

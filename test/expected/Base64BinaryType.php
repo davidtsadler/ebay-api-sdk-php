@@ -9,5 +9,7 @@ class Base64BinaryType extends \dts\ebaysdk\types\Base64BinaryType
 {
     public function __construct()
     {
+        $properties = array(
+        );
     }
 }

@@ -9,5 +9,7 @@ class StringType extends \dts\ebaysdk\types\StringType
 {
     public function __construct()
     {
+        $properties = array(
+        );
     }
 }

@@ -9,5 +9,7 @@ class IntegerType extends \dts\ebaysdk\types\IntegerType
 {
     public function __construct()
     {
+        $properties = array(
+        );
     }
 }

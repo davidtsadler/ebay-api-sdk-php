@@ -9,5 +9,7 @@ class DecimalType extends \dts\ebaysdk\types\DecimalType
 {
     public function __construct()
     {
+        $properties = array(
+        );
     }
 }
