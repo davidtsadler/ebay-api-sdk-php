@@ -2,6 +2,7 @@
 
 var grunt = require('grunt');
 var path = require('path');
+var helper = require('./helpers');
 
 exports.transform = {
 
@@ -15,7 +16,7 @@ exports.transform = {
     transformDirectoryIsCreated: function (test) {
         test.expect(1);
 
-        test.ok(grunt.file.exists('.tmp/transformed'), 'Transformed directory should exist.');
+        helper.isCreated(test, '.tmp/transformed');
 
         test.done();
     },
@@ -24,7 +25,7 @@ exports.transform = {
         test.expect(2);
 
         this._.forEach(this.ebay.services, function (service) {
-            test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name)), 'Transformed service directory should exist.');
+            helper.isCreated(test, path.join('.tmp/transformed', service.name));
         });
 
         test.done();
@@ -35,7 +36,7 @@ exports.transform = {
 
         this._.forEach(this.ebay.services, function (service) {
             this._.forEach(service.versions, function (version) {
-                test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version)), 'Transformed version directory should exist.');
+                helper.isCreated(test, path.join('.tmp/transformed', service.name, version));
             });
         }, this);
 
@@ -48,16 +49,16 @@ exports.transform = {
 
         test.expect(10);
 
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'AnotherType.php')), 'File should exist for class AnotherType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'Base64BinaryType.php')), 'File should exist for class Base64BinaryType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'BooleanType.php')), 'File should exist for class BooleanType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'ComplexType.php')), 'File should exist for class ComplexType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'DecimalType.php')), 'File should exist for class DecimalType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'DoubleType.php')), 'File should exist for class DoubleType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'IntegerType.php')), 'File should exist for class IntegerType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'StringType.php')), 'File should exist for class StringType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'TokenType.php')), 'File should exist for class TokenType.');
-        test.ok(grunt.file.exists(path.join('.tmp/transformed', service.name, version, 'URIType.php')), 'File should exist for class URIType.');
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'AnotherType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'Base64BinaryType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'BooleanType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'ComplexType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'DecimalType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'DoubleType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'IntegerType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'StringType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'TokenType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'URIType.php'));
 
         test.done();
     },
