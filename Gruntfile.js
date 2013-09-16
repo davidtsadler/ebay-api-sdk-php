@@ -27,6 +27,13 @@ module.exports = function(grunt) {
             }
         },
 
+        copy: {
+            dist: {
+            },
+            test: {
+            }
+        },
+
         jshint: {
             all: ['Gruntfile.js', 'ebay.json', 'test/*.js'],
             options: {
@@ -52,12 +59,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadTasks('tasks');
 
     grunt.registerTask('test', [
         'jshint',
         'clean',
         'transform:test',
+        'copy:test',
         'nodeunit'
     ]);
 
@@ -65,6 +74,7 @@ module.exports = function(grunt) {
         'jshint',
         'clean:dist',
         'download',
-        'transform:dist'
+        'transform:dist',
+        'copy:dist'
     ]);
 };
