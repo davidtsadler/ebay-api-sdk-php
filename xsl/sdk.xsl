@@ -22,8 +22,7 @@
 
 <xsl:template match="class" mode="php">
   <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
-
-namespace dts\ebaysdk\<xsl:copy-of select="$service"/>;
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
 
 /**
  *<xsl:apply-templates select="property" mode="property-list">
@@ -52,9 +51,9 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
                     @extends='IntegerType' or
                     @extends='StringType' or
                     @extends='TokenType' or
-                    @extends='URIType'"> extends \dts\ebaysdk\types\<xsl:value-of select="@extends"/></xsl:when>
-    <xsl:when test="@extends"> extends \dts\ebaysdk\<xsl:copy-of select="$service"/>\<xsl:value-of select="@extends"/></xsl:when>
-    <xsl:otherwise> extends \dts\ebaysdk\base\Base</xsl:otherwise>
+                    @extends='URIType'"> extends \DTS\eBaySDK\Types\<xsl:value-of select="@extends"/></xsl:when>
+    <xsl:when test="@extends"> extends \DTS\eBaySDK\<xsl:copy-of select="$service"/>\<xsl:value-of select="@extends"/></xsl:when>
+    <xsl:otherwise> extends \DTS\eBaySDK\Types\BaseType</xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 

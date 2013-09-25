@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class TokenType extends \dts\ebaysdk\types\TokenType
+class TokenType extends \DTS\eBaySDK\Types\TokenType
 {
     public function __construct()
     {

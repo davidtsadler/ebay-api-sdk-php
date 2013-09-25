@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class URIType extends \dts\ebaysdk\types\URIType
+class URIType extends \DTS\eBaySDK\Types\URIType
 {
     public function __construct()
     {

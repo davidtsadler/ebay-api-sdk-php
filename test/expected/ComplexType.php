@@ -1,6 +1,5 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
@@ -39,7 +38,7 @@ namespace dts\ebaysdk\finding_api;
  * @property string $uri
  * @property string $uriArr
  */
-class ComplexType extends \dts\ebaysdk\finding_api\AnotherType
+class ComplexType extends \DTS\eBaySDK\FindingAPI\AnotherType
 {
     public function __construct()
     {

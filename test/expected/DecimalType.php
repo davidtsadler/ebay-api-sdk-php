@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class DecimalType extends \dts\ebaysdk\types\DecimalType
+class DecimalType extends \DTS\eBaySDK\Types\DecimalType
 {
     public function __construct()
     {

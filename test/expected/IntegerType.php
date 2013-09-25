@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class IntegerType extends \dts\ebaysdk\types\IntegerType
+class IntegerType extends \DTS\eBaySDK\Types\IntegerType
 {
     public function __construct()
     {

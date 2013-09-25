@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class StringType extends \dts\ebaysdk\types\StringType
+class StringType extends \DTS\eBaySDK\Types\StringType
 {
     public function __construct()
     {

@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class BooleanType extends \dts\ebaysdk\types\BooleanType
+class BooleanType extends \DTS\eBaySDK\Types\BooleanType
 {
     public function __construct()
     {

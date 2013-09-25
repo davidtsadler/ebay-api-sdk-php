@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class DoubleType extends \dts\ebaysdk\types\DoubleType
+class DoubleType extends \DTS\eBaySDK\Types\DoubleType
 {
     public function __construct()
     {

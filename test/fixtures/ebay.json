@@ -1,11 +1,11 @@
 {
     "services": [
         {
-            "name": "finding_api",
+            "name": "FindingAPI",
             "versions": ["1"]
         },
         {
-            "name": "trading",
+            "name": "Trading",
             "versions": ["3", "2", "1"]
         }
     ]

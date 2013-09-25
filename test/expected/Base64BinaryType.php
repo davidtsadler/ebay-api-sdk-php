@@ -1,11 +1,10 @@
 <?php
-
-namespace dts\ebaysdk\finding_api;
+namespace DTS\eBaySDK\FindingAPI;
 
 /**
  *
  */
-class Base64BinaryType extends \dts\ebaysdk\types\Base64BinaryType
+class Base64BinaryType extends \DTS\eBaySDK\Types\Base64BinaryType
 {
     public function __construct()
     {
