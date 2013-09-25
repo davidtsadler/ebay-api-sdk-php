@@ -3,10 +3,14 @@
 module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
-        ebay: grunt.file.readJSON('ebay.json'),
+        ebay: {
+            dist: grunt.file.readJSON('ebay.json'),
+            test: grunt.file.readJSON('test/fixtures/ebay.json')
+        },
 
         clean: {
-            dist: ['.tmp', 'dist']
+            dist: ['.tmp', 'dist'],
+            test: '.tmp'
         },
 
         download: {
@@ -19,18 +23,20 @@ module.exports = function(grunt) {
             },
             dist: {
                 wsdls: '<%= download.dest %>',
-                ebay: '<%= ebay %>' 
+                ebay: '<%= ebay.dist %>'
             },
             test: {
                 wsdls: 'test/fixtures/downloads',
-                ebay: grunt.file.readJSON('test/fixtures/ebay.json')
+                ebay: '<%= ebay.test %>'
             }
         },
 
         copy: {
             dist: {
-            },
-            test: {
+                expand: true,
+                cwd: '.tmp/transformed/',
+                src: '**',
+                dest: 'dist/',
             }
         },
 
@@ -64,9 +70,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', [
         'jshint',
-        'clean',
+        'clean:test',
         'transform:test',
-        'copy:test',
         'nodeunit'
     ]);
 

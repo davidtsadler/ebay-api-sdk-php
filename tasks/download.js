@@ -7,12 +7,12 @@ module.exports = function(grunt) {
     var async = grunt.util.async;
 
     grunt.registerTask('download', 'Download the eBay API WSDLs.', function () {
-        grunt.config.requires('ebay.services');
+        grunt.config.requires('ebay.dist.services');
         grunt.config.requires('download.dest');
 
         var done = this.async();
         var destDirectory = path.resolve(grunt.config('download.dest'));
-        var services = grunt.config('ebay.services');
+        var services = grunt.config('ebay.dist.services');
 
         grunt.file.mkdir(destDirectory);
 
