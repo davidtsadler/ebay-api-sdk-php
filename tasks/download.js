@@ -28,22 +28,12 @@ module.exports = function(grunt) {
     
     function processService(destDirectory, service, callback) {
         grunt.log.writeln('Processing ' + service.name + '...');
-        async.forEachSeries(service.versions, async.apply(downloadWSDL, service, destDirectory), function (err) {
-            if (err) {
-                callback(err);
-            } else {
-                callback();
-            }
-        });
-    }
+        grunt.log.write('[' + service.version + ']...');
 
-    function downloadWSDL(service, destDirectory, version, callback) {
-        grunt.log.write('[' + version + ']...');
+        grunt.file.mkdir(path.join(destDirectory, service.name, service.version));
 
-        grunt.file.mkdir(path.join(destDirectory, service.name, version));
-
-        http.get(service.src.replace('<VERSION>', version), function (res) {
-            res.pipe(fs.createWriteStream(path.join(destDirectory, service.name, version, '/api.wsdl')));
+        http.get(service.src.replace('<VERSION>', service.version), function (res) {
+            res.pipe(fs.createWriteStream(path.join(destDirectory, service.name, service.version, '/api.wsdl')));
             res.on('end', function () {
                 grunt.log.ok();
                 callback();

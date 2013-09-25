@@ -25,21 +25,11 @@ module.exports = function(grunt) {
     });
 
     function processService(wsdlDirectory, destDirectory, service, callback) {
+        var wsdl = path.join(wsdlDirectory, service.name, service.version, '/api.wsdl');
+        var phpPath = path.join(destDirectory, service.name, service.version);
+
         grunt.log.writeln('Processing ' + service.name + '...');
-        async.forEachSeries(service.versions, async.apply(processVersion, service, wsdlDirectory, destDirectory), function (err) {
-            if (err) {
-                callback(err);
-            } else {
-                callback();
-            }
-        });
-    }
-
-    function processVersion(service, wsdlDirectory, destDirectory, version, callback) {
-        var wsdl = path.join(wsdlDirectory, service.name, version, '/api.wsdl');
-        var phpPath = path.join(destDirectory, service.name, version);
-
-        grunt.log.write('[' + version + ']...');
+        grunt.log.write('[' + service.version + ']...');
 
         grunt.file.mkdir(phpPath);
 

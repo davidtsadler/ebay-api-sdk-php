@@ -32,20 +32,18 @@ exports.transform = {
     },
 
     versionDirectoriesAreCreated: function (test) {
-        test.expect(4);
+        test.expect(2);
 
         this._.forEach(this.ebay.services, function (service) {
-            this._.forEach(service.versions, function (version) {
-                helper.isCreated(test, path.join('.tmp/transformed', service.name, version));
-            });
-        }, this);
+            helper.isCreated(test, path.join('.tmp/transformed', service.name, service.version));
+        });
 
         test.done();
     },
 
     filesAreCreated: function (test) {
         var service = this.ebay.services[0];
-        var version = service.versions[0];
+        var version = service.version;
 
         test.expect(10);
 
@@ -65,7 +63,7 @@ exports.transform = {
 
     phpIsGenerated: function (test) {
         var service = this.ebay.services[0];
-        var version = service.versions[0];
+        var version = service.version;
         var testPath = path.join('.tmp/transformed', service.name, version);
         var actual;
         var expected;

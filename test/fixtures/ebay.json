@@ -2,11 +2,11 @@
     "services": [
         {
             "name": "FindingAPI",
-            "versions": ["1"]
+            "version": "1"
         },
         {
             "name": "Trading",
-            "versions": ["3", "2", "1"]
+            "version": "3"
         }
     ]
 }
