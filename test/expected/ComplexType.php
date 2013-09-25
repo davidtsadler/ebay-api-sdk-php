@@ -40,145 +40,189 @@ namespace DTS\eBaySDK\FindingAPI;
  */
 class ComplexType extends \DTS\eBaySDK\FindingAPI\AnotherType
 {
-    public function __construct()
+    public function __construct(array $values = [])
     {
-        $properties = array(
-            'anotherType' => array(
+        $properties = [
+            'anotherType' => [
                 'type' => 'AnotherType',
-                'isAttribute' => false
-            ),
-            'binary' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'binary' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'binaryArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'binaryArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'bish' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'bish' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'boolean' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'boolean' => [
                 'type' => 'boolean',
-                'isAttribute' => false
-            ),
-            'booleanArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'booleanArr' => [
                 'type' => 'boolean',
-                'isAttribute' => true
-            ),
-            'boshBish' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'boshBish' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'dateTime' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'dateTime' => [
                 'type' => 'DateTime',
-                'isAttribute' => false
-            ),
-            'dateTimeArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'dateTimeArr' => [
                 'type' => 'DateTime',
-                'isAttribute' => true
-            ),
-            'decimal' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'decimal' => [
                 'type' => 'integer',
-                'isAttribute' => false
-            ),
-            'decimalArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'decimalArr' => [
                 'type' => 'integer',
-                'isAttribute' => true
-            ),
-            'double' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'double' => [
                 'type' => 'double',
-                'isAttribute' => false
-            ),
-            'doubleArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'doubleArr' => [
                 'type' => 'double',
-                'isAttribute' => true
-            ),
-            'duration' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'duration' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'durationArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'durationArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'eBay' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'eBay' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'enumString' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'enumString' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'enumStringArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'enumStringArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'enumToken' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'enumToken' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'enumTokenArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'enumTokenArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'float' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'float' => [
                 'type' => 'double',
-                'isAttribute' => false
-            ),
-            'floatArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'floatArr' => [
                 'type' => 'double',
-                'isAttribute' => true
-            ),
-            'integer' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'integer' => [
                 'type' => 'integer',
-                'isAttribute' => false
-            ),
-            'integerArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'integerArr' => [
                 'type' => 'integer',
-                'isAttribute' => true
-            ),
-            'long' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'long' => [
                 'type' => 'integer',
-                'isAttribute' => false
-            ),
-            'longArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'longArr' => [
                 'type' => 'integer',
-                'isAttribute' => true
-            ),
-            'string' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'string' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'stringArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'stringArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'time' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'time' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'timeArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'timeArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'token' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'token' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'tokenArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'tokenArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            ),
-            'uri' => array(
+                'unbound' => false,
+                'attribute' => true
+            ],
+            'uri' => [
                 'type' => 'string',
-                'isAttribute' => false
-            ),
-            'uriArr' => array(
+                'unbound' => false,
+                'attribute' => false
+            ],
+            'uriArr' => [
                 'type' => 'string',
-                'isAttribute' => true
-            )
-        );
+                'unbound' => false,
+                'attribute' => true
+            ]
+        ];
+
+        list($parentValues, $childValues) = self::getParentValues($properties, $values);
+
+        parent::__construct($parentValues);
+
+        if (!array_key_exists(__CLASS__, self::$properties)) {
+            self::$properties[__CLASS__] = array_merge(self::$properties[get_parent_class()], $properties);
+        }
+
+        $this->setValues(__CLASS__, $childValues);
     }
 }
