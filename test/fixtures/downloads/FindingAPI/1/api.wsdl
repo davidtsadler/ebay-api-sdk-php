@@ -115,9 +115,23 @@
 
       <xs:simpleType name="EnumStringType">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="One"/>
-          <xs:enumeration value="Two"/>
-          <xs:enumeration value="Three"/>
+          <xs:enumeration value="ValueOne">
+            <xs:annotation>
+              <xs:documentation>
+                Value One
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Value Two">
+            <xs:annotation>
+              <xs:documentation>Value Two</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Value  Three">
+            <xs:annotation>
+              <xs:documentation>Value Three</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
         </xs:restriction>
       </xs:simpleType>
 

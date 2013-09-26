@@ -17,7 +17,11 @@
   <xsl:variable name="classes" as="element()+">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:complexType" mode="classes-doc"/>
   </xsl:variable>
+  <xsl:variable name="enums" as="element()*">
+    <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:simpleType[*:restriction]" mode="classes-doc"/>
+  </xsl:variable>
   <xsl:apply-templates select="$classes" mode="php"/>
+  <xsl:apply-templates select="$enums" mode="php"/>
 </xsl:template>
 
 <xsl:template match="class" mode="php">
@@ -48,6 +52,21 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 
         $this->setValues(__CLASS__, $childValues);
     }
+}
+</xsl:result-document>
+</xsl:template>
+
+<xsl:template match="enum" mode="php">
+  <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
+
+/**
+ *
+ */
+class <xsl:value-of select="@className" />
+{<xsl:apply-templates select="enum" mode="class-constants">
+  <xsl:sort select="@const"/>
+</xsl:apply-templates>
 }
 </xsl:result-document>
 </xsl:template>
@@ -87,5 +106,8 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+
+<xsl:template match="enum" mode="class-constants">
+    const <xsl:value-of select="@const"/> = '<xsl:value-of select="@value"/>';</xsl:template>
 
 </xsl:stylesheet>

@@ -18,6 +18,13 @@
   </xsl:element>
 </xsl:template>
 
+<xsl:template match="*:simpleType" mode="classes-doc">
+  <xsl:element name="enum">
+    <xsl:attribute name="className"><xsl:copy-of select="@name"/></xsl:attribute>
+    <xsl:apply-templates select="*:restriction/*:enumeration" mode="enums"/>
+  </xsl:element>
+</xsl:template>
+
 <xsl:template match="*:extension" mode="extends">
   <xsl:value-of select="dts:base_to_datatype(substring-after(@base, ':'))"/>
 </xsl:template>
@@ -48,6 +55,13 @@
     <xsl:attribute name="actual-type" select="if ($restriction != '')
                                                 then dts:type_to_datatype($restriction, '')
                                                 else dts:type_to_datatype($type, '')"/>
+  </xsl:element>
+</xsl:template>
+
+<xsl:template match="*:enumeration" mode="enums">
+  <xsl:element name="enum">
+    <xsl:attribute name="const"><xsl:value-of select="upper-case(replace(replace(replace(@value, '([A-Z][a-z])', ' $1'), '^ ', ''), '\s+', '_'))"/></xsl:attribute>
+    <xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>
   </xsl:element>
 </xsl:template>
 

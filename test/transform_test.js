@@ -68,7 +68,7 @@ exports.transform = {
         var actual;
         var expected;
 
-        test.expect(10);
+        test.expect(12);
 
         actual = grunt.file.read(path.join(testPath, 'AnotherType.php'));
         expected = grunt.file.read('test/expected/AnotherType.php');
@@ -93,6 +93,14 @@ exports.transform = {
         actual = grunt.file.read(path.join(testPath, 'DoubleType.php'));
         expected = grunt.file.read('test/expected/DoubleType.php');
         test.equal(actual, expected, 'should generate PHP for class DoubleType.');
+
+        actual = grunt.file.read(path.join(testPath, 'EnumStringType.php'));
+        expected = grunt.file.read('test/expected/EnumStringType.php');
+        test.equal(actual, expected, 'should generate PHP for class EnumStringType.');
+
+        actual = grunt.file.read(path.join(testPath, 'EnumTokenType.php'));
+        expected = grunt.file.read('test/expected/EnumTokenType.php');
+        test.equal(actual, expected, 'should generate PHP for class EnumTokeType.');
 
         actual = grunt.file.read(path.join(testPath, 'IntegerType.php'));
         expected = grunt.file.read('test/expected/IntegerType.php');
