@@ -35,19 +35,19 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
  */
 class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="extends"/>
 {
+    private static $propertyTypes = [<xsl:apply-templates select="property" mode="property-info">
+      <xsl:sort select="@name"/>
+    </xsl:apply-templates>
+    ];
+
     public function __construct(array $values = [])
     {
-        $properties = [<xsl:apply-templates select="property" mode="property-info">
-          <xsl:sort select="@name"/>
-        </xsl:apply-templates>
-        ];
-
-        list($parentValues, $childValues) = self::getParentValues($properties, $values);
+        list($parentValues, $childValues) = self::getParentValues(self::$propertyTypes, $values);
 
         parent::__construct($parentValues);
 
         if (!array_key_exists(__CLASS__, self::$properties)) {
-            self::$properties[__CLASS__] = array_merge(self::$properties[get_parent_class()], $properties);
+            self::$properties[__CLASS__] = array_merge(self::$properties[get_parent_class()], self::$propertyTypes);
         }
 
         $this->setValues(__CLASS__, $childValues);
@@ -91,18 +91,18 @@ class <xsl:value-of select="@className" />
 </xsl:template>
 
 <xsl:template match="property" mode="property-info">
-            '<xsl:value-of select="@name"/>' => [
-                'type' => '<xsl:value-of select="@actual-type"/>',
-                'unbound' => false,
-                'attribute' => <xsl:value-of select="@is-attribute"/>
+        '<xsl:value-of select="@name"/>' => [
+            'type' => '<xsl:value-of select="@actual-type"/>',
+            'unbound' => false,
+            'attribute' => <xsl:value-of select="@is-attribute"/>
   <xsl:text>
 </xsl:text>
   <xsl:choose>
     <xsl:when test="position()=last()">
-      <xsl:text>            ]</xsl:text>
+      <xsl:text>        ]</xsl:text>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:text>            ],</xsl:text>
+      <xsl:text>        ],</xsl:text>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
