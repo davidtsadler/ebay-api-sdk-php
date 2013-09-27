@@ -13,29 +13,11 @@ exports.transform = {
         callback();
     },
 
-    transformDirectoryIsCreated: function (test) {
-        test.expect(1);
-
-        helper.isCreated(test, '.tmp/transformed');
-
-        test.done();
-    },
-
-    serviceDirectoriesAreCreated: function (test) {
+    directoriesAreCreated: function (test) {
         test.expect(2);
 
         this._.forEach(this.ebay.services, function (service) {
-            helper.isCreated(test, path.join('.tmp/transformed', service.name));
-        });
-
-        test.done();
-    },
-
-    versionDirectoriesAreCreated: function (test) {
-        test.expect(2);
-
-        this._.forEach(this.ebay.services, function (service) {
-            helper.isCreated(test, path.join('.tmp/transformed', service.name, service.version));
+            helper.isCreated(test, path.join('.tmp/transformed', service.name, service.version, 'src/DTS/eBaySDK/', service.name));
         });
 
         test.done();
@@ -47,16 +29,16 @@ exports.transform = {
 
         test.expect(10);
 
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'AnotherType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'Base64BinaryType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'BooleanType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'ComplexType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'DecimalType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'DoubleType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'IntegerType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'StringType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'TokenType.php'));
-        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'URIType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'AnotherType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'Base64BinaryType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'BooleanType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'ComplexType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'DecimalType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'DoubleType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'IntegerType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'StringType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'TokenType.php'));
+        helper.isCreated(test, path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name, 'URIType.php'));
 
         test.done();
     },
@@ -64,7 +46,7 @@ exports.transform = {
     phpIsGenerated: function (test) {
         var service = this.ebay.services[0];
         var version = service.version;
-        var testPath = path.join('.tmp/transformed', service.name, version);
+        var testPath = path.join('.tmp/transformed', service.name, version, 'src/DTS/eBaySDK/', service.name);
         var actual;
         var expected;
 

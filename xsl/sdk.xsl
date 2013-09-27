@@ -25,7 +25,7 @@
 </xsl:template>
 
 <xsl:template match="class" mode="php">
-  <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
+  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/{@className}.php">&lt;?php
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
 
 /**
@@ -57,7 +57,7 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 </xsl:template>
 
 <xsl:template match="enum" mode="php">
-  <xsl:result-document href="{$destDirectory}/{@className}.php">&lt;?php
+  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/{@className}.php">&lt;?php
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
 
 /**
