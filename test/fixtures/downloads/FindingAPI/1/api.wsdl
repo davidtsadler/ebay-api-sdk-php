@@ -30,7 +30,11 @@
 
       <xs:complexType name="ComplexType">
         <xs:complexContent>
-          <xs:extension base="tns:AnotherType">
+          <!-- 
+            Notice base is not base="xx:AnotherType"
+            Have found some WSDLs does not have a xx: in the base attribute.
+          -->
+          <xs:extension base="AnotherType">
             <xs:sequence>
               <xs:element name="BISH" type="xs:string"/>
               <xs:element name="BOSHBish" type="xs:string"/>

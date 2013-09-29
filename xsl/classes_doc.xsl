@@ -26,7 +26,9 @@
 </xsl:template>
 
 <xsl:template match="*:extension" mode="extends">
-  <xsl:value-of select="dts:base_to_datatype(substring-after(@base, ':'))"/>
+  <xsl:value-of select="if (contains(@base, ':'))
+                          then dts:base_to_datatype(substring-after(@base, ':'))
+                          else dts:base_to_datatype(@base)"/>
 </xsl:template>
 
 <xsl:template match="*:element|*:attribute" mode="properties">
