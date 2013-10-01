@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\Base64BinaryType;
+use DTS\eBaySDK\FindingAPI\Types\Base64BinaryType;
 
 class Base64BinaryTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class Base64BinaryTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Base64BinaryType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\Base64BinaryType', $this->obj);
     }
 
     public function testExtendsBase64BinaryType()

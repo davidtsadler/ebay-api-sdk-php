@@ -27,8 +27,8 @@
 </xsl:template>
 
 <xsl:template match="class" mode="php">
-  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/{@className}.php">&lt;?php
-namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
+  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Types/{@className}.php">&lt;?php
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
 
 /**
  *<xsl:apply-templates select="property" mode="property-list">
@@ -59,9 +59,9 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
 </xsl:template>
 
 <xsl:template match="class" mode="phpunit">
-  <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/{@className}Test.php">&lt;?php
+  <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Types/{@className}Test.php">&lt;?php
 
-use DTS\eBaySDK\<xsl:copy-of select="$service"/>\<xsl:value-of select="@className"/>;
+use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@className"/>;
 
 class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCase
 {
@@ -74,7 +74,7 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\<xsl:value-of select="@className"/>', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@className"/>', $this->obj);
     }
 
     public function testExtends<xsl:value-of select="if (@extends != '') then @extends else 'BaseType'"/>()
@@ -86,8 +86,8 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 </xsl:template>
 
 <xsl:template match="enum" mode="php">
-  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/{@className}.php">&lt;?php
-namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>;
+  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Types/{@className}.php">&lt;?php
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
 
 /**
  *
@@ -141,7 +141,7 @@ class <xsl:value-of select="@className" />
       <xsl:sequence select="concat('\DTS\eBaySDK\Types\', $extends)"/>
     </xsl:when>
     <xsl:when test="$extends">
-      <xsl:sequence select="concat('\DTS\eBaySDK\', $service, '\', $extends)"/>
+      <xsl:sequence select="concat('\DTS\eBaySDK\', $service, '\Types\', $extends)"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:text>\DTS\eBaySDK\Types\BaseType</xsl:text>

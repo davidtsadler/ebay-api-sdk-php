@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\DecimalType;
+use DTS\eBaySDK\FindingAPI\Types\DecimalType;
 
 class DecimalTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class DecimalTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\DecimalType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\DecimalType', $this->obj);
     }
 
     public function testExtendsDecimalType()

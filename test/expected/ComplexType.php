@@ -1,5 +1,5 @@
 <?php
-namespace DTS\eBaySDK\FindingAPI;
+namespace DTS\eBaySDK\FindingAPI\Types;
 
 /**
  *
@@ -38,7 +38,7 @@ namespace DTS\eBaySDK\FindingAPI;
  * @property string $uri
  * @property string $uriArr
  */
-class ComplexType extends \DTS\eBaySDK\FindingAPI\AnotherType
+class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
 {
     private static $propertyTypes = [
         'anotherType' => [

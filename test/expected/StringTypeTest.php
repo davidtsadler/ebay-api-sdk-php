@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\StringType;
+use DTS\eBaySDK\FindingAPI\Types\StringType;
 
 class StringTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class StringTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\StringType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\StringType', $this->obj);
     }
 
     public function testExtendsStringType()

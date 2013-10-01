@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\TokenType;
+use DTS\eBaySDK\FindingAPI\Types\TokenType;
 
 class TokenTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class TokenTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\TokenType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\TokenType', $this->obj);
     }
 
     public function testExtendsTokenType()

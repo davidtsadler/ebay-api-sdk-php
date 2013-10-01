@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\IntegerType;
+use DTS\eBaySDK\FindingAPI\Types\IntegerType;
 
 class IntegerTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class IntegerTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\IntegerType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\IntegerType', $this->obj);
     }
 
     public function testExtendsIntegerType()

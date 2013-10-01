@@ -1,5 +1,5 @@
 <?php
-namespace DTS\eBaySDK\FindingAPI;
+namespace DTS\eBaySDK\FindingAPI\Types;
 
 /**
  *

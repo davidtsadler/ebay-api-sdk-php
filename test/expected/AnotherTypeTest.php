@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\AnotherType;
+use DTS\eBaySDK\FindingAPI\Types\AnotherType;
 
 class AnotherTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class AnotherTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\AnotherType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\AnotherType', $this->obj);
     }
 
     public function testExtendsBaseType()

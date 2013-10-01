@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\BooleanType;
+use DTS\eBaySDK\FindingAPI\Types\BooleanType;
 
 class BooleanTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class BooleanTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\BooleanType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\BooleanType', $this->obj);
     }
 
     public function testExtendsBooleanType()

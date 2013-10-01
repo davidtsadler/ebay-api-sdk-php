@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\DoubleType;
+use DTS\eBaySDK\FindingAPI\Types\DoubleType;
 
 class DoubleTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class DoubleTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\DoubleType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\DoubleType', $this->obj);
     }
 
     public function testExtendsDoubleType()

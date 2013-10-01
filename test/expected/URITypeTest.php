@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\URIType;
+use DTS\eBaySDK\FindingAPI\Types\URIType;
 
 class URITypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class URITypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\URIType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\URIType', $this->obj);
     }
 
     public function testExtendsURIType()

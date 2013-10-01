@@ -1,6 +1,6 @@
 <?php
 
-use DTS\eBaySDK\FindingAPI\ComplexType;
+use DTS\eBaySDK\FindingAPI\Types\ComplexType;
 
 class ComplexTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,11 +13,11 @@ class ComplexTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\ComplexType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\ComplexType', $this->obj);
     }
 
     public function testExtendsAnotherType()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\AnotherType', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Types\AnotherType', $this->obj);
     }
 }
