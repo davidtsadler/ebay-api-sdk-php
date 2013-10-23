@@ -65,7 +65,7 @@ use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@cl
 
 class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCase
 {
-    protected $obj;
+    private $obj;
 
     protected function setUp()
     {

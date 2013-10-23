@@ -4,7 +4,7 @@ use DTS\eBaySDK\FindingAPI\Types\ComplexType;
 
 class ComplexTypeTest extends \PHPUnit_Framework_TestCase
 {
-    protected $obj;
+    private $obj;
 
     protected function setUp()
     {
