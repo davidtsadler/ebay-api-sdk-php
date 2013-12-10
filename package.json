@@ -1,6 +1,6 @@
 {
     "name": "ebay-api-sdk-php",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "description": "Generates a PHP SDK for use with the eBay API.",
     "author": "David T. Sadler <davidtsadler.@googlemail.com> (http://davidtsadler.com/)",
     "license": "MIT",
