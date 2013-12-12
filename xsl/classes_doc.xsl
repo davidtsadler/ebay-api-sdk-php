@@ -144,10 +144,10 @@
       <xsl:text>string</xsl:text>
     </xsl:when>
     <xsl:when test="$restriction != ''">
-      <xsl:value-of select="concat($type, '(', dts:type_to_datatype($restriction, ''), ')')"/>
+      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', $type, '(', dts:type_to_datatype($restriction, ''), ')')"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="$type"/>
+      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', $type)"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>

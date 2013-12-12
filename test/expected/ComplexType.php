@@ -3,7 +3,7 @@ namespace DTS\eBaySDK\FindingAPI\Types;
 
 /**
  *
- * @property AnotherType $anotherType
+ * @property DTS\eBaySDK\FindingAPI\Types\AnotherType $anotherType
  * @property string $binary
  * @property string $binaryArr
  * @property string $bish
@@ -19,10 +19,10 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property string $duration
  * @property string $durationArr
  * @property string $eBay
- * @property EnumStringType(string) $enumString
- * @property EnumStringType(string) $enumStringArr
- * @property EnumTokenType(string) $enumToken
- * @property EnumTokenType(string) $enumTokenArr
+ * @property DTS\eBaySDK\FindingAPI\Types\EnumStringType(string) $enumString
+ * @property DTS\eBaySDK\FindingAPI\Types\EnumStringType(string) $enumStringArr
+ * @property DTS\eBaySDK\FindingAPI\Types\EnumTokenType(string) $enumToken
+ * @property DTS\eBaySDK\FindingAPI\Types\EnumTokenType(string) $enumTokenArr
  * @property double $float
  * @property double $floatArr
  * @property integer $integer
@@ -42,7 +42,7 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
 {
     private static $propertyTypes = [
         'anotherType' => [
-            'type' => 'AnotherType',
+            'type' => 'DTS\eBaySDK\FindingAPI\Types\AnotherType',
             'unbound' => false,
             'attribute' => false
         ],
