@@ -111,10 +111,9 @@ class <xsl:value-of select="@className" />
         '<xsl:value-of select="@name"/>' => [
             'type' => '<xsl:value-of select="@actual-type"/>',
             'unbound' => false,
-            'attribute' => <xsl:value-of select="@is-attribute"/>
-  <xsl:text>
-</xsl:text>
-  <xsl:choose>
+            'attribute' => <xsl:value-of select="@is-attribute"/>,
+            '<xsl:value-of select="if (@is-attribute != 'false') then 'attributeName' else 'elementName'"/>' => '<xsl:value-of select="@actual-name"/>'
+<xsl:choose>
     <xsl:when test="position()=last()">
       <xsl:text>        ]</xsl:text>
     </xsl:when>

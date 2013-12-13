@@ -44,172 +44,206 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
         'anotherType' => [
             'type' => 'DTS\eBaySDK\FindingAPI\Types\AnotherType',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'AnotherType'
         ],
         'binary' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'binary'
         ],
         'binaryArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'binaryArr'
         ],
         'bish' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'BISH'
         ],
         'boolean' => [
             'type' => 'boolean',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'boolean'
         ],
         'booleanArr' => [
             'type' => 'boolean',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'booleanArr'
         ],
         'boshBish' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'BOSHBish'
         ],
         'dateTime' => [
             'type' => 'DateTime',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'DateTime'
         ],
         'dateTimeArr' => [
             'type' => 'DateTime',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'DateTimeArr'
         ],
         'decimal' => [
             'type' => 'integer',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'decimal'
         ],
         'decimalArr' => [
             'type' => 'integer',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'decimalArr'
         ],
         'double' => [
             'type' => 'double',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'double'
         ],
         'doubleArr' => [
             'type' => 'double',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'doubleArr'
         ],
         'duration' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'duration'
         ],
         'durationArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'durationArr'
         ],
         'eBay' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'eBay'
         ],
         'enumString' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'enumString'
         ],
         'enumStringArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'enumStringArr'
         ],
         'enumToken' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'enumToken'
         ],
         'enumTokenArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'enumTokenArr'
         ],
         'float' => [
             'type' => 'double',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'float'
         ],
         'floatArr' => [
             'type' => 'double',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'floatArr'
         ],
         'integer' => [
             'type' => 'integer',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'integer'
         ],
         'integerArr' => [
             'type' => 'integer',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'integerArr'
         ],
         'long' => [
             'type' => 'integer',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'long'
         ],
         'longArr' => [
             'type' => 'integer',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'longArr'
         ],
         'string' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'string'
         ],
         'stringArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'stringArr'
         ],
         'time' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'time'
         ],
         'timeArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'timeArr'
         ],
         'token' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'token'
         ],
         'tokenArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'tokenArr'
         ],
         'uri' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'uri'
         ],
         'uriArr' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true
+            'attribute' => true,
+            'attributeName' => 'uriArr'
         ]
     ];
 

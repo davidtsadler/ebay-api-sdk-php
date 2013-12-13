@@ -12,12 +12,14 @@ class AnotherType extends \DTS\eBaySDK\Types\BaseType
         'bar' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'bar'
         ],
         'foo' => [
             'type' => 'string',
             'unbound' => false,
-            'attribute' => false
+            'attribute' => false,
+            'elementName' => 'foo'
         ]
     ];
 

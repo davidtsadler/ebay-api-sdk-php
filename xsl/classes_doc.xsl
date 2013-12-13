@@ -52,6 +52,7 @@
     -->
     <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
     <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
+    <xsl:attribute name="actual-name" select="@name"/>
     <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction)"/>
     <xsl:attribute name="is-attribute" select="local-name()='attribute'"/>
     <xsl:attribute name="actual-type" select="if ($restriction != '')
