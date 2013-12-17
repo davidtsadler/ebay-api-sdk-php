@@ -49,8 +49,10 @@
               <xs:element name="duration" type="xs:duration"/>
               <xs:element name="float" type="xs:float"/>
               <xs:element name="integer" type="xs:int"/>
+              <xs:element name="integers" type="xs:int" maxOccurs="2"/>
               <xs:element name="long" type="xs:long"/>
               <xs:element name="string" type="xs:string"/>
+              <xs:element name="strings" type="xs:string" maxOccurs="unbounded"/>
               <xs:element name="time" type="xs:time"/>
               <xs:element name="token" type="xs:token"/>
               <xs:element name="enumString" type="tns:EnumStringType"/>

@@ -110,7 +110,7 @@ class <xsl:value-of select="@className" />
 <xsl:template match="property" mode="property-info">
         '<xsl:value-of select="@name"/>' => [
             'type' => '<xsl:value-of select="@actual-type"/>',
-            'unbound' => false,
+            'unbound' => <xsl:value-of select="@unbound"/>,
             'attribute' => <xsl:value-of select="@is-attribute"/>,
             '<xsl:value-of select="if (@is-attribute != 'false') then 'attributeName' else 'elementName'"/>' => '<xsl:value-of select="@actual-name"/>'
 <xsl:choose>

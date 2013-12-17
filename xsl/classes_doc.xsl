@@ -58,6 +58,7 @@
     <xsl:attribute name="actual-type" select="if ($restriction != '')
                                                 then dts:type_to_datatype($restriction, '')
                                                 else dts:type_to_datatype($type, '')"/>
+    <xsl:attribute name="unbound" select="@maxOccurs = 'unbounded' or @maxOccurs > 1"/>
   </xsl:element>
 </xsl:template>
 

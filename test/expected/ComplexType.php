@@ -27,10 +27,12 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property double $floatArr
  * @property integer $integer
  * @property integer $integerArr
+ * @property integer $integers
  * @property integer $long
  * @property integer $longArr
  * @property string $string
  * @property string $stringArr
+ * @property string $strings
  * @property string $time
  * @property string $timeArr
  * @property string $token
@@ -185,6 +187,12 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'attribute' => true,
             'attributeName' => 'integerArr'
         ],
+        'integers' => [
+            'type' => 'integer',
+            'unbound' => true,
+            'attribute' => false,
+            'elementName' => 'integers'
+        ],
         'long' => [
             'type' => 'integer',
             'unbound' => false,
@@ -208,6 +216,12 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'stringArr'
+        ],
+        'strings' => [
+            'type' => 'string',
+            'unbound' => true,
+            'attribute' => false,
+            'elementName' => 'strings'
         ],
         'time' => [
             'type' => 'string',
