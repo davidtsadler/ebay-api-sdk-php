@@ -37,7 +37,9 @@
           <xs:extension base="AnotherType">
             <xs:sequence>
               <xs:element name="BISH" type="xs:string"/>
-              <xs:element name="BOSHBish" type="xs:string"/>
+              <xs:element name="BISHbosh" type="xs:string"/>
+              <xs:element name="BoshBish" type="xs:string"/>
+              <xs:element name="BoshBOSH" type="xs:string"/>
               <xs:element name="eBay" type="xs:string"/>
               <xs:element name="AnotherType" type="tns:AnotherType"/>
               <xs:element name="uri" type="xs:anyURI"/>

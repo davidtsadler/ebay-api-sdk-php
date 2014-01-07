@@ -7,9 +7,11 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property string $binary
  * @property string $binaryArr
  * @property string $bish
+ * @property string $bishBosh
  * @property boolean $boolean
  * @property boolean $booleanArr
  * @property string $boshBish
+ * @property string $boshBosh
  * @property DateTime $dateTime
  * @property DateTime $dateTimeArr
  * @property integer $decimal
@@ -67,6 +69,12 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'BISH'
         ],
+        'bishBosh' => [
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'BISHbosh'
+        ],
         'boolean' => [
             'type' => 'boolean',
             'unbound' => false,
@@ -83,7 +91,13 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
-            'elementName' => 'BOSHBish'
+            'elementName' => 'BoshBish'
+        ],
+        'boshBosh' => [
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'BoshBOSH'
         ],
         'dateTime' => [
             'type' => 'DateTime',

@@ -50,8 +50,7 @@
         FOOBar into fooBar.
         eBay into eBay.
     -->
-    <xsl:variable name="wordList" select="tokenize(replace(replace(@name, '([A-Z][a-z])', ' $1'), '^ ',''), ' ')"/>
-    <xsl:attribute name="name" select="concat(lower-case($wordList[1]), string-join(subsequence($wordList, 2), ''))"/>
+    <xsl:attribute name="name" select="dts:name_to_camel_case(@name)"/>
     <xsl:attribute name="actual-name" select="@name"/>
     <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction)"/>
     <xsl:attribute name="is-attribute" select="local-name()='attribute'"/>
@@ -154,4 +153,25 @@
   </xsl:choose>
 </xsl:function>
 
+<xsl:function name="dts:name_to_camel_case" as="xs:string">
+  <xsl:param name="name" as="xs:string"/>
+  <xsl:variable name="wordList" select="tokenize(
+    replace(
+      replace(
+        replace($name, '([A-Z]{2,})|([A-Z][a-z]+)', ' $1 $2 '),
+        '^\s+', ''),
+      '\s+', ' '), 
+    '\s')
+  "/>
+  <xsl:sequence select="string-join((lower-case($wordList[1]),
+    for $word in $wordList[position() > 1]
+    return dts:capitalize_first($word))
+    ,'')
+  "/>
+</xsl:function>
+
+<xsl:function name="dts:capitalize_first" as="xs:string">
+  <xsl:param name="word" as="xs:string"/>
+  <xsl:sequence select="concat(upper-case(substring($word, 1, 1)), lower-case(substring($word, 2)))"/>
+</xsl:function>
 </xsl:stylesheet>
