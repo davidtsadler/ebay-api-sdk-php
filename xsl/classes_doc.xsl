@@ -13,6 +13,9 @@
         <xsl:apply-templates select=".//*:extension" mode="extends"/>
       </xsl:attribute>
     </xsl:if>
+    <xsl:if test="@name='AbstractRequestType'">
+      <xsl:apply-templates select="//xs:element[@name='RequesterCredentials']" mode="properties"/>
+    </xsl:if>
     <xsl:apply-templates select=".//*:element" mode="properties"/>
     <xsl:apply-templates select=".//*:attribute" mode="properties"/>
   </xsl:element>
