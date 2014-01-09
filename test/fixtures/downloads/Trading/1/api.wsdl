@@ -9,4 +9,9 @@
       </xs:complexType>
     </xs:schema>
   </wsdl:types>
+
+  <wsdl:portType>
+    <wsdl:operation name="MethodOne">
+    </wsdl:operation>
+  </wsdl:portType>
 </wsdl:definitions>

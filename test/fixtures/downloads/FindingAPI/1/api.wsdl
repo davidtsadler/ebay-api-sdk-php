@@ -168,6 +168,30 @@
         </xs:complexType>
       </xs:element>
 
+      <xs:element name="MethodOneRequest" type="ns:ComplexType"/>
+      <xs:element name="MethodOneResponse" type="ns:ComplexType"/>
+      <xs:element name="methodTwoRequest" type="ns:ComplexType"/>
+      <xs:element name="methodTwoResponse" type="ns:ComplexType"/>
+
     </xs:schema>
   </wsdl:types>
+
+  <!-- 
+    Notice the case of the first letter of each operation is different.
+    This is because some WSDLs use an upper case letter for the operation name and some use a lower case one.
+    The PHP class that is generated will start the method name with a lower case letter.
+  -->
+  <wsdl:portType>
+    <wsdl:operation name="MethodOne">
+      <wsdl:input message="ns:MethodOneRequest"/>
+      <wsdl:output message="ns:MethodOneResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:portType>
+    <wsdl:operation name="methodTwo">
+      <wsdl:input message="ns:methodTwoRequest"/>
+      <wsdl:output message="ns:methodTwoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
 </wsdl:definitions>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
+<xsl:stylesheet
   version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -10,6 +10,7 @@
 <xsl:output method="text" encoding="UTF-8"/>
 
 <xsl:include href="classes_doc.xsl"/>
+<xsl:include href="operations_doc.xsl"/>
 
 <xsl:param name="service" required="yes" as="xs:string"/>
 <xsl:param name="destDirectory" required="yes" as="xs:string"/>
@@ -24,6 +25,8 @@
   <xsl:apply-templates select="$classes" mode="php"/>
   <xsl:apply-templates select="$classes" mode="phpunit"/>
   <xsl:apply-templates select="$enums" mode="php"/>
+  <xsl:apply-templates select="." mode="php"/>
+  <xsl:apply-templates select="." mode="phpunit"/>
 </xsl:template>
 
 <xsl:template match="class" mode="php">
@@ -126,10 +129,64 @@ class <xsl:value-of select="@className" />
 <xsl:template match="enum" mode="class-constants">
     const <xsl:value-of select="@const"/> = '<xsl:value-of select="@value"/>';</xsl:template>
 
+<xsl:template match="/" mode="php">
+  <xsl:variable name="operations" as="element()+">
+    <xsl:apply-templates select="/wsdl:definitions/wsdl:portType/wsdl:operation" mode="operations-doc"/>
+  </xsl:variable>
+  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
+
+class <xsl:copy-of select="$service" />Service extends \DTS\eBaySDK\Services\BaseService
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }<xsl:apply-templates select="$operations" mode="php"/>
+}
+</xsl:result-document>
+</xsl:template>
+
+<xsl:template match="/" mode="phpunit">
+  <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Services/{$service}ServiceTest.php">&lt;?php
+
+use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service;
+
+class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_TestCase
+{
+    private $obj;
+
+    protected function setUp()
+    {
+        $this->obj = new <xsl:copy-of select="$service"/>Service();
+    }
+
+    public function testCanBeCreated()
+    {
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service', $this->obj);
+    }
+
+    public function testExtendsBaseService()
+    {
+        $this->assertInstanceOf('\DTS\eBaySDK\Services\BaseService', $this->obj);
+    }
+}
+</xsl:result-document>
+</xsl:template>
+
+<xsl:template match="operation" mode="php">
+
+    /**
+     * @param \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request
+     * @return \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@response-type"/>
+     */
+    public function <xsl:value-of select="@method-name"/>(\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request)
+    {
+    }</xsl:template>
+
 <xsl:function name="dts:phpns_extends" as="xs:string">
   <xsl:param name="extends"/>
   <xsl:choose>
-    <xsl:when test="$extends='Base64BinaryType' or 
+    <xsl:when test="$extends='Base64BinaryType' or
                     $extends='BooleanType' or
                     $extends='DecimalType' or
                     $extends='DoubleType' or
