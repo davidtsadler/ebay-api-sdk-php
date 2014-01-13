@@ -16,6 +16,9 @@
     <xsl:attribute name="response-type">
       <xsl:apply-templates select="wsdl:output" mode="operations-doc"/>
     </xsl:attribute>
+    <xsl:attribute name="request-xml-root">
+      <xsl:copy-of select="substring-after(wsdl:input/@message, ':')"/>
+    </xsl:attribute>
   </xsl:element>
 </xsl:template>
 

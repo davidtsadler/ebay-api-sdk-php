@@ -181,6 +181,7 @@ class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_Tes
      */
     public function <xsl:value-of select="@method-name"/>(\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request)
     {
+        $this->callOperation('<xsl:value-of select="@name"/>', $request->toXml('<xsl:value-of select="@request-xml-root"/>'));    
     }</xsl:template>
 
 <xsl:function name="dts:phpns_extends" as="xs:string">
