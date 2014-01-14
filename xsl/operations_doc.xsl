@@ -24,6 +24,7 @@
 
 <xsl:template match="wsdl:input|wsdl:output" mode="operations-doc">
   <xsl:variable name="local-name" select="substring-after(@message, ':')"/>
-  <xsl:copy-of select="substring-after(//xs:element[@name=$local-name]/@type, ':')"/>
+  <xsl:variable name="type" select="substring-after(//xs:element[@name=$local-name]/@type, ':')"/>
+  <xsl:copy-of select="concat(upper-case(substring($type, 1, 1)), substring($type, 2))"/>
 </xsl:template>
 </xsl:stylesheet>

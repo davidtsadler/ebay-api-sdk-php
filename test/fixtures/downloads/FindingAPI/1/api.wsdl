@@ -29,7 +29,7 @@
         </xs:simpleContent>
       </xs:complexType>
 
-      <xs:complexType name="ComplexType">
+      <xs:complexType name="complexType">
         <xs:complexContent>
           <!-- 
             Notice base is not base="xx:AnotherType"
@@ -58,7 +58,7 @@
               <xs:element name="strings" type="xs:string" maxOccurs="unbounded"/>
               <xs:element name="time" type="xs:time"/>
               <xs:element name="token" type="xs:token"/>
-              <xs:element name="enumString" type="tns:EnumStringType"/>
+              <xs:element name="enumString" type="tns:enumStringType"/>
               <xs:element name="enumToken" type="tns:EnumTokenType"/>
             </xs:sequence>
           </xs:extension>
@@ -76,7 +76,7 @@
         <xs:attribute name="stringArr" type="xs:string"/>
         <xs:attribute name="timeArr" type="xs:time"/>
         <xs:attribute name="tokenArr" type="xs:token"/>
-        <xs:attribute name="enumStringArr" type="tns:EnumStringType"/>
+        <xs:attribute name="enumStringArr" type="tns:enumStringType"/>
         <xs:attribute name="enumTokenArr" type="tns:EnumTokenType"/>
       </xs:complexType>
 
@@ -122,7 +122,7 @@
         </xs:simpleContent>
       </xs:complexType>
 
-      <xs:simpleType name="EnumStringType">
+      <xs:simpleType name="enumStringType">
         <xs:restriction base="xs:string">
           <xs:enumeration value="ValueOne">
             <xs:annotation>
@@ -169,10 +169,10 @@
         </xs:complexType>
       </xs:element>
 
-      <xs:element name="MethodOneRequest" type="ns:ComplexType"/>
-      <xs:element name="MethodOneResponse" type="ns:ComplexType"/>
-      <xs:element name="methodTwoRequest" type="ns:ComplexType"/>
-      <xs:element name="methodTwoResponse" type="ns:ComplexType"/>
+      <xs:element name="MethodOneRequest" type="ns:complexType"/>
+      <xs:element name="MethodOneResponse" type="ns:complexType"/>
+      <xs:element name="methodTwoRequest" type="ns:complexType"/>
+      <xs:element name="methodTwoResponse" type="ns:complexType"/>
 
     </xs:schema>
   </wsdl:types>

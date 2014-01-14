@@ -7,7 +7,7 @@
 
 <xsl:template match="*:complexType" mode="classes-doc">
   <xsl:element name="class">
-    <xsl:attribute name="className"><xsl:copy-of select="@name"/></xsl:attribute>
+    <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first(@name)"/></xsl:attribute>
     <xsl:attribute name="xmlNamespace">
       <xsl:value-of select="namespace::ns|namespace::tns"/>
     </xsl:attribute>
@@ -26,7 +26,7 @@
 
 <xsl:template match="*:simpleType" mode="classes-doc">
   <xsl:element name="enum">
-    <xsl:attribute name="className"><xsl:copy-of select="@name"/></xsl:attribute>
+    <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first(@name)"/></xsl:attribute>
     <xsl:apply-templates select="*:restriction/*:enumeration" mode="enums"/>
   </xsl:element>
 </xsl:template>
@@ -151,10 +151,10 @@
       <xsl:text>string</xsl:text>
     </xsl:when>
     <xsl:when test="$restriction != ''">
-      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', $type, '(', dts:type_to_datatype($restriction, ''), ')')"/>
+      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, ''), ')')"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', $type)"/>
+      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>
@@ -171,13 +171,13 @@
   "/>
   <xsl:sequence select="string-join((lower-case($wordList[1]),
     for $word in $wordList[position() > 1]
-    return dts:capitalize_first($word))
+    return dts:capitalize_first(lower-case($word)))
     ,'')
   "/>
 </xsl:function>
 
 <xsl:function name="dts:capitalize_first" as="xs:string">
   <xsl:param name="word" as="xs:string"/>
-  <xsl:sequence select="concat(upper-case(substring($word, 1, 1)), lower-case(substring($word, 2)))"/>
+  <xsl:sequence select="concat(upper-case(substring($word, 1, 1)), substring($word, 2))"/>
 </xsl:function>
 </xsl:stylesheet>
