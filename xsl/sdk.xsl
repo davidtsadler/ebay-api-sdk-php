@@ -55,6 +55,10 @@ class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="
             self::$properties[__CLASS__] = array_merge(self::$properties[get_parent_class()], self::$propertyTypes);
         }
 
+        if (!array_key_exists(__CLASS__, self::$xmlNamespaces)) {
+            self::$xmlNamespaces[__CLASS__] = '<xsl:value-of select="@xmlNamespace"/>';
+        }
+
         $this->setValues(__CLASS__, $childValues);
     }
 }

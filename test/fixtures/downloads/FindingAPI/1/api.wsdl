@@ -2,7 +2,8 @@
 <wsdl:definitions
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsd="http://testing-namespace"
-  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:ns="http://davidtsadler.com">
 
   <wsdl:types>
     <xs:schema>

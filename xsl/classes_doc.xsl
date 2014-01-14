@@ -8,6 +8,9 @@
 <xsl:template match="*:complexType" mode="classes-doc">
   <xsl:element name="class">
     <xsl:attribute name="className"><xsl:copy-of select="@name"/></xsl:attribute>
+    <xsl:attribute name="xmlNamespace">
+      <xsl:value-of select="namespace::ns|namespace::tns"/>
+    </xsl:attribute>
     <xsl:if test=".//*:extension">
       <xsl:attribute name="extends">
         <xsl:apply-templates select=".//*:extension" mode="extends"/>
