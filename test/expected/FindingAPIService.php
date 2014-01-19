@@ -1,7 +1,7 @@
 <?php
 namespace DTS\eBaySDK\FindingAPI\Services;
 
-class FindingAPIService extends \DTS\eBaySDK\Services\FindingAPIBaseService
+class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseService
 {
     public function __construct($config = [])
     {

@@ -38,7 +38,7 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
     <xsl:sort select="@name"/>
   </xsl:apply-templates>
  */
-class <xsl:value-of select="@className" /><xsl:apply-templates select="." mode="extends"/>
+class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="extends"/>
 {
     private static $propertyTypes = [<xsl:apply-templates select="property" mode="property-info">
       <xsl:sort select="@name"/>
@@ -99,7 +99,7 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
 /**
  *
  */
-class <xsl:value-of select="@className" />
+class <xsl:value-of select="@className"/>
 {<xsl:apply-templates select="enum" mode="class-constants">
   <xsl:sort select="@const"/>
 </xsl:apply-templates>
@@ -140,7 +140,7 @@ class <xsl:value-of select="@className" />
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 
-class <xsl:copy-of select="$service" />Service extends \DTS\eBaySDK\Services\<xsl:copy-of select="$service" />BaseService
+class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService
 {
     public function __construct($config = [])
     {
