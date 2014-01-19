@@ -140,7 +140,7 @@ class <xsl:value-of select="@className" />
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 
-class <xsl:copy-of select="$service" />Service extends \DTS\eBaySDK\Services\BaseService
+class <xsl:copy-of select="$service" />Service extends \DTS\eBaySDK\Services\<xsl:copy-of select="$service" />BaseService
 {
     public function __construct($config = [])
     {
