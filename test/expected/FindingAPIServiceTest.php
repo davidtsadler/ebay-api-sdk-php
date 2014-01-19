@@ -18,6 +18,6 @@ class FindingAPIServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testExtendsBaseService()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\Services\BaseService', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseService', $this->obj);
     }
 }

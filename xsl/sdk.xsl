@@ -171,7 +171,7 @@ class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_Tes
 
     public function testExtendsBaseService()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\Services\BaseService', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService', $this->obj);
     }
 }
 </xsl:result-document>
