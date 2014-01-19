@@ -142,9 +142,9 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 
 class <xsl:copy-of select="$service" />Service extends \DTS\eBaySDK\Services\BaseService
 {
-    public function __construct()
+    public function __construct($config = [])
     {
-        parent::__construct();
+        parent::__construct($config);
     }<xsl:apply-templates select="$operations" mode="php"/>
 }
 </xsl:result-document>

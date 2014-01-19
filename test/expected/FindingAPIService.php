@@ -3,9 +3,9 @@ namespace DTS\eBaySDK\FindingAPI\Services;
 
 class FindingAPIService extends \DTS\eBaySDK\Services\BaseService
 {
-    public function __construct()
+    public function __construct($config = [])
     {
-        parent::__construct();
+        parent::__construct($config);
     }
 
     /**
