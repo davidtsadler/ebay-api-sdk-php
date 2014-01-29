@@ -1,5 +1,5 @@
 <?php
-namespace DTS\eBaySDK\FindingAPI\Types;
+namespace DTS\eBaySDK\FindingAPI\Enums;
 
 /**
  *

@@ -93,8 +93,8 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 </xsl:template>
 
 <xsl:template match="enum" mode="php">
-  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Types/{@className}.php">&lt;?php
-namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
+  <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Enums/{@className}.php">&lt;?php
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Enums;
 
 /**
  *
