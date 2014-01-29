@@ -3,10 +3,6 @@
         {
             "name": "FindingAPI",
             "version": "1"
-        },
-        {
-            "name": "Trading",
-            "version": "3"
         }
     ]
 }
