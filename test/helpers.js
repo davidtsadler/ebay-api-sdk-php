@@ -51,11 +51,11 @@ module.exports = {
     },
 
     enumsClassPath: function (name) {
-        return path.join(this.srcPath(), 'Types', name + '.php');
+        return path.join(this.srcPath(), 'Enums', name + '.php');
     },
 
     enumsPhpUnitPath: function (name) {
-        return path.join(this.testPath(), 'Types', name + 'Test.php');
+        return path.join(this.testPath(), 'Enums', name + 'Test.php');
     },
 
     serviceClassPath: function () {
