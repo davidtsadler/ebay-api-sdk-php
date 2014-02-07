@@ -142,9 +142,9 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 
 class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService
 {
-    public function __construct($config = [])
+    public function __construct(\DTS\eBaySDK\Interfaces\HttpClientInterface $httpClient, $config = array())
     {
-        parent::__construct($config);
+        parent::__construct($httpClient, $config);
     }<xsl:apply-templates select="$operations" mode="php"/>
 }
 </xsl:result-document>
@@ -154,6 +154,7 @@ class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of 
   <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Services/{$service}ServiceTest.php">&lt;?php
 
 use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service;
+use DTS\eBaySDK\HttpClient\HttpClient;
 
 class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_TestCase
 {
@@ -161,7 +162,7 @@ class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_Tes
 
     protected function setUp()
     {
-        $this->obj = new <xsl:copy-of select="$service"/>Service();
+        $this->obj = new <xsl:copy-of select="$service"/>Service(new HttpClient());
     }
 
     public function testCanBeCreated()
