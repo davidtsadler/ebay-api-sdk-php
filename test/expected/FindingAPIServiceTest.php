@@ -1,6 +1,7 @@
 <?php
 
 use DTS\eBaySDK\FindingAPI\Services\FindingAPIService;
+use DTS\eBaySDK\HttpClient\HttpClient;
 
 class FindingAPIServiceTest extends \PHPUnit_Framework_TestCase
 {
@@ -8,7 +9,7 @@ class FindingAPIServiceTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->obj = new FindingAPIService();
+        $this->obj = new FindingAPIService(new HttpClient());
     }
 
     public function testCanBeCreated()
