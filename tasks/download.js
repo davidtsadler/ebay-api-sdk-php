@@ -28,12 +28,11 @@ module.exports = function(grunt) {
     
     function processService(destDirectory, service, callback) {
         grunt.log.writeln('Processing ' + service.name + '...');
-        grunt.log.write('[' + service.version + ']...');
 
-        grunt.file.mkdir(path.join(destDirectory, service.name, service.version));
+        grunt.file.mkdir(path.join(destDirectory, service.name));
 
-        http.get(service.src.replace('<VERSION>', service.version), function (res) {
-            res.pipe(fs.createWriteStream(path.join(destDirectory, service.name, service.version, '/api.wsdl')));
+        http.get(service.src, function (res) {
+            res.pipe(fs.createWriteStream(path.join(destDirectory, service.name, '/api.wsdl')));
             res.on('end', function () {
                 grunt.log.ok();
                 callback();
