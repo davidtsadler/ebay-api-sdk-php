@@ -31,6 +31,22 @@
 
 <xsl:template match="class" mode="php">
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Types/{@className}.php">&lt;?php
+/**
+ * Copyright 2014 David T. Sadler
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
 
 /**
@@ -40,12 +56,18 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
  */
 class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="extends"/>
 {
-    private static $propertyTypes = [<xsl:apply-templates select="property" mode="property-info">
+    /**
+     * @var array Properties belonging to objects of this class.
+     */
+    private static $propertyTypes = array(<xsl:apply-templates select="property" mode="property-info">
       <xsl:sort select="@name"/>
     </xsl:apply-templates>
-    ];
+    );
 
-    public function __construct(array $values = [])
+    /**
+     * @param array $values Optional properties and values to assign to the object.
+     */
+    public function __construct(array $values = array())
     {
         list($parentValues, $childValues) = self::getParentValues(self::$propertyTypes, $values);
 
@@ -94,6 +116,22 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 
 <xsl:template match="enum" mode="php">
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Enums/{@className}.php">&lt;?php
+/**
+ * Copyright 2014 David T. Sadler
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Enums;
 
 /**
@@ -115,17 +153,17 @@ class <xsl:value-of select="@className"/>
 </xsl:template>
 
 <xsl:template match="property" mode="property-info">
-        '<xsl:value-of select="@name"/>' => [
+        '<xsl:value-of select="@name"/>' => array(
             'type' => '<xsl:value-of select="@actual-type"/>',
             'unbound' => <xsl:value-of select="@unbound"/>,
             'attribute' => <xsl:value-of select="@is-attribute"/>,
             '<xsl:value-of select="if (@is-attribute != 'false') then 'attributeName' else 'elementName'"/>' => '<xsl:value-of select="@actual-name"/>'
 <xsl:choose>
     <xsl:when test="position()=last()">
-      <xsl:text>        ]</xsl:text>
+      <xsl:text>        )</xsl:text>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:text>        ],</xsl:text>
+      <xsl:text>        ),</xsl:text>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -138,10 +176,30 @@ class <xsl:value-of select="@className"/>
     <xsl:apply-templates select="/wsdl:definitions/wsdl:portType/wsdl:operation" mode="operations-doc"/>
   </xsl:variable>
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php
+/**
+ * Copyright 2014 David T. Sadler
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 
 class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService
 {
+    /**
+     * @param \DTS\eBaySDK\Interfaces\HttpClientInterface $httpClient The object that will handle sending requests to the API.
+     * @param array $config Optional configuration option values. 
+     */
     public function __construct(\DTS\eBaySDK\Interfaces\HttpClientInterface $httpClient, $config = array())
     {
         parent::__construct($httpClient, $config);
