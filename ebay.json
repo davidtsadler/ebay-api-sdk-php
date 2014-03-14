@@ -2,67 +2,83 @@
     "services": [
         {
             "name": "Trading",
-            "src": "http://developer.ebay.com/webservices/latest/ebaySvc.wsdl"
+            "src": "http://developer.ebay.com/webservices/<VERSION>/ebaySvc.wsdl",
+            "version": "863"
         },
         {
             "name": "Finding",
-            "src": "http://developer.ebay.com/webservices/Finding/latest/FindingService.wsdl"
+            "src": "http://developer.ebay.com/webservices/Finding/<VERSION>/FindingService.wsdl",
+            "version": "1.12.0"
         },
         {
             "name": "Shopping",
-            "src": "http://developer.ebay.com/webservices/latest/ShoppingService.wsdl"
+            "src": "http://developer.ebay.com/webservices/<VERSION>/ShoppingService.wsdl",
+            "version": "861"
         },
         {
             "name": "BulkDataExchange",
-            "src": "http://developer.ebay.com/webservices/bulk-data-exchange/latest/BulkDataExchangeService.wsdl"
+            "src": "http://developer.ebay.com/webservices/bulk-data-exchange/<VERSION>/BulkDataExchangeService.wsdl",
+            "version": "1.5.0"
         },
         {
             "name": "FileTransfer",
-            "src": "http://developer.ebay.com/webservices/file-transfer/latest/FileTransferService.wsdl"
+            "src": "http://developer.ebay.com/webservices/file-transfer/<VERSION>/FileTransferService.wsdl",
+            "version": "1.1.0"
         },
         {
             "name": "ReturnManagement",
-            "src": "http://developer.ebay.com/webservices/return-management/latest/ReturnManagementService.wsdl"
+            "src": "http://developer.ebay.com/webservices/return-management/<VERSION>/ReturnManagementService.wsdl",
+            "version": "1.1.0"
         },
         {
             "name": "BusinessPoliciesManagement",
-            "src": "http://developer.ebay.com/webservices/business-policies/latest/SellerProfilesManagementService.wsdl"
+            "src": "http://developer.ebay.com/webservices/business-policies/<VERSION>/SellerProfilesManagementService.wsdl",
+            "version": "1.0.0"
         },
         {
             "name": "PayoutDetails",
-            "src": "http://developer.ebay.com/webservices/payout-details/latest/PayoutDetailsService.wsdl"
+            "src": "http://developer.ebay.com/webservices/payout-details/<VERSION>/PayoutDetailsService.wsdl",
+            "version": "1.1.0"
         },
         {
             "name": "OrderAdjustment",
-            "src": "http://developer.ebay.com/webservices/order-adjustment/latest/OrderAdjustmentService.wsdl"
+            "src": "http://developer.ebay.com/webservices/order-adjustment/<VERSION>/OrderAdjustmentService.wsdl",
+            "version": "1.0.0"
         },
         {
             "name": "RelatedItemsManagement",
-            "src": "http://developer.ebay.com/webservices/related-items/latest/BundleManagementService.wsdl"
+            "src": "http://developer.ebay.com/webservices/related-items/<VERSION>/BundleManagementService.wsdl",
+            "version": "1.0.0"
         },
         {
             "name": "SellerOffers",
-            "src": "http://developer.ebay.com/webservices/seller-offers/latest/SellerDiscountOfferManagementServiceV2.wsdl"
+            "src": "http://developer.ebay.com/webservices/seller-offers/<VERSION>/SellerDiscountOfferManagementServiceV2.wsdl",
+            "version": "2.0.0"
         },
         {
             "name": "Feedback",
-            "src": "http://developer.ebay.com/webservices/feedback/latest/FeedbackService.wsdl"
+            "src": "http://developer.ebay.com/webservices/feedback/<VERSION>/FeedbackService.wsdl",
+            "version": "1.2.2"
         },
         {
             "name": "Merchandising",
-            "src": "http://developer.ebay.com/webservices/merchandising/latest/MerchandisingService.wsdl"
+            "src": "http://developer.ebay.com/webservices/merchandising/<VERSION>/MerchandisingService.wsdl",
+            "version": "1.5.0"
         },
         {
             "name": "Product",
-            "src": "http://developer.ebay.com/webservices/product/latest/ProductService.wsdl"
+            "src": "http://developer.ebay.com/webservices/product/<VERSION>/ProductService.wsdl",
+            "version": "1.4.0"
         },
         {
             "name": "ProductMetadata",
-            "src": "http://developer.ebay.com/webservices/product-metadata/latest/ProductMetadataService.wsdl"
+            "src": "http://developer.ebay.com/webservices/product-metadata/<VERSION>/ProductMetadataService.wsdl",
+            "version": "1.3.0"
         },
         {
             "name": "ResolutionCaseManagement",
-            "src": "http://developer.ebay.com/webservices/resolution-case-management/latest/ResolutionCaseManagementService.wsdl"
+            "src": "http://developer.ebay.com/webservices/resolution-case-management/<VERSION>/ResolutionCaseManagementService.wsdl",
+            "version": "1.3.0"
         }
     ]
 }

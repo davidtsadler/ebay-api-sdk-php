@@ -36,7 +36,7 @@ exports.transform = {
 
         /*
          * For each eBay type a php class file will be generated in the directory
-         * <service name>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
+         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
          */
         this._.forEach(this.eBayTypes, function (type) {
             helper.phpClassForEBayTypeIsGenerated(type);
@@ -52,7 +52,7 @@ exports.transform = {
 
         /*
          * For each eBay type a phpunit file will be generated in the directory
-         * <service name>/test/DTS/eBaySDK/<service name>/Types/<type name>Test.php
+         * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Types/<type name>Test.php
          */
         this._.forEach(this.eBayTypes, function (type) {
             helper.phpUnitForEBayTypeIsGenerated(type);
@@ -68,7 +68,7 @@ exports.transform = {
 
         /*
          * For each eBay enum a php class file will be generated in the directory
-         * <service name>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
+         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
         this._.forEach(this.eBayEnums, function (name) {
             helper.phpClassForEBayEnumIsGenerated(name);
@@ -84,7 +84,7 @@ exports.transform = {
 
         /*
          * For each eBay enum a phpunit file should not be generated in the directory
-         * <service name>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
+         * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
          */
         this._.forEach(this.eBayEnums, function (name) {
             helper.phpUnitForEBayEnumIsNotGenerated(name);
@@ -100,7 +100,7 @@ exports.transform = {
 
         /*
          * For the eBay service a php class file will be generated in the directory
-         * <service name>/src/DTS/eBaySDK/<service name>/Services/<service name>.php
+         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Services/<service name>.php
          */
         helper.phpClassForEBayServiceIsGenerated();
 
@@ -114,7 +114,7 @@ exports.transform = {
 
         /*
          * For the eBay service a phpunit file will be generated in the directory
-         * <service name>/test/DTS/eBaySDK/<service name>/Services/<service name>.php
+         * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Services/<service name>.php
          */
         helper.phpUnitForEBayServiceIsGenerated();
 

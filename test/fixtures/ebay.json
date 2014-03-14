@@ -1,7 +1,8 @@
 {
     "services": [
         {
-            "name": "FindingAPI"
+            "name": "FindingAPI",
+            "version": "1"
         }
     ]
 }

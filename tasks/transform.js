@@ -25,10 +25,11 @@ module.exports = function(grunt) {
     });
 
     function processService(wsdlDirectory, destDirectory, service, callback) {
-        var wsdl = path.join(wsdlDirectory, service.name, '/api.wsdl');
-        var phpPath = path.join(destDirectory, service.name);
+        var wsdl = path.join(wsdlDirectory, service.name, service.version, '/api.wsdl');
+        var phpPath = path.join(destDirectory, service.name, service.version);
 
         grunt.log.writeln('Processing ' + service.name + '...');
+        grunt.log.write('[' + service.version + ']...');
 
         grunt.file.mkdir(phpPath);
 
