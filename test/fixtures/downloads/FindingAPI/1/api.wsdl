@@ -31,7 +31,7 @@
 
       <xs:complexType name="complexType">
         <xs:complexContent>
-          <!-- 
+          <!--
             Notice base is not base="xx:AnotherType"
             Have found some WSDLs does not have a xx: in the base attribute.
           -->
@@ -60,6 +60,56 @@
               <xs:element name="token" type="xs:token"/>
               <xs:element name="enumString" type="tns:enumStringType"/>
               <xs:element name="enumToken" type="tns:EnumTokenType"/>
+              <xs:element name="no-calls-1" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <NoCalls/>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="no-calls-2" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <noCalls/>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="no-calls-3" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <NoCalls/>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="no-calls-4" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <noCalls/>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="no-calls-5" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <callInfo>
+                      <NoCalls/>
+                    </callInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="no-calls-6" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <callInfo>
+                      <noCalls/>
+                    </callInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -78,6 +128,56 @@
         <xs:attribute name="tokenArr" type="xs:token"/>
         <xs:attribute name="enumStringArr" type="tns:enumStringType"/>
         <xs:attribute name="enumTokenArr" type="tns:EnumTokenType"/>
+        <xs:attribute name="no-calls-attr-1" type="xs:string">
+          <xs:annotation>
+            <xs:appinfo>
+              <NoCalls/>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="no-calls-attr-2" type="xs:string">
+          <xs:annotation>
+            <xs:appinfo>
+              <noCalls/>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="no-calls-attr-3" type="xs:string">
+          <xs:annotation>
+            <xs:appinfo>
+              <CallInfo>
+                <NoCalls/>
+              </CallInfo>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="no-calls-attr-4" type="xs:string">
+          <xs:annotation>
+            <xs:appinfo>
+              <CallInfo>
+                <noCalls/>
+              </CallInfo>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="no-calls-attr-5" type="xs:string">
+          <xs:annotation>
+            <xs:appinfo>
+              <callInfo>
+                <NoCalls/>
+              </callInfo>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="no-calls-attr-6" type="xs:string">
+          <xs:annotation>
+            <xs:appinfo>
+              <callInfo>
+                <noCalls/>
+              </callInfo>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
       </xs:complexType>
 
       <xs:complexType name="DecimalType">
@@ -152,9 +252,9 @@
         </xs:restriction>
       </xs:simpleType>
 
-      <!-- 
+      <!--
         These elements contain complexType with no names.
-        If we transform these by mistake we will end up trying to create two files with 
+        If we transform these by mistake we will end up trying to create two files with
         the same name which results in the error below.
 
         Cannot write more than one result document to the same URI
@@ -177,7 +277,7 @@
     </xs:schema>
   </wsdl:types>
 
-  <!-- 
+  <!--
     Notice the case of the first letter of each operation is different.
     This is because some WSDLs use an upper case letter for the operation name and some use a lower case one.
     The PHP class that is generated will start the method name with a lower case letter.
