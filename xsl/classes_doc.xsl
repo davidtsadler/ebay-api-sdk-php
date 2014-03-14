@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
+<xsl:stylesheet
   version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -19,8 +19,10 @@
     <xsl:if test="@name='AbstractRequestType'">
       <xsl:apply-templates select="//xs:element[@name='RequesterCredentials']" mode="properties"/>
     </xsl:if>
-    <xsl:apply-templates select=".//*:element" mode="properties"/>
-    <xsl:apply-templates select=".//*:attribute" mode="properties"/>
+    <xsl:apply-templates select=".//*:element[not(xs:annotation/xs:appinfo//*:NoCalls)
+                                              and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
+    <xsl:apply-templates select=".//*:attribute[not(xs:annotation/xs:appinfo//*:NoCalls)
+                                              and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
   </xsl:element>
 </xsl:template>
 
@@ -48,7 +50,7 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:element name="property">
-    <!-- 
+    <!--
       Converts
         FooBar into fooBar.
         FOO into foo.
@@ -166,7 +168,7 @@
       replace(
         replace($name, '([A-Z]{2,})|([A-Z][a-z]+)', ' $1 $2 '),
         '^\s+', ''),
-      '\s+', ' '), 
+      '\s+', ' '),
     '\s')
   "/>
   <xsl:sequence select="string-join((lower-case($wordList[1]),
