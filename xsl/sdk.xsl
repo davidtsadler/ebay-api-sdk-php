@@ -24,7 +24,7 @@
   </xsl:variable>
   <xsl:apply-templates select="$classes" mode="php"/>
   <xsl:apply-templates select="$classes" mode="phpunit"/>
-  <xsl:apply-templates select="$enums" mode="php"/>
+  <xsl:apply-templates select="$enums[enum]" mode="php"/>
   <xsl:apply-templates select="." mode="php"/>
   <xsl:apply-templates select="." mode="phpunit"/>
 </xsl:template>
