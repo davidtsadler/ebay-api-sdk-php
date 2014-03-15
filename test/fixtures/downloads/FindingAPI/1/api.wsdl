@@ -60,6 +60,7 @@
               <xs:element name="token" type="xs:token"/>
               <xs:element name="enumString" type="tns:enumStringType"/>
               <xs:element name="enumToken" type="tns:EnumTokenType"/>
+              <xs:element name="id" type="tns:IDType"/>
               <xs:element name="no-calls-1" type="xs:string">
                 <xs:annotation>
                   <xs:appinfo>
@@ -300,6 +301,10 @@
           <xs:enumeration value="Five"/>
           <xs:enumeration value="Six"/>
         </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="IDType">
+        <xs:restriction base="xs:string"/>
       </xs:simpleType>
 
       <xs:simpleType name="NoCalls">

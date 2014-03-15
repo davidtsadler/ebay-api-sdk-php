@@ -37,12 +37,13 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property string $duration
  * @property string $durationArr
  * @property string $eBay
- * @property DTS\eBaySDK\FindingAPI\Types\EnumStringType(string) $enumString
- * @property DTS\eBaySDK\FindingAPI\Types\EnumStringType(string) $enumStringArr
- * @property DTS\eBaySDK\FindingAPI\Types\EnumTokenType(string) $enumToken
- * @property DTS\eBaySDK\FindingAPI\Types\EnumTokenType(string) $enumTokenArr
+ * @property DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumString
+ * @property DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumStringArr
+ * @property DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumToken
+ * @property DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumTokenArr
  * @property double $float
  * @property double $floatArr
+ * @property string $id
  * @property integer $integer
  * @property integer $integerArr
  * @property integer $integers
@@ -207,6 +208,12 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'floatArr'
+        ),
+        'id' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'id'
         ),
         'integer' => array(
             'type' => 'integer',
