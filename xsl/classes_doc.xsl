@@ -29,7 +29,8 @@
 <xsl:template match="*:simpleType" mode="classes-doc">
   <xsl:element name="enum">
     <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first(@name)"/></xsl:attribute>
-    <xsl:apply-templates select="*:restriction/*:enumeration" mode="enums"/>
+    <xsl:apply-templates select="*:restriction/*:enumeration[not(xs:annotation/xs:appinfo//*:NoCalls)
+                                                             and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="enums"/>
   </xsl:element>
 </xsl:template>
 
