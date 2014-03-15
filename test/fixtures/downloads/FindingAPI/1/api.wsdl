@@ -241,6 +241,56 @@
               <xs:documentation>Value Three</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
+          <xs:enumeration value="no-calls-1">
+            <xs:annotation>
+              <xs:appinfo>
+                <NoCalls/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-2">
+            <xs:annotation>
+              <xs:appinfo>
+                <noCalls/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-3">
+            <xs:annotation>
+              <xs:appinfo>
+                <CallInfo>
+                  <NoCalls/>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-4">
+            <xs:annotation>
+              <xs:appinfo>
+                <CallInfo>
+                  <noCalls/>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-5">
+            <xs:annotation>
+              <xs:appinfo>
+                <callInfo>
+                  <NoCalls/>
+                </callInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-6">
+            <xs:annotation>
+              <xs:appinfo>
+                <callInfo>
+                  <noCalls/>
+                </callInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
         </xs:restriction>
       </xs:simpleType>
 
@@ -249,6 +299,61 @@
           <xs:enumeration value="Four"/>
           <xs:enumeration value="Five"/>
           <xs:enumeration value="Six"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="NoCalls">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="no-calls-1">
+            <xs:annotation>
+              <xs:appinfo>
+                <NoCalls/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-2">
+            <xs:annotation>
+              <xs:appinfo>
+                <noCalls/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-3">
+            <xs:annotation>
+              <xs:appinfo>
+                <CallInfo>
+                  <NoCalls/>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-4">
+            <xs:annotation>
+              <xs:appinfo>
+                <CallInfo>
+                  <noCalls/>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-5">
+            <xs:annotation>
+              <xs:appinfo>
+                <callInfo>
+                  <NoCalls/>
+                </callInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="no-calls-6">
+            <xs:annotation>
+              <xs:appinfo>
+                <callInfo>
+                  <noCalls/>
+                </callInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
         </xs:restriction>
       </xs:simpleType>
 

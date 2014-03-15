@@ -20,6 +20,10 @@ module.exports = {
         this.isPhpGenerated(this.enumsClassPath(name), name);
     },
 
+    phpClassForEBayEnumIsNotGenerated: function (name) {
+        this.isPhpNotGenerated(this.enumsClassPath(name), name);
+    },
+
     phpUnitForEBayEnumIsNotGenerated: function (name) {
         this.isPhpNotGenerated(this.enumsPhpUnitPath(name), name + 'Test');
     },
