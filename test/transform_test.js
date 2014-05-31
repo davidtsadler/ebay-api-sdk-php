@@ -26,6 +26,10 @@ exports.transform = {
             'EnumTokenType'
         ];
 
+        this.eBayNoCallsEnums = [
+            'NoCalls'
+        ];
+
         callback();
     },
 
@@ -72,6 +76,22 @@ exports.transform = {
          */
         this._.forEach(this.eBayEnums, function (name) {
             helper.phpClassForEBayEnumIsGenerated(name);
+        });
+
+        test.done();
+    },
+
+    phpClassesForNoCallsEBayEnumsAreNotGenerated: function (test) {
+        helper.test = test;
+        helper.service = this.ebay.services[0];
+        test.expect(this.eBayNoCallsEnums.length);
+
+        /*
+         * For each eBay enum where each value is 'NoCalls', no php class file will be generated in the directory
+         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
+         */
+        this._.forEach(this.eBayNoCallsEnums, function (name) {
+            helper.phpClassForEBayEnumIsNotGenerated(name);
         });
 
         test.done();

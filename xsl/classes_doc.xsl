@@ -29,7 +29,8 @@
 <xsl:template match="*:simpleType" mode="classes-doc">
   <xsl:element name="enum">
     <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first(@name)"/></xsl:attribute>
-    <xsl:apply-templates select="*:restriction/*:enumeration" mode="enums"/>
+    <xsl:apply-templates select="*:restriction/*:enumeration[not(xs:annotation/xs:appinfo//*:NoCalls)
+                                                             and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="enums"/>
   </xsl:element>
 </xsl:template>
 
@@ -49,6 +50,14 @@
       <xsl:otherwise><xsl:text/></xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
+  <xsl:variable name="restrictionIsEnum" as="xs:boolean">
+    <xsl:choose>
+      <xsl:when test="//*:simpleType[@name=$type]/*:restriction[*:enumeration]">
+        <xsl:copy-of select="true()"/>
+      </xsl:when>
+      <xsl:otherwise><xsl:copy-of select="false()"/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:element name="property">
     <!--
       Converts
@@ -60,11 +69,11 @@
     -->
     <xsl:attribute name="name" select="dts:name_to_camel_case(@name)"/>
     <xsl:attribute name="actual-name" select="@name"/>
-    <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction)"/>
+    <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction, $restrictionIsEnum)"/>
     <xsl:attribute name="is-attribute" select="local-name()='attribute'"/>
     <xsl:attribute name="actual-type" select="if ($restriction != '')
-                                                then dts:type_to_datatype($restriction, '')
-                                                else dts:type_to_datatype($type, '')"/>
+                                                then dts:type_to_datatype($restriction, '', false())
+                                                else dts:type_to_datatype($type, '', false())"/>
     <xsl:attribute name="unbound" select="@maxOccurs = 'unbounded' or @maxOccurs > 1"/>
   </xsl:element>
 </xsl:template>
@@ -112,6 +121,7 @@
 <xsl:function name="dts:type_to_datatype" as="xs:string">
   <xsl:param name="type" as="xs:string"/>
   <xsl:param name="restriction" as="xs:string"/>
+  <xsl:param name="restrictionIsEnum" as="xs:boolean"/>
   <xsl:choose>
     <xsl:when test="$type='base64Binary'">
       <xsl:text>string</xsl:text>
@@ -152,8 +162,11 @@
     <xsl:when test="$type='anyURI'">
       <xsl:text>string</xsl:text>
     </xsl:when>
-    <xsl:when test="$restriction != ''">
-      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, ''), ')')"/>
+    <xsl:when test="$restriction != '' and $restrictionIsEnum">
+        <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Enums\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, '', false()), ')')"/>
+    </xsl:when>
+    <xsl:when test="$restriction != '' and not($restrictionIsEnum)">
+        <xsl:value-of select="dts:type_to_datatype($restriction, '', false())"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
