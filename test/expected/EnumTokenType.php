@@ -22,7 +22,7 @@ namespace DTS\eBaySDK\FindingAPI\Enums;
  */
 class EnumTokenType
 {
-    const FIVE = 'Five';
-    const FOUR = 'Four';
-    const SIX = 'Six';
+    const C_FIVE = 'Five';
+    const C_FOUR = 'Four';
+    const C_SIX = 'Six';
 }

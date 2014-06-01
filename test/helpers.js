@@ -24,8 +24,8 @@ module.exports = {
         this.isPhpNotGenerated(this.enumsClassPath(name), name);
     },
 
-    phpUnitForEBayEnumIsNotGenerated: function (name) {
-        this.isPhpNotGenerated(this.enumsPhpUnitPath(name), name + 'Test');
+    phpUnitForEBayEnumIsGenerated: function (name) {
+        this.isPhpGenerated(this.enumsPhpUnitPath(name), name + 'Test');
     },
 
     phpClassForEBayServiceIsGenerated: function () {

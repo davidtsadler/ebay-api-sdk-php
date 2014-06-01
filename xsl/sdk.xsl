@@ -25,6 +25,7 @@
   <xsl:apply-templates select="$classes" mode="php"/>
   <xsl:apply-templates select="$classes" mode="phpunit"/>
   <xsl:apply-templates select="$enums[enum]" mode="php"/>
+  <xsl:apply-templates select="$enums[enum]" mode="phpunit"/>
   <xsl:apply-templates select="." mode="php"/>
   <xsl:apply-templates select="." mode="phpunit"/>
 </xsl:template>
@@ -151,6 +152,28 @@ class <xsl:value-of select="@className"/>
 </xsl:result-document>
 </xsl:template>
 
+<xsl:template match="enum" mode="phpunit">
+  <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Enums/{@className}Test.php">&lt;?php
+
+use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Enums\<xsl:value-of select="@className"/>;
+
+class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCase
+{
+    private $obj;
+
+    protected function setUp()
+    {
+        $this->obj = new <xsl:value-of select="@className"/>();
+    }
+
+    public function testCanBeCreated()
+    {
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Enums\<xsl:value-of select="@className"/>', $this->obj);
+    }
+}
+</xsl:result-document>
+</xsl:template>
+
 <xsl:template match="class" mode="extends"> extends <xsl:copy-of select="dts:phpns_extends(@extends)"/>
 </xsl:template>
 
@@ -175,7 +198,7 @@ class <xsl:value-of select="@className"/>
 </xsl:template>
 
 <xsl:template match="enum" mode="class-constants">
-    const <xsl:value-of select="@const"/> = '<xsl:value-of select="@value"/>';</xsl:template>
+    const C_<xsl:value-of select="@const"/> = '<xsl:value-of select="@value"/>';</xsl:template>
 
 <xsl:template match="/" mode="php">
   <xsl:variable name="operations" as="element()+">
