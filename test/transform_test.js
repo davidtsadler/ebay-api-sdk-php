@@ -97,17 +97,17 @@ exports.transform = {
         test.done();
     },
 
-    phpUnitsForEBayEnumsAreNotGenerated: function (test) {
+    phpUnitsForEBayEnumsAreGenerated: function (test) {
         helper.test = test;
         helper.service = this.ebay.services[0];
         test.expect(this.eBayEnums.length);
 
         /*
-         * For each eBay enum a phpunit file should not be generated in the directory
+         * For each eBay enum a phpunit file should be generated in the directory
          * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
          */
         this._.forEach(this.eBayEnums, function (name) {
-            helper.phpUnitForEBayEnumIsNotGenerated(name);
+            helper.phpUnitForEBayEnumIsGenerated(name);
         });
 
         test.done();
