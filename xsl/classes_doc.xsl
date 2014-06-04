@@ -163,13 +163,13 @@
       <xsl:text>string</xsl:text>
     </xsl:when>
     <xsl:when test="$restriction != '' and $restrictionIsEnum">
-        <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Enums\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, '', false()), ')')"/>
+        <xsl:value-of select="concat('\DTS\eBaySDK\', $service, '\Enums\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, '', false()), ')')"/>
     </xsl:when>
     <xsl:when test="$restriction != '' and not($restrictionIsEnum)">
         <xsl:value-of select="dts:type_to_datatype($restriction, '', false())"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
+      <xsl:value-of select="concat('\DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>
