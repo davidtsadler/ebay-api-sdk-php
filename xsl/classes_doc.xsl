@@ -69,11 +69,11 @@
     -->
     <xsl:attribute name="name" select="@name"/>
     <xsl:attribute name="actual-name" select="@name"/>
-    <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction, $restrictionIsEnum)"/>
+    <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction, $restrictionIsEnum,false())"/>
     <xsl:attribute name="is-attribute" select="local-name()='attribute'"/>
     <xsl:attribute name="actual-type" select="if ($restriction != '')
-                                                then dts:type_to_datatype($restriction, '', false())
-                                                else dts:type_to_datatype($type, '', false())"/>
+                                                then dts:type_to_datatype($restriction, '', false(),true())
+                                                else dts:type_to_datatype($type, '', false(),true())"/>
     <xsl:attribute name="unbound" select="@maxOccurs = 'unbounded' or @maxOccurs > 1"/>
   </xsl:element>
 </xsl:template>
@@ -122,6 +122,7 @@
   <xsl:param name="type" as="xs:string"/>
   <xsl:param name="restriction" as="xs:string"/>
   <xsl:param name="restrictionIsEnum" as="xs:boolean"/>
+  <xsl:param name="propertytype" as="xs:boolean"/>
   <xsl:choose>
     <xsl:when test="$type='base64Binary'">
       <xsl:text>string</xsl:text>
@@ -163,13 +164,20 @@
       <xsl:text>string</xsl:text>
     </xsl:when>
     <xsl:when test="$restriction != '' and $restrictionIsEnum">
-        <xsl:value-of select="concat('\DTS\eBaySDK\', $service, '\Enums\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, '', false()), ')')"/>
+        <xsl:value-of select="concat('\DTS\eBaySDK\', $service, '\Enums\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, '', false(),false()), ')')"/>
     </xsl:when>
     <xsl:when test="$restriction != '' and not($restrictionIsEnum)">
-        <xsl:value-of select="dts:type_to_datatype($restriction, '', false())"/>
+        <xsl:value-of select="dts:type_to_datatype($restriction, '', false(),false())"/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:value-of select="concat('\DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
+	<xsl:choose>
+		<xsl:when test="$propertytype">
+        	  <xsl:value-of select="concat('DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="concat('\DTS\eBaySDK\', $service, '\Types\', dts:capitalize_first($type))"/>
+		</xsl:otherwise>
+	</xsl:choose>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>
