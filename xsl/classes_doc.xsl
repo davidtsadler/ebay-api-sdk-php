@@ -67,7 +67,7 @@
         FOOBar into fooBar.
         eBay into eBay.
     -->
-    <xsl:attribute name="name" select="dts:name_to_camel_case(@name)"/>
+    <xsl:attribute name="name" select="@name"/>
     <xsl:attribute name="actual-name" select="@name"/>
     <xsl:attribute name="property-type" select="dts:type_to_datatype($type, $restriction, $restrictionIsEnum)"/>
     <xsl:attribute name="is-attribute" select="local-name()='attribute'"/>
