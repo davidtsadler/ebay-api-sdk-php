@@ -220,12 +220,12 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService
 {
     /**
+     * @param array $config Optional configuration option values.
      * @param \DTS\eBaySDK\Interfaces\HttpClientInterface $httpClient The object that will handle sending requests to the API.
-     * @param array $config Optional configuration option values. 
      */
-    public function __construct(\DTS\eBaySDK\Interfaces\HttpClientInterface $httpClient, $config = array())
+    public function __construct($config = array(), \DTS\eBaySDK\Interfaces\HttpClientInterface $httpClient = null)
     {
-        parent::__construct($httpClient, $config);
+        parent::__construct($config, $httpClient);
     }<xsl:apply-templates select="$operations" mode="php"/>
 }
 </xsl:result-document>
@@ -239,21 +239,25 @@ use DTS\eBaySDK\HttpClient\HttpClient;
 
 class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_TestCase
 {
-    private $obj;
-
     protected function setUp()
     {
-        $this->obj = new <xsl:copy-of select="$service"/>Service(new HttpClient());
+        $this->service1 = new <xsl:copy-of select="$service"/>Service();
+        $this->service2 = new <xsl:copy-of select="$service"/>Service(array());
+        $this->service3 = new <xsl:copy-of select="$service"/>Service(array(), new HttpClient());
     }
 
     public function testCanBeCreated()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service', $this->service1);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service', $this->service2);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service', $this->service3);
     }
 
     public function testExtendsBaseService()
     {
-        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService', $this->obj);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService', $this->service1);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService', $this->service2);
+        $this->assertInstanceOf('\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService', $this->service3);
     }
 }
 </xsl:result-document>
