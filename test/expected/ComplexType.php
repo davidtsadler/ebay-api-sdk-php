@@ -19,13 +19,13 @@ namespace DTS\eBaySDK\FindingAPI\Types;
 
 /**
  *
- * @property DTS\eBaySDK\FindingAPI\Types\AnotherType $AnotherType
+ * @property \DTS\eBaySDK\FindingAPI\Types\AnotherType $AnotherType
  * @property string $BISH
  * @property string $BISHbosh
  * @property string $BoshBOSH
  * @property string $BoshBish
- * @property DateTime $DateTime
- * @property DateTime $DateTimeArr
+ * @property \DateTime $DateTime
+ * @property \DateTime $DateTimeArr
  * @property string $binary
  * @property string $binaryArr
  * @property boolean $boolean
@@ -37,10 +37,10 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property string $duration
  * @property string $durationArr
  * @property string $eBay
- * @property DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumString
- * @property DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumStringArr
- * @property DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumToken
- * @property DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumTokenArr
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumString
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumStringArr
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumToken
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumTokenArr
  * @property double $float
  * @property double $floatArr
  * @property string $id
