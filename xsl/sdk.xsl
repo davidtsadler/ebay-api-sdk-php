@@ -172,7 +172,7 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 </xsl:template>
 
 <xsl:template match="property" mode="property-list">
- * @property <xsl:value-of select="@property-type"/> $<xsl:value-of select="@name"/>
+ * @property <xsl:value-of select="@property-type"/><xsl:value-of select="if (@unbound = 'true') then '[] ' else ' '"/>$<xsl:value-of select="@name"/>
 </xsl:template>
 
 <xsl:template match="property" mode="property-info">
