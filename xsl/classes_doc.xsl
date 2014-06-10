@@ -168,7 +168,7 @@
       <xsl:text>string</xsl:text>
     </xsl:when>
     <xsl:when test="$restriction != '' and $restrictionIsEnum">
-        <xsl:value-of select="concat($dtsNamespace, $service, '\Enums\', dts:capitalize_first($type), '(', dts:type_to_datatype($restriction, '', false(), false()), ')')"/>
+        <xsl:value-of select="concat($dtsNamespace, $service, '\Enums\', dts:capitalize_first($type))"/>
     </xsl:when>
     <xsl:when test="$restriction != '' and not($restrictionIsEnum)">
         <xsl:value-of select="dts:type_to_datatype($restriction, '', false(), false())"/>

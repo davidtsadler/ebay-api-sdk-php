@@ -37,21 +37,21 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property string $duration
  * @property string $durationArr
  * @property string $eBay
- * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumString
- * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType(string) $enumStringArr
- * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumToken
- * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType(string) $enumTokenArr
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType $enumString
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType $enumStringArr
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType $enumToken
+ * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType $enumTokenArr
  * @property double $float
  * @property double $floatArr
  * @property string $id
  * @property integer $integer
  * @property integer $integerArr
- * @property integer $integers
+ * @property integer[] $integers
  * @property integer $long
  * @property integer $longArr
  * @property string $string
  * @property string $stringArr
- * @property string $strings
+ * @property string[] $strings
  * @property string $time
  * @property string $timeArr
  * @property string $token
