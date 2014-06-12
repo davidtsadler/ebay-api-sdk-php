@@ -3,7 +3,7 @@
         {
             "name": "Trading",
             "src": "http://developer.ebay.com/webservices/<VERSION>/ebaySvc.wsdl",
-            "version": "863"
+            "version": "871"
         },
         {
             "name": "Finding",
@@ -13,7 +13,7 @@
         {
             "name": "Shopping",
             "src": "http://developer.ebay.com/webservices/<VERSION>/ShoppingService.wsdl",
-            "version": "861"
+            "version": "871"
         },
         {
             "name": "BulkDataExchange",
