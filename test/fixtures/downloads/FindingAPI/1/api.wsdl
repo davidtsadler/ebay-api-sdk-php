@@ -379,9 +379,12 @@
         </xs:complexType>
       </xs:element>
 
-      <xs:element name="MethodOneRequest" type="ns:complexType"/>
+      <xs:complexType name="MethodOneRequestType"/>
+      <xs:complexType name="methodTwoRequestType"/>
+
+      <xs:element name="MethodOneRequest" type="ns:MethodOneRequestType"/>
       <xs:element name="MethodOneResponse" type="ns:complexType"/>
-      <xs:element name="methodTwoRequest" type="ns:complexType"/>
+      <xs:element name="methodTwoRequest" type="ns:methodTwoRequestType"/>
       <xs:element name="methodTwoResponse" type="ns:complexType"/>
 
     </xs:schema>
