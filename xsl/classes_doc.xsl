@@ -3,10 +3,12 @@
   version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
   xmlns:dts="http://davidtsadler.com/">
 
 <xsl:template match="*:complexType" mode="classes-doc">
   <xsl:element name="class">
+    <xsl:variable name="name" select="@name"/>
     <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first(@name)"/></xsl:attribute>
     <xsl:attribute name="xmlNamespace">
       <xsl:value-of select="namespace::ns|namespace::tns"/>
@@ -14,6 +16,11 @@
     <xsl:if test=".//*:extension">
       <xsl:attribute name="extends">
         <xsl:apply-templates select=".//*:extension" mode="extends"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="//wsdl:input[substring-after(@message, ':') = (//xs:schema/*:element[substring-after(@type, ':') = $name]/@name)]">
+      <xsl:attribute name="requestXmlRootElementName">
+        <xsl:value-of select="//xs:schema/*:element[substring-after(@type, ':')=$name]/@name"/>
       </xsl:attribute>
     </xsl:if>
     <xsl:if test="@name='AbstractRequestType'">

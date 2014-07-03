@@ -16,6 +16,8 @@ exports.transform = {
             'DecimalType',
             'DoubleType',
             'IntegerType',
+            'MethodOneRequestType',
+            'MethodTwoRequestType',
             'StringType',
             'TokenType',
             'URIType'

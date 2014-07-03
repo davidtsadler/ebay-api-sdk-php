@@ -29,27 +29,27 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
     }
 
     /**
-     * @param \DTS\eBaySDK\FindingAPI\Types\ComplexType $request
+     * @param \DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request
      * @return \DTS\eBaySDK\FindingAPI\Types\ComplexType
      */
-    public function methodOne(\DTS\eBaySDK\FindingAPI\Types\ComplexType $request)
+    public function methodOne(\DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request)
     {
         return $this->callOperation(
             'MethodOne',
-            $request->toXml('MethodOneRequest', true),
+            $request->toRequestXml(),
             '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
         );
     }
 
     /**
-     * @param \DTS\eBaySDK\FindingAPI\Types\ComplexType $request
+     * @param \DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request
      * @return \DTS\eBaySDK\FindingAPI\Types\ComplexType
      */
-    public function methodTwo(\DTS\eBaySDK\FindingAPI\Types\ComplexType $request)
+    public function methodTwo(\DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request)
     {
         return $this->callOperation(
             'methodTwo',
-            $request->toXml('methodTwoRequest', true),
+            $request->toRequestXml(),
             '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
         );
     }
