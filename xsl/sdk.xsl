@@ -277,7 +277,7 @@ class <xsl:copy-of select="$service"/>ServiceTest extends \PHPUnit_Framework_Tes
     {
         return $this->callOperation(
             '<xsl:value-of select="@name"/>',
-            $request->toRequestXml(),
+            $request,
             '\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@response-type"/>'
         );
     }</xsl:template>

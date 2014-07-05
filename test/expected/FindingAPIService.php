@@ -36,7 +36,7 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
     {
         return $this->callOperation(
             'MethodOne',
-            $request->toRequestXml(),
+            $request,
             '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
         );
     }
@@ -49,7 +49,7 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
     {
         return $this->callOperation(
             'methodTwo',
-            $request->toRequestXml(),
+            $request,
             '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
         );
     }
