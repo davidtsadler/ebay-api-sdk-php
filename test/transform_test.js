@@ -20,7 +20,8 @@ exports.transform = {
             'MethodTwoRequestType',
             'StringType',
             'TokenType',
-            'URIType'
+            'URIType',
+			'Foo'
         ];
 
         this.eBayEnums = [

@@ -8,8 +8,15 @@
 
 <xsl:template match="*:complexType" mode="classes-doc">
   <xsl:element name="class">
-    <xsl:variable name="name" select="@name"/>
-    <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first(@name)"/></xsl:attribute>
+    <xsl:variable name="name" as="xs:string">
+      <xsl:choose>
+        <xsl:when test="@name">
+          <xsl:value-of select="@name"/>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="../@name"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:attribute name="className"><xsl:copy-of select="dts:capitalize_first($name)"/></xsl:attribute>
     <xsl:attribute name="xmlNamespace">
       <xsl:value-of select="namespace::ns|namespace::tns"/>
     </xsl:attribute>
@@ -26,7 +33,9 @@
     <xsl:if test="@name='AbstractRequestType'">
       <xsl:apply-templates select="//xs:element[@name='RequesterCredentials']" mode="properties"/>
     </xsl:if>
-    <xsl:apply-templates select=".//*:element[not(xs:annotation/xs:appinfo//*:NoCalls)
+    <xsl:apply-templates select="*:sequence/*:element[not(xs:annotation/xs:appinfo//*:NoCalls)
+                                              and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
+    <xsl:apply-templates select="*:complexContent/*:extension/*:sequence/*:element[not(xs:annotation/xs:appinfo//*:NoCalls)
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
     <xsl:apply-templates select=".//*:attribute[not(xs:annotation/xs:appinfo//*:NoCalls)
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
@@ -48,7 +57,14 @@
 </xsl:template>
 
 <xsl:template match="*:element|*:attribute" mode="properties">
-  <xsl:variable name="type" select="substring-after(@type, ':')" as="xs:string"/>
+  <xsl:variable name="type" as="xs:string">
+    <xsl:choose>
+      <xsl:when test="@type">
+        <xsl:value-of select="substring-after(@type, ':')"/>
+      </xsl:when>
+      <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:variable name="restriction" as="xs:string">
     <xsl:choose>
       <xsl:when test="//*:simpleType[@name=$type]/*:restriction/@base">

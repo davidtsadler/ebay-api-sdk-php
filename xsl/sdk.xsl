@@ -18,6 +18,7 @@
 <xsl:template match="/">
   <xsl:variable name="classes" as="element()+">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:complexType" mode="classes-doc"/>
+    <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:complexType/*:complexContent/*:extension/*:sequence/*:element/*:complexType" mode="classes-doc"/>
   </xsl:variable>
   <xsl:variable name="enums" as="element()*">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:simpleType[*:restriction]" mode="classes-doc"/>
