@@ -43,6 +43,7 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType $enumTokenArr
  * @property double $float
  * @property double $floatArr
+ * @property \DTS\eBaySDK\FindingAPI\Types\Foo $foo
  * @property string $id
  * @property integer $integer
  * @property integer $integerArr
@@ -208,6 +209,12 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'floatArr'
+        ),
+        'foo' => array(
+            'type' => 'DTS\eBaySDK\FindingAPI\Types\Foo',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'foo'
         ),
         'id' => array(
             'type' => 'string',
