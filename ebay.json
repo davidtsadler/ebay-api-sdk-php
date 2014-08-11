@@ -3,7 +3,7 @@
         {
             "name": "Trading",
             "src": "http://developer.ebay.com/webservices/<VERSION>/ebaySvc.wsdl",
-            "version": "879"
+            "version": "881"
         },
         {
             "name": "Finding",
