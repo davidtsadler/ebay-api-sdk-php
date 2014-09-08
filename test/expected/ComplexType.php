@@ -57,6 +57,8 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property string $timeArr
  * @property string $token
  * @property string $tokenArr
+ * @property string[] $unbounded
+ * @property string[] $unbounded2
  * @property string $uri
  * @property string $uriArr
  */
@@ -293,6 +295,18 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'tokenArr'
+        ),
+        'unbounded' => array(
+            'type' => 'string',
+            'unbound' => true,
+            'attribute' => false,
+            'elementName' => 'unbounded'
+        ),
+        'unbounded2' => array(
+            'type' => 'string',
+            'unbound' => true,
+            'attribute' => false,
+            'elementName' => 'unbounded2'
         ),
         'uri' => array(
             'type' => 'string',

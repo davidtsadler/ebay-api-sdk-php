@@ -61,6 +61,23 @@
               <xs:element name="enumString" type="tns:enumStringType"/>
               <xs:element name="enumToken" type="tns:EnumTokenType"/>
               <xs:element name="id" type="tns:IDType"/>
+              <xs:element name="unbounded" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <MaxOccurs>2</MaxOccurs>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="unbounded2" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <MaxOccurs>2</MaxOccurs>
+                    <CallInfo>
+                      <MaxOccurs>2</MaxOccurs>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
               <xs:element name="no-calls-1" type="xs:string">
                 <xs:annotation>
                   <xs:appinfo>
