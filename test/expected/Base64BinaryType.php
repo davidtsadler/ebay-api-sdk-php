@@ -1,5 +1,9 @@
 <?php
 /**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
  * Copyright 2014 David T. Sadler
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

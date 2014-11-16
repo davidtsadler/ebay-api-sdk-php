@@ -34,6 +34,10 @@
 <xsl:template match="class" mode="php">
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Types/{@className}.php">&lt;?php
 /**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
  * Copyright 2014 David T. Sadler
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -123,6 +127,10 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 <xsl:template match="enum" mode="php">
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Enums/{@className}.php">&lt;?php
 /**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
  * Copyright 2014 David T. Sadler
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -205,6 +213,10 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
   </xsl:variable>
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php
 /**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
  * Copyright 2014 David T. Sadler
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
