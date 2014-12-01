@@ -3,17 +3,17 @@
         {
             "name": "Trading",
             "src": "http://developer.ebay.com/webservices/<VERSION>/ebaySvc.wsdl",
-            "version": "899"
+            "version": "901"
         },
         {
             "name": "Finding",
             "src": "http://developer.ebay.com/webservices/Finding/<VERSION>/FindingService.wsdl",
-            "version": "1.12.0"
+            "version": "1.13.0"
         },
         {
             "name": "Shopping",
             "src": "http://developer.ebay.com/webservices/<VERSION>/ShoppingService.wsdl",
-            "version": "899"
+            "version": "901"
         },
         {
             "name": "BusinessPoliciesManagement",
