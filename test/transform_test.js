@@ -38,80 +38,90 @@ exports.transform = {
 
     phpClassesForEBayTypesAreGenerated: function (test) {
         helper.test = test;
-        helper.service = this.ebay.services[0];
-        test.expect(this.eBayTypes.length);
+		test.expect(this.eBayTypes.length * this.ebay.services.length);
 
-        /*
-         * For each eBay type a php class file will be generated in the directory
-         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
-         */
-        this._.forEach(this.eBayTypes, function (type) {
-            helper.phpClassForEBayTypeIsGenerated(type);
-        });
+		/*
+		 * For each eBay type a php class file will be generated in the directory
+		 * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
+		 */
+		this._.forEach(this.ebay.services, function (service) {
+			helper.service = service;
+			this._.forEach(this.eBayTypes, function (type) {
+				helper.phpClassForEBayTypeIsGenerated(type);
+			});
+		}, this);
 
         test.done();
     },
 
     phpUnitsForEBayTypesAreGenerated: function (test) {
         helper.test = test;
-        helper.service = this.ebay.services[0];
-        test.expect(this.eBayTypes.length);
+		test.expect(this.eBayTypes.length * this.ebay.services.length);
 
         /*
          * For each eBay type a phpunit file will be generated in the directory
          * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Types/<type name>Test.php
          */
-        this._.forEach(this.eBayTypes, function (type) {
-            helper.phpUnitForEBayTypeIsGenerated(type);
-        });
+		this._.forEach(this.ebay.services, function (service) {
+			helper.service = service;
+			this._.forEach(this.eBayTypes, function (type) {
+				helper.phpUnitForEBayTypeIsGenerated(type);
+			});
+		}, this);
 
         test.done();
     },
 
     phpClassesForEBayEnumsAreGenerated: function (test) {
         helper.test = test;
-        helper.service = this.ebay.services[0];
-        test.expect(this.eBayEnums.length);
+		test.expect(this.eBayEnums.length * this.ebay.services.length);
 
         /*
          * For each eBay enum a php class file will be generated in the directory
          * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
-        this._.forEach(this.eBayEnums, function (name) {
-            helper.phpClassForEBayEnumIsGenerated(name);
-        });
+		this._.forEach(this.ebay.services, function (service) {
+			helper.service = service;
+			this._.forEach(this.eBayEnums, function (name) {
+				helper.phpClassForEBayEnumIsGenerated(name);
+			});
+		}, this);
 
         test.done();
     },
 
     phpClassesForNoCallsEBayEnumsAreNotGenerated: function (test) {
         helper.test = test;
-        helper.service = this.ebay.services[0];
-        test.expect(this.eBayNoCallsEnums.length);
+		test.expect(this.eBayNoCallsEnums.length * this.ebay.services.length);
 
         /*
          * For each eBay enum where each value is 'NoCalls', no php class file will be generated in the directory
          * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
-        this._.forEach(this.eBayNoCallsEnums, function (name) {
-            helper.phpClassForEBayEnumIsNotGenerated(name);
-        });
+		this._.forEach(this.ebay.services, function (service) {
+			helper.service = service;
+			this._.forEach(this.eBayNoCallsEnums, function (name) {
+				helper.phpClassForEBayEnumIsNotGenerated(name);
+			});
+		}, this);
 
         test.done();
     },
 
     phpUnitsForEBayEnumsAreGenerated: function (test) {
         helper.test = test;
-        helper.service = this.ebay.services[0];
-        test.expect(this.eBayEnums.length);
+		test.expect(this.eBayEnums.length * this.ebay.services.length);
 
         /*
          * For each eBay enum a phpunit file should be generated in the directory
          * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
          */
-        this._.forEach(this.eBayEnums, function (name) {
-            helper.phpUnitForEBayEnumIsGenerated(name);
-        });
+		this._.forEach(this.ebay.services, function (service) {
+			helper.service = service;
+			this._.forEach(this.eBayEnums, function (name) {
+				helper.phpUnitForEBayEnumIsGenerated(name);
+			});
+		}, this);
 
         test.done();
     },

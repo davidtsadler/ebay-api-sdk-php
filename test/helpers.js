@@ -37,9 +37,7 @@ module.exports = {
     },
 
     isPhpGenerated: function (phpFilePath, name) {
-        var actual = grunt.file.read(phpFilePath);
-        var expected = grunt.file.read('test/expected/' + name + '.php');
-        this.test.equal(grunt.file.read(phpFilePath), grunt.file.read('test/expected/' + name + '.php'), 'Should generate PHP for ' + name + '.');
+        this.test.equal(grunt.file.read(phpFilePath), grunt.file.read(path.join('test/expected/', this.service.name, name + '.php')), 'Should generate PHP for ' + name + '.');
     },
 
     isPhpNotGenerated: function (phpFilePath, name) {
