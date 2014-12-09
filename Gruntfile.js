@@ -22,11 +22,11 @@ module.exports = function(grunt) {
                 dest: '.tmp/transformed'
             },
             dist: {
-                wsdls: '<%= download.dest %>',
+                xml: '<%= download.dest %>',
                 ebay: '<%= ebay.dist %>'
             },
             test: {
-                wsdls: 'test/fixtures/downloads',
+                xml: 'test/fixtures/downloads',
                 ebay: '<%= ebay.test %>'
             }
         },

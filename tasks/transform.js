@@ -5,16 +5,16 @@ module.exports = function(grunt) {
     var exec = require('child_process').exec;
     var async = grunt.util.async;
 
-    grunt.registerMultiTask('transform', 'Transform the downloaded eBay API WSDLs into PHP.', function () {
+    grunt.registerMultiTask('transform', 'Transform the downloaded eBay API WSDLs / XSDs into PHP.', function () {
         var options = this.options();
         var done = this.async();
-        var wsdlDirectory = path.resolve(this.data.wsdls);
+        var xmlDirectory = path.resolve(this.data.xml);
         var destDirectory = path.resolve(options.dest);
         var services = this.data.ebay.services;
 
         grunt.file.mkdir(destDirectory);
 
-        async.forEachSeries(services, async.apply(processService, wsdlDirectory, destDirectory), function (err) {
+        async.forEachSeries(services, async.apply(processService, xmlDirectory, destDirectory), function (err) {
             if (err) {
                 grunt.log.error(err.message);
                 done(false);
@@ -24,8 +24,8 @@ module.exports = function(grunt) {
         });
     });
 
-    function processService(wsdlDirectory, destDirectory, service, callback) {
-        var wsdl = path.join(wsdlDirectory, service.name, service.version, '/api.wsdl');
+    function processService(xmlDirectory, destDirectory, service, callback) {
+        var xml = path.join(xmlDirectory, service.name, service.version, '/api.xml');
         var phpPath = path.join(destDirectory, service.name, service.version);
 
         grunt.log.writeln('Processing ' + service.name + '...');
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 
         grunt.file.mkdir(phpPath);
 
-        saxonb(wsdl, 'xsl/sdk.xsl', service.name, phpPath, function (err) { 
+        saxonb(xml, 'xsl/sdk.xsl', service.name, phpPath, function (err) { 
             if (err) {
                 callback(err);
             } else {

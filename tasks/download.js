@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     var http = require('http');
     var async = grunt.util.async;
 
-    grunt.registerTask('download', 'Download the eBay API WSDLs.', function () {
+    grunt.registerTask('download', 'Download the eBay API WSDLs / XSDs.', function () {
         grunt.config.requires('ebay.dist.services');
         grunt.config.requires('download.dest');
 
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         grunt.file.mkdir(path.join(destDirectory, service.name, service.version));
 
         http.get(service.src.replace('<VERSION>', service.version), function (res) {
-            res.pipe(fs.createWriteStream(path.join(destDirectory, service.name, service.version, '/api.wsdl')));
+            res.pipe(fs.createWriteStream(path.join(destDirectory, service.name, service.version, '/api.xml')));
             res.on('end', function () {
                 grunt.log.ok();
                 callback();
