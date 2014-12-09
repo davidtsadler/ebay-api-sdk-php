@@ -36,6 +36,14 @@ module.exports = {
         this.isPhpGenerated(this.servicePhpUnitPath(), this.service.name + 'ServiceTest');
     },
 
+    phpClassForEBayServiceIsNotGenerated: function () {
+        this.isPhpNotGenerated(this.serviceClassPath(), this.service.name + 'Service');
+    },
+
+    phpUnitForEBayServiceIsNotGenerated: function () {
+        this.isPhpNotGenerated(this.servicePhpUnitPath(), this.service.name + 'ServiceTest');
+    },
+
     isPhpGenerated: function (phpFilePath, name) {
         this.test.equal(grunt.file.read(phpFilePath), grunt.file.read(path.join('test/expected/', this.service.name, name + '.php')), 'Should generate PHP for ' + name + '.');
     },

@@ -34,6 +34,11 @@
             "name": "HalfFinding",
             "src": "http://developer.ebay.com/webservices/half-finding/<VERSION>/HalfFindingService.wsdl",
             "version": "1.2.0"
+        },
+        {
+            "name": "MerchantData",
+            "src": "http://developer.ebay.com/webservices/<VERSION>/merchantdataservice.xsd",
+            "version": "901"
         }
     ]
 }

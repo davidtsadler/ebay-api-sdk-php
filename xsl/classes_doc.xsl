@@ -30,6 +30,14 @@
         <xsl:value-of select="//xs:schema/*:element[substring-after(@type, ':')=$name]/@name"/>
       </xsl:attribute>
     </xsl:if>
+    <!--
+      Some APIs are defined by a XSD and don't have operations.
+    -->
+    <xsl:if test="not(/wsdl:definitions/wsdl:portType/wsdl:operation) and //xs:schema/*:element[substring-after(@type, ':')=$name]/@name"> 
+      <xsl:attribute name="requestXmlRootElementName">
+        <xsl:value-of select="//xs:schema/*:element[substring-after(@type, ':')=$name]/@name"/>
+      </xsl:attribute>
+    </xsl:if>
     <xsl:if test="@name='AbstractRequestType'">
       <xsl:apply-templates select="//xs:element[@name='RequesterCredentials']" mode="properties"/>
     </xsl:if>
@@ -39,6 +47,7 @@
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
     <xsl:apply-templates select=".//*:attribute[not(xs:annotation/xs:appinfo//*:NoCalls)
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
+    <xsl:apply-templates select="*:sequence/*:choice/*:element" mode="properties"/>
   </xsl:element>
 </xsl:template>
 

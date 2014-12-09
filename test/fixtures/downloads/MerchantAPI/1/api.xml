@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsd="http://testing-namespace"
+  xmlns:ns="http://davidtsadler.com">
+
+  <xsd:complexType name="AnotherType">
+    <xs:sequence>
+      <xs:element name="foo" type="xs:string"/>
+      <xs:element name="bar" type="xs:string"/>
+      <xs:choice>
+        <xs:element name="strings" type="xs:string" maxOccurs="unbounded"/>
+        <xs:element name="AnotherType" type="tns:AnotherType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xsd:complexType>
+
+  <xs:complexType name="Base64BinaryType">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="BooleanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:boolean">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="complexType">
+    <xs:complexContent>
+      <!--
+        Notice base is not base="xx:AnotherType"
+        Have found some WSDLs does not have a xx: in the base attribute.
+      -->
+      <xs:extension base="AnotherType">
+        <xs:sequence>
+          <xs:element name="BISH" type="xs:string"/>
+          <xs:element name="BISHbosh" type="xs:string"/>
+          <xs:element name="BoshBish" type="xs:string"/>
+          <xs:element name="BoshBOSH" type="xs:string"/>
+          <xs:element name="eBay" type="xs:string"/>
+          <xs:element name="AnotherType" type="tns:AnotherType"/>
+          <xs:element name="uri" type="xs:anyURI"/>
+          <xs:element name="binary" type="xs:base64Binary"/>
+          <xs:element name="boolean" type="xs:boolean"/>
+          <xs:element name="DateTime" type="xs:dateTime"/>
+          <xs:element name="decimal" type="xs:decimal"/>
+          <xs:element name="double" type="xs:double"/>
+          <xs:element name="duration" type="xs:duration"/>
+          <xs:element name="float" type="xs:float"/>
+          <xs:element name="integer" type="xs:int"/>
+          <xs:element name="integers" type="xs:int" maxOccurs="2"/>
+          <xs:element name="long" type="xs:long"/>
+          <xs:element name="string" type="xs:string"/>
+          <xs:element name="strings" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="time" type="xs:time"/>
+          <xs:element name="token" type="xs:token"/>
+          <xs:element name="enumString" type="tns:enumStringType"/>
+          <xs:element name="enumToken" type="tns:EnumTokenType"/>
+          <xs:element name="id" type="tns:IDType"/>
+          <xs:element name="unbounded" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <MaxOccurs>2</MaxOccurs>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="unbounded2" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <MaxOccurs>2</MaxOccurs>
+                <CallInfo>
+                  <MaxOccurs>2</MaxOccurs>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="no-calls-1" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <NoCalls/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="no-calls-2" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <noCalls/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="no-calls-3" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <CallInfo>
+                  <NoCalls/>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="no-calls-4" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <CallInfo>
+                  <noCalls/>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="no-calls-5" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <callInfo>
+                  <NoCalls/>
+                </callInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="no-calls-6" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <callInfo>
+                  <noCalls/>
+                </callInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="foo">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="bar" type="xs:boolean"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+    <xs:attribute name="uriArr" type="xs:anyURI"/>
+    <xs:attribute name="binaryArr" type="xs:base64Binary"/>
+    <xs:attribute name="booleanArr" type="xs:boolean"/>
+    <xs:attribute name="DateTimeArr" type="xs:dateTime"/>
+    <xs:attribute name="decimalArr" type="xs:decimal"/>
+    <xs:attribute name="doubleArr" type="xs:double"/>
+    <xs:attribute name="durationArr" type="xs:duration"/>
+    <xs:attribute name="floatArr" type="xs:float"/>
+    <xs:attribute name="integerArr" type="xs:int"/>
+    <xs:attribute name="longArr" type="xs:long"/>
+    <xs:attribute name="stringArr" type="xs:string"/>
+    <xs:attribute name="timeArr" type="xs:time"/>
+    <xs:attribute name="tokenArr" type="xs:token"/>
+    <xs:attribute name="enumStringArr" type="tns:enumStringType"/>
+    <xs:attribute name="enumTokenArr" type="tns:EnumTokenType"/>
+    <xs:attribute name="no-calls-attr-1" type="xs:string">
+      <xs:annotation>
+        <xs:appinfo>
+          <NoCalls/>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="no-calls-attr-2" type="xs:string">
+      <xs:annotation>
+        <xs:appinfo>
+          <noCalls/>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="no-calls-attr-3" type="xs:string">
+      <xs:annotation>
+        <xs:appinfo>
+          <CallInfo>
+            <NoCalls/>
+          </CallInfo>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="no-calls-attr-4" type="xs:string">
+      <xs:annotation>
+        <xs:appinfo>
+          <CallInfo>
+            <noCalls/>
+          </CallInfo>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="no-calls-attr-5" type="xs:string">
+      <xs:annotation>
+        <xs:appinfo>
+          <callInfo>
+            <NoCalls/>
+          </callInfo>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="no-calls-attr-6" type="xs:string">
+      <xs:annotation>
+        <xs:appinfo>
+          <callInfo>
+            <noCalls/>
+          </callInfo>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="DecimalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="DoubleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="IntegerType">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="StringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TokenType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="URIType">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="enumStringType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ValueOne">
+        <xs:annotation>
+          <xs:documentation>
+            Value One
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Value Two">
+        <xs:annotation>
+          <xs:documentation>Value Two</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Value  Three">
+        <xs:annotation>
+          <xs:documentation>Value Three</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-1">
+        <xs:annotation>
+          <xs:appinfo>
+            <NoCalls/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-2">
+        <xs:annotation>
+          <xs:appinfo>
+            <noCalls/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-3">
+        <xs:annotation>
+          <xs:appinfo>
+            <CallInfo>
+              <NoCalls/>
+            </CallInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-4">
+        <xs:annotation>
+          <xs:appinfo>
+            <CallInfo>
+              <noCalls/>
+            </CallInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-5">
+        <xs:annotation>
+          <xs:appinfo>
+            <callInfo>
+              <NoCalls/>
+            </callInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-6">
+        <xs:annotation>
+          <xs:appinfo>
+            <callInfo>
+              <noCalls/>
+            </callInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="EnumTokenType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Four"/>
+      <xs:enumeration value="Five"/>
+      <xs:enumeration value="Six"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="IDType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="NoCalls">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="no-calls-1">
+        <xs:annotation>
+          <xs:appinfo>
+            <NoCalls/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-2">
+        <xs:annotation>
+          <xs:appinfo>
+            <noCalls/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-3">
+        <xs:annotation>
+          <xs:appinfo>
+            <CallInfo>
+              <NoCalls/>
+            </CallInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-4">
+        <xs:annotation>
+          <xs:appinfo>
+            <CallInfo>
+              <noCalls/>
+            </CallInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-5">
+        <xs:annotation>
+          <xs:appinfo>
+            <callInfo>
+              <NoCalls/>
+            </callInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no-calls-6">
+        <xs:annotation>
+          <xs:appinfo>
+            <callInfo>
+              <noCalls/>
+            </callInfo>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--
+    These elements contain complexType with no names.
+    If we transform these by mistake we will end up trying to create two files with
+    the same name which results in the error below.
+
+    Cannot write more than one result document to the same URI
+  -->
+  <xs:element>
+    <xs:complexType>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element>
+    <xs:complexType>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="MethodOneRequestType"/>
+  <xs:complexType name="methodTwoRequestType"/>
+
+  <xs:element name="MethodOneRequest" type="ns:MethodOneRequestType"/>
+  <xs:element name="methodTwoRequest" type="ns:methodTwoRequestType"/>
+
+
+</xs:schema>

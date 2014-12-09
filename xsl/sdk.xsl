@@ -19,16 +19,24 @@
   <xsl:variable name="classes" as="element()+">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:complexType" mode="classes-doc"/>
     <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:complexType/*:complexContent/*:extension/*:sequence/*:element/*:complexType" mode="classes-doc"/>
+    <xsl:apply-templates select="/xs:schema/*:complexType" mode="classes-doc"/>
+    <xsl:apply-templates select="/xs:schema/*:complexType/*:complexContent/*:extension/*:sequence/*:element/*:complexType" mode="classes-doc"/>
   </xsl:variable>
   <xsl:variable name="enums" as="element()*">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:types/xs:schema/*:simpleType[*:restriction]" mode="classes-doc"/>
+    <xsl:apply-templates select="/xs:schema/*:simpleType[*:restriction]" mode="classes-doc"/>
   </xsl:variable>
   <xsl:apply-templates select="$classes" mode="php"/>
   <xsl:apply-templates select="$classes" mode="phpunit"/>
   <xsl:apply-templates select="$enums[enum]" mode="php"/>
   <xsl:apply-templates select="$enums[enum]" mode="phpunit"/>
-  <xsl:apply-templates select="." mode="php"/>
-  <xsl:apply-templates select="." mode="phpunit"/>
+  <!--
+    Some APIs are defined by a XSD and don't have operations.
+  -->
+  <xsl:if test="/wsdl:definitions/wsdl:portType/wsdl:operation"> 
+    <xsl:apply-templates select="." mode="php"/>
+    <xsl:apply-templates select="." mode="phpunit"/>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="class" mode="php">
@@ -208,7 +216,7 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
     const C_<xsl:value-of select="@const"/> = '<xsl:value-of select="@value"/>';</xsl:template>
 
 <xsl:template match="/" mode="php">
-  <xsl:variable name="operations" as="element()+">
+  <xsl:variable name="operations" as="element()*">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:portType/wsdl:operation" mode="operations-doc"/>
   </xsl:variable>
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php

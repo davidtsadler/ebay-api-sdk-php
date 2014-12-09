@@ -3,6 +3,10 @@
         {
             "name": "FindingAPI",
             "version": "1"
+        },
+        {
+            "name": "MerchantAPI",
+            "version": "1"
         }
     ]
 }

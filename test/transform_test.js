@@ -152,5 +152,31 @@ exports.transform = {
         helper.phpUnitForEBayServiceIsGenerated();
 
         test.done();
+    },
+
+    phpClasseForEBayServiceIsNotGenerated: function (test) {
+        helper.test = test;
+        helper.service = this.ebay.services[1];
+        test.expect(1);
+
+        /*
+         * Some APIs do not have a service. 
+         */
+        helper.phpClassForEBayServiceIsNotGenerated();
+
+        test.done();
+    },
+
+    phpUnitForEBayServiceIsNotGenerated: function (test) {
+        helper.test = test;
+        helper.service = this.ebay.services[1];
+        test.expect(1);
+
+        /*
+         * Some APIs do not have a service. 
+         */
+        helper.phpUnitForEBayServiceIsNotGenerated();
+
+        test.done();
     }
 };
