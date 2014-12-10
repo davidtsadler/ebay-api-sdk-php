@@ -48,6 +48,7 @@
     <xsl:apply-templates select=".//*:attribute[not(xs:annotation/xs:appinfo//*:NoCalls)
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
     <xsl:apply-templates select="*:sequence/*:choice/*:element" mode="properties"/>
+    <xsl:apply-templates select="*:choice/*:element" mode="properties"/>
   </xsl:element>
 </xsl:template>
 

@@ -10,9 +10,11 @@
       <xs:element name="bar" type="xs:string"/>
       <xs:choice>
         <xs:element name="strings" type="xs:string" maxOccurs="unbounded"/>
-        <xs:element name="AnotherType" type="tns:AnotherType"/>
       </xs:choice>
     </xs:sequence>
+    <xs:choice>
+      <xs:element name="AnotherType" type="tns:AnotherType"/>
+    </xs:choice>
   </xsd:complexType>
 
   <xs:complexType name="Base64BinaryType">
