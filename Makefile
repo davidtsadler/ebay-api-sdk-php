@@ -17,13 +17,13 @@ lint:
 test:	lint clean
 	@saxonb-xslt \
 		-ext:on \
-		-s:$(TEST)/fixtures/downloads/FindingAPI/1/api.xml \
+		-s:$(TEST)/fixtures/downloads/FindingAPI/api.xml \
 		-xsl:./xsl/sdk.xsl \
 		service=FindingAPI \
-		destDirectory=$(TMP)/transformed/FindingAPI/1
+		destDirectory=$(TMP)/transformed/FindingAPI
 	@saxonb-xslt -ext:on \
-		-s:$(TEST)/fixtures/downloads/MerchantAPI/1/api.xml \
+		-s:$(TEST)/fixtures/downloads/MerchantAPI/api.xml \
 		-xsl:./xsl/sdk.xsl \
 		service=MerchantAPI \
-		destDirectory=$(TMP)/transformed/MerchantAPI/1
+		destDirectory=$(TMP)/transformed/MerchantAPI
 	@$(NODE-BIN)/nodeunit $(TEST)/*_test.js

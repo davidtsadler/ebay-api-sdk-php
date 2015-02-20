@@ -6,7 +6,12 @@ var helper = require('./helpers');
 
 exports.transform = {
     setUp: function (callback) {
-        this.ebay = grunt.file.readJSON('test/fixtures/ebay.json');
+        this.ebay = {
+			"services": [
+				{ "name": "FindingAPI" },
+				{ "name": "MerchantAPI" }
+			]
+		};
         this._ = grunt.util._;
         this.eBayTypes = [
             'AnotherType',
@@ -42,7 +47,7 @@ exports.transform = {
 
 		/*
 		 * For each eBay type a php class file will be generated in the directory
-		 * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
+		 * <service name>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
 		 */
 		this._.forEach(this.ebay.services, function (service) {
 			helper.service = service;
@@ -60,7 +65,7 @@ exports.transform = {
 
         /*
          * For each eBay type a phpunit file will be generated in the directory
-         * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Types/<type name>Test.php
+         * <service name>/test/DTS/eBaySDK/<service name>/Types/<type name>Test.php
          */
 		this._.forEach(this.ebay.services, function (service) {
 			helper.service = service;
@@ -78,7 +83,7 @@ exports.transform = {
 
         /*
          * For each eBay enum a php class file will be generated in the directory
-         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
+         * <service name>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
 		this._.forEach(this.ebay.services, function (service) {
 			helper.service = service;
@@ -96,7 +101,7 @@ exports.transform = {
 
         /*
          * For each eBay enum where each value is 'NoCalls', no php class file will be generated in the directory
-         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
+         * <service name>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
 		this._.forEach(this.ebay.services, function (service) {
 			helper.service = service;
@@ -114,7 +119,7 @@ exports.transform = {
 
         /*
          * For each eBay enum a phpunit file should be generated in the directory
-         * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
+         * <service name>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
          */
 		this._.forEach(this.ebay.services, function (service) {
 			helper.service = service;
@@ -133,7 +138,7 @@ exports.transform = {
 
         /*
          * For the eBay service a php class file will be generated in the directory
-         * <service name>/<service version>/src/DTS/eBaySDK/<service name>/Services/<service name>.php
+         * <service name>/src/DTS/eBaySDK/<service name>/Services/<service name>.php
          */
         helper.phpClassForEBayServiceIsGenerated();
 
@@ -147,7 +152,7 @@ exports.transform = {
 
         /*
          * For the eBay service a phpunit file will be generated in the directory
-         * <service name>/<service version>/test/DTS/eBaySDK/<service name>/Services/<service name>.php
+         * <service name>/test/DTS/eBaySDK/<service name>/Services/<service name>.php
          */
         helper.phpUnitForEBayServiceIsGenerated();
 
@@ -160,7 +165,7 @@ exports.transform = {
         test.expect(1);
 
         /*
-         * Some APIs do not have a service. 
+         * Some APIs do not have a service.
          */
         helper.phpClassForEBayServiceIsNotGenerated();
 
@@ -173,7 +178,7 @@ exports.transform = {
         test.expect(1);
 
         /*
-         * Some APIs do not have a service. 
+         * Some APIs do not have a service.
          */
         helper.phpUnitForEBayServiceIsNotGenerated();
 
