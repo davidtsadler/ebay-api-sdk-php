@@ -1,6 +1,6 @@
 'use strict';
 
-var grunt = require('grunt');
+var _ = require('lodash');
 var path = require('path');
 var helper = require('./helpers');
 
@@ -12,7 +12,7 @@ exports.transform = {
 				{ "name": "MerchantAPI" }
 			]
 		};
-        this._ = grunt.util._;
+
         this.eBayTypes = [
             'AnotherType',
             'Base64BinaryType',
@@ -49,9 +49,9 @@ exports.transform = {
 		 * For each eBay type a php class file will be generated in the directory
 		 * <service name>/src/DTS/eBaySDK/<service name>/Types/<type name>.php
 		 */
-		this._.forEach(this.ebay.services, function (service) {
+		_.forEach(this.ebay.services, function (service) {
 			helper.service = service;
-			this._.forEach(this.eBayTypes, function (type) {
+			_.forEach(this.eBayTypes, function (type) {
 				helper.phpClassForEBayTypeIsGenerated(type);
 			});
 		}, this);
@@ -67,9 +67,9 @@ exports.transform = {
          * For each eBay type a phpunit file will be generated in the directory
          * <service name>/test/DTS/eBaySDK/<service name>/Types/<type name>Test.php
          */
-		this._.forEach(this.ebay.services, function (service) {
+		_.forEach(this.ebay.services, function (service) {
 			helper.service = service;
-			this._.forEach(this.eBayTypes, function (type) {
+			_.forEach(this.eBayTypes, function (type) {
 				helper.phpUnitForEBayTypeIsGenerated(type);
 			});
 		}, this);
@@ -85,9 +85,9 @@ exports.transform = {
          * For each eBay enum a php class file will be generated in the directory
          * <service name>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
-		this._.forEach(this.ebay.services, function (service) {
+		_.forEach(this.ebay.services, function (service) {
 			helper.service = service;
-			this._.forEach(this.eBayEnums, function (name) {
+			_.forEach(this.eBayEnums, function (name) {
 				helper.phpClassForEBayEnumIsGenerated(name);
 			});
 		}, this);
@@ -103,9 +103,9 @@ exports.transform = {
          * For each eBay enum where each value is 'NoCalls', no php class file will be generated in the directory
          * <service name>/src/DTS/eBaySDK/<service name>/Enums/<enum name>.php
          */
-		this._.forEach(this.ebay.services, function (service) {
+		_.forEach(this.ebay.services, function (service) {
 			helper.service = service;
-			this._.forEach(this.eBayNoCallsEnums, function (name) {
+			_.forEach(this.eBayNoCallsEnums, function (name) {
 				helper.phpClassForEBayEnumIsNotGenerated(name);
 			});
 		}, this);
@@ -121,9 +121,9 @@ exports.transform = {
          * For each eBay enum a phpunit file should be generated in the directory
          * <service name>/test/DTS/eBaySDK/<service name>/Enums/<type name>Test.php
          */
-		this._.forEach(this.ebay.services, function (service) {
+		_.forEach(this.ebay.services, function (service) {
 			helper.service = service;
-			this._.forEach(this.eBayEnums, function (name) {
+			_.forEach(this.eBayEnums, function (name) {
 				helper.phpUnitForEBayEnumIsGenerated(name);
 			});
 		}, this);

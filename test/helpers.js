@@ -1,7 +1,7 @@
 'use strict';
 
-var grunt = require('grunt');
 var path = require('path');
+var fs = require('fs');
 
 module.exports = {
     test: null,
@@ -45,11 +45,11 @@ module.exports = {
     },
 
     isPhpGenerated: function (phpFilePath, name) {
-        this.test.equal(grunt.file.read(phpFilePath), grunt.file.read(path.join('test/expected/', this.service.name, name + '.php')), 'Should generate PHP for ' + name + '.');
+        this.test.equal(fs.readFileSync(phpFilePath, 'utf8'), fs.readFileSync(path.join('test/expected/', this.service.name, name + '.php'), 'utf8'), 'Should generate PHP for ' + name + '.');
     },
 
     isPhpNotGenerated: function (phpFilePath, name) {
-        this.test.ok(!grunt.file.exists(phpFilePath), 'Should not generate PHP for ' + name + '.');
+        this.test.ok(!fs.exists(phpFilePath), 'Should not generate PHP for ' + name + '.');
     },
 
     typesClassPath: function (name) {
