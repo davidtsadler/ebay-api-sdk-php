@@ -4,5 +4,6 @@ http://developer.ebay.com/webservices/file-transfer/latest/FileTransferService.w
 http://developer.ebay.com/webservices/Finding/latest/FindingService.wsdl
 http://developer.ebay.com/webservices/half-finding/latest/HalfFindingService.wsdl
 http://developer.ebay.com/webservices/latest/merchantdataservice.xsd
+http://developer.ebay.com/webservices/resolution-case-management/latest/ResolutionCaseManagementService.wsdl
 http://developer.ebay.com/webservices/latest/ShoppingService.wsdl
 http://developer.ebay.com/webservices/latest/ebaySvc.wsdl

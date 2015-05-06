@@ -37,6 +37,7 @@ download:
 	@echo "Finding                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FindingService.wsdl`"
 	@echo "HalfFinding                : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/HalfFindingService.wsdl`"
 	@echo "MerchantData               : `sed -rn 's/<!-- Version ([[:digit:]]{3}).*/\1/p' $(DOWNLOADS)/merchantdataservice.xsd`"
+	@echo "Resolution Case Management : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ResolutionCaseManagementService.wsdl`"
 	@echo "Shopping                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ShoppingService.wsdl`"
 	@echo "Trading                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ebaySvc.wsdl`"
 
@@ -77,6 +78,12 @@ transform:
 		-xsl:$(XSL)/sdk.xsl						\
 		service=MerchantData						\
 		destDirectory=$(TRANSFORMED)/MerchantData/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/ResolutionCaseManagementService.wsdl		\
+		-xsl:$(XSL)/sdk.xsl						\
+		service=ResolutionCaseManagement				\
+		destDirectory=$(TRANSFORMED)/ResolutionCaseManagement/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/ShoppingService.wsdl				\
