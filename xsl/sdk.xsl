@@ -33,7 +33,7 @@
   <!--
     Some APIs are defined by a XSD and don't have operations.
   -->
-  <xsl:if test="/wsdl:definitions/wsdl:portType/wsdl:operation"> 
+  <xsl:if test="/wsdl:definitions/wsdl:portType/wsdl:operation">
     <xsl:apply-templates select="." mode="php"/>
     <xsl:apply-templates select="." mode="phpunit"/>
   </xsl:if>
@@ -107,6 +107,27 @@ class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="e
 
 <xsl:template match="class" mode="phpunit">
   <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Types/{@className}Test.php">&lt;?php
+/**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
+ * Copyright 2014 David T. Sadler
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\Test;
 
 use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@className"/>;
 
@@ -169,6 +190,27 @@ class <xsl:value-of select="@className"/>
 
 <xsl:template match="enum" mode="phpunit">
   <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Enums/{@className}Test.php">&lt;?php
+/**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
+ * Copyright 2014 David T. Sadler
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Enums\Test;
 
 use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Enums\<xsl:value-of select="@className"/>;
 
@@ -258,6 +300,27 @@ class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of 
 
 <xsl:template match="/" mode="phpunit">
   <xsl:result-document href="{$destDirectory}/test/DTS/eBaySDK/{$service}/Services/{$service}ServiceTest.php">&lt;?php
+/**
+ * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
+ *
+ * https://github.com/davidtsadler/ebay-api-sdk-php
+ *
+ * Copyright 2014 David T. Sadler
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\Test;
 
 use DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>Service;
 use DTS\eBaySDK\HttpClient\HttpClient;
