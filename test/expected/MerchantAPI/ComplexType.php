@@ -23,48 +23,48 @@ namespace DTS\eBaySDK\MerchantAPI\Types;
 
 /**
  *
- * @property \DTS\eBaySDK\MerchantAPI\Types\AnotherType $AnotherType
  * @property string $BISH
  * @property string $BISHbosh
- * @property string $BoshBOSH
  * @property string $BoshBish
- * @property \DateTime $DateTime
- * @property \DateTime $DateTimeArr
- * @property string $binary
- * @property string $binaryArr
- * @property boolean $boolean
- * @property boolean $booleanArr
- * @property integer $decimal
- * @property integer $decimalArr
- * @property double $double
- * @property double $doubleArr
- * @property string $duration
- * @property string $durationArr
+ * @property string $BoshBOSH
  * @property string $eBay
- * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumStringType $enumString
- * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumStringType $enumStringArr
- * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumTokenType $enumToken
- * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumTokenType $enumTokenArr
+ * @property \DTS\eBaySDK\MerchantAPI\Types\AnotherType $AnotherType
+ * @property string $uri
+ * @property string $binary
+ * @property boolean $boolean
+ * @property \DateTime $DateTime
+ * @property integer $decimal
+ * @property double $double
+ * @property string $duration
  * @property double $float
- * @property double $floatArr
- * @property \DTS\eBaySDK\MerchantAPI\Types\Foo $foo
- * @property string $id
  * @property integer $integer
- * @property integer $integerArr
  * @property integer[] $integers
  * @property integer $long
- * @property integer $longArr
  * @property string $string
- * @property string $stringArr
  * @property string[] $strings
  * @property string $time
- * @property string $timeArr
  * @property string $token
- * @property string $tokenArr
+ * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumStringType $enumString
+ * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumTokenType $enumToken
+ * @property string $id
  * @property string[] $unbounded
  * @property string[] $unbounded2
- * @property string $uri
+ * @property \DTS\eBaySDK\MerchantAPI\Types\Foo $foo
  * @property string $uriArr
+ * @property string $binaryArr
+ * @property boolean $booleanArr
+ * @property \DateTime $DateTimeArr
+ * @property integer $decimalArr
+ * @property double $doubleArr
+ * @property string $durationArr
+ * @property double $floatArr
+ * @property integer $integerArr
+ * @property integer $longArr
+ * @property string $stringArr
+ * @property string $timeArr
+ * @property string $tokenArr
+ * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumStringType $enumStringArr
+ * @property \DTS\eBaySDK\MerchantAPI\Enums\EnumTokenType $enumTokenArr
  */
 class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
 {
@@ -72,12 +72,6 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
      * @var array Properties belonging to objects of this class.
      */
     private static $propertyTypes = array(
-        'AnotherType' => array(
-            'type' => 'DTS\eBaySDK\MerchantAPI\Types\AnotherType',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'AnotherType'
-        ),
         'BISH' => array(
             'type' => 'string',
             'unbound' => false,
@@ -90,89 +84,17 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'BISHbosh'
         ),
-        'BoshBOSH' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'BoshBOSH'
-        ),
         'BoshBish' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'BoshBish'
         ),
-        'DateTime' => array(
-            'type' => 'DateTime',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'DateTime'
-        ),
-        'DateTimeArr' => array(
-            'type' => 'DateTime',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'DateTimeArr'
-        ),
-        'binary' => array(
+        'BoshBOSH' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
-            'elementName' => 'binary'
-        ),
-        'binaryArr' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'binaryArr'
-        ),
-        'boolean' => array(
-            'type' => 'boolean',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'boolean'
-        ),
-        'booleanArr' => array(
-            'type' => 'boolean',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'booleanArr'
-        ),
-        'decimal' => array(
-            'type' => 'integer',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'decimal'
-        ),
-        'decimalArr' => array(
-            'type' => 'integer',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'decimalArr'
-        ),
-        'double' => array(
-            'type' => 'double',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'double'
-        ),
-        'doubleArr' => array(
-            'type' => 'double',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'doubleArr'
-        ),
-        'duration' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'duration'
-        ),
-        'durationArr' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'durationArr'
+            'elementName' => 'BoshBOSH'
         ),
         'eBay' => array(
             'type' => 'string',
@@ -180,29 +102,53 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'eBay'
         ),
-        'enumString' => array(
+        'AnotherType' => array(
+            'type' => 'DTS\eBaySDK\MerchantAPI\Types\AnotherType',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'AnotherType'
+        ),
+        'uri' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
-            'elementName' => 'enumString'
+            'elementName' => 'uri'
         ),
-        'enumStringArr' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'enumStringArr'
-        ),
-        'enumToken' => array(
+        'binary' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
-            'elementName' => 'enumToken'
+            'elementName' => 'binary'
         ),
-        'enumTokenArr' => array(
+        'boolean' => array(
+            'type' => 'boolean',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'boolean'
+        ),
+        'DateTime' => array(
+            'type' => 'DateTime',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'DateTime'
+        ),
+        'decimal' => array(
+            'type' => 'integer',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'decimal'
+        ),
+        'double' => array(
+            'type' => 'double',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'double'
+        ),
+        'duration' => array(
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'enumTokenArr'
+            'attribute' => false,
+            'elementName' => 'duration'
         ),
         'float' => array(
             'type' => 'double',
@@ -210,35 +156,11 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'float'
         ),
-        'floatArr' => array(
-            'type' => 'double',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'floatArr'
-        ),
-        'foo' => array(
-            'type' => 'DTS\eBaySDK\MerchantAPI\Types\Foo',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'foo'
-        ),
-        'id' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'id'
-        ),
         'integer' => array(
             'type' => 'integer',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'integer'
-        ),
-        'integerArr' => array(
-            'type' => 'integer',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'integerArr'
         ),
         'integers' => array(
             'type' => 'integer',
@@ -252,23 +174,11 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'long'
         ),
-        'longArr' => array(
-            'type' => 'integer',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'longArr'
-        ),
         'string' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'string'
-        ),
-        'stringArr' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'stringArr'
         ),
         'strings' => array(
             'type' => 'string',
@@ -282,23 +192,29 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'time'
         ),
-        'timeArr' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'timeArr'
-        ),
         'token' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'token'
         ),
-        'tokenArr' => array(
+        'enumString' => array(
             'type' => 'string',
             'unbound' => false,
-            'attribute' => true,
-            'attributeName' => 'tokenArr'
+            'attribute' => false,
+            'elementName' => 'enumString'
+        ),
+        'enumToken' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'enumToken'
+        ),
+        'id' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'id'
         ),
         'unbounded' => array(
             'type' => 'string',
@@ -312,17 +228,101 @@ class ComplexType extends \DTS\eBaySDK\MerchantAPI\Types\AnotherType
             'attribute' => false,
             'elementName' => 'unbounded2'
         ),
-        'uri' => array(
-            'type' => 'string',
+        'foo' => array(
+            'type' => 'DTS\eBaySDK\MerchantAPI\Types\Foo',
             'unbound' => false,
             'attribute' => false,
-            'elementName' => 'uri'
+            'elementName' => 'foo'
         ),
         'uriArr' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'uriArr'
+        ),
+        'binaryArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'binaryArr'
+        ),
+        'booleanArr' => array(
+            'type' => 'boolean',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'booleanArr'
+        ),
+        'DateTimeArr' => array(
+            'type' => 'DateTime',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'DateTimeArr'
+        ),
+        'decimalArr' => array(
+            'type' => 'integer',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'decimalArr'
+        ),
+        'doubleArr' => array(
+            'type' => 'double',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'doubleArr'
+        ),
+        'durationArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'durationArr'
+        ),
+        'floatArr' => array(
+            'type' => 'double',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'floatArr'
+        ),
+        'integerArr' => array(
+            'type' => 'integer',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'integerArr'
+        ),
+        'longArr' => array(
+            'type' => 'integer',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'longArr'
+        ),
+        'stringArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'stringArr'
+        ),
+        'timeArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'timeArr'
+        ),
+        'tokenArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'tokenArr'
+        ),
+        'enumStringArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'enumStringArr'
+        ),
+        'enumTokenArr' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => true,
+            'attributeName' => 'enumTokenArr'
         )
     );
 

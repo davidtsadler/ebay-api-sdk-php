@@ -23,8 +23,8 @@ namespace DTS\eBaySDK\FindingAPI\Types;
 
 /**
  *
- * @property string $bar
  * @property string $foo
+ * @property string $bar
  */
 class AnotherType extends \DTS\eBaySDK\Types\BaseType
 {
@@ -32,17 +32,17 @@ class AnotherType extends \DTS\eBaySDK\Types\BaseType
      * @var array Properties belonging to objects of this class.
      */
     private static $propertyTypes = array(
-        'bar' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'bar'
-        ),
         'foo' => array(
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'foo'
+        ),
+        'bar' => array(
+            'type' => 'string',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'bar'
         )
     );
 

@@ -64,18 +64,14 @@
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
 
 /**
- *<xsl:apply-templates select="property" mode="property-list">
-    <xsl:sort select="@name"/>
-  </xsl:apply-templates>
+ *<xsl:apply-templates select="property" mode="property-list"/>
  */
 class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="extends"/>
 {
     /**
      * @var array Properties belonging to objects of this class.
      */
-    private static $propertyTypes = array(<xsl:apply-templates select="property" mode="property-info">
-      <xsl:sort select="@name"/>
-    </xsl:apply-templates>
+    private static $propertyTypes = array(<xsl:apply-templates select="property" mode="property-info"/>
     );
 
     /**

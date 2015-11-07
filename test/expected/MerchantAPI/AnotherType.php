@@ -23,10 +23,10 @@ namespace DTS\eBaySDK\MerchantAPI\Types;
 
 /**
  *
- * @property \DTS\eBaySDK\MerchantAPI\Types\AnotherType $AnotherType
- * @property string $bar
  * @property string $foo
+ * @property string $bar
  * @property string[] $strings
+ * @property \DTS\eBaySDK\MerchantAPI\Types\AnotherType $AnotherType
  */
 class AnotherType extends \DTS\eBaySDK\Types\BaseType
 {
@@ -34,11 +34,11 @@ class AnotherType extends \DTS\eBaySDK\Types\BaseType
      * @var array Properties belonging to objects of this class.
      */
     private static $propertyTypes = array(
-        'AnotherType' => array(
-            'type' => 'DTS\eBaySDK\MerchantAPI\Types\AnotherType',
+        'foo' => array(
+            'type' => 'string',
             'unbound' => false,
             'attribute' => false,
-            'elementName' => 'AnotherType'
+            'elementName' => 'foo'
         ),
         'bar' => array(
             'type' => 'string',
@@ -46,17 +46,17 @@ class AnotherType extends \DTS\eBaySDK\Types\BaseType
             'attribute' => false,
             'elementName' => 'bar'
         ),
-        'foo' => array(
-            'type' => 'string',
-            'unbound' => false,
-            'attribute' => false,
-            'elementName' => 'foo'
-        ),
         'strings' => array(
             'type' => 'string',
             'unbound' => true,
             'attribute' => false,
             'elementName' => 'strings'
+        ),
+        'AnotherType' => array(
+            'type' => 'DTS\eBaySDK\MerchantAPI\Types\AnotherType',
+            'unbound' => false,
+            'attribute' => false,
+            'elementName' => 'AnotherType'
         )
     );
 
