@@ -136,6 +136,9 @@
     <xsl:when test="$base='int'">
       <xsl:text>IntegerType</xsl:text>
     </xsl:when>
+    <xsl:when test="$base='integer'">
+      <xsl:text>IntegerType</xsl:text>
+    </xsl:when>
     <xsl:when test="$base='string'">
       <xsl:text>StringType</xsl:text>
     </xsl:when>
@@ -183,6 +186,9 @@
       <xsl:text>double</xsl:text>
     </xsl:when>
     <xsl:when test="$type='int'">
+      <xsl:text>integer</xsl:text>
+    </xsl:when>
+    <xsl:when test="$type='integer'">
       <xsl:text>integer</xsl:text>
     </xsl:when>
     <xsl:when test="$type='long'">
