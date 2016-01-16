@@ -145,20 +145,6 @@ exports.transform = {
         test.done();
     },
 
-    phpUnitForEBayServiceIsGenerated: function (test) {
-        helper.test = test;
-        helper.service = this.ebay.services[0];
-        test.expect(1);
-
-        /*
-         * For the eBay service a phpunit file will be generated in the directory
-         * <service name>/test/DTS/eBaySDK/<service name>/Services/<service name>.php
-         */
-        helper.phpUnitForEBayServiceIsGenerated();
-
-        test.done();
-    },
-
     phpClasseForEBayServiceIsNotGenerated: function (test) {
         helper.test = test;
         helper.service = this.ebay.services[1];

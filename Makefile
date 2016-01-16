@@ -96,7 +96,7 @@ transform:
 		-s:$(DOWNLOADS)/ShoppingService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=Shopping						\
-		destDirectory=$(TRANSFORMED)/Shoppping/
+		destDirectory=$(TRANSFORMED)/Shopping/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/ebaySvc.wsdl					\
