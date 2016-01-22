@@ -256,6 +256,9 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
   <xsl:variable name="operations" as="element()*">
     <xsl:apply-templates select="/wsdl:definitions/wsdl:portType/wsdl:operation" mode="operations-doc"/>
   </xsl:variable>
+  <xsl:variable name="apiVersion">
+    <xsl:value-of select=".//*:Version|.//*:version"/>
+  </xsl:variable>
   <xsl:result-document href="{$destDirectory}/src/DTS/eBaySDK/{$service}/Services/{$service}Service.php">&lt;?php
 /**
  * THE CODE IN THIS FILE WAS GENERATED FROM THE EBAY WSDL USING THE PROJECT:
@@ -281,6 +284,8 @@ namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services;
 
 class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Services\<xsl:copy-of select="$service"/>BaseService
 {
+    const API_VERSION = '<xsl:copy-of select="$apiVersion"/>';
+
     /**
      * @param array $config Configuration option values.
      */

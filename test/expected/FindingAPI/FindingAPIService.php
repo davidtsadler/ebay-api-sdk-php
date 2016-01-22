@@ -23,6 +23,8 @@ namespace DTS\eBaySDK\FindingAPI\Services;
 
 class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseService
 {
+    const API_VERSION = '123';
+
     /**
      * @param array $config Configuration option values.
      */

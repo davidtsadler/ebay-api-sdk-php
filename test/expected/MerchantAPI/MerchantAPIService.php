@@ -23,6 +23,8 @@ namespace DTS\eBaySDK\MerchantAPI\Services;
 
 class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBaseService
 {
+    const API_VERSION = '1.2.3';
+
     /**
      * @param array $config Configuration option values.
      */

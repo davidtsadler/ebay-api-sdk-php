@@ -411,5 +411,9 @@
   <xs:element name="MethodOneRequest" type="ns:MethodOneRequestType"/>
   <xs:element name="methodTwoRequest" type="ns:methodTwoRequestType"/>
 
+  <xs:documentation>
+    <version>1.2.3</version>
+  </xs:documentation>
 
 </xs:schema>
+

@@ -432,4 +432,10 @@
       <wsdl:output message="ns:methodTwoResponse"/>
     </wsdl:operation>
   </wsdl:portType>
+
+  <wsdl:documentation>
+    <Version>123</Version>
+  </wsdl:documentation>
+
 </wsdl:definitions>
+
