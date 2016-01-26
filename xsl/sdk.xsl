@@ -87,7 +87,7 @@ class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="e
         }
 
         if (!array_key_exists(__CLASS__, self::$xmlNamespaces)) {
-            self::$xmlNamespaces[__CLASS__] = '<xsl:value-of select="@xmlNamespace"/>';
+            self::$xmlNamespaces[__CLASS__] = 'xmlns="<xsl:value-of select="@xmlNamespace"/>"';
         }<xsl:if test="@requestXmlRootElementName">
 
         if (!array_key_exists(__CLASS__, self::$requestXmlRootElementNames)) {

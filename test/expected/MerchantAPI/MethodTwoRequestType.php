@@ -46,7 +46,7 @@ class MethodTwoRequestType extends \DTS\eBaySDK\Types\BaseType
         }
 
         if (!array_key_exists(__CLASS__, self::$xmlNamespaces)) {
-            self::$xmlNamespaces[__CLASS__] = 'http://davidtsadler.com';
+            self::$xmlNamespaces[__CLASS__] = 'xmlns="http://davidtsadler.com"';
         }
 
         if (!array_key_exists(__CLASS__, self::$requestXmlRootElementNames)) {
