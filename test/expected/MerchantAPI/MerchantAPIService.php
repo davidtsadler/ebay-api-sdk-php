@@ -45,4 +45,3 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
         );
     }
 }
-

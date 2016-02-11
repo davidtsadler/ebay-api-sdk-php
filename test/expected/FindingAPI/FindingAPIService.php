@@ -45,4 +45,3 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
         );
     }
 }
-

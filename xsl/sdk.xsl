@@ -224,7 +224,6 @@ class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of 
         parent::__construct($config);
     }<xsl:apply-templates select="$operations" mode="php"/>
 }
-
 </xsl:result-document>
 </xsl:template>
 
