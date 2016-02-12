@@ -19,37 +19,37 @@ class AnotherType extends \DTS\eBaySDK\Types\BaseType
     /**
      * @var array Properties belonging to objects of this class.
      */
-    private static $propertyTypes = array(
-        'foo' => array(
+    private static $propertyTypes = [
+        'foo' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'foo'
-        ),
-        'bar' => array(
+        ],
+        'bar' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'bar'
-        ),
-        'strings' => array(
+        ],
+        'strings' => [
             'type' => 'string',
             'unbound' => true,
             'attribute' => false,
             'elementName' => 'strings'
-        ),
-        'AnotherType' => array(
+        ],
+        'AnotherType' => [
             'type' => 'DTS\eBaySDK\MerchantAPI\Types\AnotherType',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'AnotherType'
-        )
-    );
+        ]
+    ];
 
     /**
      * @param array $values Optional properties and values to assign to the object.
      */
-    public function __construct(array $values = array())
+    public function __construct(array $values = [])
     {
         list($parentValues, $childValues) = self::getParentValues(self::$propertyTypes, $values);
 

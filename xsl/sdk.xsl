@@ -56,13 +56,13 @@ class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="e
     /**
      * @var array Properties belonging to objects of this class.
      */
-    private static $propertyTypes = array(<xsl:apply-templates select="property" mode="property-info"/>
-    );
+    private static $propertyTypes = [<xsl:apply-templates select="property" mode="property-info"/>
+    ];
 
     /**
      * @param array $values Optional properties and values to assign to the object.
      */
-    public function __construct(array $values = array())
+    public function __construct(array $values = [])
     {
         list($parentValues, $childValues) = self::getParentValues(self::$propertyTypes, $values);
 
@@ -178,17 +178,17 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 </xsl:template>
 
 <xsl:template match="property" mode="property-info">
-        '<xsl:value-of select="@name"/>' => array(
+        '<xsl:value-of select="@name"/>' => [
             'type' => '<xsl:value-of select="@actual-type"/>',
             'unbound' => <xsl:value-of select="@unbound"/>,
             'attribute' => <xsl:value-of select="@is-attribute"/>,
             '<xsl:value-of select="if (@is-attribute != 'false') then 'attributeName' else 'elementName'"/>' => '<xsl:value-of select="@actual-name"/>'
 <xsl:choose>
     <xsl:when test="position()=last()">
-      <xsl:text>        )</xsl:text>
+      <xsl:text>        ]</xsl:text>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:text>        ),</xsl:text>
+      <xsl:text>        ],</xsl:text>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>

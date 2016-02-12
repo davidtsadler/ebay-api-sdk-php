@@ -57,265 +57,265 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
     /**
      * @var array Properties belonging to objects of this class.
      */
-    private static $propertyTypes = array(
-        'BISH' => array(
+    private static $propertyTypes = [
+        'BISH' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'BISH'
-        ),
-        'BISHbosh' => array(
+        ],
+        'BISHbosh' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'BISHbosh'
-        ),
-        'BoshBish' => array(
+        ],
+        'BoshBish' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'BoshBish'
-        ),
-        'BoshBOSH' => array(
+        ],
+        'BoshBOSH' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'BoshBOSH'
-        ),
-        'eBay' => array(
+        ],
+        'eBay' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'eBay'
-        ),
-        'AnotherType' => array(
+        ],
+        'AnotherType' => [
             'type' => 'DTS\eBaySDK\FindingAPI\Types\AnotherType',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'AnotherType'
-        ),
-        'uri' => array(
+        ],
+        'uri' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'uri'
-        ),
-        'binary' => array(
+        ],
+        'binary' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'binary'
-        ),
-        'boolean' => array(
+        ],
+        'boolean' => [
             'type' => 'boolean',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'boolean'
-        ),
-        'DateTime' => array(
+        ],
+        'DateTime' => [
             'type' => 'DateTime',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'DateTime'
-        ),
-        'decimal' => array(
+        ],
+        'decimal' => [
             'type' => 'integer',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'decimal'
-        ),
-        'double' => array(
+        ],
+        'double' => [
             'type' => 'double',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'double'
-        ),
-        'duration' => array(
+        ],
+        'duration' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'duration'
-        ),
-        'float' => array(
+        ],
+        'float' => [
             'type' => 'double',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'float'
-        ),
-        'integer' => array(
+        ],
+        'integer' => [
             'type' => 'integer',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'integer'
-        ),
-        'integers' => array(
+        ],
+        'integers' => [
             'type' => 'integer',
             'unbound' => true,
             'attribute' => false,
             'elementName' => 'integers'
-        ),
-        'long' => array(
+        ],
+        'long' => [
             'type' => 'integer',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'long'
-        ),
-        'string' => array(
+        ],
+        'string' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'string'
-        ),
-        'strings' => array(
+        ],
+        'strings' => [
             'type' => 'string',
             'unbound' => true,
             'attribute' => false,
             'elementName' => 'strings'
-        ),
-        'time' => array(
+        ],
+        'time' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'time'
-        ),
-        'token' => array(
+        ],
+        'token' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'token'
-        ),
-        'enumString' => array(
+        ],
+        'enumString' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'enumString'
-        ),
-        'enumToken' => array(
+        ],
+        'enumToken' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'enumToken'
-        ),
-        'id' => array(
+        ],
+        'id' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'id'
-        ),
-        'unbounded' => array(
+        ],
+        'unbounded' => [
             'type' => 'string',
             'unbound' => true,
             'attribute' => false,
             'elementName' => 'unbounded'
-        ),
-        'unbounded2' => array(
+        ],
+        'unbounded2' => [
             'type' => 'string',
             'unbound' => true,
             'attribute' => false,
             'elementName' => 'unbounded2'
-        ),
-        'foo' => array(
+        ],
+        'foo' => [
             'type' => 'DTS\eBaySDK\FindingAPI\Types\Foo',
             'unbound' => false,
             'attribute' => false,
             'elementName' => 'foo'
-        ),
-        'uriArr' => array(
+        ],
+        'uriArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'uriArr'
-        ),
-        'binaryArr' => array(
+        ],
+        'binaryArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'binaryArr'
-        ),
-        'booleanArr' => array(
+        ],
+        'booleanArr' => [
             'type' => 'boolean',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'booleanArr'
-        ),
-        'DateTimeArr' => array(
+        ],
+        'DateTimeArr' => [
             'type' => 'DateTime',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'DateTimeArr'
-        ),
-        'decimalArr' => array(
+        ],
+        'decimalArr' => [
             'type' => 'integer',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'decimalArr'
-        ),
-        'doubleArr' => array(
+        ],
+        'doubleArr' => [
             'type' => 'double',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'doubleArr'
-        ),
-        'durationArr' => array(
+        ],
+        'durationArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'durationArr'
-        ),
-        'floatArr' => array(
+        ],
+        'floatArr' => [
             'type' => 'double',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'floatArr'
-        ),
-        'integerArr' => array(
+        ],
+        'integerArr' => [
             'type' => 'integer',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'integerArr'
-        ),
-        'longArr' => array(
+        ],
+        'longArr' => [
             'type' => 'integer',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'longArr'
-        ),
-        'stringArr' => array(
+        ],
+        'stringArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'stringArr'
-        ),
-        'timeArr' => array(
+        ],
+        'timeArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'timeArr'
-        ),
-        'tokenArr' => array(
+        ],
+        'tokenArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'tokenArr'
-        ),
-        'enumStringArr' => array(
+        ],
+        'enumStringArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'enumStringArr'
-        ),
-        'enumTokenArr' => array(
+        ],
+        'enumTokenArr' => [
             'type' => 'string',
             'unbound' => false,
             'attribute' => true,
             'attributeName' => 'enumTokenArr'
-        )
-    );
+        ]
+    ];
 
     /**
      * @param array $values Optional properties and values to assign to the object.
      */
-    public function __construct(array $values = array())
+    public function __construct(array $values = [])
     {
         list($parentValues, $childValues) = self::getParentValues(self::$propertyTypes, $values);
 
