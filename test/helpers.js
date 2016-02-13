@@ -77,10 +77,10 @@ module.exports = {
     },
 
     srcPath: function () {
-        return path.join('.tmp/transformed', this.service.name, 'src/DTS/eBaySDK/', this.service.name);
+        return path.join('.tmp/transformed', this.service.name, 'src/', this.service.name);
     },
 
     testPath: function () {
-        return path.join('.tmp/transformed', this.service.name, 'test/DTS/eBaySDK/', this.service.name);
+        return path.join('.tmp/transformed', this.service.name, 'test/', this.service.name);
     }
 };
