@@ -219,7 +219,7 @@ class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of 
     /**
      * @param array $config Configuration option values.
      */
-    public function __construct(array $config)
+    public function __construct(array $config = [])
     {
         parent::__construct($config);
     }<xsl:apply-templates select="$operations" mode="php"/>

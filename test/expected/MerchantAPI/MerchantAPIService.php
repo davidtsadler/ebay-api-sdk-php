@@ -14,7 +14,7 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
     /**
      * @param array $config Configuration option values.
      */
-    public function __construct(array $config)
+    public function __construct(array $config = [])
     {
         parent::__construct($config);
     }
