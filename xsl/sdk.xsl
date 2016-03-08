@@ -174,13 +174,13 @@ class <xsl:value-of select="@className"/>Test extends \PHPUnit_Framework_TestCas
 </xsl:template>
 
 <xsl:template match="property" mode="property-list">
- * @property <xsl:value-of select="@property-type"/><xsl:value-of select="if (@unbound = 'true') then '[] ' else ' '"/>$<xsl:value-of select="@name"/>
+ * @property <xsl:value-of select="@property-type"/><xsl:value-of select="if (@repeatable = 'true') then '[] ' else ' '"/>$<xsl:value-of select="@name"/>
 </xsl:template>
 
 <xsl:template match="property" mode="property-info">
         '<xsl:value-of select="@name"/>' => [
             'type' => '<xsl:value-of select="@actual-type"/>',
-            'unbound' => <xsl:value-of select="@unbound"/>,
+            'repeatable' => <xsl:value-of select="@repeatable"/>,
             'attribute' => <xsl:value-of select="@is-attribute"/>,
             '<xsl:value-of select="if (@is-attribute != 'false') then 'attributeName' else 'elementName'"/>' => '<xsl:value-of select="@actual-name"/>'
 <xsl:choose>

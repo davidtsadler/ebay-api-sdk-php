@@ -20,13 +20,13 @@ class AnotherType extends \DTS\eBaySDK\Types\BaseType
     private static $propertyTypes = [
         'foo' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'foo'
         ],
         'bar' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'bar'
         ]

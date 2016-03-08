@@ -33,8 +33,8 @@ namespace DTS\eBaySDK\FindingAPI\Types;
  * @property \DTS\eBaySDK\FindingAPI\Enums\EnumStringType $enumString
  * @property \DTS\eBaySDK\FindingAPI\Enums\EnumTokenType $enumToken
  * @property string $id
- * @property string[] $unbounded
- * @property string[] $unbounded2
+ * @property string[] $repeatable
+ * @property string[] $repeatable2
  * @property \DTS\eBaySDK\FindingAPI\Types\Foo $foo
  * @property string $uriArr
  * @property string $binaryArr
@@ -60,253 +60,253 @@ class ComplexType extends \DTS\eBaySDK\FindingAPI\Types\AnotherType
     private static $propertyTypes = [
         'BISH' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'BISH'
         ],
         'BISHbosh' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'BISHbosh'
         ],
         'BoshBish' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'BoshBish'
         ],
         'BoshBOSH' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'BoshBOSH'
         ],
         'eBay' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'eBay'
         ],
         'AnotherType' => [
             'type' => 'DTS\eBaySDK\FindingAPI\Types\AnotherType',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'AnotherType'
         ],
         'uri' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'uri'
         ],
         'binary' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'binary'
         ],
         'boolean' => [
             'type' => 'boolean',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'boolean'
         ],
         'DateTime' => [
             'type' => 'DateTime',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'DateTime'
         ],
         'decimal' => [
             'type' => 'integer',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'decimal'
         ],
         'double' => [
             'type' => 'double',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'double'
         ],
         'duration' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'duration'
         ],
         'float' => [
             'type' => 'double',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'float'
         ],
         'integer' => [
             'type' => 'integer',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'integer'
         ],
         'integers' => [
             'type' => 'integer',
-            'unbound' => true,
+            'repeatable' => true,
             'attribute' => false,
             'elementName' => 'integers'
         ],
         'long' => [
             'type' => 'integer',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'long'
         ],
         'string' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'string'
         ],
         'strings' => [
             'type' => 'string',
-            'unbound' => true,
+            'repeatable' => true,
             'attribute' => false,
             'elementName' => 'strings'
         ],
         'time' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'time'
         ],
         'token' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'token'
         ],
         'enumString' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'enumString'
         ],
         'enumToken' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'enumToken'
         ],
         'id' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'id'
         ],
-        'unbounded' => [
+        'repeatable' => [
             'type' => 'string',
-            'unbound' => true,
+            'repeatable' => true,
             'attribute' => false,
-            'elementName' => 'unbounded'
+            'elementName' => 'repeatable'
         ],
-        'unbounded2' => [
+        'repeatable2' => [
             'type' => 'string',
-            'unbound' => true,
+            'repeatable' => true,
             'attribute' => false,
-            'elementName' => 'unbounded2'
+            'elementName' => 'repeatable2'
         ],
         'foo' => [
             'type' => 'DTS\eBaySDK\FindingAPI\Types\Foo',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'foo'
         ],
         'uriArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'uriArr'
         ],
         'binaryArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'binaryArr'
         ],
         'booleanArr' => [
             'type' => 'boolean',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'booleanArr'
         ],
         'DateTimeArr' => [
             'type' => 'DateTime',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'DateTimeArr'
         ],
         'decimalArr' => [
             'type' => 'integer',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'decimalArr'
         ],
         'doubleArr' => [
             'type' => 'double',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'doubleArr'
         ],
         'durationArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'durationArr'
         ],
         'floatArr' => [
             'type' => 'double',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'floatArr'
         ],
         'integerArr' => [
             'type' => 'integer',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'integerArr'
         ],
         'longArr' => [
             'type' => 'integer',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'longArr'
         ],
         'stringArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'stringArr'
         ],
         'timeArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'timeArr'
         ],
         'tokenArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'tokenArr'
         ],
         'enumStringArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'enumStringArr'
         ],
         'enumTokenArr' => [
             'type' => 'string',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => true,
             'attributeName' => 'enumTokenArr'
         ]

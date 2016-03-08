@@ -19,7 +19,7 @@ class Foo extends \DTS\eBaySDK\Types\BaseType
     private static $propertyTypes = [
         'bar' => [
             'type' => 'boolean',
-            'unbound' => false,
+            'repeatable' => false,
             'attribute' => false,
             'elementName' => 'bar'
         ]
