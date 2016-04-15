@@ -25,7 +25,16 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
      */
     public function methodOne(\DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request)
     {
-        return $this->callOperation(
+        return $this->methodOneAsync($request)->wait();
+    }
+
+    /**
+     * @param \DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function methodOneAsync(\DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request)
+    {
+        return $this->callOperationAsync(
             'MethodOne',
             $request,
             '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
@@ -38,7 +47,16 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
      */
     public function methodTwo(\DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request)
     {
-        return $this->callOperation(
+        return $this->methodTwoAsync($request)->wait();
+    }
+
+    /**
+     * @param \DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function methodTwoAsync(\DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request)
+    {
+        return $this->callOperationAsync(
             'methodTwo',
             $request,
             '\DTS\eBaySDK\FindingAPI\Types\ComplexType'

@@ -25,7 +25,16 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
      */
     public function methodOne(\DTS\eBaySDK\MerchantAPI\Types\MethodOneRequestType $request)
     {
-        return $this->callOperation(
+        return $this->methodOneAsync($request)->wait();
+    }
+
+    /**
+     * @param \DTS\eBaySDK\MerchantAPI\Types\MethodOneRequestType $request
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function methodOneAsync(\DTS\eBaySDK\MerchantAPI\Types\MethodOneRequestType $request)
+    {
+        return $this->callOperationAsync(
             'MethodOne',
             $request,
             '\DTS\eBaySDK\MerchantAPI\Types\ComplexType'
@@ -38,7 +47,16 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
      */
     public function methodTwo(\DTS\eBaySDK\MerchantAPI\Types\MethodTwoRequestType $request)
     {
-        return $this->callOperation(
+        return $this->methodTwoAsync($request)->wait();
+    }
+    
+    /**
+     * @param \DTS\eBaySDK\MerchantAPI\Types\MethodTwoRequestType $request
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function methodTwoAsync(\DTS\eBaySDK\MerchantAPI\Types\MethodTwoRequestType $request)
+    {
+        return $this->callOperationAsync(
             'methodTwo',
             $request,
             '\DTS\eBaySDK\MerchantAPI\Types\ComplexType'

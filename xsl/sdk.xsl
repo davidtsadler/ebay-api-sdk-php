@@ -235,7 +235,16 @@ class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of 
      */
     public function <xsl:value-of select="@method-name"/>(\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request)
     {
-        return $this->callOperation(
+        return $this-><xsl:value-of select="@method-name"/>Async($request)->wait();
+    }
+
+    /**
+     * @param \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function <xsl:value-of select="@method-name"/>Async(\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request)
+    {
+        return $this->callOperationAsync(
             '<xsl:value-of select="@name"/>',
             $request,
             '\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@response-type"/>'
