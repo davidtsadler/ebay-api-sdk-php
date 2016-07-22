@@ -31,12 +31,17 @@ test:	lint clean
 
 download:
 	@wget -q -i services -P $(DOWNLOADS)
+	sed -i -e "s/<version>.*<\/version>/<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	sed -i -e "s/\t\t\t\t<Version>.*<\/Version>/\t\t\t\t<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/BulkDataExchangeService.wsdl`"
 	@echo "BusinessPoliciesManagement : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/SellerProfilesManagementService.wsdl`"
 	@echo "FileTransfer               : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FileTransferService.wsdl`"
 	@echo "Finding                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FindingService.wsdl`"
 	@echo "HalfFinding                : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/HalfFindingService.wsdl`"
+	@echo "Merchantdising             : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/MerchandisingService.wsdl`"
 	@echo "MerchantData               : `sed -rn 's/<!-- Version ([[:digit:]]{3}).*/\1/p' $(DOWNLOADS)/merchantdataservice.xsd`"
+	@echo "Product                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ProductService.wsdl`"
+	@echo "ProductMetadata            : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ProductMetadataService.wsdl`"
 	@echo "Resolution Case Management : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ResolutionCaseManagementService.wsdl`"
 	@echo "Return Management          : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ReturnManagementService.wsdl`"
 	@echo "Shopping                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ShoppingService.wsdl`"
@@ -75,10 +80,28 @@ transform:
 		destDirectory=$(TRANSFORMED)/HalfFinding/
 	@saxonb-xslt								\
 		-ext:on								\
+		-s:$(DOWNLOADS)/MerchandisingService.wsdl			\
+		-xsl:$(XSL)/sdk.xsl						\
+		service=Merchandising    					\
+		destDirectory=$(TRANSFORMED)/Merchandising/
+	@saxonb-xslt								\
+		-ext:on								\
 		-s:$(DOWNLOADS)/merchantdataservice.xsd				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=MerchantData						\
 		destDirectory=$(TRANSFORMED)/MerchantData/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/ProductService.wsdl				\
+		-xsl:$(XSL)/sdk.xsl						\
+		service=Product    						\
+		destDirectory=$(TRANSFORMED)/Product/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/ProductMetadataService.wsdl			\
+		-xsl:$(XSL)/sdk.xsl						\
+		service=ProductMetadata    					\
+		destDirectory=$(TRANSFORMED)/ProductMetadata/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/ResolutionCaseManagementService.wsdl		\
