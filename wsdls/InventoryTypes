@@ -1,0 +1,5 @@
+<xs:complexType name="BulkUpdatePriceAndQuantityRestRequest"/>
+<xs:complexType name="BulkUpdatePriceAndQuantityRestResponse"/>
+
+<xs:element name="BulkUpdatePriceAndQuantityRestRequest" type="ns:BulkUpdatePriceAndQuantityRestRequest"/>
+<xs:element name="BulkUpdatePriceAndQuantityRestResponse" type="ns:BulkUpdatePriceAndQuantityRestResponse"/>

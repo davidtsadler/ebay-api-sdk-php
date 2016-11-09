@@ -1,0 +1,9 @@
+<wsdl:portType>
+  <wsdl:operation name="bulkUpdatePriceAndQuantity">
+    <wsdl:input message="ns:BulkUpdatePriceAndQuantityRestRequest"/>
+    <wsdl:output message="ns:BulkUpdatePriceAndQuantityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>

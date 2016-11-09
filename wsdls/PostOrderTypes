@@ -1,0 +1,5 @@
+<xs:complexType name="ApproveCancellationRequestRestRequest"/>
+<xs:complexType name="ApproveCancellationRequestRestResponse"/>
+
+<xs:element name="ApproveCancellationRequestRestRequest" type="ns:ApproveCancellationRequestRestRequest"/>
+<xs:element name="ApproveCancellationRequestRestResponse" type="ns:ApproveCancellationRequestRestResponse"/>

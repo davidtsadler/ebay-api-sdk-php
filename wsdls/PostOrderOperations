@@ -1,0 +1,9 @@
+<wsdl:portType>
+  <wsdl:operation name="approveCancellationRequest">
+    <wsdl:input message="ns:ApproveCancellationRequestRestRequest"/>
+    <wsdl:output message="ns:ApproveCancellationRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:documentation>
+  <Version>v2</Version>
+</wsdl:documentation>

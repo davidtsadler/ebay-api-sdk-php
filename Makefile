@@ -5,6 +5,7 @@ TEST		= ./test
 DOWNLOADS	= $(TMP)/downloads
 TRANSFORMED	= $(TMP)/transformed
 XSL		= ./xsl
+SCRIPTS		= ./scripts
 
 all:	test
 
@@ -13,7 +14,7 @@ clean:
 	@rm -rf $(TMP)
 
 lint:
-	@$(NODE-BIN)/jshint $(TEST)/*.js
+	@$(NODE-BIN)/jshint $(TEST)/*.js $(SCRIPTS)/*.js
 
 test:	lint clean
 	@saxonb-xslt								\
@@ -27,7 +28,15 @@ test:	lint clean
 		-xsl:$(XSL)/sdk.xsl						\
 		service=MerchantAPI						\
 		destDirectory=$(TRANSFORMED)/MerchantAPI/
+	@saxonb-xslt -ext:on							\
+		-s:$(TEST)/fixtures/downloads/RestAPI/api.xml			\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=RestAPI							\
+		destDirectory=$(TRANSFORMED)/RestAPI/
 	@$(NODE-BIN)/nodeunit $(TEST)/*_test.js
+
+wsdls:
+	@node $(SCRIPTS)/create_rest_wsdls.js
 
 download:
 	@wget -q -i services -P $(DOWNLOADS)
@@ -50,10 +59,28 @@ download:
 transform:
 	@saxonb-xslt								\
 		-ext:on								\
+		-s:$(DOWNLOADS)/Account.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Account							\
+		destDirectory=$(TRANSFORMED)/Account/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/Analytics.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Analytics						\
+		destDirectory=$(TRANSFORMED)/Analytics/
+	@saxonb-xslt								\
+		-ext:on								\
 		-s:$(DOWNLOADS)/BulkDataExchangeService.wsdl			\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=BulkDataExchange					\
 		destDirectory=$(TRANSFORMED)/BulkDataExchange/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/Browse.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Browse    						\
+		destDirectory=$(TRANSFORMED)/Browse/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/SellerProfilesManagementService.wsdl		\
@@ -74,10 +101,28 @@ transform:
 		destDirectory=$(TRANSFORMED)/Finding/
 	@saxonb-xslt								\
 		-ext:on								\
+		-s:$(DOWNLOADS)/Fulfillment.wsdl				\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Fulfillment    						\
+		destDirectory=$(TRANSFORMED)/Fulfillment/
+	@saxonb-xslt								\
+		-ext:on								\
 		-s:$(DOWNLOADS)/HalfFindingService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=HalfFinding						\
 		destDirectory=$(TRANSFORMED)/HalfFinding/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/Inventory.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Inventory    						\
+		destDirectory=$(TRANSFORMED)/Inventory/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/Marketing.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Marketing    						\
+		destDirectory=$(TRANSFORMED)/Marketing/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/MerchandisingService.wsdl			\
@@ -90,6 +135,24 @@ transform:
 		-xsl:$(XSL)/sdk.xsl						\
 		service=MerchantData						\
 		destDirectory=$(TRANSFORMED)/MerchantData/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/Metadata.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Metadata						\
+		destDirectory=$(TRANSFORMED)/Metadata/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/Order.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Order    						\
+		destDirectory=$(TRANSFORMED)/Order/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/PostOrder.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=PostOrder    						\
+		destDirectory=$(TRANSFORMED)/PostOrder/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/ProductService.wsdl				\
@@ -129,7 +192,8 @@ transform:
 
 build:	clean		\
 	download	\
+	wsdls		\
 	transform
 	@cp -r $(TRANSFORMED) $(DIST)
 
-.PHONY: test
+.PHONY: test wsdls

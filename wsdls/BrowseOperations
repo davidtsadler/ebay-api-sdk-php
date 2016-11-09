@@ -1,0 +1,27 @@
+<wsdl:portType>
+  <wsdl:operation name="getItem" method="GET" resource="item/{item_id}">
+    <wsdl:input message="ns:GetItemRestRequest"/>
+    <wsdl:output message="ns:GetItemRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="getItemFeed" method="GET" resource="item_feed">
+    <wsdl:input message="ns:GetItemFeedRestRequest"/>
+    <wsdl:output message="ns:GetItemFeedRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="getItemGroup" method="GET" resource="item_group/{item_group_id}">
+    <wsdl:input message="ns:GetItemGroupRestRequest"/>
+    <wsdl:output message="ns:GetItemGroupRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="searchForItems" method="GET" resource="item_summary/search">
+    <wsdl:input message="ns:SearchForItemsRestRequest"/>
+    <wsdl:output message="ns:SearchForItemsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
