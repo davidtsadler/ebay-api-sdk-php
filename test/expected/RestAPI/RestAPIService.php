@@ -18,7 +18,7 @@ class RestAPIService extends \DTS\eBaySDK\RestAPI\Services\RestAPIBaseService
         'MethodOne' => [
             'method' => 'GET',
             'resource' => 'foo/bar/{baz}',
-            'responseClass' => '\DTS\eBaySDK\RestAPI\Types\ComplexType',
+            'responseClass' => '\DTS\eBaySDK\RestAPI\Types\MethodOneResponseType',
             'params' => [
                 'foo' => [
                     'valid' => ['string']
@@ -32,7 +32,7 @@ class RestAPIService extends \DTS\eBaySDK\RestAPI\Services\RestAPIBaseService
         'methodTwo' => [
             'method' => 'GET',
             'resource' => 'foo/bar/{baz}',
-            'responseClass' => '\DTS\eBaySDK\RestAPI\Types\ComplexType',
+            'responseClass' => '\DTS\eBaySDK\RestAPI\Types\MethodTwoResponseType',
             'params' => [
             ]
         ]
@@ -48,7 +48,7 @@ class RestAPIService extends \DTS\eBaySDK\RestAPI\Services\RestAPIBaseService
 
     /**
      * @param \DTS\eBaySDK\RestAPI\Types\MethodOneRequestType $request
-     * @return \DTS\eBaySDK\RestAPI\Types\ComplexType
+     * @return \DTS\eBaySDK\RestAPI\Types\MethodOneResponseType
      */
     public function methodOne(\DTS\eBaySDK\RestAPI\Types\MethodOneRequestType $request)
     {
@@ -66,7 +66,7 @@ class RestAPIService extends \DTS\eBaySDK\RestAPI\Services\RestAPIBaseService
 
     /**
      * @param \DTS\eBaySDK\RestAPI\Types\MethodTwoRequestType $request
-     * @return \DTS\eBaySDK\RestAPI\Types\ComplexType
+     * @return \DTS\eBaySDK\RestAPI\Types\MethodTwoResponseType
      */
     public function methodTwo(\DTS\eBaySDK\RestAPI\Types\MethodTwoRequestType $request)
     {

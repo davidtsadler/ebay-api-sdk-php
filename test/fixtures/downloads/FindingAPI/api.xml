@@ -404,12 +404,14 @@
       </xs:element>
 
       <xs:complexType name="MethodOneRequestType"/>
+      <xs:complexType name="MethodOneResponseType"/>
       <xs:complexType name="methodTwoRequestType"/>
+      <xs:complexType name="methodTwoResponseType"/>
 
       <xs:element name="MethodOneRequest" type="ns:MethodOneRequestType"/>
-      <xs:element name="MethodOneResponse" type="ns:complexType"/>
+      <xs:element name="MethodOneResponse" type="ns:MethodOneResponseType"/>
       <xs:element name="methodTwoRequest" type="ns:methodTwoRequestType"/>
-      <xs:element name="methodTwoResponse" type="ns:complexType"/>
+      <xs:element name="methodTwoResponse" type="ns:methodTwoResponseType"/>
 
     </xs:schema>
   </wsdl:types>

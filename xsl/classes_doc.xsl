@@ -49,6 +49,11 @@
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
     <xsl:apply-templates select="*:sequence/*:choice/*:element" mode="properties"/>
     <xsl:apply-templates select="*:choice/*:element" mode="properties"/>
+    <xsl:if test="@restResponse='true'"> 
+      <xsl:attribute name="restResponse">
+        <xsl:value-of select="true()"/>
+      </xsl:attribute>
+    </xsl:if>
   </xsl:element>
 </xsl:template>
 

@@ -21,7 +21,7 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
 
     /**
      * @param \DTS\eBaySDK\MerchantAPI\Types\MethodOneRequestType $request
-     * @return \DTS\eBaySDK\MerchantAPI\Types\ComplexType
+     * @return \DTS\eBaySDK\MerchantAPI\Types\MethodOneResponseType
      */
     public function methodOne(\DTS\eBaySDK\MerchantAPI\Types\MethodOneRequestType $request)
     {
@@ -37,13 +37,13 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
         return $this->callOperationAsync(
             'MethodOne',
             $request,
-            '\DTS\eBaySDK\MerchantAPI\Types\ComplexType'
+            '\DTS\eBaySDK\MerchantAPI\Types\MethodOneResponseType'
         );
     }
 
     /**
      * @param \DTS\eBaySDK\MerchantAPI\Types\MethodTwoRequestType $request
-     * @return \DTS\eBaySDK\MerchantAPI\Types\ComplexType
+     * @return \DTS\eBaySDK\MerchantAPI\Types\MethodTwoResponseType
      */
     public function methodTwo(\DTS\eBaySDK\MerchantAPI\Types\MethodTwoRequestType $request)
     {
@@ -59,7 +59,7 @@ class MerchantAPIService extends \DTS\eBaySDK\MerchantAPI\Services\MerchantAPIBa
         return $this->callOperationAsync(
             'methodTwo',
             $request,
-            '\DTS\eBaySDK\MerchantAPI\Types\ComplexType'
+            '\DTS\eBaySDK\MerchantAPI\Types\MethodTwoResponseType'
         );
     }
 }

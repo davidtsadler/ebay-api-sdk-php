@@ -21,7 +21,7 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
 
     /**
      * @param \DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request
-     * @return \DTS\eBaySDK\FindingAPI\Types\ComplexType
+     * @return \DTS\eBaySDK\FindingAPI\Types\MethodOneResponseType
      */
     public function methodOne(\DTS\eBaySDK\FindingAPI\Types\MethodOneRequestType $request)
     {
@@ -37,13 +37,13 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
         return $this->callOperationAsync(
             'MethodOne',
             $request,
-            '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
+            '\DTS\eBaySDK\FindingAPI\Types\MethodOneResponseType'
         );
     }
 
     /**
      * @param \DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request
-     * @return \DTS\eBaySDK\FindingAPI\Types\ComplexType
+     * @return \DTS\eBaySDK\FindingAPI\Types\MethodTwoResponseType
      */
     public function methodTwo(\DTS\eBaySDK\FindingAPI\Types\MethodTwoRequestType $request)
     {
@@ -59,7 +59,7 @@ class FindingAPIService extends \DTS\eBaySDK\FindingAPI\Services\FindingAPIBaseS
         return $this->callOperationAsync(
             'methodTwo',
             $request,
-            '\DTS\eBaySDK\FindingAPI\Types\ComplexType'
+            '\DTS\eBaySDK\FindingAPI\Types\MethodTwoResponseType'
         );
     }
 }

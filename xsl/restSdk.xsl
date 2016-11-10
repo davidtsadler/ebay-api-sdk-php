@@ -47,12 +47,19 @@
  */
 
 namespace DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types;
-
+<xsl:if test="@restResponse = 'true'">
+use DTS\eBaySDK\StatusCodeTrait;
+use DTS\eBaySDK\HttpHeadersTrait;
+</xsl:if>
 /**
  *<xsl:apply-templates select="property" mode="property-list"/>
  */
 class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="extends"/>
-{
+{<xsl:if test="@restResponse = 'true'"><xsl:text>
+    use StatusCodeTrait;
+    use HttpHeadersTrait;
+</xsl:text>
+</xsl:if>
     /**
      * @var array Properties belonging to objects of this class.
      */
@@ -60,9 +67,11 @@ class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="e
     ];
 
     /**
-     * @param array $values Optional properties and values to assign to the object.
+     * @param array $values Optional properties and values to assign to the object.<xsl:if test="@restResponse = 'true'"><xsl:text>
+     * @param int $statusCode Status code
+     * @param array $headers HTTP Response headers.</xsl:text></xsl:if>
      */
-    public function __construct(array $values = [])
+    public function __construct(array $values = []<xsl:if test="@restResponse = 'true'"><xsl:text>, $statusCode = 200, array $headers = []</xsl:text></xsl:if>)
     {
         list($parentValues, $childValues) = self::getParentValues(self::$propertyTypes, $values);
 
@@ -72,7 +81,11 @@ class <xsl:value-of select="@className"/><xsl:apply-templates select="." mode="e
             self::$properties[__CLASS__] = array_merge(self::$properties[get_parent_class()], self::$propertyTypes);
         }
 
-        $this->setValues(__CLASS__, $childValues);
+        $this->setValues(__CLASS__, $childValues);<xsl:if test="@restResponse = 'true'"><xsl:text>
+
+        $this->statusCode = (int)$statusCode;
+
+        $this->setHeaders($headers);</xsl:text></xsl:if>
     }
 }
 </xsl:result-document>
