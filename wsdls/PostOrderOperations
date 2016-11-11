@@ -1,9 +1,424 @@
+<wsdl:documentation>
+  <Version>v2</Version>
+</wsdl:documentation>
 <wsdl:portType>
-  <wsdl:operation name="approveCancellationRequest">
+  <wsdl:operation name="ApproveCancellationRequest" method="POST" resource="cancellation/{cancelId}/approve">
     <wsdl:input message="ns:ApproveCancellationRequestRestRequest"/>
     <wsdl:output message="ns:ApproveCancellationRequestRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
-<wsdl:documentation>
-  <Version>v2</Version>
-</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="CheckCancellationEligibility" method="POST" resource="cancellation/check_eligibility">
+    <wsdl:input message="ns:CheckCancellationEligibilityRestRequest"/>
+    <wsdl:output message="ns:CheckCancellationEligibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ConfirmCancellationRefund" method="POST" resource="cancellation/{cancelId}/confirm">
+    <wsdl:input message="ns:ConfirmCancellationRefundRestRequest"/>
+    <wsdl:output message="ns:ConfirmCancellationRefundRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetCancellation" method="GET" resource="cancellation/{cancelId}?">
+    <wsdl:input message="ns:GetCancellationRestRequest"/>
+    <wsdl:output message="ns:GetCancellationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="RejectCancellationRequest" method="POST" resource="cancellation/{cancelId}/reject">
+    <wsdl:input message="ns:RejectCancellationRequestRestRequest"/>
+    <wsdl:output message="ns:RejectCancellationRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SearchCancellations" method="GET" resource="cancellation/search">
+    <wsdl:input message="ns:SearchCancellationsRestRequest"/>
+    <wsdl:output message="ns:SearchCancellationsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SubmitCancellationRequest" method="POST" resource="cancellation">
+    <wsdl:input message="ns:SubmitCancellationRequestRestRequest"/>
+    <wsdl:output message="ns:SubmitCancellationRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="AppealCaseDecision" method="POST" resource="casemanagement/{caseId}/appeal">
+    <wsdl:input message="ns:AppealCaseDecisionRestRequest"/>
+    <wsdl:output message="ns:AppealCaseDecisionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CloseCase" method="POST" resource="casemanagement/{caseId}/close">
+    <wsdl:input message="ns:CloseCaseRestRequest"/>
+    <wsdl:output message="ns:CloseCaseRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetCase" method="GET" resource="casemanagement/{caseId}">
+    <wsdl:input message="ns:GetCaseRestRequest"/>
+    <wsdl:output message="ns:GetCaseRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="IssueCaseRefund" method="POST" resource="casemanagement/{caseId}/issue_refund">
+    <wsdl:input message="ns:IssueCaseRefundRestRequest"/>
+    <wsdl:output message="ns:IssueCaseRefundRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ProvideReturnShipmentInfo" method="POST" resource="casemanagement/{caseId}/provide_shipment_info">
+    <wsdl:input message="ns:ProvideReturnShipmentInfoRestRequest"/>
+    <wsdl:output message="ns:ProvideReturnShipmentInfoRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ProvidesReturnAddress" method="POST" resource="casemanagement/{caseId}/provide_return_address">
+    <wsdl:input message="ns:ProvidesReturnAddressRestRequest"/>
+    <wsdl:output message="ns:ProvidesReturnAddressRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SearchCases" method="GET" resource="casemanagement/search">
+    <wsdl:input message="ns:SearchCasesRestRequest"/>
+    <wsdl:output message="ns:SearchCasesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CheckInquiryEligibility" method="POST" resource="inquiry/check_eligibility">
+    <wsdl:input message="ns:CheckInquiryEligibilityRestRequest"/>
+    <wsdl:output message="ns:CheckInquiryEligibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CloseInquiry" method="POST" resource="inquiry/{inquiryId}/close">
+    <wsdl:input message="ns:CloseInquiryRestRequest"/>
+    <wsdl:output message="ns:CloseInquiryRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ConfirmInquiryRefund" method="POST" resource="inquiry/{inquiryId}/confirm_refund">
+    <wsdl:input message="ns:ConfirmInquiryRefundRestRequest"/>
+    <wsdl:output message="ns:ConfirmInquiryRefundRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateInquiry" method="POST" resource="inquiry">
+    <wsdl:input message="ns:CreateInquiryRestRequest"/>
+    <wsdl:output message="ns:CreateInquiryRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="EscalateInquiry" method="POST" resource="inquiry/{inquiryId}/escalate">
+    <wsdl:input message="ns:EscalateInquiryRestRequest"/>
+    <wsdl:output message="ns:EscalateInquiryRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetInquiry" method="GET" resource="inquiry/{inquiryId}">
+    <wsdl:input message="ns:GetInquiryRestRequest"/>
+    <wsdl:output message="ns:GetInquiryRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="IssueInquiryRefund" method="POST" resource="inquiry/{inquiryId}/issue_refund">
+    <wsdl:input message="ns:IssueInquiryRefundRestRequest"/>
+    <wsdl:output message="ns:IssueInquiryRefundRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ProvideInquiryRefundInfo" method="POST" resource="inquiry/{inquiryId}/provide_refund_info">
+    <wsdl:input message="ns:ProvideInquiryRefundInfoRestRequest"/>
+    <wsdl:output message="ns:ProvideInquiryRefundInfoRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ProvideInquiryShipmentInfo" method="POST" resource="inquiry/{inquiryId}/provide_shipment_info">
+    <wsdl:input message="ns:ProvideInquiryShipmentInfoRestRequest"/>
+    <wsdl:output message="ns:ProvideInquiryShipmentInfoRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SearchInquiries" method="GET" resource="inquiry/search">
+    <wsdl:input message="ns:SearchInquiriesRestRequest"/>
+    <wsdl:output message="ns:SearchInquiriesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SendInquiryMessage" method="POST" resource="inquiry/{inquiryId}/send_message">
+    <wsdl:input message="ns:SendInquiryMessageRestRequest"/>
+    <wsdl:output message="ns:SendInquiryMessageRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="AddShippingLabelInfo" method="POST" resource="return/{returnId}/add_shipping_label">
+    <wsdl:input message="ns:AddShippingLabelInfoRestRequest"/>
+    <wsdl:output message="ns:AddShippingLabelInfoRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CancelReturnRequest" method="POST" resource="return/{returnId}/cancel">
+    <wsdl:input message="ns:CancelReturnRequestRestRequest"/>
+    <wsdl:output message="ns:CancelReturnRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CheckReturnEligibility" method="POST" resource="return/check_eligibility">
+    <wsdl:input message="ns:CheckReturnEligibilityRestRequest"/>
+    <wsdl:output message="ns:CheckReturnEligibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CheckShippingLabelEligibility" method="GET" resource="return/{returnId}/check_label_print_eligibility">
+    <wsdl:input message="ns:CheckShippingLabelEligibilityRestRequest"/>
+    <wsdl:output message="ns:CheckShippingLabelEligibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateReturnDraft" method="POST" resource="return/draft">
+    <wsdl:input message="ns:CreateReturnDraftRestRequest"/>
+    <wsdl:output message="ns:CreateReturnDraftRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateReturnRequest" method="POST" resource="return">
+    <wsdl:input message="ns:CreateReturnRequestRestRequest"/>
+    <wsdl:output message="ns:CreateReturnRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateReturnShippingLabel" method="POST" resource="return/{returnId}/initiate_shipping_label">
+    <wsdl:input message="ns:CreateReturnShippingLabelRestRequest"/>
+    <wsdl:output message="ns:CreateReturnShippingLabelRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteReturnDraftFile" method="DELETE" resource="return/draft/{draftId}/file/{fileId}">
+    <wsdl:input message="ns:DeleteReturnDraftFileRestRequest"/>
+    <wsdl:output message="ns:DeleteReturnDraftFileRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteReturnFile" method="DELETE" resource="return/{returnId}/file/{fileId}">
+    <wsdl:input message="ns:DeleteReturnFileRestRequest"/>
+    <wsdl:output message="ns:DeleteReturnFileRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="EscalateReturn" method="POST" resource="return/{returnId}/escalate">
+    <wsdl:input message="ns:EscalateReturnRestRequest"/>
+    <wsdl:output message="ns:EscalateReturnRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturn" method="GET" resource="return/{returnId}">
+    <wsdl:input message="ns:GetReturnRestRequest"/>
+    <wsdl:output message="ns:GetReturnRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnDraft" method="GET" resource="return/draft/{draftId}">
+    <wsdl:input message="ns:GetReturnDraftRestRequest"/>
+    <wsdl:output message="ns:GetReturnDraftRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnDraftFiles" method="GET" resource="return/draft/{draftId}/files">
+    <wsdl:input message="ns:GetReturnDraftFilesRestRequest"/>
+    <wsdl:output message="ns:GetReturnDraftFilesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnEstimate" method="POST" resource="return/estimate">
+    <wsdl:input message="ns:GetReturnEstimateRestRequest"/>
+    <wsdl:output message="ns:GetReturnEstimateRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnFiles" method="GET" resource="return/{returnId}/files">
+    <wsdl:input message="ns:GetReturnFilesRestRequest"/>
+    <wsdl:output message="ns:GetReturnFilesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnMetadata" method="GET" resource="return/metadata/{metadataKey}">
+    <wsdl:input message="ns:GetReturnMetadataRestRequest"/>
+    <wsdl:output message="ns:GetReturnMetadataRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnPreferences" method="GET" resource="return/preference">
+    <wsdl:output message="ns:GetReturnPreferencesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnShippingLabel" method="GET" resource="return/{returnId}/get_shipping_label">
+    <wsdl:input message="ns:GetReturnShippingLabelRestRequest"/>
+    <wsdl:output message="ns:GetReturnShippingLabelRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetShipmentTracking" method="GET" resource="return/{returnId}/tracking">
+    <wsdl:input message="ns:GetShipmentTrackingRestRequest"/>
+    <wsdl:output message="ns:GetShipmentTrackingRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="IssueReturnRefund" method="POST" resource="return/{returnId}/issue_refund">
+    <wsdl:input message="ns:IssueReturnRefundRestRequest"/>
+    <wsdl:output message="ns:IssueReturnRefundRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="MarkReturnReceived" method="POST" resource="return/{returnId}/mark_as_received">
+    <wsdl:input message="ns:MarkReturnReceivedRestRequest"/>
+    <wsdl:output message="ns:MarkReturnReceivedRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="MarkReturnRefundReceived" method="POST" resource="return/{returnId}/mark_refund_received">
+    <wsdl:input message="ns:MarkReturnRefundReceivedRestRequest"/>
+    <wsdl:output message="ns:MarkReturnRefundReceivedRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="MarkReturnRefundSent" method="POST" resource="return/{returnId}/mark_refund_sent">
+    <wsdl:input message="ns:MarkReturnRefundSentRestRequest"/>
+    <wsdl:output message="ns:MarkReturnRefundSentRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="MarkReturnShipped" method="POST" resource="return/{returnId}/mark_as_shipped">
+    <wsdl:input message="ns:MarkReturnShippedRestRequest"/>
+    <wsdl:output message="ns:MarkReturnShippedRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ProcessReturnRequest" method="MET" resource="RES">
+    <wsdl:input message="ns:ProcessReturnRequestRestRequest"/>
+    <wsdl:output message="ns:ProcessReturnRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SearchReturns" method="GET" resource="return/search">
+    <wsdl:input message="ns:SearchReturnsRestRequest"/>
+    <wsdl:output message="ns:SearchReturnsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SendReturnMessage" method="POST" resource="return/{returnId}/send_message">
+    <wsdl:input message="ns:SendReturnMessageRestRequest"/>
+    <wsdl:output message="ns:SendReturnMessageRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SendReturnShippingLabel" method="POST" resource="return/{returnId}/send_shipping_label">
+    <wsdl:input message="ns:SendReturnShippingLabelRestRequest"/>
+    <wsdl:output message="ns:SendReturnShippingLabelRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SetReturnPreferences" method="POST" resource="return/preference">
+    <wsdl:input message="ns:SetReturnPreferencesRestRequest"/>
+    <wsdl:output message="ns:SetReturnPreferencesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="SubmitReturnFile" method="POST" resource="return/{returnId}/file/submit">
+    <wsdl:input message="ns:SubmitReturnFileRestRequest"/>
+    <wsdl:output message="ns:SubmitReturnFileRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateReturnDraft" method="PUT" resource="return/draft/{draftId}">
+    <wsdl:input message="ns:UpdateReturnDraftRestRequest"/>
+    <wsdl:output message="ns:UpdateReturnDraftRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateShipmentTracking" method="PUT" resource="return/{returnId}/update_tracking">
+    <wsdl:input message="ns:UpdateShipmentTrackingRestRequest"/>
+    <wsdl:output message="ns:UpdateShipmentTrackingRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UploadReturnDraftFile" method="POST" resource="return/draft/{draftId}/file/upload">
+    <wsdl:input message="ns:UploadReturnDraftFileRestRequest"/>
+    <wsdl:output message="ns:UploadReturnDraftFileRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UploadReturnFile" method="POST" resource="return/{returnId}/file/upload">
+    <wsdl:input message="ns:UploadReturnFileRestRequest"/>
+    <wsdl:output message="ns:UploadReturnFileRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="VoidShippingLabel" method="POST" resource="return/{returnId}/void_shipping_label">
+    <wsdl:input message="ns:VoidShippingLabelRestRequest"/>
+    <wsdl:output message="ns:VoidShippingLabelRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateCustomList" method="POST" resource="rules/custom_list">
+    <wsdl:input message="ns:CreateCustomListRestRequest"/>
+    <wsdl:output message="ns:CreateCustomListRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateReturnRules" method="POST" resource="rules">
+    <wsdl:input message="ns:CreateReturnRulesRestRequest"/>
+    <wsdl:output message="ns:CreateReturnRulesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetCustomList" method="GET" resource="rules/custom_list_detail">
+    <wsdl:output message="ns:GetCustomListRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetCustomLists" method="GET" resource="rules/custom_list">
+    <wsdl:output message="ns:GetCustomListsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnRuleTemplates" method="GET" resource="rules/get_templates">
+    <wsdl:output message="ns:GetReturnRuleTemplatesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetStoreCategories" method="GET" resource="rules/get_store_category">
+    <wsdl:output message="ns:GetStoreCategoriesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnRule" method="GET" resource="rules/{ruleId}">
+    <wsdl:input message="ns:GetReturnRuleRestRequest"/>
+    <wsdl:output message="ns:GetReturnRuleRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnRuleHistory" method="GET" resource="rules/{ruleId}/get_trigger_history">
+    <wsdl:input message="ns:GetReturnRuleHistoryRestRequest"/>
+    <wsdl:output message="ns:GetReturnRuleHistoryRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnRules" method="GET" resource="rules/disposition_rules_list">
+    <wsdl:input message="ns:GetReturnRulesRestRequest"/>
+    <wsdl:output message="ns:GetReturnRulesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateCustomList" method="PUT" resource="rules/custom_list">
+    <wsdl:input message="ns:UpdateCustomListRestRequest"/>
+    <wsdl:output message="ns:UpdateCustomListRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateReturnRules" method="PUT" resource="rules">
+    <wsdl:input message="ns:UpdateReturnRulesRestRequest"/>
+    <wsdl:output message="ns:UpdateReturnRulesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

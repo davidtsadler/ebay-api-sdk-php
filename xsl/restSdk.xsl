@@ -243,22 +243,22 @@ class <xsl:copy-of select="$service"/>Service extends \DTS\eBaySDK\<xsl:copy-of 
 
 <xsl:template match="operation" mode="php">
 
-    /**
-     * @param \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request
+    /**<xsl:if test="@request-type != ''">
+     * @param \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request</xsl:if>
      * @return \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@response-type"/>
      */
-    public function <xsl:value-of select="@method-name"/>(\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request)
+    public function <xsl:value-of select="@method-name"/>(<xsl:if test="@request-type != ''">\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request</xsl:if>)
     {
-        return $this-><xsl:value-of select="@method-name"/>Async($request)->wait();
+        return $this-><xsl:value-of select="@method-name"/>Async(<xsl:if test="@request-type != ''">$request</xsl:if>)->wait();
     }
 
-    /**
-     * @param \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request
+    /**<xsl:if test="@request-type != ''">
+     * @param \DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request</xsl:if>
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function <xsl:value-of select="@method-name"/>Async(\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request)
+    public function <xsl:value-of select="@method-name"/>Async(<xsl:if test="@request-type != ''">\DTS\eBaySDK\<xsl:copy-of select="$service"/>\Types\<xsl:value-of select="@request-type"/> $request</xsl:if>)
     {
-        return $this->callOperationAsync('<xsl:value-of select="@name"/>', $request);
+        return $this->callOperationAsync('<xsl:value-of select="@name"/>'<xsl:if test="@request-type != ''">, $request</xsl:if>);
     }</xsl:template>
 
 <xsl:template match="operationDef" mode="php">

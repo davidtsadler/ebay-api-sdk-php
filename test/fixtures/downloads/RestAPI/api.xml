@@ -444,6 +444,12 @@
     </wsdl:operation>
   </wsdl:portType>
 
+  <wsdl:portType>
+    <wsdl:operation name="methodThree" method="GET" resource="foo">
+      <wsdl:output message="ns:methodTwoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
   <wsdl:documentation>
     <Version>123</Version>
   </wsdl:documentation>

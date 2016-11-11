@@ -35,6 +35,13 @@ class RestAPIService extends \DTS\eBaySDK\RestAPI\Services\RestAPIBaseService
             'responseClass' => '\DTS\eBaySDK\RestAPI\Types\MethodTwoResponseType',
             'params' => [
             ]
+        ],
+        'methodThree' => [
+            'method' => 'GET',
+            'resource' => 'foo',
+            'responseClass' => '\DTS\eBaySDK\RestAPI\Types\MethodTwoResponseType',
+            'params' => [
+            ]
         ]
     ];
 
@@ -80,5 +87,21 @@ class RestAPIService extends \DTS\eBaySDK\RestAPI\Services\RestAPIBaseService
     public function methodTwoAsync(\DTS\eBaySDK\RestAPI\Types\MethodTwoRequestType $request)
     {
         return $this->callOperationAsync('methodTwo', $request);
+    }
+
+    /**
+     * @return \DTS\eBaySDK\RestAPI\Types\MethodTwoResponseType
+     */
+    public function methodThree()
+    {
+        return $this->methodThreeAsync()->wait();
+    }
+
+    /**
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function methodThreeAsync()
+    {
+        return $this->callOperationAsync('methodThree');
     }
 }

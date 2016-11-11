@@ -8,8 +8,10 @@
 <xs:complexType name="GetItemRestResponse" restResponse="true">
   <xs:complexContent>
     <xs:extension base="ns:Item">
-      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
     </xs:extension>
   </xs:complexContent>
 </xs:complexType>
@@ -26,8 +28,10 @@
 <xs:complexType name="GetItemFeedRestResponse" restResponse="true">
   <xs:complexContent>
     <xs:extension base="ns:ItemFeedResponse">
-      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
     </xs:extension>
   </xs:complexContent>
 </xs:complexType>
@@ -42,8 +46,10 @@
 <xs:complexType name="GetItemGroupRestResponse" restResponse="true">
   <xs:complexContent>
     <xs:extension base="ns:ItemGroup">
-      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
     </xs:extension>
   </xs:complexContent>
 </xs:complexType>
@@ -62,8 +68,10 @@
 <xs:complexType name="SearchForItemsRestResponse" restResponse="true">
   <xs:complexContent>
     <xs:extension base="ns:SearchPagedCollection">
-      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
     </xs:extension>
   </xs:complexContent>
 </xs:complexType>

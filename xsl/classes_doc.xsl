@@ -38,6 +38,11 @@
         <xsl:value-of select="//xs:schema/*:element[substring-after(@type, ':')=$name]/@name"/>
       </xsl:attribute>
     </xsl:if>
+    <xsl:if test="@restResponse='true'"> 
+      <xsl:attribute name="restResponse">
+        <xsl:value-of select="true()"/>
+      </xsl:attribute>
+    </xsl:if>
     <xsl:if test="@name='AbstractRequestType'">
       <xsl:apply-templates select="//xs:element[@name='RequesterCredentials']" mode="properties"/>
     </xsl:if>
@@ -49,11 +54,6 @@
                                               and not(xs:annotation/xs:appinfo//*:noCalls)]" mode="properties"/>
     <xsl:apply-templates select="*:sequence/*:choice/*:element" mode="properties"/>
     <xsl:apply-templates select="*:choice/*:element" mode="properties"/>
-    <xsl:if test="@restResponse='true'"> 
-      <xsl:attribute name="restResponse">
-        <xsl:value-of select="true()"/>
-      </xsl:attribute>
-    </xsl:if>
   </xsl:element>
 </xsl:template>
 
