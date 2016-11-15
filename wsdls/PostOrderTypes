@@ -26,7 +26,7 @@
     <xs:element name="message" type="xs:string"/>
     <xs:element name="parameter" type="ns:ErrorParameter" maxOccurs="unbounded"/>
     <xs:element name="longMessage" type="xs:string"/>
-    <xs:element name="httpStatusCode" type="xs:string"/>
+    <xs:element name="httpStatusCode" type="xs:integer"/>
   </xs:sequence>
 </xs:complexType>
 <xs:complexType name="ErrorParameter">
@@ -64,7 +64,7 @@
 </xs:complexType>
 <xs:complexType name="ApproveCancellationRequestRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -82,7 +82,7 @@
   <xs:complexContent>
     <xs:extension base="ns:OrderEligibilityResult">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -103,7 +103,7 @@
 </xs:complexType>
 <xs:complexType name="ConfirmCancellationRefundRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -121,7 +121,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetCancelDetailResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -142,7 +142,7 @@
 </xs:complexType>
 <xs:complexType name="RejectCancellationRequestRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -169,7 +169,7 @@
   <xs:complexContent>
     <xs:extension base="ns:FindCancelResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -189,7 +189,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CreateCancelResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -210,7 +210,7 @@
 </xs:complexType>
 <xs:complexType name="AppealCaseDecisionRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -229,7 +229,7 @@
 </xs:complexType>
 <xs:complexType name="CloseCaseRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -246,7 +246,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CaseDetailsResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -269,7 +269,7 @@
   <xs:complexContent>
     <xs:extension base="ns:VoluntaryRefundResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -290,7 +290,7 @@
 </xs:complexType>
 <xs:complexType name="ProvideReturnShipmentInfoRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -309,7 +309,7 @@
 </xs:complexType>
 <xs:complexType name="ProvidesReturnAddressRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -336,7 +336,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CaseSearchResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -356,7 +356,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CheckInquiryEligibilityResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -377,7 +377,7 @@
 </xs:complexType>
 <xs:complexType name="CloseInquiryRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -392,7 +392,7 @@
 </xs:complexType>
 <xs:complexType name="ConfirmInquiryRefundRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -408,7 +408,7 @@
 </xs:complexType>
 <xs:complexType name="CreateInquiryRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -427,7 +427,7 @@
 </xs:complexType>
 <xs:complexType name="EscalateInquiryRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -444,7 +444,7 @@
   <xs:complexContent>
     <xs:extension base="ns:InquiryDetailsResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -467,7 +467,7 @@
   <xs:complexContent>
     <xs:extension base="ns:VoluntaryRefundResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -488,7 +488,7 @@
 </xs:complexType>
 <xs:complexType name="ProvideInquiryRefundInfoRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -507,7 +507,7 @@
 </xs:complexType>
 <xs:complexType name="ProvideInquiryShipmentInfoRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -533,7 +533,7 @@
   <xs:complexContent>
     <xs:extension base="ns:InquirySearchResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -554,7 +554,7 @@
 </xs:complexType>
 <xs:complexType name="SendInquiryMessageRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -575,7 +575,7 @@
   <xs:complexContent>
     <xs:extension base="ns:ProvideLabelResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -596,7 +596,7 @@
 </xs:complexType>
 <xs:complexType name="CancelReturnRequestRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -614,7 +614,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CheckEligibilityResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -633,7 +633,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CheckLabelPrintEligibilityResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -653,7 +653,7 @@
   <xs:complexContent>
     <xs:extension base="ns:SetReturnCreationSessionResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -676,7 +676,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CreateReturnResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -695,7 +695,7 @@
   <xs:complexContent>
     <xs:extension base="ns:InitiateShippingLabelResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -713,7 +713,7 @@
 </xs:complexType>
 <xs:complexType name="DeleteReturnDraftFileRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -729,7 +729,7 @@
 </xs:complexType>
 <xs:complexType name="DeleteReturnFileRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -750,7 +750,7 @@
   <xs:complexContent>
     <xs:extension base="ns:EscalateResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -770,7 +770,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetDetailResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -789,7 +789,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetReturnCreationSessionResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -808,7 +808,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetFileResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -828,7 +828,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetEstimateResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -847,7 +847,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetFileResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -866,7 +866,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetMetadataResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -879,7 +879,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetSellerReturnPreferenceResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -898,7 +898,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetShippingLabelResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -919,7 +919,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetTrackingHistoryResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -942,7 +942,7 @@
   <xs:complexContent>
     <xs:extension base="ns:IssueRefundResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -963,7 +963,7 @@
 </xs:complexType>
 <xs:complexType name="MarkReturnReceivedRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -978,7 +978,7 @@
 </xs:complexType>
 <xs:complexType name="MarkReturnRefundReceivedRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -997,7 +997,7 @@
 </xs:complexType>
 <xs:complexType name="MarkReturnRefundSentRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -1016,7 +1016,7 @@
 </xs:complexType>
 <xs:complexType name="MarkReturnShippedRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -1037,7 +1037,7 @@
   <xs:complexContent>
     <xs:extension base="ns:DecideReturnResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1064,7 +1064,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetSummaryResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1085,7 +1085,7 @@
 </xs:complexType>
 <xs:complexType name="SendReturnMessageRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -1103,7 +1103,7 @@
   <xs:complexContent>
     <xs:extension base="ns:SendShippingLabelResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1121,7 +1121,7 @@
 </xs:complexType>
 <xs:complexType name="SetReturnPreferencesRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -1142,7 +1142,7 @@
   <xs:complexContent>
     <xs:extension base="ns:SubmitFileResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1165,7 +1165,7 @@
   <xs:complexContent>
     <xs:extension base="ns:SetReturnCreationSessionResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1186,7 +1186,7 @@
 </xs:complexType>
 <xs:complexType name="UpdateShipmentTrackingRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -1207,7 +1207,7 @@
   <xs:complexContent>
     <xs:extension base="ns:UploadFileResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1230,7 +1230,7 @@
   <xs:complexContent>
     <xs:extension base="ns:UploadFileResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1251,7 +1251,7 @@
 </xs:complexType>
 <xs:complexType name="VoidShippingLabelRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -1269,7 +1269,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CreateCustomListResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1289,7 +1289,7 @@
   <xs:complexContent>
     <xs:extension base="ns:CreateDispositionRuleResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1302,7 +1302,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetCustomListDetailResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1315,7 +1315,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetCustomListsResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1328,7 +1328,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetDispositionRuleTemplatesResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1341,7 +1341,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetStoreCategoryResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1360,7 +1360,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetDispositionRuleDetailResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1383,7 +1383,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetDispositionRuleTriggerHistResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1402,7 +1402,7 @@
   <xs:complexContent>
     <xs:extension base="ns:GetDispositionRulesResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1422,7 +1422,7 @@
   <xs:complexContent>
     <xs:extension base="ns:ModifyCustomListResponse">
       <xs:sequence>
-        <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+        <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1440,7 +1440,7 @@
 </xs:complexType>
 <xs:complexType name="UpdateReturnRulesRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="errorMessage" type="ns:ErrorMessage" maxOccurs="unbounded"/>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
