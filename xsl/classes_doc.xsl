@@ -43,7 +43,7 @@
         <xsl:value-of select="true()"/>
       </xsl:attribute>
     </xsl:if>
-    <xsl:if test="@name='AbstractRequestType'">
+    <xsl:if test="@name='AbstractRequestType' and $service='Trading'">
       <xsl:apply-templates select="//xs:element[@name='RequesterCredentials']" mode="properties"/>
     </xsl:if>
     <xsl:apply-templates select="*:sequence/*:element[not(xs:annotation/xs:appinfo//*:NoCalls)
