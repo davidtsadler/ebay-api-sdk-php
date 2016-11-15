@@ -199,6 +199,9 @@
     <xsl:when test="$type='long'">
       <xsl:text>integer</xsl:text>
     </xsl:when>
+    <xsl:when test="$type='positiveInteger'">
+      <xsl:text>integer</xsl:text>
+    </xsl:when>
     <xsl:when test="$type='string'">
       <xsl:text>string</xsl:text>
     </xsl:when>
