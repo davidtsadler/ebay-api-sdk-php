@@ -1,0 +1,321 @@
+<xs:element name="GetCheckoutSessionRestRequest" type="ns:GetCheckoutSessionRestRequest"/>
+<xs:element name="GetCheckoutSessionRestResponse" type="ns:GetCheckoutSessionRestResponse"/>
+<xs:complexType name="GetCheckoutSessionRestRequest">
+  <xs:sequence>
+    <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetCheckoutSessionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="InitiateCheckoutSessionRestRequest" type="ns:InitiateCheckoutSessionRestRequest"/>
+<xs:element name="InitiateCheckoutSessionRestResponse" type="ns:InitiateCheckoutSessionRestResponse"/>
+<xs:complexType name="InitiateCheckoutSessionRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CreateSignInCheckoutSessionRequest">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="InitiateCheckoutSessionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="PlaceOrderRestRequest" type="ns:PlaceOrderRestRequest"/>
+<xs:element name="PlaceOrderRestResponse" type="ns:PlaceOrderRestResponse"/>
+<xs:complexType name="PlaceOrderRestRequest">
+  <xs:sequence>
+    <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="PlaceOrderRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PurchaseOrderSummary">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdatePaymentInfoRestRequest" type="ns:UpdatePaymentInfoRestRequest"/>
+<xs:element name="UpdatePaymentInfoRestResponse" type="ns:UpdatePaymentInfoRestResponse"/>
+<xs:complexType name="UpdatePaymentInfoRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdatePaymentInformation">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdatePaymentInfoRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateQuantityForLineItemRestRequest" type="ns:UpdateQuantityForLineItemRestRequest"/>
+<xs:element name="UpdateQuantityForLineItemRestResponse" type="ns:UpdateQuantityForLineItemRestResponse"/>
+<xs:complexType name="UpdateQuantityForLineItemRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdateQuantity">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateQuantityForLineItemRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateShippingAddressRestRequest" type="ns:UpdateShippingAddressRestRequest"/>
+<xs:element name="UpdateShippingAddressRestResponse" type="ns:UpdateShippingAddressRestResponse"/>
+<xs:complexType name="UpdateShippingAddressRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ShippingAddressImpl">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateShippingAddressRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateShippingOptionRestRequest" type="ns:UpdateShippingOptionRestRequest"/>
+<xs:element name="UpdateShippingOptionRestResponse" type="ns:UpdateShippingOptionRestResponse"/>
+<xs:complexType name="UpdateShippingOptionRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdateShippingOption">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateShippingOptionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetGuestCheckoutSessionRestRequest" type="ns:GetGuestCheckoutSessionRestRequest"/>
+<xs:element name="GetGuestCheckoutSessionRestResponse" type="ns:GetGuestCheckoutSessionRestResponse"/>
+<xs:complexType name="GetGuestCheckoutSessionRestRequest">
+  <xs:sequence>
+    <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetGuestCheckoutSessionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="InitiateGuestCheckoutSessionRestRequest" type="ns:InitiateGuestCheckoutSessionRestRequest"/>
+<xs:element name="InitiateGuestCheckoutSessionRestResponse" type="ns:InitiateGuestCheckoutSessionRestResponse"/>
+<xs:complexType name="InitiateGuestCheckoutSessionRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CreateGuestCheckoutSessionRequest">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="InitiateGuestCheckoutSessionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="PlaceGuestOrderRestRequest" type="ns:PlaceGuestOrderRestRequest"/>
+<xs:element name="PlaceGuestOrderRestResponse" type="ns:PlaceGuestOrderRestResponse"/>
+<xs:complexType name="PlaceGuestOrderRestRequest">
+  <xs:sequence>
+    <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="PlaceGuestOrderRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PurchaseOrderSummary">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateGuestLineItemQuantityRestRequest" type="ns:UpdateGuestLineItemQuantityRestRequest"/>
+<xs:element name="UpdateGuestLineItemQuantityRestResponse" type="ns:UpdateGuestLineItemQuantityRestResponse"/>
+<xs:complexType name="UpdateGuestLineItemQuantityRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdateQuantity">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateGuestLineItemQuantityRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateGuestLineItemShippingAddressRestRequest" type="ns:UpdateGuestLineItemShippingAddressRestRequest"/>
+<xs:element name="UpdateGuestLineItemShippingAddressRestResponse" type="ns:UpdateGuestLineItemShippingAddressRestResponse"/>
+<xs:complexType name="UpdateGuestLineItemShippingAddressRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ShippingAddressImpl">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateGuestLineItemShippingAddressRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateGuestPaymentInfoRestRequest" type="ns:UpdateGuestPaymentInfoRestRequest"/>
+<xs:element name="UpdateGuestPaymentInfoRestResponse" type="ns:UpdateGuestPaymentInfoRestResponse"/>
+<xs:complexType name="UpdateGuestPaymentInfoRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdatePaymentInformation">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateGuestPaymentInfoRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateGuestShippingOptionRestRequest" type="ns:UpdateGuestShippingOptionRestRequest"/>
+<xs:element name="UpdateGuestShippingOptionRestResponse" type="ns:UpdateGuestShippingOptionRestResponse"/>
+<xs:complexType name="UpdateGuestShippingOptionRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdateShippingOption">
+      <xs:sequence>
+        <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateGuestShippingOptionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CheckoutSessionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetGuestPurchaseOrderRestRequest" type="ns:GetGuestPurchaseOrderRestRequest"/>
+<xs:element name="GetGuestPurchaseOrderRestResponse" type="ns:GetGuestPurchaseOrderRestResponse"/>
+<xs:complexType name="GetGuestPurchaseOrderRestRequest">
+  <xs:sequence>
+    <xs:element name="purchaseOrderId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetGuestPurchaseOrderRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:GuestPurchaseOrder">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetPurchaseOrderRestRequest" type="ns:GetPurchaseOrderRestRequest"/>
+<xs:element name="GetPurchaseOrderRestResponse" type="ns:GetPurchaseOrderRestResponse"/>
+<xs:complexType name="GetPurchaseOrderRestRequest">
+  <xs:sequence>
+    <xs:element name="purchaseOrderId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPurchaseOrderRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PurchaseOrder">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>

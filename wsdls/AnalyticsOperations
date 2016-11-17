@@ -1,0 +1,20 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="GetASpecificSellerProfile" method="GET" resource="seller_standards_profile/{program}/{cycle}">
+    <wsdl:input message="ns:GetASpecificSellerProfileRestRequest"/>
+    <wsdl:output message="ns:GetASpecificSellerProfileRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAllSellerProfiles" method="GET" resource="seller_standards_profile">
+    <wsdl:output message="ns:GetAllSellerProfilesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetTrafficReport" method="GET" resource="traffic_report">
+    <wsdl:input message="ns:GetTrafficReportRestRequest"/>
+    <wsdl:output message="ns:GetTrafficReportRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

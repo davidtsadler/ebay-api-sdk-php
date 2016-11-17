@@ -1,3 +1,6 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
 <wsdl:portType>
   <wsdl:operation name="getItem" method="GET" resource="item/{item_id}">
     <wsdl:input message="ns:GetItemRestRequest"/>
@@ -22,6 +25,3 @@
     <wsdl:output message="ns:SearchForItemsRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
-<wsdl:documentation>
-  <Version>v1</Version>
-</wsdl:documentation>

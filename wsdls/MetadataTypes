@@ -1,0 +1,37 @@
+<xs:complexType name="ErrorDetailV3">
+  <xs:sequence>
+    <xs:element name="category" type="xs:string"/>
+    <xs:element name="domain" type="xs:string"/>
+    <xs:element name="errorId" type="xs:integer"/>
+    <xs:element name="inputRefIds" type="xs:string"/>
+    <xs:element name="longMessage" type="xs:string"/>
+    <xs:element name="message" type="xs:string"/>
+    <xs:element name="outputRefIds" type="xs:string"/>
+    <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+    <xs:element name="subDomain" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="ErrorParameterV3">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetSalesTaxJurisdictionsRestRequest" type="ns:GetSalesTaxJurisdictionsRestRequest"/>
+<xs:element name="GetSalesTaxJurisdictionsRestResponse" type="ns:GetSalesTaxJurisdictionsRestResponse"/>
+<xs:complexType name="GetSalesTaxJurisdictionsRestRequest">
+  <xs:sequence>
+    <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetSalesTaxJurisdictionsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SalesTaxJurisdictions">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>

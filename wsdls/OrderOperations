@@ -1,0 +1,99 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="GetCheckoutSession" method="GET" resource="checkout_session/{checkoutSessionId}">
+    <wsdl:input message="ns:GetCheckoutSessionRestRequest"/>
+    <wsdl:output message="ns:GetCheckoutSessionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="InitiateCheckoutSession" method="POST" resource="checkout_session/initiate">
+    <wsdl:input message="ns:InitiateCheckoutSessionRestRequest"/>
+    <wsdl:output message="ns:InitiateCheckoutSessionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="PlaceOrder" method="POST" resource="checkout_session/{checkoutSessionId}/place_order">
+    <wsdl:input message="ns:PlaceOrderRestRequest"/>
+    <wsdl:output message="ns:PlaceOrderRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdatePaymentInfo" method="POST" resource="checkout_session/{checkoutSessionId}/update_payment_info">
+    <wsdl:input message="ns:UpdatePaymentInfoRestRequest"/>
+    <wsdl:output message="ns:UpdatePaymentInfoRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateQuantityForLineItem" method="POST" resource="checkout_session/{checkoutSessionId}/update_quantity">
+    <wsdl:input message="ns:UpdateQuantityForLineItemRestRequest"/>
+    <wsdl:output message="ns:UpdateQuantityForLineItemRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateShippingAddress" method="POST" resource="_session/{checkoutSessionId}/update_shipping_address">
+    <wsdl:input message="ns:UpdateShippingAddressRestRequest"/>
+    <wsdl:output message="ns:UpdateShippingAddressRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateShippingOption" method="POST" resource="checkout_session/{checkoutSessionId}/update_shipping_option">
+    <wsdl:input message="ns:UpdateShippingOptionRestRequest"/>
+    <wsdl:output message="ns:UpdateShippingOptionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetGuestCheckoutSession" method="GET" resource="guest_checkout_session/{checkoutSessionId}">
+    <wsdl:input message="ns:GetGuestCheckoutSessionRestRequest"/>
+    <wsdl:output message="ns:GetGuestCheckoutSessionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="InitiateGuestCheckoutSession" method="POST" resource="guest_checkout_session/initiate">
+    <wsdl:input message="ns:InitiateGuestCheckoutSessionRestRequest"/>
+    <wsdl:output message="ns:InitiateGuestCheckoutSessionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="PlaceGuestOrder" method="POST" resource="guest_checkout_session/{checkoutSessionId}/place_order">
+    <wsdl:input message="ns:PlaceGuestOrderRestRequest"/>
+    <wsdl:output message="ns:PlaceGuestOrderRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateGuestLineItemQuantity" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_quantity">
+    <wsdl:input message="ns:UpdateGuestLineItemQuantityRestRequest"/>
+    <wsdl:output message="ns:UpdateGuestLineItemQuantityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateGuestLineItemShippingAddress" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_shipping_address">
+    <wsdl:input message="ns:UpdateGuestLineItemShippingAddressRestRequest"/>
+    <wsdl:output message="ns:UpdateGuestLineItemShippingAddressRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateGuestPaymentInfo" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_payment_info">
+    <wsdl:input message="ns:UpdateGuestPaymentInfoRestRequest"/>
+    <wsdl:output message="ns:UpdateGuestPaymentInfoRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateGuestShippingOption" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_shipping_option">
+    <wsdl:input message="ns:UpdateGuestShippingOptionRestRequest"/>
+    <wsdl:output message="ns:UpdateGuestShippingOptionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetGuestPurchaseOrder" method="GET" resource="guest_purchase_order/{purchaseOrderId}">
+    <wsdl:input message="ns:GetGuestPurchaseOrderRestRequest"/>
+    <wsdl:output message="ns:GetGuestPurchaseOrderRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPurchaseOrder" method="GET" resource="purchase_order/{purchaseOrderId}">
+    <wsdl:input message="ns:GetPurchaseOrderRestRequest"/>
+    <wsdl:output message="ns:GetPurchaseOrderRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

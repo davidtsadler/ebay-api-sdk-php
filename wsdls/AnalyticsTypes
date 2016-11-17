@@ -1,0 +1,50 @@
+<xs:element name="GetASpecificSellerProfileRestRequest" type="ns:GetASpecificSellerProfileRestRequest"/>
+<xs:element name="GetASpecificSellerProfileRestResponse" type="ns:GetASpecificSellerProfileRestResponse"/>
+<xs:complexType name="GetASpecificSellerProfileRestRequest">
+  <xs:sequence>
+    <xs:element name="cycle" type="xs:string" valid="string" required="true"/>
+    <xs:element name="program" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetASpecificSellerProfileRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:StandardsProfile">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAllSellerProfilesRestResponse" type="ns:GetAllSellerProfilesRestResponse"/>
+<xs:complexType name="GetAllSellerProfilesRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:FindSellerStandardsProfilesResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetTrafficReportRestRequest" type="ns:GetTrafficReportRestRequest"/>
+<xs:element name="GetTrafficReportRestResponse" type="ns:GetTrafficReportRestResponse"/>
+<xs:complexType name="GetTrafficReportRestRequest">
+  <xs:sequence>
+    <xs:element name="dimension" type="xs:string" valid="string" required="true"/>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="metric" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetTrafficReportRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Report">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>

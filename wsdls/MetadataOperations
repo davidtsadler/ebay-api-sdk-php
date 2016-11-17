@@ -1,0 +1,9 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="GetSalesTaxJurisdictions" method="GET" resource="country/{countryCode}/sales_tax_jurisdiction">
+    <wsdl:input message="ns:GetSalesTaxJurisdictionsRestRequest"/>
+    <wsdl:output message="ns:GetSalesTaxJurisdictionsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
