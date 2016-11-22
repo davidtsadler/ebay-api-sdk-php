@@ -1,0 +1,201 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="BulkCreateAdsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/bulk_create_ads_by_inventory_reference">
+    <wsdl:input message="ns:BulkCreateAdsByInventoryReferenceRestRequest"/>
+    <wsdl:output message="ns:BulkCreateAdsByInventoryReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="BulkCreateAdsByListingID" method="POST" resource="campaign/{campaign_id}/bulk_create_ads_by_listing_id">
+    <wsdl:input message="ns:BulkCreateAdsByListingIDRestRequest"/>
+    <wsdl:output message="ns:BulkCreateAdsByListingIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="BulkDeleteAdsByInventoryReference" method="POST" resource="campaign/{campaign_id}/bulk_delete_ads_by_inventory_reference">
+    <wsdl:input message="ns:BulkDeleteAdsByInventoryReferenceRestRequest"/>
+    <wsdl:output message="ns:BulkDeleteAdsByInventoryReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="BulkDeleteAdsByListingID" method="POST" resource="campaign/{campaign_id}/bulk_delete_ads_by_listing_id">
+    <wsdl:input message="ns:BulkDeleteAdsByListingIDRestRequest"/>
+    <wsdl:output message="ns:BulkDeleteAdsByListingIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="BulkUpdateAdBidsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/bulk_update_ads_bid_by_inventory_reference">
+    <wsdl:input message="ns:BulkUpdateAdBidsByInventoryReferenceRestRequest"/>
+    <wsdl:output message="ns:BulkUpdateAdBidsByInventoryReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="BulkUpdateAdBidsByListingID" method="POST" resource="ad_campaign/{campaign_id}/bulk_update_ads_bid_by_listing_id">
+    <wsdl:input message="ns:BulkUpdateAdBidsByListingIDRestRequest"/>
+    <wsdl:output message="ns:BulkUpdateAdBidsByListingIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateAdByListingID" method="POST" resource="ad_campaign/{campaign_id}/ad">
+    <wsdl:input message="ns:CreateAdByListingIDRestRequest"/>
+    <wsdl:output message="ns:CreateAdByListingIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateAdsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/create_ads_by_inventory_reference">
+    <wsdl:input message="ns:CreateAdsByInventoryReferenceRestRequest"/>
+    <wsdl:output message="ns:CreateAdsByInventoryReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteAdByID" method="DELETE" resource="ad_campaign/{campaign_id}/ad/{ad_id}">
+    <wsdl:input message="ns:DeleteAdByIDRestRequest"/>
+    <wsdl:output message="ns:DeleteAdByIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteAdsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/delete_ads_by_inventory_reference">
+    <wsdl:input message="ns:DeleteAdsByInventoryReferenceRestRequest"/>
+    <wsdl:output message="ns:DeleteAdsByInventoryReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAdByID" method="GET" resource="ad_campaign/{campaign_id}/ad/{ad_id}">
+    <wsdl:input message="ns:GetAdByIDRestRequest"/>
+    <wsdl:output message="ns:GetAdByIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAds" method="GET" resource="ad_campaign/{campaign_id}/ad">
+    <wsdl:input message="ns:GetAdsRestRequest"/>
+    <wsdl:output message="ns:GetAdsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAdsByInventoryReference" method="GET" resource="ad_campaign/{campaign_id}/get_ads_by_inventory_reference">
+    <wsdl:input message="ns:GetAdsByInventoryReferenceRestRequest"/>
+    <wsdl:output message="ns:GetAdsByInventoryReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateBid" method="POST" resource="ad_campaign/{campaign_id}/ad/{ad_id}/update_bid">
+    <wsdl:input message="ns:UpdateBidRestRequest"/>
+    <wsdl:output message="ns:UpdateBidRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CloneCampaign" method="POST" resource="ad_campaign/{campaign_id}/clone">
+    <wsdl:input message="ns:CloneCampaignRestRequest"/>
+    <wsdl:output message="ns:CloneCampaignRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateCampaign" method="POST" resource="ad_campaign">
+    <wsdl:input message="ns:CreateCampaignRestRequest"/>
+    <wsdl:output message="ns:CreateCampaignRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteCampaign" method="DELETE" resource="ad_campaign/{campaign_id}">
+    <wsdl:input message="ns:DeleteCampaignRestRequest"/>
+    <wsdl:output message="ns:DeleteCampaignRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="EndCampaign" method="POST" resource="ad_campaign/{campaign_id}/end">
+    <wsdl:input message="ns:EndCampaignRestRequest"/>
+    <wsdl:output message="ns:EndCampaignRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="FindCampaignByAdReference" method="GET" resource="ad_campaign/find_campaign_by_ad_reference">
+    <wsdl:input message="ns:FindCampaignByAdReferenceRestRequest"/>
+    <wsdl:output message="ns:FindCampaignByAdReferenceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAllCampaigns" method="GET" resource="ad_campaign">
+    <wsdl:input message="ns:GetAllCampaignsRestRequest"/>
+    <wsdl:output message="ns:GetAllCampaignsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetCampaignByName" method="GET" resource="ad_campaign/get_campaign_by_name">
+    <wsdl:input message="ns:GetCampaignByNameRestRequest"/>
+    <wsdl:output message="ns:GetCampaignByNameRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetCampaignByID" method="GET" resource="ad_campaign/{campaign_id}">
+    <wsdl:input message="ns:GetCampaignByIDRestRequest"/>
+    <wsdl:output message="ns:GetCampaignByIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="PauseCampaign" method="POST" resource="ad_campaign/{campaign_id}/pause">
+    <wsdl:input message="ns:PauseCampaignRestRequest"/>
+    <wsdl:output message="ns:PauseCampaignRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ResumeCampaign" method="POST" resource="ad_campaign/{campaign_id}/resume">
+    <wsdl:input message="ns:ResumeCampaignRestRequest"/>
+    <wsdl:output message="ns:ResumeCampaignRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateCampaignIDentification" method="POST" resource="ad_campaign/{campaign_id}/update_campaign_identification">
+    <wsdl:input message="ns:UpdateCampaignIDentificationRestRequest"/>
+    <wsdl:output message="ns:UpdateCampaignIDentificationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateItemPromotion" method="POST" resource="item_promotion">
+    <wsdl:input message="ns:CreateItemPromotionRestRequest"/>
+    <wsdl:output message="ns:CreateItemPromotionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteItemPromotion" method="DELETE" resource="item_promotion/{promotion_id}">
+    <wsdl:input message="ns:DeleteItemPromotionRestRequest"/>
+    <wsdl:output message="ns:DeleteItemPromotionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetItemPromotion" method="GET" resource="item_promotion/{promotion_id}">
+    <wsdl:input message="ns:GetItemPromotionRestRequest"/>
+    <wsdl:output message="ns:GetItemPromotionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateItemPromotion" method="PUT" resource="item_promotion/{promotion_id}">
+    <wsdl:input message="ns:UpdateItemPromotionRestRequest"/>
+    <wsdl:output message="ns:UpdateItemPromotionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPromotions" method="GET" resource="promotion">
+    <wsdl:input message="ns:GetPromotionsRestRequest"/>
+    <wsdl:output message="ns:GetPromotionsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="PauseAPromotion" method="POST" resource="promotion/{promotion_id}/pause">
+    <wsdl:input message="ns:PauseAPromotionRestRequest"/>
+    <wsdl:output message="ns:PauseAPromotionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="ResumeAPromotion" method="POST" resource="promotion/{promotion_id}/resume">
+    <wsdl:input message="ns:ResumeAPromotionRestRequest"/>
+    <wsdl:output message="ns:ResumeAPromotionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPromotionSummaryReport" method="GET" resource="promotion_summary_report">
+    <wsdl:input message="ns:GetPromotionSummaryReportRestRequest"/>
+    <wsdl:output message="ns:GetPromotionSummaryReportRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

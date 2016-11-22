@@ -1,0 +1,595 @@
+<xs:element name="BulkCreateAdsByInventoryReferenceRestRequest" type="ns:BulkCreateAdsByInventoryReferenceRestRequest"/>
+<xs:element name="BulkCreateAdsByInventoryReferenceRestResponse" type="ns:BulkCreateAdsByInventoryReferenceRestResponse"/>
+<xs:complexType name="BulkCreateAdsByInventoryReferenceRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkCreateAdsByInventoryReferenceRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkCreateAdsByInventoryReferenceRestResponse" restResponse="true">
+    <xs:sequence>
+      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:element name="BulkCreateAdsByListingIDRestRequest" type="ns:BulkCreateAdsByListingIDRestRequest"/>
+<xs:element name="BulkCreateAdsByListingIDRestResponse" type="ns:BulkCreateAdsByListingIDRestResponse"/>
+<xs:complexType name="BulkCreateAdsByListingIDRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkCreateAdRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkCreateAdsByListingIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkAdResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="BulkDeleteAdsByInventoryReferenceRestRequest" type="ns:BulkDeleteAdsByInventoryReferenceRestRequest"/>
+<xs:element name="BulkDeleteAdsByInventoryReferenceRestResponse" type="ns:BulkDeleteAdsByInventoryReferenceRestResponse"/>
+<xs:complexType name="BulkDeleteAdsByInventoryReferenceRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkDeleteAdsByInventoryReferenceRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkDeleteAdsByInventoryReferenceRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="BulkDeleteAdsByListingIDRestRequest" type="ns:BulkDeleteAdsByListingIDRestRequest"/>
+<xs:element name="BulkDeleteAdsByListingIDRestResponse" type="ns:BulkDeleteAdsByListingIDRestResponse"/>
+<xs:complexType name="BulkDeleteAdsByListingIDRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkDeleteAdRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkDeleteAdsByListingIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkDeleteAdResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="BulkUpdateAdBidsByInventoryReferenceRestRequest" type="ns:BulkUpdateAdBidsByInventoryReferenceRestRequest"/>
+<xs:element name="BulkUpdateAdBidsByInventoryReferenceRestResponse" type="ns:BulkUpdateAdBidsByInventoryReferenceRestResponse"/>
+<xs:complexType name="BulkUpdateAdBidsByInventoryReferenceRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkCreateAdsByInventoryReferenceRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkUpdateAdBidsByInventoryReferenceRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="BulkUpdateAdBidsByListingIDRestRequest" type="ns:BulkUpdateAdBidsByListingIDRestRequest"/>
+<xs:element name="BulkUpdateAdBidsByListingIDRestResponse" type="ns:BulkUpdateAdBidsByListingIDRestResponse"/>
+<xs:complexType name="BulkUpdateAdBidsByListingIDRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkCreateAdRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkUpdateAdBidsByListingIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkAdResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateAdByListingIDRestRequest" type="ns:CreateAdByListingIDRestRequest"/>
+<xs:element name="CreateAdByListingIDRestResponse" type="ns:CreateAdByListingIDRestResponse"/>
+<xs:complexType name="CreateAdByListingIDRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CreateAdRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateAdByListingIDRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CreateAdsByInventoryReferenceRestRequest" type="ns:CreateAdsByInventoryReferenceRestRequest"/>
+<xs:element name="CreateAdsByInventoryReferenceRestResponse" type="ns:CreateAdsByInventoryReferenceRestResponse"/>
+<xs:complexType name="CreateAdsByInventoryReferenceRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CreateAdsByInventoryReferenceRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateAdsByInventoryReferenceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:AdReferences">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteAdByIDRestRequest" type="ns:DeleteAdByIDRestRequest"/>
+<xs:element name="DeleteAdByIDRestResponse" type="ns:DeleteAdByIDRestResponse"/>
+<xs:complexType name="DeleteAdByIDRestRequest">
+  <xs:sequence>
+    <xs:element name="ad_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteAdByIDRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="DeleteAdsByInventoryReferenceRestRequest" type="ns:DeleteAdsByInventoryReferenceRestRequest"/>
+<xs:element name="DeleteAdsByInventoryReferenceRestResponse" type="ns:DeleteAdsByInventoryReferenceRestResponse"/>
+<xs:complexType name="DeleteAdsByInventoryReferenceRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:DeleteAdsByInventoryReferenceRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="DeleteAdsByInventoryReferenceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:AdIds">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAdByIDRestRequest" type="ns:GetAdByIDRestRequest"/>
+<xs:element name="GetAdByIDRestResponse" type="ns:GetAdByIDRestResponse"/>
+<xs:complexType name="GetAdByIDRestRequest">
+  <xs:sequence>
+    <xs:element name="ad_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAdByIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Ad">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAdsRestRequest" type="ns:GetAdsRestRequest"/>
+<xs:element name="GetAdsRestResponse" type="ns:GetAdsRestResponse"/>
+<xs:complexType name="GetAdsRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="listing_ids" type="xs:string" valid="string" required="true"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAdsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:AdPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAdsByInventoryReferenceRestRequest" type="ns:GetAdsByInventoryReferenceRestRequest"/>
+<xs:element name="GetAdsByInventoryReferenceRestResponse" type="ns:GetAdsByInventoryReferenceRestResponse"/>
+<xs:complexType name="GetAdsByInventoryReferenceRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="inventory_reference_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="inventory_reference_type" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAdsByInventoryReferenceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Ads">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateBidRestRequest" type="ns:UpdateBidRestRequest"/>
+<xs:element name="UpdateBidRestResponse" type="ns:UpdateBidRestResponse"/>
+<xs:complexType name="UpdateBidRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdateBidPercentageRequest">
+      <xs:sequence>
+        <xs:element name="ad_id" type="xs:string" valid="string" required="true"/>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateBidRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CloneCampaignRestRequest" type="ns:CloneCampaignRestRequest"/>
+<xs:element name="CloneCampaignRestResponse" type="ns:CloneCampaignRestResponse"/>
+<xs:complexType name="CloneCampaignRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CloneCampaignRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CloneCampaignRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CreateCampaignRestRequest" type="ns:CreateCampaignRestRequest"/>
+<xs:element name="CreateCampaignRestResponse" type="ns:CreateCampaignRestResponse"/>
+<xs:complexType name="CreateCampaignRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CreateCampaignRequest">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateCampaignRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="DeleteCampaignRestRequest" type="ns:DeleteCampaignRestRequest"/>
+<xs:element name="DeleteCampaignRestResponse" type="ns:DeleteCampaignRestResponse"/>
+<xs:complexType name="DeleteCampaignRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteCampaignRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="EndCampaignRestRequest" type="ns:EndCampaignRestRequest"/>
+<xs:element name="EndCampaignRestResponse" type="ns:EndCampaignRestResponse"/>
+<xs:complexType name="EndCampaignRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="EndCampaignRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="FindCampaignByAdReferenceRestRequest" type="ns:FindCampaignByAdReferenceRestRequest"/>
+<xs:element name="FindCampaignByAdReferenceRestResponse" type="ns:FindCampaignByAdReferenceRestResponse"/>
+<xs:complexType name="FindCampaignByAdReferenceRestRequest">
+  <xs:sequence>
+    <xs:element name="inventory_reference_id" type="xs:string" valid="string"/>
+    <xs:element name="inventory_reference_type" type="xs:string" valid="string"/>
+    <xs:element name="listing_id" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="FindCampaignByAdReferenceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Campaigns">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAllCampaignsRestRequest" type="ns:GetAllCampaignsRestRequest"/>
+<xs:element name="GetAllCampaignsRestResponse" type="ns:GetAllCampaignsRestResponse"/>
+<xs:complexType name="GetAllCampaignsRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_name" type="xs:string" valid="string"/>
+    <xs:element name="campaign_status" type="xs:string" valid="string"/>
+    <xs:element name="end_date_range" type="xs:string" valid="string"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="start_date_range" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAllCampaignsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:CampaignPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetCampaignByNameRestRequest" type="ns:GetCampaignByNameRestRequest"/>
+<xs:element name="GetCampaignByNameRestResponse" type="ns:GetCampaignByNameRestResponse"/>
+<xs:complexType name="GetCampaignByNameRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_name" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetCampaignByNameRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Campaign">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetCampaignByIDRestRequest" type="ns:GetCampaignByIDRestRequest"/>
+<xs:element name="GetCampaignByIDRestResponse" type="ns:GetCampaignByIDRestResponse"/>
+<xs:complexType name="GetCampaignByIDRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetCampaignByIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Campaign">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="PauseCampaignRestRequest" type="ns:PauseCampaignRestRequest"/>
+<xs:element name="PauseCampaignRestResponse" type="ns:PauseCampaignRestResponse"/>
+<xs:complexType name="PauseCampaignRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="PauseCampaignRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="ResumeCampaignRestRequest" type="ns:ResumeCampaignRestRequest"/>
+<xs:element name="ResumeCampaignRestResponse" type="ns:ResumeCampaignRestResponse"/>
+<xs:complexType name="ResumeCampaignRestRequest">
+  <xs:sequence>
+    <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResumeCampaignRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="UpdateCampaignIDentificationRestRequest" type="ns:UpdateCampaignIDentificationRestRequest"/>
+<xs:element name="UpdateCampaignIDentificationRestResponse" type="ns:UpdateCampaignIDentificationRestResponse"/>
+<xs:complexType name="UpdateCampaignIDentificationRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:UpdateCampaignIdentificationRequest">
+      <xs:sequence>
+        <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateCampaignIDentificationRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CreateItemPromotionRestRequest" type="ns:CreateItemPromotionRestRequest"/>
+<xs:element name="CreateItemPromotionRestResponse" type="ns:CreateItemPromotionRestResponse"/>
+<xs:complexType name="CreateItemPromotionRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ItemPromotion">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateItemPromotionRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="DeleteItemPromotionRestRequest" type="ns:DeleteItemPromotionRestRequest"/>
+<xs:element name="DeleteItemPromotionRestResponse" type="ns:DeleteItemPromotionRestResponse"/>
+<xs:complexType name="DeleteItemPromotionRestRequest">
+  <xs:sequence>
+    <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteItemPromotionRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetItemPromotionRestRequest" type="ns:GetItemPromotionRestRequest"/>
+<xs:element name="GetItemPromotionRestResponse" type="ns:GetItemPromotionRestResponse"/>
+<xs:complexType name="GetItemPromotionRestRequest">
+  <xs:sequence>
+    <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetItemPromotionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ItemPromotionResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateItemPromotionRestRequest" type="ns:UpdateItemPromotionRestRequest"/>
+<xs:element name="UpdateItemPromotionRestResponse" type="ns:UpdateItemPromotionRestResponse"/>
+<xs:complexType name="UpdateItemPromotionRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ItemPromotion">
+      <xs:sequence>
+        <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateItemPromotionRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetPromotionsRestRequest" type="ns:GetPromotionsRestRequest"/>
+<xs:element name="GetPromotionsRestResponse" type="ns:GetPromotionsRestResponse"/>
+<xs:complexType name="GetPromotionsRestRequest">
+  <xs:sequence>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="promotion_status" type="xs:string" valid="string"/>
+    <xs:element name="q" type="xs:string" valid="string"/>
+    <xs:element name="sort" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPromotionsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PromotionsPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="PauseAPromotionRestRequest" type="ns:PauseAPromotionRestRequest"/>
+<xs:element name="PauseAPromotionRestResponse" type="ns:PauseAPromotionRestResponse"/>
+<xs:complexType name="PauseAPromotionRestRequest">
+  <xs:sequence>
+    <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="PauseAPromotionRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="ResumeAPromotionRestRequest" type="ns:ResumeAPromotionRestRequest"/>
+<xs:element name="ResumeAPromotionRestResponse" type="ns:ResumeAPromotionRestResponse"/>
+<xs:complexType name="ResumeAPromotionRestRequest">
+  <xs:sequence>
+    <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResumeAPromotionRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetPromotionSummaryReportRestRequest" type="ns:GetPromotionSummaryReportRestRequest"/>
+<xs:element name="GetPromotionSummaryReportRestResponse" type="ns:GetPromotionSummaryReportRestResponse"/>
+<xs:complexType name="GetPromotionSummaryReportRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPromotionSummaryReportRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SummaryReportResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
