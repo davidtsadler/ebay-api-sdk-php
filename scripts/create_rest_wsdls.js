@@ -21,11 +21,14 @@ const createWsdl = (serviceUrl, filename) => {
     } while (trys < MAX_RETRIES);
 
     console.log(`To many retries for ${url}`);
-    return cheerio.load('');
+    return null;
   };
 
   const getTypeEnumLinks = () => {
     const $ = getPage(`${serviceUrl}/types/index.html`);
+    if (!$)  {
+      return [];
+    }
     return $('a.nohi').map((index, element) => {
       return $(element).attr('href');
     }).get().filter(href => href.search(/html$/) !== -1);
@@ -106,6 +109,9 @@ const createWsdl = (serviceUrl, filename) => {
 
   const processTypeEnum = (url) => {
     const $ = getPage(`${serviceUrl}/types/${url}`);
+    if (!$) {
+      return [];
+    }
     return url.search(/Enum.html$/) !== -1 ? processEnum($) : processType($); 
   };
 
