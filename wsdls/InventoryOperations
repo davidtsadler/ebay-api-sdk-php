@@ -1,9 +1,153 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
 <wsdl:portType>
-  <wsdl:operation name="bulkUpdatePriceAndQuantity">
+  <wsdl:operation name="BulkUpdatePriceAndQuantity" method="POST" resource="bulk_update_price_quantity">
     <wsdl:input message="ns:BulkUpdatePriceAndQuantityRestRequest"/>
     <wsdl:output message="ns:BulkUpdatePriceAndQuantityRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
-<wsdl:documentation>
-  <Version>v1</Version>
-</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="CreateOrReplaceInventoryItem" method="PUT" resource="inventory_item/{sku}">
+    <wsdl:input message="ns:CreateOrReplaceInventoryItemRestRequest"/>
+    <wsdl:output message="ns:CreateOrReplaceInventoryItemRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteInventoryItem" method="DELETE" resource="inventory_item/{sku}">
+    <wsdl:input message="ns:DeleteInventoryItemRestRequest"/>
+    <wsdl:output message="ns:DeleteInventoryItemRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetInventoryItem" method="GET" resource="inventory_item/{sku}">
+    <wsdl:input message="ns:GetInventoryItemRestRequest"/>
+    <wsdl:output message="ns:GetInventoryItemRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetInventoryItems" method="GET" resource="inventory_item">
+    <wsdl:input message="ns:GetInventoryItemsRestRequest"/>
+    <wsdl:output message="ns:GetInventoryItemsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateOrReplaceInventoryItemGroup" method="PUT" resource="inventory_item_group/{inventoryItemGroupKey}">
+    <wsdl:input message="ns:CreateOrReplaceInventoryItemGroupRestRequest"/>
+    <wsdl:output message="ns:CreateOrReplaceInventoryItemGroupRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteInventoryItemGroup" method="DELETE" resource="inventory_item_group/{inventoryItemGroupKey}">
+    <wsdl:input message="ns:DeleteInventoryItemGroupRestRequest"/>
+    <wsdl:output message="ns:DeleteInventoryItemGroupRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetInventoryItemGroup" method="GET" resource="inventory_item_group/{inventoryItemGroupKey}">
+    <wsdl:input message="ns:GetInventoryItemGroupRestRequest"/>
+    <wsdl:output message="ns:GetInventoryItemGroupRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateInventoryLocation" method="POST" resource="location/{merchantLocationKey}">
+    <wsdl:input message="ns:CreateInventoryLocationRestRequest"/>
+    <wsdl:output message="ns:CreateInventoryLocationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteInventoryLocation" method="DELETE" resource="location/{merchantLocationKey}">
+    <wsdl:input message="ns:DeleteInventoryLocationRestRequest"/>
+    <wsdl:output message="ns:DeleteInventoryLocationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DisableInventoryLocation" method="POST" resource="location/{merchantLocationKey}/disable">
+    <wsdl:input message="ns:DisableInventoryLocationRestRequest"/>
+    <wsdl:output message="ns:DisableInventoryLocationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="EnableInventoryLocation" method="POST" resource="location/{merchantLocationKey}/enable">
+    <wsdl:input message="ns:EnableInventoryLocationRestRequest"/>
+    <wsdl:output message="ns:EnableInventoryLocationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetInventoryLocation" method="GET" resource="location/{merchantLocationKey}">
+    <wsdl:input message="ns:GetInventoryLocationRestRequest"/>
+    <wsdl:output message="ns:GetInventoryLocationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetInventoryLocations" method="GET" resource="location">
+    <wsdl:input message="ns:GetInventoryLocationsRestRequest"/>
+    <wsdl:output message="ns:GetInventoryLocationsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateInventoryLocation" method="POST" resource="location/{merchantLocationKey}/update_location_details">
+    <wsdl:input message="ns:UpdateInventoryLocationRestRequest"/>
+    <wsdl:output message="ns:UpdateInventoryLocationRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateOffer" method="POST" resource="offer">
+    <wsdl:input message="ns:CreateOfferRestRequest"/>
+    <wsdl:output message="ns:CreateOfferRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteOffer" method="DELETE" resource="offer/{offerId}">
+    <wsdl:input message="ns:DeleteOfferRestRequest"/>
+    <wsdl:output message="ns:DeleteOfferRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetListingFees" method="POST" resource="offer/get_listing_fees">
+    <wsdl:input message="ns:GetListingFeesRestRequest"/>
+    <wsdl:output message="ns:GetListingFeesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetOffer" method="GET" resource="offer/{offerId}">
+    <wsdl:input message="ns:GetOfferRestRequest"/>
+    <wsdl:output message="ns:GetOfferRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetOffers" method="GET" resource="offer">
+    <wsdl:input message="ns:GetOffersRestRequest"/>
+    <wsdl:output message="ns:GetOffersRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="PublishOffer" method="POST" resource="offer/{offerId}/publish">
+    <wsdl:input message="ns:PublishOfferRestRequest"/>
+    <wsdl:output message="ns:PublishOfferRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateOffer" method="PUT" resource="offer/{offer_Id}">
+    <wsdl:input message="ns:UpdateOfferRestRequest"/>
+    <wsdl:output message="ns:UpdateOfferRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateOrReplaceProductCompatibility" method="PUT" resource="inventory_item/{sku}/product_compatibility">
+    <wsdl:input message="ns:CreateOrReplaceProductCompatibilityRestRequest"/>
+    <wsdl:output message="ns:CreateOrReplaceProductCompatibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteProductCompatibility" method="DELETE" resource="inventory_item/{sku}/product_compatibility">
+    <wsdl:input message="ns:DeleteProductCompatibilityRestRequest"/>
+    <wsdl:output message="ns:DeleteProductCompatibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetProductCompatibility" method="GET" resource="inventory_item/{sku}/product_compatibility">
+    <wsdl:input message="ns:GetProductCompatibilityRestRequest"/>
+    <wsdl:output message="ns:GetProductCompatibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

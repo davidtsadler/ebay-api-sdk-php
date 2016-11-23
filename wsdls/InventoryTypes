@@ -1,5 +1,453 @@
-<xs:complexType name="BulkUpdatePriceAndQuantityRestRequest"/>
-<xs:complexType name="BulkUpdatePriceAndQuantityRestResponse"/>
+<xs:complexType name="ErrorParameterV3">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
 
 <xs:element name="BulkUpdatePriceAndQuantityRestRequest" type="ns:BulkUpdatePriceAndQuantityRestRequest"/>
 <xs:element name="BulkUpdatePriceAndQuantityRestResponse" type="ns:BulkUpdatePriceAndQuantityRestResponse"/>
+<xs:complexType name="BulkUpdatePriceAndQuantityRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkPriceQuantity">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkUpdatePriceAndQuantityRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkPriceQuantityResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateOrReplaceInventoryItemRestRequest" type="ns:CreateOrReplaceInventoryItemRestRequest"/>
+<xs:element name="CreateOrReplaceInventoryItemRestResponse" type="ns:CreateOrReplaceInventoryItemRestResponse"/>
+<xs:complexType name="CreateOrReplaceInventoryItemRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryItem">
+      <xs:sequence>
+        <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateOrReplaceInventoryItemRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BaseResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteInventoryItemRestRequest" type="ns:DeleteInventoryItemRestRequest"/>
+<xs:element name="DeleteInventoryItemRestResponse" type="ns:DeleteInventoryItemRestResponse"/>
+<xs:complexType name="DeleteInventoryItemRestRequest">
+  <xs:sequence>
+    <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteInventoryItemRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetInventoryItemRestRequest" type="ns:GetInventoryItemRestRequest"/>
+<xs:element name="GetInventoryItemRestResponse" type="ns:GetInventoryItemRestResponse"/>
+<xs:complexType name="GetInventoryItemRestRequest">
+  <xs:sequence>
+    <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetInventoryItemRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryItem">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetInventoryItemsRestRequest" type="ns:GetInventoryItemsRestRequest"/>
+<xs:element name="GetInventoryItemsRestResponse" type="ns:GetInventoryItemsRestResponse"/>
+<xs:complexType name="GetInventoryItemsRestRequest">
+  <xs:sequence>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetInventoryItemsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryItems">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateOrReplaceInventoryItemGroupRestRequest" type="ns:CreateOrReplaceInventoryItemGroupRestRequest"/>
+<xs:element name="CreateOrReplaceInventoryItemGroupRestResponse" type="ns:CreateOrReplaceInventoryItemGroupRestResponse"/>
+<xs:complexType name="CreateOrReplaceInventoryItemGroupRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryItemGroup">
+      <xs:sequence>
+        <xs:element name="inventoryItemGroupKey" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateOrReplaceInventoryItemGroupRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BaseResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteInventoryItemGroupRestRequest" type="ns:DeleteInventoryItemGroupRestRequest"/>
+<xs:element name="DeleteInventoryItemGroupRestResponse" type="ns:DeleteInventoryItemGroupRestResponse"/>
+<xs:complexType name="DeleteInventoryItemGroupRestRequest">
+  <xs:sequence>
+    <xs:element name="inventoryItemGroupKey" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteInventoryItemGroupRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetInventoryItemGroupRestRequest" type="ns:GetInventoryItemGroupRestRequest"/>
+<xs:element name="GetInventoryItemGroupRestResponse" type="ns:GetInventoryItemGroupRestResponse"/>
+<xs:complexType name="GetInventoryItemGroupRestRequest">
+  <xs:sequence>
+    <xs:element name="inventoryItemGroupKey" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetInventoryItemGroupRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryItemGroup">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateInventoryLocationRestRequest" type="ns:CreateInventoryLocationRestRequest"/>
+<xs:element name="CreateInventoryLocationRestResponse" type="ns:CreateInventoryLocationRestResponse"/>
+<xs:complexType name="CreateInventoryLocationRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryLocationFull">
+      <xs:sequence>
+        <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateInventoryLocationRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="DeleteInventoryLocationRestRequest" type="ns:DeleteInventoryLocationRestRequest"/>
+<xs:element name="DeleteInventoryLocationRestResponse" type="ns:DeleteInventoryLocationRestResponse"/>
+<xs:complexType name="DeleteInventoryLocationRestRequest">
+  <xs:sequence>
+    <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteInventoryLocationRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="DisableInventoryLocationRestRequest" type="ns:DisableInventoryLocationRestRequest"/>
+<xs:element name="DisableInventoryLocationRestResponse" type="ns:DisableInventoryLocationRestResponse"/>
+<xs:complexType name="DisableInventoryLocationRestRequest">
+  <xs:sequence>
+    <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DisableInventoryLocationRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="EnableInventoryLocationRestRequest" type="ns:EnableInventoryLocationRestRequest"/>
+<xs:element name="EnableInventoryLocationRestResponse" type="ns:EnableInventoryLocationRestResponse"/>
+<xs:complexType name="EnableInventoryLocationRestRequest">
+  <xs:sequence>
+    <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="EnableInventoryLocationRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetInventoryLocationRestRequest" type="ns:GetInventoryLocationRestRequest"/>
+<xs:element name="GetInventoryLocationRestResponse" type="ns:GetInventoryLocationRestResponse"/>
+<xs:complexType name="GetInventoryLocationRestRequest">
+  <xs:sequence>
+    <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetInventoryLocationRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryLocationResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetInventoryLocationsRestRequest" type="ns:GetInventoryLocationsRestRequest"/>
+<xs:element name="GetInventoryLocationsRestResponse" type="ns:GetInventoryLocationsRestResponse"/>
+<xs:complexType name="GetInventoryLocationsRestRequest">
+  <xs:sequence>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetInventoryLocationsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:LocationResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateInventoryLocationRestRequest" type="ns:UpdateInventoryLocationRestRequest"/>
+<xs:element name="UpdateInventoryLocationRestResponse" type="ns:UpdateInventoryLocationRestResponse"/>
+<xs:complexType name="UpdateInventoryLocationRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:InventoryLocation">
+      <xs:sequence>
+        <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateInventoryLocationRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CreateOfferRestRequest" type="ns:CreateOfferRestRequest"/>
+<xs:element name="CreateOfferRestResponse" type="ns:CreateOfferRestResponse"/>
+<xs:complexType name="CreateOfferRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:EbayOfferDetailsWithKeys">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateOfferRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:OfferResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteOfferRestRequest" type="ns:DeleteOfferRestRequest"/>
+<xs:element name="DeleteOfferRestResponse" type="ns:DeleteOfferRestResponse"/>
+<xs:complexType name="DeleteOfferRestRequest">
+  <xs:sequence>
+    <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteOfferRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetListingFeesRestRequest" type="ns:GetListingFeesRestRequest"/>
+<xs:element name="GetListingFeesRestResponse" type="ns:GetListingFeesRestResponse"/>
+<xs:complexType name="GetListingFeesRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:OfferKeysWithId">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="GetListingFeesRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:FeesSummaryResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetOfferRestRequest" type="ns:GetOfferRestRequest"/>
+<xs:element name="GetOfferRestResponse" type="ns:GetOfferRestResponse"/>
+<xs:complexType name="GetOfferRestRequest">
+  <xs:sequence>
+    <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetOfferRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:EbayOfferDetailsWithAll">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetOffersRestRequest" type="ns:GetOffersRestRequest"/>
+<xs:element name="GetOffersRestResponse" type="ns:GetOffersRestResponse"/>
+<xs:complexType name="GetOffersRestRequest">
+  <xs:sequence>
+    <xs:element name="format" type="xs:string" valid="string"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetOffersRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Offers">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="PublishOfferRestRequest" type="ns:PublishOfferRestRequest"/>
+<xs:element name="PublishOfferRestResponse" type="ns:PublishOfferRestResponse"/>
+<xs:complexType name="PublishOfferRestRequest">
+  <xs:sequence>
+    <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="PublishOfferRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PublishResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateOfferRestRequest" type="ns:UpdateOfferRestRequest"/>
+<xs:element name="UpdateOfferRestResponse" type="ns:UpdateOfferRestResponse"/>
+<xs:complexType name="UpdateOfferRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:EbayOfferDetailsWithId">
+      <xs:sequence>
+        <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateOfferRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:OfferResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateOrReplaceProductCompatibilityRestRequest" type="ns:CreateOrReplaceProductCompatibilityRestRequest"/>
+<xs:element name="CreateOrReplaceProductCompatibilityRestResponse" type="ns:CreateOrReplaceProductCompatibilityRestResponse"/>
+<xs:complexType name="CreateOrReplaceProductCompatibilityRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:Compatibility">
+      <xs:sequence>
+        <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateOrReplaceProductCompatibilityRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BaseResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteProductCompatibilityRestRequest" type="ns:DeleteProductCompatibilityRestRequest"/>
+<xs:element name="DeleteProductCompatibilityRestResponse" type="ns:DeleteProductCompatibilityRestResponse"/>
+<xs:complexType name="DeleteProductCompatibilityRestRequest">
+  <xs:sequence>
+    <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteProductCompatibilityRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetProductCompatibilityRestRequest" type="ns:GetProductCompatibilityRestRequest"/>
+<xs:element name="GetProductCompatibilityRestResponse" type="ns:GetProductCompatibilityRestResponse"/>
+<xs:complexType name="GetProductCompatibilityRestRequest">
+  <xs:sequence>
+    <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetProductCompatibilityRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Compatibility">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
