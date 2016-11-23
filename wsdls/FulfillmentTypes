@@ -1,0 +1,93 @@
+<xs:element name="GetOrdersRestRequest" type="ns:GetOrdersRestRequest"/>
+<xs:element name="GetOrdersRestResponse" type="ns:GetOrdersRestResponse"/>
+<xs:complexType name="GetOrdersRestRequest">
+  <xs:sequence>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="orderIds" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetOrdersRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:OrderSearchPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAnOrderRestRequest" type="ns:GetAnOrderRestRequest"/>
+<xs:element name="GetAnOrderRestResponse" type="ns:GetAnOrderRestResponse"/>
+<xs:complexType name="GetAnOrderRestRequest">
+  <xs:sequence>
+    <xs:element name="orderId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAnOrderRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Order">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateAShippingFulfillmentRestRequest" type="ns:CreateAShippingFulfillmentRestRequest"/>
+<xs:element name="CreateAShippingFulfillmentRestResponse" type="ns:CreateAShippingFulfillmentRestResponse"/>
+<xs:complexType name="CreateAShippingFulfillmentRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ShippingFulfillmentDetails">
+      <xs:sequence>
+        <xs:element name="orderId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateAShippingFulfillmentRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetShippingFulfillmentsRestRequest" type="ns:GetShippingFulfillmentsRestRequest"/>
+<xs:element name="GetShippingFulfillmentsRestResponse" type="ns:GetShippingFulfillmentsRestResponse"/>
+<xs:complexType name="GetShippingFulfillmentsRestRequest">
+  <xs:sequence>
+    <xs:element name="orderId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetShippingFulfillmentsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ShippingFulfillmentPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAShippingFulfillmentRestRequest" type="ns:GetAShippingFulfillmentRestRequest"/>
+<xs:element name="GetAShippingFulfillmentRestResponse" type="ns:GetAShippingFulfillmentRestResponse"/>
+<xs:complexType name="GetAShippingFulfillmentRestRequest">
+  <xs:sequence>
+    <xs:element name="fulfillmentId" type="xs:string" valid="string" required="true"/>
+    <xs:element name="orderId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAShippingFulfillmentRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ShippingFulfillment">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>

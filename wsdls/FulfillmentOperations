@@ -1,0 +1,33 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="GetOrders" method="GET" resource="order">
+    <wsdl:input message="ns:GetOrdersRestRequest"/>
+    <wsdl:output message="ns:GetOrdersRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAnOrder" method="GET" resource="order/{orderId}">
+    <wsdl:input message="ns:GetAnOrderRestRequest"/>
+    <wsdl:output message="ns:GetAnOrderRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateAShippingFulfillment" method="POST" resource="order/{orderId}/shipping_fulfillment">
+    <wsdl:input message="ns:CreateAShippingFulfillmentRestRequest"/>
+    <wsdl:output message="ns:CreateAShippingFulfillmentRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetShippingFulfillments" method="GET" resource="order/{orderId}/shipping_fulfillment">
+    <wsdl:input message="ns:GetShippingFulfillmentsRestRequest"/>
+    <wsdl:output message="ns:GetShippingFulfillmentsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAShippingFulfillment" method="GET" resource="order/{orderId}/shipping_fulfillment/{fulfillmentId}">
+    <wsdl:input message="ns:GetAShippingFulfillmentRestRequest"/>
+    <wsdl:output message="ns:GetAShippingFulfillmentRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
