@@ -65,9 +65,8 @@ const createWsdl = (serviceUrl, filename) => {
       case 'time':
       case 'token':
       case 'anyURI':
-        return `xs:${str}`;
       case 'any':
-        return 'xs:string';
+        return `xs:${str}`;
       case 'datetime':
         return 'xs:dateTime';
       case 'number':

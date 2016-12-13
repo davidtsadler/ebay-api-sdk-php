@@ -214,6 +214,9 @@
     <xsl:when test="$type='anyURI'">
       <xsl:text>string</xsl:text>
     </xsl:when>
+    <xsl:when test="$type='any'">
+      <xsl:text>any</xsl:text>
+    </xsl:when>
     <xsl:when test="$restriction != '' and $restrictionIsEnum">
         <xsl:value-of select="concat($dtsNamespace, $service, '\Enums\', dts:capitalize_first($type))"/>
     </xsl:when>
