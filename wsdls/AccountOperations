@@ -1,0 +1,157 @@
+<wsdl:documentation>
+  <Version>v1</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="CreateAFulfillmentPolicy" method="POST" resource="fulfillment_policy">
+    <wsdl:input message="ns:CreateAFulfillmentPolicyRestRequest"/>
+    <wsdl:output message="ns:CreateAFulfillmentPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteAFulfillmentPolicy" method="DELETE" resource="fulfillment_policy/{fulfillmentPolicyId}">
+    <wsdl:input message="ns:DeleteAFulfillmentPolicyRestRequest"/>
+    <wsdl:output message="ns:DeleteAFulfillmentPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetFulfillmentPoliciesByMarketplace" method="GET" resource="fulfillment_policy">
+    <wsdl:input message="ns:GetFulfillmentPoliciesByMarketplaceRestRequest"/>
+    <wsdl:output message="ns:GetFulfillmentPoliciesByMarketplaceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAFulfillmentPolicyByID" method="GET" resource="fulfillment_policy/{fulfillmentPolicyId}">
+    <wsdl:input message="ns:GetAFulfillmentPolicyByIDRestRequest"/>
+    <wsdl:output message="ns:GetAFulfillmentPolicyByIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAFulfillmentPolicyByName" method="GET" resource="fulfillment_policy/get_by_policy_name">
+    <wsdl:input message="ns:GetAFulfillmentPolicyByNameRestRequest"/>
+    <wsdl:output message="ns:GetAFulfillmentPolicyByNameRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateAFulfillmentPolicy" method="PUT" resource="fulfillment_policy/{fulfillmentPolicyId}">
+    <wsdl:input message="ns:UpdateAFulfillmentPolicyRestRequest"/>
+    <wsdl:output message="ns:UpdateAFulfillmentPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateAPaymentPolicy" method="POST" resource="payment_policy">
+    <wsdl:input message="ns:CreateAPaymentPolicyRestRequest"/>
+    <wsdl:output message="ns:CreateAPaymentPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteAPaymentPolicy" method="DELETE" resource="payment_policy/{payment_policy_id}">
+    <wsdl:input message="ns:DeleteAPaymentPolicyRestRequest"/>
+    <wsdl:output message="ns:DeleteAPaymentPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPaymentPoliciesByMarketplace" method="GET" resource="payment_policy">
+    <wsdl:input message="ns:GetPaymentPoliciesByMarketplaceRestRequest"/>
+    <wsdl:output message="ns:GetPaymentPoliciesByMarketplaceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAPaymentPolicyByID" method="GET" resource="payment_policy/{paymentPolicyId}">
+    <wsdl:input message="ns:GetAPaymentPolicyByIDRestRequest"/>
+    <wsdl:output message="ns:GetAPaymentPolicyByIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAPaymentPolicyByName" method="GET" resource="payment_policy/get_by_policy_name">
+    <wsdl:input message="ns:GetAPaymentPolicyByNameRestRequest"/>
+    <wsdl:output message="ns:GetAPaymentPolicyByNameRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateAPaymentPolicy" method="PUT" resource="payment_policy/{payment_policy_id}">
+    <wsdl:input message="ns:UpdateAPaymentPolicyRestRequest"/>
+    <wsdl:output message="ns:UpdateAPaymentPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAccountPrivileges" method="GET" resource="privilege">
+    <wsdl:output message="ns:GetAccountPrivilegesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetOptedInPrograms" method="GET" resource="program/get_opted_in_programs">
+    <wsdl:output message="ns:GetOptedInProgramsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="OptInToProgram" method="POST" resource="program/opt_in">
+    <wsdl:input message="ns:OptInToProgramRestRequest"/>
+    <wsdl:output message="ns:OptInToProgramRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="OptOutOfProgram" method="POST" resource="program/opt_out">
+    <wsdl:input message="ns:OptOutOfProgramRestRequest"/>
+    <wsdl:output message="ns:OptOutOfProgramRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateAReturnPolicy" method="POST" resource="return_policy">
+    <wsdl:input message="ns:CreateAReturnPolicyRestRequest"/>
+    <wsdl:output message="ns:CreateAReturnPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteAReturnPolicy" method="DELETE" resource="return_policy/{return_policy_id}">
+    <wsdl:input message="ns:DeleteAReturnPolicyRestRequest"/>
+    <wsdl:output message="ns:DeleteAReturnPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReturnPoliciesByMarketplace" method="GET" resource="return_policy">
+    <wsdl:input message="ns:GetReturnPoliciesByMarketplaceRestRequest"/>
+    <wsdl:output message="ns:GetReturnPoliciesByMarketplaceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAReturnPolicyByID" method="GET" resource="return_policy/{returnPolicyId}">
+    <wsdl:input message="ns:GetAReturnPolicyByIDRestRequest"/>
+    <wsdl:output message="ns:GetAReturnPolicyByIDRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAReturnPolicyByName" method="GET" resource="return_policy/get_by_policy_name">
+    <wsdl:input message="ns:GetAReturnPolicyByNameRestRequest"/>
+    <wsdl:output message="ns:GetAReturnPolicyByNameRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="UpdateAReturnPolicy" method="PUT" resource="return_policy/{return_policy_id}">
+    <wsdl:input message="ns:UpdateAReturnPolicyRestRequest"/>
+    <wsdl:output message="ns:UpdateAReturnPolicyRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateASalesTaxTable" method="PUT" resource="sales_tax/{countryCode}/{jurisdictionId}">
+    <wsdl:input message="ns:CreateASalesTaxTableRestRequest"/>
+    <wsdl:output message="ns:CreateASalesTaxTableRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteASalesTaxTable" method="DELETE" resource="sales_tax/{countryCode}/{jurisdictionId}">
+    <wsdl:input message="ns:DeleteASalesTaxTableRestRequest"/>
+    <wsdl:output message="ns:DeleteASalesTaxTableRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetASalesTaxTable" method="GET" resource="sales_tax/{countryCode}/{jurisdictionId}">
+    <wsdl:input message="ns:GetASalesTaxTableRestRequest"/>
+    <wsdl:output message="ns:GetASalesTaxTableRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAllSalesTaxTables" method="GET" resource="sales_tax">
+    <wsdl:input message="ns:GetAllSalesTaxTablesRestRequest"/>
+    <wsdl:output message="ns:GetAllSalesTaxTablesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

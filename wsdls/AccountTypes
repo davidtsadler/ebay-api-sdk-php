@@ -1,0 +1,457 @@
+<xs:element name="CreateAFulfillmentPolicyRestRequest" type="ns:CreateAFulfillmentPolicyRestRequest"/>
+<xs:element name="CreateAFulfillmentPolicyRestResponse" type="ns:CreateAFulfillmentPolicyRestResponse"/>
+<xs:complexType name="CreateAFulfillmentPolicyRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:FulfillmentPolicyRequest">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateAFulfillmentPolicyRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SetFulfillmentPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteAFulfillmentPolicyRestRequest" type="ns:DeleteAFulfillmentPolicyRestRequest"/>
+<xs:element name="DeleteAFulfillmentPolicyRestResponse" type="ns:DeleteAFulfillmentPolicyRestResponse"/>
+<xs:complexType name="DeleteAFulfillmentPolicyRestRequest">
+  <xs:sequence>
+    <xs:element name="fulfillmentPolicyId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteAFulfillmentPolicyRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetFulfillmentPoliciesByMarketplaceRestRequest" type="ns:GetFulfillmentPoliciesByMarketplaceRestRequest"/>
+<xs:element name="GetFulfillmentPoliciesByMarketplaceRestResponse" type="ns:GetFulfillmentPoliciesByMarketplaceRestResponse"/>
+<xs:complexType name="GetFulfillmentPoliciesByMarketplaceRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetFulfillmentPoliciesByMarketplaceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:FulfillmentPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAFulfillmentPolicyByIDRestRequest" type="ns:GetAFulfillmentPolicyByIDRestRequest"/>
+<xs:element name="GetAFulfillmentPolicyByIDRestResponse" type="ns:GetAFulfillmentPolicyByIDRestResponse"/>
+<xs:complexType name="GetAFulfillmentPolicyByIDRestRequest">
+  <xs:sequence>
+    <xs:element name="fulfillmentPolicyId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAFulfillmentPolicyByIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:FulfillmentPolicy">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAFulfillmentPolicyByNameRestRequest" type="ns:GetAFulfillmentPolicyByNameRestRequest"/>
+<xs:element name="GetAFulfillmentPolicyByNameRestResponse" type="ns:GetAFulfillmentPolicyByNameRestResponse"/>
+<xs:complexType name="GetAFulfillmentPolicyByNameRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="name" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAFulfillmentPolicyByNameRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:FulfillmentPolicy">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateAFulfillmentPolicyRestRequest" type="ns:UpdateAFulfillmentPolicyRestRequest"/>
+<xs:element name="UpdateAFulfillmentPolicyRestResponse" type="ns:UpdateAFulfillmentPolicyRestResponse"/>
+<xs:complexType name="UpdateAFulfillmentPolicyRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:FulfillmentPolicyRequest">
+      <xs:sequence>
+        <xs:element name="fulfillmentPolicyId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateAFulfillmentPolicyRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SetFulfillmentPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateAPaymentPolicyRestRequest" type="ns:CreateAPaymentPolicyRestRequest"/>
+<xs:element name="CreateAPaymentPolicyRestResponse" type="ns:CreateAPaymentPolicyRestResponse"/>
+<xs:complexType name="CreateAPaymentPolicyRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:PaymentPolicyRequest">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateAPaymentPolicyRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SetPaymentPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteAPaymentPolicyRestRequest" type="ns:DeleteAPaymentPolicyRestRequest"/>
+<xs:element name="DeleteAPaymentPolicyRestResponse" type="ns:DeleteAPaymentPolicyRestResponse"/>
+<xs:complexType name="DeleteAPaymentPolicyRestRequest">
+  <xs:sequence>
+    <xs:element name="payment_policy_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteAPaymentPolicyRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetPaymentPoliciesByMarketplaceRestRequest" type="ns:GetPaymentPoliciesByMarketplaceRestRequest"/>
+<xs:element name="GetPaymentPoliciesByMarketplaceRestResponse" type="ns:GetPaymentPoliciesByMarketplaceRestResponse"/>
+<xs:complexType name="GetPaymentPoliciesByMarketplaceRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPaymentPoliciesByMarketplaceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PaymentPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAPaymentPolicyByIDRestRequest" type="ns:GetAPaymentPolicyByIDRestRequest"/>
+<xs:element name="GetAPaymentPolicyByIDRestResponse" type="ns:GetAPaymentPolicyByIDRestResponse"/>
+<xs:complexType name="GetAPaymentPolicyByIDRestRequest">
+  <xs:sequence>
+    <xs:element name="paymentPolicyId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAPaymentPolicyByIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PaymentPolicy">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAPaymentPolicyByNameRestRequest" type="ns:GetAPaymentPolicyByNameRestRequest"/>
+<xs:element name="GetAPaymentPolicyByNameRestResponse" type="ns:GetAPaymentPolicyByNameRestResponse"/>
+<xs:complexType name="GetAPaymentPolicyByNameRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="name" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAPaymentPolicyByNameRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PaymentPolicy">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateAPaymentPolicyRestRequest" type="ns:UpdateAPaymentPolicyRestRequest"/>
+<xs:element name="UpdateAPaymentPolicyRestResponse" type="ns:UpdateAPaymentPolicyRestResponse"/>
+<xs:complexType name="UpdateAPaymentPolicyRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:PaymentPolicyRequest">
+      <xs:sequence>
+        <xs:element name="payment_policy_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateAPaymentPolicyRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SetPaymentPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAccountPrivilegesRestResponse" type="ns:GetAccountPrivilegesRestResponse"/>
+<xs:complexType name="GetAccountPrivilegesRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SellingPrivileges">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetOptedInProgramsRestResponse" type="ns:GetOptedInProgramsRestResponse"/>
+<xs:complexType name="GetOptedInProgramsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Programs">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="OptInToProgramRestRequest" type="ns:OptInToProgramRestRequest"/>
+<xs:element name="OptInToProgramRestResponse" type="ns:OptInToProgramRestResponse"/>
+<xs:complexType name="OptInToProgramRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:Program">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="OptInToProgramRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="OptOutOfProgramRestRequest" type="ns:OptOutOfProgramRestRequest"/>
+<xs:element name="OptOutOfProgramRestResponse" type="ns:OptOutOfProgramRestResponse"/>
+<xs:complexType name="OptOutOfProgramRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:Program">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="OptOutOfProgramRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CreateAReturnPolicyRestRequest" type="ns:CreateAReturnPolicyRestRequest"/>
+<xs:element name="CreateAReturnPolicyRestResponse" type="ns:CreateAReturnPolicyRestResponse"/>
+<xs:complexType name="CreateAReturnPolicyRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ReturnPolicyRequest">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateAReturnPolicyRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SetReturnPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="DeleteAReturnPolicyRestRequest" type="ns:DeleteAReturnPolicyRestRequest"/>
+<xs:element name="DeleteAReturnPolicyRestResponse" type="ns:DeleteAReturnPolicyRestResponse"/>
+<xs:complexType name="DeleteAReturnPolicyRestRequest">
+  <xs:sequence>
+    <xs:element name="return_policy_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteAReturnPolicyRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetReturnPoliciesByMarketplaceRestRequest" type="ns:GetReturnPoliciesByMarketplaceRestRequest"/>
+<xs:element name="GetReturnPoliciesByMarketplaceRestResponse" type="ns:GetReturnPoliciesByMarketplaceRestResponse"/>
+<xs:complexType name="GetReturnPoliciesByMarketplaceRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetReturnPoliciesByMarketplaceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ReturnPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAReturnPolicyByIDRestRequest" type="ns:GetAReturnPolicyByIDRestRequest"/>
+<xs:element name="GetAReturnPolicyByIDRestResponse" type="ns:GetAReturnPolicyByIDRestResponse"/>
+<xs:complexType name="GetAReturnPolicyByIDRestRequest">
+  <xs:sequence>
+    <xs:element name="returnPolicyId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAReturnPolicyByIDRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ReturnPolicy">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAReturnPolicyByNameRestRequest" type="ns:GetAReturnPolicyByNameRestRequest"/>
+<xs:element name="GetAReturnPolicyByNameRestResponse" type="ns:GetAReturnPolicyByNameRestResponse"/>
+<xs:complexType name="GetAReturnPolicyByNameRestRequest">
+  <xs:sequence>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="name" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAReturnPolicyByNameRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ReturnPolicy">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="UpdateAReturnPolicyRestRequest" type="ns:UpdateAReturnPolicyRestRequest"/>
+<xs:element name="UpdateAReturnPolicyRestResponse" type="ns:UpdateAReturnPolicyRestResponse"/>
+<xs:complexType name="UpdateAReturnPolicyRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:ReturnPolicyRequest">
+      <xs:sequence>
+        <xs:element name="return_policy_id" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UpdateAReturnPolicyRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SetReturnPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateASalesTaxTableRestRequest" type="ns:CreateASalesTaxTableRestRequest"/>
+<xs:element name="CreateASalesTaxTableRestResponse" type="ns:CreateASalesTaxTableRestResponse"/>
+<xs:complexType name="CreateASalesTaxTableRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:SalesTaxBase">
+      <xs:sequence>
+        <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+        <xs:element name="jurisdictionId" type="xs:string" valid="string" required="true"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateASalesTaxTableRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="DeleteASalesTaxTableRestRequest" type="ns:DeleteASalesTaxTableRestRequest"/>
+<xs:element name="DeleteASalesTaxTableRestResponse" type="ns:DeleteASalesTaxTableRestResponse"/>
+<xs:complexType name="DeleteASalesTaxTableRestRequest">
+  <xs:sequence>
+    <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+    <xs:element name="jurisdictionId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteASalesTaxTableRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="GetASalesTaxTableRestRequest" type="ns:GetASalesTaxTableRestRequest"/>
+<xs:element name="GetASalesTaxTableRestResponse" type="ns:GetASalesTaxTableRestResponse"/>
+<xs:complexType name="GetASalesTaxTableRestRequest">
+  <xs:sequence>
+    <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+    <xs:element name="jurisdictionId" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetASalesTaxTableRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SalesTax">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetAllSalesTaxTablesRestRequest" type="ns:GetAllSalesTaxTablesRestRequest"/>
+<xs:element name="GetAllSalesTaxTablesRestResponse" type="ns:GetAllSalesTaxTablesRestResponse"/>
+<xs:complexType name="GetAllSalesTaxTablesRestRequest">
+  <xs:sequence>
+    <xs:element name="country_code" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAllSalesTaxTablesRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:SalesTaxes">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
