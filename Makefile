@@ -56,6 +56,9 @@ download:
 	@echo "Shopping                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ShoppingService.wsdl`"
 	@echo "Trading                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ebaySvc.wsdl`"
 
+patch:
+	@sed -i -e 's/<xs:element name="aspects" type="xs:string" maxOccurs="unbounded"\/>/<xs:element name="aspects" type="xs:any"\/>/g' $(DOWNLOADS)/Inventory.wsdl
+	
 transform:
 	@saxonb-xslt								\
 		-ext:on								\
@@ -193,6 +196,7 @@ transform:
 build:	clean		\
 	download	\
 	wsdls		\
+	patch		\
 	transform
 	@cp -r $(TRANSFORMED) $(DIST)
 
