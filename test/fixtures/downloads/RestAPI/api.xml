@@ -135,6 +135,7 @@
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
+              <xs:element name="any" type="xs:any"/>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>

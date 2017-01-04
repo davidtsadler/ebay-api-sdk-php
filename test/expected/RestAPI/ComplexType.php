@@ -36,6 +36,7 @@ namespace DTS\eBaySDK\RestAPI\Types;
  * @property string[] $repeatable
  * @property string[] $repeatable2
  * @property \DTS\eBaySDK\RestAPI\Types\Foo $foo
+ * @property mixed $any
  * @property string $uriArr
  * @property string $binaryArr
  * @property boolean $booleanArr
@@ -219,6 +220,12 @@ class ComplexType extends \DTS\eBaySDK\RestAPI\Types\AnotherType
             'repeatable' => false,
             'attribute' => false,
             'elementName' => 'foo'
+        ],
+        'any' => [
+            'type' => 'any',
+            'repeatable' => false,
+            'attribute' => false,
+            'elementName' => 'any'
         ],
         'uriArr' => [
             'type' => 'string',

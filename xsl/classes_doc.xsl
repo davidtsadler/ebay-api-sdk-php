@@ -215,7 +215,7 @@
       <xsl:text>string</xsl:text>
     </xsl:when>
     <xsl:when test="$type='any'">
-      <xsl:text>any</xsl:text>
+      <xsl:value-of select="if ($fqcn) then 'mixed' else 'any'"/>
     </xsl:when>
     <xsl:when test="$restriction != '' and $restrictionIsEnum">
         <xsl:value-of select="concat($dtsNamespace, $service, '\Enums\', dts:capitalize_first($type))"/>
