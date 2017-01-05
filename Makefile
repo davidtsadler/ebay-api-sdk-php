@@ -40,6 +40,7 @@ wsdls:
 
 download:
 	@wget -q -i services -P $(DOWNLOADS)
+	@sed -i -e "s/<tns:version>.*<\/tns:version>//" $(DOWNLOADS)/ProductService.wsdl
 	@sed -i -e "s/<version>.*<\/version>/<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@sed -i -e "s/\t\t\t\t<Version>.*<\/Version>/\t\t\t\t<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/BulkDataExchangeService.wsdl`"
