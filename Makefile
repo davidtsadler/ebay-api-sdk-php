@@ -65,6 +65,7 @@ download:
 
 patch:
 	@sed -i -e 's/<xs:element name="aspects" type="xs:string" maxOccurs="unbounded"\/>/<xs:element name="aspects" type="xs:any"\/>/g' $(DOWNLOADS)/Inventory.wsdl
+	@sed -i -e 's/standardslevel/standardsLevel/g' $(DOWNLOADS)/Analytics.wsdl
 
 transform:
 	@saxonb-xslt								\
