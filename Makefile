@@ -43,6 +43,12 @@ download:
 	@sed -i -e "s/<tns:version>.*<\/tns:version>//" $(DOWNLOADS)/ProductService.wsdl
 	@sed -i -e "s/<version>.*<\/version>/<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@sed -i -e "s/\t\t\t\t<Version>.*<\/Version>/\t\t\t\t<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchNamesResponse\" type=\"tns:GetProductSearchNamesResponse\"\/>/<xs:element name=\"getCompatibilitySearchNamesResponse\" type=\"tns:GetCompatibilitySearchNamesResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesRequest\" type=\"tns:GetProductSearchValuesRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesRequest\" type=\"tns:GetCompatibilitySearchValuesRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesResponse\" type=\"tns:GetProductSearchValuesResponse\"\/>/<xs:element name=\"getCompatibilitySearchValuesResponse\" type=\"tns:GetCompatibilitySearchValuesResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetProductSearchValuesBulkRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetCompatibilitySearchValuesBulkRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetProductSearchDataVersionRequest\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetCompatibilitySearchDataVersionRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetProductSearchDataVersionResponse\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetCompatibilitySearchDataVersionResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/BulkDataExchangeService.wsdl`"
 	@echo "BusinessPoliciesManagement : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/SellerProfilesManagementService.wsdl`"
 	@echo "FileTransfer               : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FileTransferService.wsdl`"
@@ -59,7 +65,7 @@ download:
 
 patch:
 	@sed -i -e 's/<xs:element name="aspects" type="xs:string" maxOccurs="unbounded"\/>/<xs:element name="aspects" type="xs:any"\/>/g' $(DOWNLOADS)/Inventory.wsdl
-	
+
 transform:
 	@saxonb-xslt								\
 		-ext:on								\
@@ -193,6 +199,30 @@ transform:
 		-xsl:$(XSL)/sdk.xsl						\
 		service=Trading							\
 		destDirectory=$(TRANSFORMED)/Trading/
+	@cp $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetProductSearchNamesResponse.php $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchNamesResponse.php
+	@sed -i -e "s/ProductSearchNamesResponse/CompatibilitySearchNamesResponse/" $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchNamesResponse.php
+	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchNamesResponseTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchNamesResponseTest.php
+	@sed -i -e "s/ProductSearchNamesResponse/CompatibilitySearchNamesResponse/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchNamesResponseTest.php
+	@cp $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetProductSearchValuesRequest.php $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchValuesRequest.php
+	@sed -i -e "s/ProductSearchValuesRequest/CompatibilitySearchValuesRequest/" $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchValuesRequest.php
+	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchValuesRequestTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchValuesRequestTest.php
+	@sed -i -e "s/ProductSearchValuesRequest/CompatibilitySearchValuesRequest/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchValuesRequestTest.php
+	@cp $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetProductSearchValuesResponse.php $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchValuesResponse.php
+	@sed -i -e "s/ProductSearchValuesResponse/CompatibilitySearchValuesResponse/" $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchValuesResponse.php
+	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchValuesResponseTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchValuesResponseTest.php
+	@sed -i -e "s/ProductSearchValuesResponse/CompatibilitySearchValuesResponse/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchValuesResponseTest.php
+	@cp $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetProductSearchValuesBulkRequest.php $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchValuesBulkRequest.php
+	@sed -i -e "s/ProductSearchValuesBulkRequest/CompatibilitySearchValuesBulkRequest/" $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchValuesBulkRequest.php
+	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchValuesBulkRequestTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchValuesBulkRequestTest.php
+	@sed -i -e "s/ProductSearchValuesBulkRequest/CompatibilitySearchValuesBulkRequest/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchValuesBulkRequestTest.php
+	@cp $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetProductSearchDataVersionRequest.php $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchDataVersionRequest.php
+	@sed -i -e "s/ProductSearchDataVersionRequest/CompatibilitySearchDataVersionRequest/" $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchDataVersionRequest.php
+	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchDataVersionRequestTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchDataVersionRequestTest.php
+	@sed -i -e "s/ProductSearchDataVersionRequest/CompatibilitySearchDataVersionRequest/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchDataVersionRequestTest.php
+	@cp $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetProductSearchDataVersionResponse.php $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchDataVersionResponse.php
+	@sed -i -e "s/ProductSearchDataVersionResponse/CompatibilitySearchDataVersionResponse/" $(TRANSFORMED)/ProductMetadata/src/ProductMetadata/Types/GetCompatibilitySearchDataVersionResponse.php
+	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchDataVersionResponseTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchDataVersionResponseTest.php
+	@sed -i -e "s/ProductSearchDataVersionResponse/CompatibilitySearchDataVersionResponse/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchDataVersionResponseTest.php
 
 build:	clean		\
 	download	\
