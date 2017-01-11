@@ -252,7 +252,6 @@
 </xs:complexType>
 <xs:complexType name="OptInToProgramRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -268,7 +267,6 @@
 </xs:complexType>
 <xs:complexType name="OptOutOfProgramRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>
@@ -302,7 +300,6 @@
 </xs:complexType>
 <xs:complexType name="DeleteAReturnPolicyRestResponse" restResponse="true">
   <xs:sequence>
-    <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
     <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
     <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
   </xs:sequence>

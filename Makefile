@@ -49,6 +49,9 @@ download:
 	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetProductSearchValuesBulkRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetCompatibilitySearchValuesBulkRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetProductSearchDataVersionRequest\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetCompatibilitySearchDataVersionRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
 	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetProductSearchDataVersionResponse\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetCompatibilitySearchDataVersionResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
+	@sed -i -e "5036,5051 s/.*//" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
+	@sed -i -e "5067,5083 s/.*//" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
+	@sed -i -e "s/<\/xs:schema>/<xs:complexType name=\"appealRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><xs:complexType name=\"moneyMovementRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><\/xs:schema>/" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
 	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/BulkDataExchangeService.wsdl`"
 	@echo "BusinessPoliciesManagement : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/SellerProfilesManagementService.wsdl`"
 	@echo "FileTransfer               : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FileTransferService.wsdl`"
