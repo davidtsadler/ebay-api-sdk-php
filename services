@@ -1,5 +1,6 @@
 https://developer.ebay.com/webservices/bulk-data-exchange/latest/BulkDataExchangeService.wsdl
 https://developer.ebay.com/webservices/business-policies/latest/SellerProfilesManagementService.wsdl
+http://developer.ebay.com/webservices/feedback/latest/FeedbackService.wsdl
 https://developer.ebay.com/webservices/file-transfer/latest/FileTransferService.wsdl
 https://developer.ebay.com/webservices/Finding/latest/FindingService.wsdl
 https://developer.ebay.com/webservices/half-finding/latest/HalfFindingService.wsdl
@@ -7,6 +8,7 @@ https://developer.ebay.com/webservices/merchandising/latest/MerchandisingService
 https://developer.ebay.com/webservices/latest/merchantdataservice.xsd
 https://developer.ebay.com/webservices/product/latest/ProductService.wsdl
 https://developer.ebay.com/webservices/product-metadata/latest/ProductMetadataService.wsdl
+http://developer.ebay.com/webservices/related-items/latest/BundleManagementService.wsdl
 https://developer.ebay.com/webservices/resolution-case-management/latest/ResolutionCaseManagementService.wsdl
 https://developer.ebay.com/webservices/return-management/latest/ReturnManagementService.wsdl
 https://developer.ebay.com/webservices/latest/ShoppingService.wsdl

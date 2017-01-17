@@ -54,6 +54,7 @@ download:
 	@sed -i -e "s/<\/xs:schema>/<xs:complexType name=\"appealRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><xs:complexType name=\"moneyMovementRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><\/xs:schema>/" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
 	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/BulkDataExchangeService.wsdl`"
 	@echo "BusinessPoliciesManagement : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/SellerProfilesManagementService.wsdl`"
+	@echo "Feedback                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FeedbackService.wsdl`"
 	@echo "FileTransfer               : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FileTransferService.wsdl`"
 	@echo "Finding                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FindingService.wsdl`"
 	@echo "HalfFinding                : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/HalfFindingService.wsdl`"
@@ -61,6 +62,7 @@ download:
 	@echo "MerchantData               : `sed -rn 's/<!-- Version ([[:digit:]]{3}).*/\1/p' $(DOWNLOADS)/merchantdataservice.xsd`"
 	@echo "Product                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ProductService.wsdl`"
 	@echo "ProductMetadata            : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ProductMetadataService.wsdl`"
+	@echo "Related Items Management   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/BundleManagementService.wsdl`"
 	@echo "Resolution Case Management : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ResolutionCaseManagementService.wsdl`"
 	@echo "Return Management          : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ReturnManagementService.wsdl`"
 	@echo "Shopping                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ShoppingService.wsdl`"
@@ -101,6 +103,12 @@ transform:
 		-xsl:$(XSL)/sdk.xsl						\
 		service=BusinessPoliciesManagement				\
 		destDirectory=$(TRANSFORMED)/BusinessPoliciesManagement/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/FeedbackService.wsdl				\
+		-xsl:$(XSL)/sdk.xsl	 					\
+		service=Feedback						\
+		destDirectory=$(TRANSFORMED)/Feedback/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/FileTransferService.wsdl			\
@@ -179,6 +187,12 @@ transform:
 		-xsl:$(XSL)/sdk.xsl						\
 		service=ProductMetadata    					\
 		destDirectory=$(TRANSFORMED)/ProductMetadata/
+	@saxonb-xslt								\
+		-ext:on								\
+		-s:$(DOWNLOADS)/BundleManagementService.wsdl			\
+		-xsl:$(XSL)/sdk.xsl						\
+		service=RelatedItemsManagement					\
+		destDirectory=$(TRANSFORMED)/RelatedItemsManagement/
 	@saxonb-xslt								\
 		-ext:on								\
 		-s:$(DOWNLOADS)/ResolutionCaseManagementService.wsdl		\
