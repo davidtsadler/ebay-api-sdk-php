@@ -128,7 +128,7 @@
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
-  <wsdl:operation name="UpdateOffer" method="PUT" resource="offer/{offer_Id}">
+  <wsdl:operation name="UpdateOffer" method="PUT" resource="offer/{offerId}">
     <wsdl:input message="ns:UpdateOfferRestRequest"/>
     <wsdl:output message="ns:UpdateOfferRestResponse"/>
   </wsdl:operation>
