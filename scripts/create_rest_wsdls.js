@@ -106,12 +106,20 @@ const createWsdl = (serviceUrl, filename) => {
     return `<xs:complexType name="${name}"><xs:sequence>${fields}</xs:sequence></xs:complexType>`;
   };
 
+  const isEnumUrl = (url) => {
+    return (
+        url.search(/Enum.html$/) !== -1
+        || url.search(/OrderFulfillmentStatus.html$/) !== -1
+        || url.search(/FulfillmentInstructionsType.html$/) !== -1
+    );
+  };
+
   const processTypeEnum = (url) => {
     const $ = getPage(`${serviceUrl}/types/${url}`);
     if (!$) {
       return [];
     }
-    return url.search(/Enum.html$/) !== -1 ? processEnum($) : processType($); 
+    return isEnumUrl(url) ?  processEnum($) : processType($); 
   };
 
   const types = getTypeEnumLinks().map(processTypeEnum);
