@@ -525,6 +525,28 @@
   </xs:sequence>
 </xs:complexType>
 
+<xs:element name="GetListingsInSpecificPromotionRestRequest" type="ns:GetListingsInSpecificPromotionRestRequest"/>
+<xs:element name="GetListingsInSpecificPromotionRestResponse" type="ns:GetListingsInSpecificPromotionRestResponse"/>
+<xs:complexType name="GetListingsInSpecificPromotionRestRequest">
+  <xs:sequence>
+    <xs:element name="promotion_id" type="xs:string" valid="string"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="q" type="xs:string" valid="string"/>
+    <xs:element name="sort" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetListingsInSpecificPromotionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ItemsPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
 <xs:element name="GetPromotionsRestRequest" type="ns:GetPromotionsRestRequest"/>
 <xs:element name="GetPromotionsRestResponse" type="ns:GetPromotionsRestResponse"/>
 <xs:complexType name="GetPromotionsRestRequest">
