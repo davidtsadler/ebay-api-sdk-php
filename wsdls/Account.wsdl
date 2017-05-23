@@ -1,0 +1,1544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:complexType name="Amount">
+        <xs:sequence>
+          <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CategoryType">
+        <xs:sequence>
+          <xs:element name="default" type="xs:boolean"/>
+          <xs:element name="name" type="ns:CategoryTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CategoryTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ALL_EXCLUDING_MOTORS_VEHICLES"/>
+          <xs:enumeration value="MOTORS_VEHICLES"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CountryCodeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AD"/>
+          <xs:enumeration value="AE"/>
+          <xs:enumeration value="AF"/>
+          <xs:enumeration value="AG"/>
+          <xs:enumeration value="AI"/>
+          <xs:enumeration value="AL"/>
+          <xs:enumeration value="AM"/>
+          <xs:enumeration value="AN"/>
+          <xs:enumeration value="AO"/>
+          <xs:enumeration value="AQ"/>
+          <xs:enumeration value="AR"/>
+          <xs:enumeration value="AS"/>
+          <xs:enumeration value="AT"/>
+          <xs:enumeration value="AU"/>
+          <xs:enumeration value="AW"/>
+          <xs:enumeration value="AX"/>
+          <xs:enumeration value="AZ"/>
+          <xs:enumeration value="BA"/>
+          <xs:enumeration value="BB"/>
+          <xs:enumeration value="BD"/>
+          <xs:enumeration value="BE"/>
+          <xs:enumeration value="BF"/>
+          <xs:enumeration value="BG"/>
+          <xs:enumeration value="BH"/>
+          <xs:enumeration value="BI"/>
+          <xs:enumeration value="BJ"/>
+          <xs:enumeration value="BL"/>
+          <xs:enumeration value="BM"/>
+          <xs:enumeration value="BN"/>
+          <xs:enumeration value="BO"/>
+          <xs:enumeration value="BQ"/>
+          <xs:enumeration value="BR"/>
+          <xs:enumeration value="BS"/>
+          <xs:enumeration value="BT"/>
+          <xs:enumeration value="BV"/>
+          <xs:enumeration value="BW"/>
+          <xs:enumeration value="BY"/>
+          <xs:enumeration value="BZ"/>
+          <xs:enumeration value="CA"/>
+          <xs:enumeration value="CC"/>
+          <xs:enumeration value="CD"/>
+          <xs:enumeration value="CF"/>
+          <xs:enumeration value="CG"/>
+          <xs:enumeration value="CH"/>
+          <xs:enumeration value="CI"/>
+          <xs:enumeration value="CK"/>
+          <xs:enumeration value="CL"/>
+          <xs:enumeration value="CM"/>
+          <xs:enumeration value="CN"/>
+          <xs:enumeration value="CO"/>
+          <xs:enumeration value="CR"/>
+          <xs:enumeration value="CU"/>
+          <xs:enumeration value="CV"/>
+          <xs:enumeration value="CW"/>
+          <xs:enumeration value="CX"/>
+          <xs:enumeration value="CY"/>
+          <xs:enumeration value="CZ"/>
+          <xs:enumeration value="DE"/>
+          <xs:enumeration value="DJ"/>
+          <xs:enumeration value="DK"/>
+          <xs:enumeration value="DM"/>
+          <xs:enumeration value="DO"/>
+          <xs:enumeration value="DZ"/>
+          <xs:enumeration value="EC"/>
+          <xs:enumeration value="EE"/>
+          <xs:enumeration value="EG"/>
+          <xs:enumeration value="EH"/>
+          <xs:enumeration value="ER"/>
+          <xs:enumeration value="ES"/>
+          <xs:enumeration value="ET"/>
+          <xs:enumeration value="FI"/>
+          <xs:enumeration value="FJ"/>
+          <xs:enumeration value="FK"/>
+          <xs:enumeration value="FM"/>
+          <xs:enumeration value="FO"/>
+          <xs:enumeration value="FR"/>
+          <xs:enumeration value="GA"/>
+          <xs:enumeration value="GB"/>
+          <xs:enumeration value="GD"/>
+          <xs:enumeration value="GE"/>
+          <xs:enumeration value="GF"/>
+          <xs:enumeration value="GG"/>
+          <xs:enumeration value="GH"/>
+          <xs:enumeration value="GI"/>
+          <xs:enumeration value="GL"/>
+          <xs:enumeration value="GM"/>
+          <xs:enumeration value="GN"/>
+          <xs:enumeration value="GP"/>
+          <xs:enumeration value="GQ"/>
+          <xs:enumeration value="GR"/>
+          <xs:enumeration value="GS"/>
+          <xs:enumeration value="GT"/>
+          <xs:enumeration value="GU"/>
+          <xs:enumeration value="GW"/>
+          <xs:enumeration value="GY"/>
+          <xs:enumeration value="HK"/>
+          <xs:enumeration value="HM"/>
+          <xs:enumeration value="HN"/>
+          <xs:enumeration value="HR"/>
+          <xs:enumeration value="HT"/>
+          <xs:enumeration value="HU"/>
+          <xs:enumeration value="ID"/>
+          <xs:enumeration value="IE"/>
+          <xs:enumeration value="IL"/>
+          <xs:enumeration value="IM"/>
+          <xs:enumeration value="IN"/>
+          <xs:enumeration value="IO"/>
+          <xs:enumeration value="IQ"/>
+          <xs:enumeration value="IR"/>
+          <xs:enumeration value="IS"/>
+          <xs:enumeration value="IT"/>
+          <xs:enumeration value="JE"/>
+          <xs:enumeration value="JM"/>
+          <xs:enumeration value="JO"/>
+          <xs:enumeration value="JP"/>
+          <xs:enumeration value="KE"/>
+          <xs:enumeration value="KG"/>
+          <xs:enumeration value="KH"/>
+          <xs:enumeration value="KI"/>
+          <xs:enumeration value="KM"/>
+          <xs:enumeration value="KN"/>
+          <xs:enumeration value="KP"/>
+          <xs:enumeration value="KR"/>
+          <xs:enumeration value="KW"/>
+          <xs:enumeration value="KY"/>
+          <xs:enumeration value="KZ"/>
+          <xs:enumeration value="LA"/>
+          <xs:enumeration value="LB"/>
+          <xs:enumeration value="LC"/>
+          <xs:enumeration value="LI"/>
+          <xs:enumeration value="LK"/>
+          <xs:enumeration value="LR"/>
+          <xs:enumeration value="LS"/>
+          <xs:enumeration value="LT"/>
+          <xs:enumeration value="LU"/>
+          <xs:enumeration value="LV"/>
+          <xs:enumeration value="LY"/>
+          <xs:enumeration value="MA"/>
+          <xs:enumeration value="MC"/>
+          <xs:enumeration value="MD"/>
+          <xs:enumeration value="ME"/>
+          <xs:enumeration value="MF"/>
+          <xs:enumeration value="MG"/>
+          <xs:enumeration value="MH"/>
+          <xs:enumeration value="MK"/>
+          <xs:enumeration value="ML"/>
+          <xs:enumeration value="MM"/>
+          <xs:enumeration value="MN"/>
+          <xs:enumeration value="MO"/>
+          <xs:enumeration value="MP"/>
+          <xs:enumeration value="MQ"/>
+          <xs:enumeration value="MR"/>
+          <xs:enumeration value="MS"/>
+          <xs:enumeration value="MT"/>
+          <xs:enumeration value="MU"/>
+          <xs:enumeration value="MV"/>
+          <xs:enumeration value="MW"/>
+          <xs:enumeration value="MX"/>
+          <xs:enumeration value="MY"/>
+          <xs:enumeration value="MZ"/>
+          <xs:enumeration value="NA"/>
+          <xs:enumeration value="NC"/>
+          <xs:enumeration value="NE"/>
+          <xs:enumeration value="NF"/>
+          <xs:enumeration value="NG"/>
+          <xs:enumeration value="NI"/>
+          <xs:enumeration value="NL"/>
+          <xs:enumeration value="NO"/>
+          <xs:enumeration value="NP"/>
+          <xs:enumeration value="NR"/>
+          <xs:enumeration value="NU"/>
+          <xs:enumeration value="NZ"/>
+          <xs:enumeration value="OM"/>
+          <xs:enumeration value="PA"/>
+          <xs:enumeration value="PE"/>
+          <xs:enumeration value="PF"/>
+          <xs:enumeration value="PG"/>
+          <xs:enumeration value="PH"/>
+          <xs:enumeration value="PK"/>
+          <xs:enumeration value="PL"/>
+          <xs:enumeration value="PM"/>
+          <xs:enumeration value="PN"/>
+          <xs:enumeration value="PR"/>
+          <xs:enumeration value="PS"/>
+          <xs:enumeration value="PT"/>
+          <xs:enumeration value="PW"/>
+          <xs:enumeration value="PY"/>
+          <xs:enumeration value="QA"/>
+          <xs:enumeration value="RE"/>
+          <xs:enumeration value="RO"/>
+          <xs:enumeration value="RS"/>
+          <xs:enumeration value="RU"/>
+          <xs:enumeration value="RW"/>
+          <xs:enumeration value="SA"/>
+          <xs:enumeration value="SB"/>
+          <xs:enumeration value="SC"/>
+          <xs:enumeration value="SD"/>
+          <xs:enumeration value="SE"/>
+          <xs:enumeration value="SG"/>
+          <xs:enumeration value="SH"/>
+          <xs:enumeration value="SI"/>
+          <xs:enumeration value="SJ"/>
+          <xs:enumeration value="SK"/>
+          <xs:enumeration value="SL"/>
+          <xs:enumeration value="SM"/>
+          <xs:enumeration value="SN"/>
+          <xs:enumeration value="SO"/>
+          <xs:enumeration value="SR"/>
+          <xs:enumeration value="ST"/>
+          <xs:enumeration value="SV"/>
+          <xs:enumeration value="SX"/>
+          <xs:enumeration value="SY"/>
+          <xs:enumeration value="SZ"/>
+          <xs:enumeration value="TC"/>
+          <xs:enumeration value="TD"/>
+          <xs:enumeration value="TF"/>
+          <xs:enumeration value="TG"/>
+          <xs:enumeration value="TH"/>
+          <xs:enumeration value="TJ"/>
+          <xs:enumeration value="TK"/>
+          <xs:enumeration value="TL"/>
+          <xs:enumeration value="TM"/>
+          <xs:enumeration value="TN"/>
+          <xs:enumeration value="TO"/>
+          <xs:enumeration value="TR"/>
+          <xs:enumeration value="TT"/>
+          <xs:enumeration value="TV"/>
+          <xs:enumeration value="TW"/>
+          <xs:enumeration value="TZ"/>
+          <xs:enumeration value="UA"/>
+          <xs:enumeration value="UG"/>
+          <xs:enumeration value="UM"/>
+          <xs:enumeration value="US"/>
+          <xs:enumeration value="UY"/>
+          <xs:enumeration value="UZ"/>
+          <xs:enumeration value="VA"/>
+          <xs:enumeration value="VC"/>
+          <xs:enumeration value="VE"/>
+          <xs:enumeration value="VG"/>
+          <xs:enumeration value="VI"/>
+          <xs:enumeration value="VN"/>
+          <xs:enumeration value="VU"/>
+          <xs:enumeration value="WF"/>
+          <xs:enumeration value="WS"/>
+          <xs:enumeration value="YE"/>
+          <xs:enumeration value="YT"/>
+          <xs:enumeration value="ZA"/>
+          <xs:enumeration value="ZM"/>
+          <xs:enumeration value="ZW"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CurrencyCodeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AED"/>
+          <xs:enumeration value="AFN"/>
+          <xs:enumeration value="ALL"/>
+          <xs:enumeration value="AMD"/>
+          <xs:enumeration value="ANG"/>
+          <xs:enumeration value="AOA"/>
+          <xs:enumeration value="ARS"/>
+          <xs:enumeration value="AUD"/>
+          <xs:enumeration value="AWG"/>
+          <xs:enumeration value="AZN"/>
+          <xs:enumeration value="BAM"/>
+          <xs:enumeration value="BBD"/>
+          <xs:enumeration value="BDT"/>
+          <xs:enumeration value="BGN"/>
+          <xs:enumeration value="BHD"/>
+          <xs:enumeration value="BIF"/>
+          <xs:enumeration value="BMD"/>
+          <xs:enumeration value="BND"/>
+          <xs:enumeration value="BOB"/>
+          <xs:enumeration value="BRL"/>
+          <xs:enumeration value="BSD"/>
+          <xs:enumeration value="BTN"/>
+          <xs:enumeration value="BWP"/>
+          <xs:enumeration value="BYR"/>
+          <xs:enumeration value="BZD"/>
+          <xs:enumeration value="CAD"/>
+          <xs:enumeration value="CDF"/>
+          <xs:enumeration value="CHF"/>
+          <xs:enumeration value="CLP"/>
+          <xs:enumeration value="CNY"/>
+          <xs:enumeration value="COP"/>
+          <xs:enumeration value="CRC"/>
+          <xs:enumeration value="CUP"/>
+          <xs:enumeration value="CVE"/>
+          <xs:enumeration value="CZK"/>
+          <xs:enumeration value="DJF"/>
+          <xs:enumeration value="DKK"/>
+          <xs:enumeration value="DOP"/>
+          <xs:enumeration value="DZD"/>
+          <xs:enumeration value="EGP"/>
+          <xs:enumeration value="ERN"/>
+          <xs:enumeration value="ETB"/>
+          <xs:enumeration value="EUR"/>
+          <xs:enumeration value="FJD"/>
+          <xs:enumeration value="FKP"/>
+          <xs:enumeration value="GBP"/>
+          <xs:enumeration value="GEL"/>
+          <xs:enumeration value="GHS"/>
+          <xs:enumeration value="GIP"/>
+          <xs:enumeration value="GMD"/>
+          <xs:enumeration value="GNF"/>
+          <xs:enumeration value="GTQ"/>
+          <xs:enumeration value="GYD"/>
+          <xs:enumeration value="HKD"/>
+          <xs:enumeration value="HNL"/>
+          <xs:enumeration value="HRK"/>
+          <xs:enumeration value="HTG"/>
+          <xs:enumeration value="HUF"/>
+          <xs:enumeration value="IDR"/>
+          <xs:enumeration value="ILS"/>
+          <xs:enumeration value="INR"/>
+          <xs:enumeration value="IQD"/>
+          <xs:enumeration value="IRR"/>
+          <xs:enumeration value="ISK"/>
+          <xs:enumeration value="JMD"/>
+          <xs:enumeration value="JOD"/>
+          <xs:enumeration value="JPY"/>
+          <xs:enumeration value="KES"/>
+          <xs:enumeration value="KGS"/>
+          <xs:enumeration value="KHR"/>
+          <xs:enumeration value="KMF"/>
+          <xs:enumeration value="KPW"/>
+          <xs:enumeration value="KRW"/>
+          <xs:enumeration value="KWD"/>
+          <xs:enumeration value="KYD"/>
+          <xs:enumeration value="KZT"/>
+          <xs:enumeration value="LAK"/>
+          <xs:enumeration value="LBP"/>
+          <xs:enumeration value="LKR"/>
+          <xs:enumeration value="LRD"/>
+          <xs:enumeration value="LSL"/>
+          <xs:enumeration value="LTL"/>
+          <xs:enumeration value="LYD"/>
+          <xs:enumeration value="MAD"/>
+          <xs:enumeration value="MDL"/>
+          <xs:enumeration value="MGA"/>
+          <xs:enumeration value="MKD"/>
+          <xs:enumeration value="MMK"/>
+          <xs:enumeration value="MNT"/>
+          <xs:enumeration value="MOP"/>
+          <xs:enumeration value="MRO"/>
+          <xs:enumeration value="MUR"/>
+          <xs:enumeration value="MVR"/>
+          <xs:enumeration value="MWK"/>
+          <xs:enumeration value="MXN"/>
+          <xs:enumeration value="MYR"/>
+          <xs:enumeration value="MZN"/>
+          <xs:enumeration value="NAD"/>
+          <xs:enumeration value="NGN"/>
+          <xs:enumeration value="NIO"/>
+          <xs:enumeration value="NOK"/>
+          <xs:enumeration value="NPR"/>
+          <xs:enumeration value="NZD"/>
+          <xs:enumeration value="OMR"/>
+          <xs:enumeration value="PAB"/>
+          <xs:enumeration value="PEN"/>
+          <xs:enumeration value="PGK"/>
+          <xs:enumeration value="PHP"/>
+          <xs:enumeration value="PKR"/>
+          <xs:enumeration value="PLN"/>
+          <xs:enumeration value="PYG"/>
+          <xs:enumeration value="QAR"/>
+          <xs:enumeration value="RON"/>
+          <xs:enumeration value="RSD"/>
+          <xs:enumeration value="RUB"/>
+          <xs:enumeration value="RWF"/>
+          <xs:enumeration value="SAR"/>
+          <xs:enumeration value="SBD"/>
+          <xs:enumeration value="SCR"/>
+          <xs:enumeration value="SDG"/>
+          <xs:enumeration value="SEK"/>
+          <xs:enumeration value="SGD"/>
+          <xs:enumeration value="SHP"/>
+          <xs:enumeration value="SLL"/>
+          <xs:enumeration value="SOS"/>
+          <xs:enumeration value="SRD"/>
+          <xs:enumeration value="STD"/>
+          <xs:enumeration value="SYP"/>
+          <xs:enumeration value="SZL"/>
+          <xs:enumeration value="THB"/>
+          <xs:enumeration value="TJS"/>
+          <xs:enumeration value="TMT"/>
+          <xs:enumeration value="TND"/>
+          <xs:enumeration value="TOP"/>
+          <xs:enumeration value="TRY"/>
+          <xs:enumeration value="TTD"/>
+          <xs:enumeration value="TWD"/>
+          <xs:enumeration value="TZS"/>
+          <xs:enumeration value="UAH"/>
+          <xs:enumeration value="UGX"/>
+          <xs:enumeration value="USD"/>
+          <xs:enumeration value="UYU"/>
+          <xs:enumeration value="UZS"/>
+          <xs:enumeration value="VEF"/>
+          <xs:enumeration value="VND"/>
+          <xs:enumeration value="VUV"/>
+          <xs:enumeration value="WST"/>
+          <xs:enumeration value="XAF"/>
+          <xs:enumeration value="XCD"/>
+          <xs:enumeration value="XOF"/>
+          <xs:enumeration value="XPF"/>
+          <xs:enumeration value="YER"/>
+          <xs:enumeration value="ZAR"/>
+          <xs:enumeration value="ZMW"/>
+          <xs:enumeration value="ZWL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Deposit">
+        <xs:sequence>
+          <xs:element name="amount" type="ns:Amount"/>
+          <xs:element name="dueIn" type="ns:TimeDuration"/>
+          <xs:element name="paymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ExternalPaymentMethod">
+        <xs:sequence>
+          <xs:element name="paymentMethodName" type="xs:string"/>
+          <xs:element name="paymentMethodType" type="ns:ExternalPaymentMethodTypeEnum"/>
+          <xs:element name="primary" type="xs:boolean"/>
+          <xs:element name="verified" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ExternalPaymentMethodTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="BANK_CASH_TRANSFER"/>
+          <xs:enumeration value="CASH"/>
+          <xs:enumeration value="CHECK"/>
+          <xs:enumeration value="CREDIT_CARD"/>
+          <xs:enumeration value="DEBIT_CARD"/>
+          <xs:enumeration value="OTHER"/>
+          <xs:enumeration value="PAYPAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="FulfillmentPolicy">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="freightShipping" type="xs:boolean"/>
+          <xs:element name="fulfillmentPolicyId" type="xs:string"/>
+          <xs:element name="globalShipping" type="xs:boolean"/>
+          <xs:element name="handlingTime" type="ns:TimeDuration"/>
+          <xs:element name="localPickup" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="pickupDropOff" type="xs:boolean"/>
+          <xs:element name="shippingOptions" type="ns:ShippingOption" maxOccurs="unbounded"/>
+          <xs:element name="shipToLocations" type="ns:RegionSet"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FulfillmentPolicyRequest">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="freightShipping" type="xs:boolean"/>
+          <xs:element name="globalShipping" type="xs:boolean"/>
+          <xs:element name="handlingTime" type="ns:TimeDuration"/>
+          <xs:element name="localPickup" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="pickupDropOff" type="xs:boolean"/>
+          <xs:element name="shippingOptions" type="ns:ShippingOption" maxOccurs="unbounded"/>
+          <xs:element name="shipToLocations" type="ns:RegionSet"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FulfillmentPolicyResponse">
+        <xs:sequence>
+          <xs:element name="fulfillmentPolicies" type="ns:FulfillmentPolicy" maxOccurs="unbounded"/>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventorySizing">
+        <xs:sequence>
+          <xs:element name="currentAvailableQuantity" type="xs:integer"/>
+          <xs:element name="currentInventoryValue" type="ns:Amount"/>
+          <xs:element name="inventorySnapshots" type="ns:InventorySnapshot"/>
+          <xs:element name="primarySalesCategory" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventorySnapshot">
+        <xs:sequence>
+          <xs:element name="cumulativeInventoryValue" type="ns:Amount"/>
+          <xs:element name="cumulativeQuantity" type="xs:integer"/>
+          <xs:element name="lookbackPeriod" type="ns:LookbackPeriod"/>
+          <xs:element name="maxAvailableQuantity" type="xs:integer"/>
+          <xs:element name="maxInventoryValue" type="ns:Amount"/>
+          <xs:element name="minAvailableQuantity" type="xs:integer"/>
+          <xs:element name="minInventoryValue" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LookbackPeriod">
+        <xs:sequence>
+          <xs:element name="lifetime" type="xs:boolean"/>
+          <xs:element name="timeDuration" type="ns:TimeDuration"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="MarketplaceIdEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_CN"/>
+          <xs:enumeration value="EBAY_CZ"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_DK"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FI"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_GR"/>
+          <xs:enumeration value="EBAY_HALF_US"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_HU"/>
+          <xs:enumeration value="EBAY_ID"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IL"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_JP"/>
+          <xs:enumeration value="EBAY_MOTORS_US"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_NO"/>
+          <xs:enumeration value="EBAY_NZ"/>
+          <xs:enumeration value="EBAY_PE"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_PR"/>
+          <xs:enumeration value="EBAY_PT"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SE"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_TH"/>
+          <xs:enumeration value="EBAY_TW"/>
+          <xs:enumeration value="EBAY_US"/>
+          <xs:enumeration value="EBAY_VN"/>
+          <xs:enumeration value="EBAY_ZA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="MerchantExternalProfile">
+        <xs:sequence>
+          <xs:element name="acceptedPaymentMethods" type="ns:ExternalPaymentMethod"/>
+          <xs:element name="accountCreationDate" type="xs:string"/>
+          <xs:element name="billingPaymentMethods" type="ns:ExternalPaymentMethod"/>
+          <xs:element name="inventorySizing" type="ns:InventorySizing"/>
+          <xs:element name="merchantCategoryCode" type="xs:string"/>
+          <xs:element name="primaryCurrency" type="ns:CurrencyCodeEnum"/>
+          <xs:element name="returnSnapshots" type="ns:ReturnSnapshot"/>
+          <xs:element name="sicCode" type="xs:string"/>
+          <xs:element name="transactionVolume" type="ns:TransactionVolume"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PaymentInstrumentBrandEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AMERICAN_EXPRESS"/>
+          <xs:enumeration value="DISCOVER"/>
+          <xs:enumeration value="MASTERCARD"/>
+          <xs:enumeration value="VISA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PaymentMethod">
+        <xs:sequence>
+          <xs:element name="brands" type="ns:PaymentInstrumentBrandEnum" maxOccurs="unbounded"/>
+          <xs:element name="paymentMethodType" type="ns:PaymentMethodTypeEnum"/>
+          <xs:element name="recipientAccountReference" type="ns:RecipientAccountReference"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PaymentMethodTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CASH_IN_PERSON"/>
+          <xs:enumeration value="CASH_ON_DELIVERY"/>
+          <xs:enumeration value="CASH_ON_PICKUP"/>
+          <xs:enumeration value="CASHIER_CHECK"/>
+          <xs:enumeration value="CREDIT_CARD"/>
+          <xs:enumeration value="ESCROW"/>
+          <xs:enumeration value="INTEGRATED_MERCHANT_CREDIT_CARD"/>
+          <xs:enumeration value="LOAN_CHECK"/>
+          <xs:enumeration value="MONEY_ORDER"/>
+          <xs:enumeration value="OTHER"/>
+          <xs:enumeration value="PAISA_PAY"/>
+          <xs:enumeration value="PAISA_PAY_ESCROW"/>
+          <xs:enumeration value="PAISA_PAY_ESCROW_EMI"/>
+          <xs:enumeration value="PAYPAL"/>
+          <xs:enumeration value="PERSONAL_CHECK"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PaymentPolicy">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="deposit" type="ns:Deposit"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="fullPaymentDueIn" type="ns:TimeDuration"/>
+          <xs:element name="immediatePay" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="paymentInstructions" type="xs:string"/>
+          <xs:element name="paymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
+          <xs:element name="paymentPolicyId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PaymentPolicyRequest">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="deposit" type="ns:Deposit"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="fullPaymentDueIn" type="ns:TimeDuration"/>
+          <xs:element name="immediatePay" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="paymentInstructions" type="xs:string"/>
+          <xs:element name="paymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PaymentPolicyResponse">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="paymentPolicies" type="ns:PaymentPolicy" maxOccurs="unbounded"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Program">
+        <xs:sequence>
+          <xs:element name="programType" type="ns:ProgramTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Programs">
+        <xs:sequence>
+          <xs:element name="programs" type="ns:Program" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ProgramTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="OUT_OF_STOCK_CONTROL"/>
+          <xs:enumeration value="SELLING_POLICY_MANAGEMENT"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="RecipientAccountReference">
+        <xs:sequence>
+          <xs:element name="referenceId" type="xs:string"/>
+          <xs:element name="referenceType" type="ns:RecipientAccountReferenceTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="RecipientAccountReferenceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="PAYPAL_EMAIL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="RefundMethodEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="MERCHANDISE_CREDIT"/>
+          <xs:enumeration value="MONEY_BACK"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Region">
+        <xs:sequence>
+          <xs:element name="regionName" type="xs:string"/>
+          <xs:element name="regionType" type="ns:RegionTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegionSet">
+        <xs:sequence>
+          <xs:element name="regionExcluded" type="ns:Region" maxOccurs="unbounded"/>
+          <xs:element name="regionIncluded" type="ns:Region" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="RegionTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="COUNTRY"/>
+          <xs:enumeration value="COUNTRY_REGION"/>
+          <xs:enumeration value="STATE_OR_PROVINCE"/>
+          <xs:enumeration value="WORLD_REGION"/>
+          <xs:enumeration value="WORLDWIDE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ReturnMethodEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EXCHANGE"/>
+          <xs:enumeration value="REPLACEMENT"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ReturnPolicy">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="extendedHolidayReturnsOffered" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="refundMethod" type="ns:RefundMethodEnum"/>
+          <xs:element name="restockingFeePercentage" type="xs:string"/>
+          <xs:element name="returnInstructions" type="xs:string"/>
+          <xs:element name="returnMethod" type="ns:ReturnMethodEnum"/>
+          <xs:element name="returnPeriod" type="ns:TimeDuration"/>
+          <xs:element name="returnPolicyId" type="xs:string"/>
+          <xs:element name="returnsAccepted" type="xs:boolean"/>
+          <xs:element name="returnShippingCostPayer" type="ns:ReturnShippingCostPayerEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReturnPolicyRequest">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="extendedHolidayReturnsOffered" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="refundMethod" type="ns:RefundMethodEnum"/>
+          <xs:element name="restockingFeePercentage" type="xs:string"/>
+          <xs:element name="returnInstructions" type="xs:string"/>
+          <xs:element name="returnMethod" type="ns:ReturnMethodEnum"/>
+          <xs:element name="returnPeriod" type="ns:TimeDuration"/>
+          <xs:element name="returnsAccepted" type="xs:boolean"/>
+          <xs:element name="returnShippingCostPayer" type="ns:ReturnShippingCostPayerEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReturnPolicyResponse">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="returnPolicies" type="ns:ReturnPolicy" maxOccurs="unbounded"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ReturnShippingCostPayerEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="BUYER"/>
+          <xs:enumeration value="SELLER"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ReturnSnapshot">
+        <xs:sequence>
+          <xs:element name="lookbackPeriod" type="ns:LookbackPeriod"/>
+          <xs:element name="returnedInventoryValue" type="ns:Amount"/>
+          <xs:element name="returnedQuantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SalesTax">
+        <xs:sequence>
+          <xs:element name="countryCode" type="ns:CountryCodeEnum"/>
+          <xs:element name="salesTaxJurisdictionId" type="xs:string"/>
+          <xs:element name="salesTaxPercentage" type="xs:string"/>
+          <xs:element name="shippingAndHandlingTaxed" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SalesTaxBase">
+        <xs:sequence>
+          <xs:element name="salesTaxPercentage" type="xs:string"/>
+          <xs:element name="shippingAndHandlingTaxed" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SalesTaxes">
+        <xs:sequence>
+          <xs:element name="salesTaxes" type="ns:SalesTax" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SellingLimit">
+        <xs:sequence>
+          <xs:element name="amount" type="ns:Amount"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SellingPrivileges">
+        <xs:sequence>
+          <xs:element name="sellerRegistrationCompleted" type="xs:boolean"/>
+          <xs:element name="sellingLimit" type="ns:SellingLimit"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SetFulfillmentPolicyResponse">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="freightShipping" type="xs:boolean"/>
+          <xs:element name="fulfillmentPolicyId" type="xs:string"/>
+          <xs:element name="globalShipping" type="xs:boolean"/>
+          <xs:element name="handlingTime" type="ns:TimeDuration"/>
+          <xs:element name="localPickup" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="pickupDropOff" type="xs:boolean"/>
+          <xs:element name="shippingOptions" type="ns:ShippingOption" maxOccurs="unbounded"/>
+          <xs:element name="shipToLocations" type="ns:RegionSet"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SetPaymentPolicyResponse">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="deposit" type="ns:Deposit"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="fullPaymentDueIn" type="ns:TimeDuration"/>
+          <xs:element name="immediatePay" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="paymentInstructions" type="xs:string"/>
+          <xs:element name="paymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
+          <xs:element name="paymentPolicyId" type="xs:string"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SetReturnPolicyResponse">
+        <xs:sequence>
+          <xs:element name="categoryTypes" type="ns:CategoryType" maxOccurs="unbounded"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="extendedHolidayReturnsOffered" type="xs:boolean"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="refundMethod" type="ns:RefundMethodEnum"/>
+          <xs:element name="restockingFeePercentage" type="xs:string"/>
+          <xs:element name="returnInstructions" type="xs:string"/>
+          <xs:element name="returnMethod" type="ns:ReturnMethodEnum"/>
+          <xs:element name="returnPeriod" type="ns:TimeDuration"/>
+          <xs:element name="returnPolicyId" type="xs:string"/>
+          <xs:element name="returnsAccepted" type="xs:boolean"/>
+          <xs:element name="returnShippingCostPayer" type="ns:ReturnShippingCostPayerEnum"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ShippingCostTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CALCULATED"/>
+          <xs:enumeration value="FLAT_RATE"/>
+          <xs:enumeration value="NOT_SPECIFIED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ShippingOption">
+        <xs:sequence>
+          <xs:element name="costType" type="ns:ShippingCostTypeEnum"/>
+          <xs:element name="insuranceFee" type="ns:Amount"/>
+          <xs:element name="insuranceOffered" type="xs:boolean"/>
+          <xs:element name="optionType" type="ns:ShippingOptionTypeEnum"/>
+          <xs:element name="packageHandlingCost" type="ns:Amount"/>
+          <xs:element name="shippingServices" type="ns:ShippingService" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ShippingOptionTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DOMESTIC"/>
+          <xs:enumeration value="INTERNATIONAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ShippingService">
+        <xs:sequence>
+          <xs:element name="additionalShippingCost" type="ns:Amount"/>
+          <xs:element name="buyerResponsibleForPickup" type="xs:boolean"/>
+          <xs:element name="buyerResponsibleForShipping" type="xs:boolean"/>
+          <xs:element name="cashOnDeliveryFee" type="ns:Amount"/>
+          <xs:element name="freeShipping" type="xs:boolean"/>
+          <xs:element name="shippingCarrierCode" type="xs:string"/>
+          <xs:element name="shippingCost" type="ns:Amount"/>
+          <xs:element name="shippingServiceCode" type="xs:string"/>
+          <xs:element name="shipToLocations" type="ns:RegionSet"/>
+          <xs:element name="sortOrder" type="xs:integer"/>
+          <xs:element name="surcharge" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SoldAggregatedMetrics">
+        <xs:sequence>
+          <xs:element name="maxSoldInventoryValue" type="ns:Amount"/>
+          <xs:element name="maxSoldQuantity" type="xs:integer"/>
+          <xs:element name="minSoldInventoryValue" type="ns:Amount"/>
+          <xs:element name="minSoldQuantity" type="xs:integer"/>
+          <xs:element name="period" type="ns:TimeDuration"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TimeDuration">
+        <xs:sequence>
+          <xs:element name="unit" type="ns:TimeDurationUnitEnum"/>
+          <xs:element name="value" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="TimeDurationUnitEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="BUSINESS_DAY"/>
+          <xs:enumeration value="CALENDAR_DAY"/>
+          <xs:enumeration value="DAY"/>
+          <xs:enumeration value="HOUR"/>
+          <xs:enumeration value="MILLISECOND"/>
+          <xs:enumeration value="MINUTE"/>
+          <xs:enumeration value="MONTH"/>
+          <xs:enumeration value="SECOND"/>
+          <xs:enumeration value="YEAR"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="TransactionSnapshot">
+        <xs:sequence>
+          <xs:element name="calendarWindowAggregatedMetrics" type="ns:SoldAggregatedMetrics"/>
+          <xs:element name="lookbackPeriod" type="ns:LookbackPeriod"/>
+          <xs:element name="rollingWindowAggregatedMetrics" type="ns:SoldAggregatedMetrics"/>
+          <xs:element name="soldInventoryValue" type="ns:Amount"/>
+          <xs:element name="soldQuantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TransactionVolume">
+        <xs:sequence>
+          <xs:element name="firstOrderDate" type="xs:string"/>
+          <xs:element name="transactionSnapshots" type="ns:TransactionSnapshot"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateAFulfillmentPolicyRestRequest" type="ns:CreateAFulfillmentPolicyRestRequest"/>
+      <xs:element name="CreateAFulfillmentPolicyRestResponse" type="ns:CreateAFulfillmentPolicyRestResponse"/>
+      <xs:complexType name="CreateAFulfillmentPolicyRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:FulfillmentPolicyRequest">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateAFulfillmentPolicyRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SetFulfillmentPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteAFulfillmentPolicyRestRequest" type="ns:DeleteAFulfillmentPolicyRestRequest"/>
+      <xs:element name="DeleteAFulfillmentPolicyRestResponse" type="ns:DeleteAFulfillmentPolicyRestResponse"/>
+      <xs:complexType name="DeleteAFulfillmentPolicyRestRequest">
+        <xs:sequence>
+          <xs:element name="fulfillmentPolicyId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAFulfillmentPolicyRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetFulfillmentPoliciesByMarketplaceRestRequest" type="ns:GetFulfillmentPoliciesByMarketplaceRestRequest"/>
+      <xs:element name="GetFulfillmentPoliciesByMarketplaceRestResponse" type="ns:GetFulfillmentPoliciesByMarketplaceRestResponse"/>
+      <xs:complexType name="GetFulfillmentPoliciesByMarketplaceRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFulfillmentPoliciesByMarketplaceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:FulfillmentPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAFulfillmentPolicyByIDRestRequest" type="ns:GetAFulfillmentPolicyByIDRestRequest"/>
+      <xs:element name="GetAFulfillmentPolicyByIDRestResponse" type="ns:GetAFulfillmentPolicyByIDRestResponse"/>
+      <xs:complexType name="GetAFulfillmentPolicyByIDRestRequest">
+        <xs:sequence>
+          <xs:element name="fulfillmentPolicyId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAFulfillmentPolicyByIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:FulfillmentPolicy">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAFulfillmentPolicyByNameRestRequest" type="ns:GetAFulfillmentPolicyByNameRestRequest"/>
+      <xs:element name="GetAFulfillmentPolicyByNameRestResponse" type="ns:GetAFulfillmentPolicyByNameRestResponse"/>
+      <xs:complexType name="GetAFulfillmentPolicyByNameRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="name" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAFulfillmentPolicyByNameRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:FulfillmentPolicy">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateAFulfillmentPolicyRestRequest" type="ns:UpdateAFulfillmentPolicyRestRequest"/>
+      <xs:element name="UpdateAFulfillmentPolicyRestResponse" type="ns:UpdateAFulfillmentPolicyRestResponse"/>
+      <xs:complexType name="UpdateAFulfillmentPolicyRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:FulfillmentPolicyRequest">
+            <xs:sequence>
+              <xs:element name="fulfillmentPolicyId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateAFulfillmentPolicyRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SetFulfillmentPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateAPaymentPolicyRestRequest" type="ns:CreateAPaymentPolicyRestRequest"/>
+      <xs:element name="CreateAPaymentPolicyRestResponse" type="ns:CreateAPaymentPolicyRestResponse"/>
+      <xs:complexType name="CreateAPaymentPolicyRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:PaymentPolicyRequest">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateAPaymentPolicyRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SetPaymentPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteAPaymentPolicyRestRequest" type="ns:DeleteAPaymentPolicyRestRequest"/>
+      <xs:element name="DeleteAPaymentPolicyRestResponse" type="ns:DeleteAPaymentPolicyRestResponse"/>
+      <xs:complexType name="DeleteAPaymentPolicyRestRequest">
+        <xs:sequence>
+          <xs:element name="payment_policy_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAPaymentPolicyRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPaymentPoliciesByMarketplaceRestRequest" type="ns:GetPaymentPoliciesByMarketplaceRestRequest"/>
+      <xs:element name="GetPaymentPoliciesByMarketplaceRestResponse" type="ns:GetPaymentPoliciesByMarketplaceRestResponse"/>
+      <xs:complexType name="GetPaymentPoliciesByMarketplaceRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPaymentPoliciesByMarketplaceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PaymentPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAPaymentPolicyByIDRestRequest" type="ns:GetAPaymentPolicyByIDRestRequest"/>
+      <xs:element name="GetAPaymentPolicyByIDRestResponse" type="ns:GetAPaymentPolicyByIDRestResponse"/>
+      <xs:complexType name="GetAPaymentPolicyByIDRestRequest">
+        <xs:sequence>
+          <xs:element name="paymentPolicyId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAPaymentPolicyByIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PaymentPolicy">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAPaymentPolicyByNameRestRequest" type="ns:GetAPaymentPolicyByNameRestRequest"/>
+      <xs:element name="GetAPaymentPolicyByNameRestResponse" type="ns:GetAPaymentPolicyByNameRestResponse"/>
+      <xs:complexType name="GetAPaymentPolicyByNameRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="name" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAPaymentPolicyByNameRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PaymentPolicy">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateAPaymentPolicyRestRequest" type="ns:UpdateAPaymentPolicyRestRequest"/>
+      <xs:element name="UpdateAPaymentPolicyRestResponse" type="ns:UpdateAPaymentPolicyRestResponse"/>
+      <xs:complexType name="UpdateAPaymentPolicyRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:PaymentPolicyRequest">
+            <xs:sequence>
+              <xs:element name="payment_policy_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateAPaymentPolicyRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SetPaymentPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAccountPrivilegesRestResponse" type="ns:GetAccountPrivilegesRestResponse"/>
+      <xs:complexType name="GetAccountPrivilegesRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SellingPrivileges">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetOptedInProgramsRestResponse" type="ns:GetOptedInProgramsRestResponse"/>
+      <xs:complexType name="GetOptedInProgramsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Programs">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="OptInToProgramRestRequest" type="ns:OptInToProgramRestRequest"/>
+      <xs:element name="OptInToProgramRestResponse" type="ns:OptInToProgramRestResponse"/>
+      <xs:complexType name="OptInToProgramRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:Program">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OptInToProgramRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OptOutOfProgramRestRequest" type="ns:OptOutOfProgramRestRequest"/>
+      <xs:element name="OptOutOfProgramRestResponse" type="ns:OptOutOfProgramRestResponse"/>
+      <xs:complexType name="OptOutOfProgramRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:Program">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OptOutOfProgramRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateAReturnPolicyRestRequest" type="ns:CreateAReturnPolicyRestRequest"/>
+      <xs:element name="CreateAReturnPolicyRestResponse" type="ns:CreateAReturnPolicyRestResponse"/>
+      <xs:complexType name="CreateAReturnPolicyRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:ReturnPolicyRequest">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateAReturnPolicyRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SetReturnPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteAReturnPolicyRestRequest" type="ns:DeleteAReturnPolicyRestRequest"/>
+      <xs:element name="DeleteAReturnPolicyRestResponse" type="ns:DeleteAReturnPolicyRestResponse"/>
+      <xs:complexType name="DeleteAReturnPolicyRestRequest">
+        <xs:sequence>
+          <xs:element name="return_policy_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAReturnPolicyRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetReturnPoliciesByMarketplaceRestRequest" type="ns:GetReturnPoliciesByMarketplaceRestRequest"/>
+      <xs:element name="GetReturnPoliciesByMarketplaceRestResponse" type="ns:GetReturnPoliciesByMarketplaceRestResponse"/>
+      <xs:complexType name="GetReturnPoliciesByMarketplaceRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetReturnPoliciesByMarketplaceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReturnPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAReturnPolicyByIDRestRequest" type="ns:GetAReturnPolicyByIDRestRequest"/>
+      <xs:element name="GetAReturnPolicyByIDRestResponse" type="ns:GetAReturnPolicyByIDRestResponse"/>
+      <xs:complexType name="GetAReturnPolicyByIDRestRequest">
+        <xs:sequence>
+          <xs:element name="returnPolicyId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAReturnPolicyByIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReturnPolicy">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAReturnPolicyByNameRestRequest" type="ns:GetAReturnPolicyByNameRestRequest"/>
+      <xs:element name="GetAReturnPolicyByNameRestResponse" type="ns:GetAReturnPolicyByNameRestResponse"/>
+      <xs:complexType name="GetAReturnPolicyByNameRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="name" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAReturnPolicyByNameRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReturnPolicy">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateAReturnPolicyRestRequest" type="ns:UpdateAReturnPolicyRestRequest"/>
+      <xs:element name="UpdateAReturnPolicyRestResponse" type="ns:UpdateAReturnPolicyRestResponse"/>
+      <xs:complexType name="UpdateAReturnPolicyRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:ReturnPolicyRequest">
+            <xs:sequence>
+              <xs:element name="return_policy_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateAReturnPolicyRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SetReturnPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateASalesTaxTableRestRequest" type="ns:CreateASalesTaxTableRestRequest"/>
+      <xs:element name="CreateASalesTaxTableRestResponse" type="ns:CreateASalesTaxTableRestResponse"/>
+      <xs:complexType name="CreateASalesTaxTableRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:SalesTaxBase">
+            <xs:sequence>
+              <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+              <xs:element name="jurisdictionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateASalesTaxTableRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteASalesTaxTableRestRequest" type="ns:DeleteASalesTaxTableRestRequest"/>
+      <xs:element name="DeleteASalesTaxTableRestResponse" type="ns:DeleteASalesTaxTableRestResponse"/>
+      <xs:complexType name="DeleteASalesTaxTableRestRequest">
+        <xs:sequence>
+          <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+          <xs:element name="jurisdictionId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteASalesTaxTableRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetASalesTaxTableRestRequest" type="ns:GetASalesTaxTableRestRequest"/>
+      <xs:element name="GetASalesTaxTableRestResponse" type="ns:GetASalesTaxTableRestResponse"/>
+      <xs:complexType name="GetASalesTaxTableRestRequest">
+        <xs:sequence>
+          <xs:element name="countryCode" type="xs:string" valid="string" required="true"/>
+          <xs:element name="jurisdictionId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetASalesTaxTableRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SalesTax">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAllSalesTaxTablesRestRequest" type="ns:GetAllSalesTaxTablesRestRequest"/>
+      <xs:element name="GetAllSalesTaxTablesRestResponse" type="ns:GetAllSalesTaxTablesRestResponse"/>
+      <xs:complexType name="GetAllSalesTaxTablesRestRequest">
+        <xs:sequence>
+          <xs:element name="country_code" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllSalesTaxTablesRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SalesTaxes">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="CreateAFulfillmentPolicy" method="POST" resource="fulfillment_policy">
+      <wsdl:input message="ns:CreateAFulfillmentPolicyRestRequest"/>
+      <wsdl:output message="ns:CreateAFulfillmentPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteAFulfillmentPolicy" method="DELETE" resource="fulfillment_policy/{fulfillmentPolicyId}">
+      <wsdl:input message="ns:DeleteAFulfillmentPolicyRestRequest"/>
+      <wsdl:output message="ns:DeleteAFulfillmentPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetFulfillmentPoliciesByMarketplace" method="GET" resource="fulfillment_policy">
+      <wsdl:input message="ns:GetFulfillmentPoliciesByMarketplaceRestRequest"/>
+      <wsdl:output message="ns:GetFulfillmentPoliciesByMarketplaceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAFulfillmentPolicyByID" method="GET" resource="fulfillment_policy/{fulfillmentPolicyId}">
+      <wsdl:input message="ns:GetAFulfillmentPolicyByIDRestRequest"/>
+      <wsdl:output message="ns:GetAFulfillmentPolicyByIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAFulfillmentPolicyByName" method="GET" resource="fulfillment_policy/get_by_policy_name">
+      <wsdl:input message="ns:GetAFulfillmentPolicyByNameRestRequest"/>
+      <wsdl:output message="ns:GetAFulfillmentPolicyByNameRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateAFulfillmentPolicy" method="PUT" resource="fulfillment_policy/{fulfillmentPolicyId}">
+      <wsdl:input message="ns:UpdateAFulfillmentPolicyRestRequest"/>
+      <wsdl:output message="ns:UpdateAFulfillmentPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateAPaymentPolicy" method="POST" resource="payment_policy">
+      <wsdl:input message="ns:CreateAPaymentPolicyRestRequest"/>
+      <wsdl:output message="ns:CreateAPaymentPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteAPaymentPolicy" method="DELETE" resource="payment_policy/{payment_policy_id}">
+      <wsdl:input message="ns:DeleteAPaymentPolicyRestRequest"/>
+      <wsdl:output message="ns:DeleteAPaymentPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPaymentPoliciesByMarketplace" method="GET" resource="payment_policy">
+      <wsdl:input message="ns:GetPaymentPoliciesByMarketplaceRestRequest"/>
+      <wsdl:output message="ns:GetPaymentPoliciesByMarketplaceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAPaymentPolicyByID" method="GET" resource="payment_policy/{paymentPolicyId}">
+      <wsdl:input message="ns:GetAPaymentPolicyByIDRestRequest"/>
+      <wsdl:output message="ns:GetAPaymentPolicyByIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAPaymentPolicyByName" method="GET" resource="payment_policy/get_by_policy_name">
+      <wsdl:input message="ns:GetAPaymentPolicyByNameRestRequest"/>
+      <wsdl:output message="ns:GetAPaymentPolicyByNameRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateAPaymentPolicy" method="PUT" resource="payment_policy/{payment_policy_id}">
+      <wsdl:input message="ns:UpdateAPaymentPolicyRestRequest"/>
+      <wsdl:output message="ns:UpdateAPaymentPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAccountPrivileges" method="GET" resource="privilege">
+      <wsdl:output message="ns:GetAccountPrivilegesRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetOptedInPrograms" method="GET" resource="program/get_opted_in_programs">
+      <wsdl:output message="ns:GetOptedInProgramsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="OptInToProgram" method="POST" resource="program/opt_in">
+      <wsdl:input message="ns:OptInToProgramRestRequest"/>
+      <wsdl:output message="ns:OptInToProgramRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="OptOutOfProgram" method="POST" resource="program/opt_out">
+      <wsdl:input message="ns:OptOutOfProgramRestRequest"/>
+      <wsdl:output message="ns:OptOutOfProgramRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateAReturnPolicy" method="POST" resource="return_policy">
+      <wsdl:input message="ns:CreateAReturnPolicyRestRequest"/>
+      <wsdl:output message="ns:CreateAReturnPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteAReturnPolicy" method="DELETE" resource="return_policy/{return_policy_id}">
+      <wsdl:input message="ns:DeleteAReturnPolicyRestRequest"/>
+      <wsdl:output message="ns:DeleteAReturnPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetReturnPoliciesByMarketplace" method="GET" resource="return_policy">
+      <wsdl:input message="ns:GetReturnPoliciesByMarketplaceRestRequest"/>
+      <wsdl:output message="ns:GetReturnPoliciesByMarketplaceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAReturnPolicyByID" method="GET" resource="return_policy/{returnPolicyId}">
+      <wsdl:input message="ns:GetAReturnPolicyByIDRestRequest"/>
+      <wsdl:output message="ns:GetAReturnPolicyByIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAReturnPolicyByName" method="GET" resource="return_policy/get_by_policy_name">
+      <wsdl:input message="ns:GetAReturnPolicyByNameRestRequest"/>
+      <wsdl:output message="ns:GetAReturnPolicyByNameRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateAReturnPolicy" method="PUT" resource="return_policy/{return_policy_id}">
+      <wsdl:input message="ns:UpdateAReturnPolicyRestRequest"/>
+      <wsdl:output message="ns:UpdateAReturnPolicyRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateASalesTaxTable" method="PUT" resource="sales_tax/{countryCode}/{jurisdictionId}">
+      <wsdl:input message="ns:CreateASalesTaxTableRestRequest"/>
+      <wsdl:output message="ns:CreateASalesTaxTableRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteASalesTaxTable" method="DELETE" resource="sales_tax/{countryCode}/{jurisdictionId}">
+      <wsdl:input message="ns:DeleteASalesTaxTableRestRequest"/>
+      <wsdl:output message="ns:DeleteASalesTaxTableRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetASalesTaxTable" method="GET" resource="sales_tax/{countryCode}/{jurisdictionId}">
+      <wsdl:input message="ns:GetASalesTaxTableRestRequest"/>
+      <wsdl:output message="ns:GetASalesTaxTableRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAllSalesTaxTables" method="GET" resource="sales_tax">
+      <wsdl:input message="ns:GetAllSalesTaxTablesRestRequest"/>
+      <wsdl:output message="ns:GetAllSalesTaxTablesRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

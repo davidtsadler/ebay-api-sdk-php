@@ -1,0 +1,2300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://www.ebay.com/marketplace/services" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.ebay.com/marketplace/services">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ebay.com/marketplace/services" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ebay.com/marketplace/services">
+      <xs:element name="getVersionRequest" nillable="true" type="tns:GetVersionRequest"/>
+      <xs:element name="getVersionResponse" nillable="true" type="tns:GetVersionResponse"/>
+      <xs:element name="getDealsRequest" nillable="true" type="tns:GetDealsRequest"/>
+      <xs:element name="getDealsResponse" nillable="true" type="tns:MerchandisingServiceItemResponse"/>
+      <xs:element name="getMostWatchedItemsRequest" nillable="true" type="tns:GetMostWatchedItemsRequest"/>
+      <xs:element name="getMostWatchedItemsResponse" nillable="true" type="tns:MerchandisingServiceItemResponse"/>
+      <xs:element name="getRelatedCategoryItemsRequest" nillable="true" type="tns:GetRelatedCategoryItemsRequest"/>
+      <xs:element name="getRelatedCategoryItemsResponse" nillable="true" type="tns:MerchandisingServiceItemResponse"/>
+      <xs:element name="getTopSellingProductsRequest" nillable="true" type="tns:GetTopSellingProductsRequest"/>
+      <xs:element name="getTopSellingProductsResponse" nillable="true" type="tns:MerchandisingServiceProductResponse"/>
+      <xs:element name="getSimilarItemsRequest" nillable="true" type="tns:GetSimilarItemsRequest"/>
+      <xs:element name="getSimilarItemsResponse" nillable="true" type="tns:MerchandisingServiceItemResponse"/>
+      <xs:complexType name="GetVersionRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Returns the current version of the service. This simple call can be used to 
+						monitor the service for availability. This call has no input parameters and 
+						the response contains only the standard output fields. 
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Returns the current service version.
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetVersionResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Response container for the getVersion call. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseServiceRequest">
+        <xs:annotation>
+          <xs:documentation>
+						This is the base class for request container for all service operations.
+					</xs:documentation>
+        </xs:annotation>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseMerchandisingServiceRequest">
+        <xs:annotation>
+          <xs:documentation>
+						This is the base class for request container for all operations in the
+						Merchandising Service.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element name="maxResults" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the maximum number of entries to return in a single call.
+										If the number of entries that can be returned is less than the value
+										you specify, the lower number is returned. Values less than 1 or
+										greater than 50 (or 20 in the case of 
+										&lt;b class="con"&gt;getTopSellingProduct&lt;/b&gt;s) will be
+										ignored.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <Min>1</Min>
+                      <Max>50</Max>
+                      <Default>20</Default>
+                      <CallName>getMostWatchedItems</CallName>
+                      <CallName>getRelatedCategoryItems</CallName>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                    <CallInfo>
+                      <Min>1</Min>
+                      <Max>20</Max>
+                      <Default>20</Default>
+                      <CallName>getTopSellingProducts</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="affiliate" type="tns:Affiliate" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Container for affiliate details. eBay uses the specified affiliate
+										details to build a View Item URL and Product URL string in the
+										response that includes your affiliate tracking information in the
+										correct format. When a user clicks through these URLs to eBay and
+										performs certain tasks, you may get an affiliate commission.
+										&lt;br&gt;&lt;br&gt; 
+										See the &lt;a href="https://www.ebaypartnernetwork.com/"
+										target="_blank"&gt;eBay Partner Network&lt;/a&gt; for information
+										about commissions.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <AllCalls/>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMostWatchedItemsRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Retrieves data for items with the highest watch counts for the entire site or
+						for a specific category. The top 20 most watched items, if any, are returned
+						unless &lt;b class="con"&gt;maxResults&lt;/b&gt; is used to specify a smaller
+						or larger result set. The top items are determined by the watch count totals
+						from the preceding day. Ranking of the most watched items is calculated with
+						the latest watch count information.
+						&lt;br&gt;&lt;br&gt;
+						Only active items are returned. Auction items are returned only when they 
+						have one or more bids. 
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Retrieves data for items with the highest watch count.
+			</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceRequest">
+            <xs:sequence>
+              <xs:element name="categoryId" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the category from which to retrieve item listings. This
+										field takes the same category ID data as used with other eBay APIs.
+										&lt;br&gt;&lt;br&gt;
+										Category IDs are site-specific. If the specified category ID doesn't
+										match an existing category for the site, an invalid-category error
+										message is returned. To determine valid categories, you can use
+										either the Shopping API or the Trading API. In the Shopping API, use
+										the &lt;b class="con"&gt;FindItemsAdvanced&lt;/b&gt; call with the
+										CategoryHistogram value in the &lt;b
+										class="con"&gt;IncludeSelector&lt;/b&gt; field to retrieve matching
+										category information. In the Trading API, use calls like &lt;b
+										class="con"&gt;GetCategories&lt;/b&gt; and &lt;b class="con"&gt;
+										GetCategoryFeatures&lt;/b&gt; to determine valid values for the site.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getMostWatchedItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html</URL>
+                      <Title>FindItemsAdvanced documentation</Title>
+                      <For>information on retrieving a category histogram.</For>
+                    </SeeLink>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html</URL>
+                      <Title>GetCategories documentation</Title>
+                      <For>information on retrieving categories.</For>
+                    </SeeLink>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html</URL>
+                      <Title>GetCategoryFeatures documentation</Title>
+                      <For>information on retrieving category details.</For>
+                    </SeeLink>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetTopSellingProductsRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Retrieves the 20 top selling products on eBay, unless &lt;b class="con"&gt;
+						maxResults&lt;/b&gt; is used to specify a smaller result set. Products in the
+						response are sorted in sales rank order, with the top selling products first.
+						There are no call-specific input parameters for this call.
+						&lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; 
+						The &lt;b class="con"&gt;getTopSellingProducts&lt;/b&gt; call does not work
+						for the following global IDs (eBay sites): EBAY-FRBE (eBay Belgium, French),
+						EBAY-NLBE (eBay Belgium, Dutch), or BAY-AU (eBay Australia). &lt;/p&gt;
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Retrieves eBay's top selling products. Products in the reponse are sorted
+							in sales rank order, with the top selling products first.
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceRequest"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetRelatedCategoryItemsRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Retrieves recommended items from categories related to a specified category
+						or item. If categoryId is specified, then items are returned from categories
+						related to the given category. If itemId is specified, then items are
+						returned from categories related to the given item's category. In either
+						case, the response contains items from the three best matching categories.
+						The selection of items is evenly distributed between the best matching
+						categories. The recommended items are sorted by end time, with items ending
+						soonest first.
+						&lt;br&gt;&lt;br&gt;
+						The request must contain either categoryId or ItemId. If both itemId and
+						categoryId are specified, categoryId takes precedence.
+						&lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; In some cases, the item
+						recommendations returned by &lt;b class="con"&gt;getRelatedCategoryItems
+						&lt;/b&gt; are not closely related to the item specified in the request.
+						Refer to the &lt;a href="
+						http://dev-forums.ebay.com/thread.jspa?threadID=500006720"&gt;
+						getRelatedCategoryItems does not return related items&lt;/a&gt; thread in the
+						eBay Shopping and Merchandising API Production System Announcements board for
+						more information, including an ETA for when this problem will be
+						resolved.&lt;/p&gt;
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Retrieves items related to a specified category or item.
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceRequest">
+            <xs:sequence>
+              <xs:element name="itemId" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										The ID of an active item listing. Related categories are determined
+										from the primary category in which the item is listed. If both
+										categoryId is also specified, it takes precedence.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getRelatedCategoryItems</CallName>
+                      <RequiredInput>Conditionally</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="categoryId" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the category used to determine related categories from
+										which to retrieve item listings. This field takes the same category
+										ID data as used with other eBay APIs. 
+										&lt;br&gt;&lt;br&gt; 
+										Category IDs are site-specific. If the specified category ID doesn't
+										match an existing category for the site, an invalid-category error
+										message is returned. To determine valid categories, you can use
+										either the Shopping API or the Trading API. In the Shopping API, use
+										the &lt;b class="con"&gt;FindItemsAdvanced&lt;/b&gt; call with the
+										CategoryHistogram value in the &lt;b
+										class="con"&gt;IncludeSelector&lt;/b&gt; field to retrieve matching
+										category information. In the Trading API, use calls like &lt;b
+										class="con"&gt;GetCategories&lt;/b&gt; and &lt;b class="con"&gt;
+										GetCategoryFeatures&lt;/b&gt; to determine valid values for the site.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getRelatedCategoryItems</CallName>
+                      <RequiredInput>Conditionally</RequiredInput>
+                    </CallInfo>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html</URL>
+                      <Title>FindItemsAdvanced documentation</Title>
+                      <For>information on retrieving a category histogram.</For>
+                    </SeeLink>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html</URL>
+                      <Title>GetCategories documentation</Title>
+                      <For>information on retrieving categories.</For>
+                    </SeeLink>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html</URL>
+                      <Title>GetCategoryFeatures documentation</Title>
+                      <For>information on retrieving category details.</For>
+                    </SeeLink>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
+                <xs:annotation>
+                  <xs:documentation>
+										Filters items based on the allowed set of name value pairs. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getRelatedCategoryItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDealsRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Retrieves data for top 20 "best deal" items on eBay that match a simple
+						keyword query. Items that provide the best value to buyers, such as items
+						that are on sale or items with free shipping) are considered best deals. The
+						query searches item titles only, and results, if any, must match all terms
+						specified in the required keywords field. Items in the results are sorted by
+						Best Match, which is based on community buying activity and other relevance-
+						based factors.
+						&lt;p class="tablenote"&gt;&lt;b&gt;Important:&lt;/b&gt; 
+						The &lt;b class="con"&gt;getDeals&lt;/b&gt; call is not returning any item
+						recommendations. Refer to the 
+						&lt;a href="http://dev-forums.ebay.com/thread.jspa?threadID=500006256"&gt;
+						getDeals call not returning results&lt;/a&gt; thread in the eBay Shopping and
+						Merchandising API Production System Announcements board for more information,
+						including an ETA for when this problem will be resolved.&lt;/p&gt;
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Retrieves data for "best deal" items that match a simple keyword query.
+							Best deal items include items that are on sale and items that offer free
+							shipping.
+						</Summary>
+            <TempInfo>samples</TempInfo>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceRequest">
+            <xs:sequence>
+              <xs:element name="keywords" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										A query string for searching titles of items on eBay. The query is
+										limited to a maximum of 7 space-delimited terms. Any additional terms
+										will be ignored. Results must match all terms in the query.
+										&lt;br&gt;&lt;br&gt;
+										The keywords field does not support wildcards, such as asterisks
+										("*") or question marks ("?"), or Boolean search operators, such as
+										"AND" (or the plus sign "+"), "OR," or "NOT" (or the minus sign "-").
+										Search wildcard or operator characters (e.g., "*" or "+") will be
+										ignored. The words "and" and "or" and "not" are treated like any
+										other word, and should be used only if you are searching for listings
+										containing these words.
+										&lt;br&gt;&lt;br&gt;
+										&lt;b&gt;Note:&lt;/b&gt; If you are using an HTTP GET (i.e., URL)
+										request, use "%20" to delimit terms specified in keywords. For
+										example, use Harry%20Potter to search for items containing those
+										words in any order.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getDeals</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetSimilarItemsRequest">
+        <xs:annotation>
+          <xs:documentation>
+						For a specified item, retrieves recommended similar items. 
+						Items are considered similar if they can serve as a replacement for the 
+						specified item. Similar items from a catalog are associated with the same 
+						product. For items not associated with a product, similarity with other 
+						items is determined from keywords in the title and attribute value matches. 
+						This call can be used to recommend items to buyers who have lost items they 
+						were bidding on, or to recommend items as alternatives for watched items that 
+						have ended.
+						&lt;br&gt;&lt;br&gt;
+						The recommended similar items returned can be restricted by category, maximum 
+						price, or end time for the listing. 
+						&lt;br&gt;&lt;br&gt;
+						The request must contain itemId. 
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Retrieves items that are similar to the specified item. 
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceRequest">
+            <xs:sequence>
+              <xs:element name="itemId" type="xs:string" minOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+										The ID of an active item listing or a listing that has ended less
+										than two weeks ago.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="categoryId" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+										Results are limited to items from the specified category only. Up to
+										three category IDs can be specified. You cannot specify both
+										categoryId and categoryIdExclude in the same request.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="categoryIdExclude" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+										Items from the specified category are excluded from the results. Up
+										to three category IDs can be specified. You cannot specify both
+										categoryId and categoryIdExclude in the same request.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="listingType" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Filters items based on the format of the listing. 
+										If listingType is not specified, all listing types can be returned 
+										unless another relevant filter is specified. 
+										&lt;br&gt;&lt;br&gt;
+										&lt;dl&gt;
+										&lt;lh&gt;Applicable values:&lt;br&gt;&lt;/lh&gt;
+										&lt;dt&gt;AdType&lt;/dt&gt;
+										&lt;dd&gt;Advertisement to solicit inquiries on listings such as real 
+										estate. Permits no bidding on that item, service, or property. To 
+										express interest, a buyer fills out a contact form that eBay forwards 
+										to the the seller as a lead. This format does not enable buyers and 
+										sellers to transact online through eBay, and eBay Feedback is not 
+										available for ad format listings.&lt;/dd&gt;
+										&lt;dt&gt;Chinese&lt;/dt&gt;
+										&lt;dd&gt;Single-quantity online auction format. A Chinese auction
+										has a Quantity of 1. Buyers engage in competitive bidding, although
+										Buy It Now may be offered as long as no bids have been placed. Online
+										auctions are listed on eBay.com, and they are also listed in the
+										seller's eBay Store if the seller is a Store owner.&lt;/dd&gt;
+										&lt;dt&gt;Dutch&lt;/dt&gt;
+										&lt;dd&gt;Multiple-quantity online auction format. A Dutch auction
+										has a Quantity greater than 1. Buyers engage in competitive bidding.
+										Some sites also offer Buy It Now for Dutch auctions. Online auctions
+										are listed on eBay.com, and they are also listed in the seller's eBay
+										Store if the seller is a Store owner.&lt;/dd&gt;
+										&lt;dt&gt;FixedPriceItem&lt;/dt&gt;
+										&lt;dd&gt;A basic fixed-price item format. Bids do not occur. The
+										quantity of items is one or more. Also known as Buy It Now Only on
+										some sites (not to be confused with the BuyItNow option that is
+										available for Chinese auctions). Fixed-price listings are listed on
+										eBay.com, and they are listed in the seller's eBay Store if the
+										seller is a Store owner. &lt;/dd&gt;
+										&lt;dt&gt;LeadGeneration&lt;/dt&gt;
+										&lt;dd&gt;Lead Generation format (advertisement-style listing to
+										solicit inquiries or offers, no bidding or fixed price, listed on
+										eBay). &lt;/dd&gt;
+										&lt;dt&gt;StoresFixedPrice&lt;/dt&gt;
+										&lt;dd&gt;A fixed-price format for eBay Store sellers. Store
+										Inventory listings appear after other listings in regular browse and
+										search item lists on eBay. They have a lower Insertion Fee and longer
+										listing durations. Only available to sellers who have an eBay Store.
+										Store Inventory listings are listed on eBay.com, and they are also
+										listed in the seller's eBay Store. Starting in early June 2008, on
+										the Italy site, stores fixed price items will be treated as basic
+										fixed-price items; please see the documentation for FixedPriceItem
+										(that is, for the basic fixed-price item format).&lt;/dd&gt;
+										&lt;/dl&gt;
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="endTimeTo" type="xs:dateTime" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Limits the results to items ending before the specified time. 
+										within a time range. If you are specifying a time range with 
+										EndTimeFrom, EndTimeFrom must be specified (with a value equal 
+										to or earlier than EndTimeTo). Specify the time in GMT.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="endTimeFrom" type="xs:dateTime" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Limits the results to items ending after the specified time. 
+										Specify a time in the future. If you specify a time in the past, 
+										the current time is used. Specify the time in GMT. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="maxPrice" type="tns:Amount" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the maximum current price an item can have to be included
+										in the response. The currencyId you specify must match the currency
+										corresponding to the global ID value passed in the request. If no
+										global ID is specified, you must specify USD.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
+                <xs:annotation>
+                  <xs:documentation>
+										Filters items based on the allowed set of name value pairs. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>19</MaxLength>
+                    <CallInfo>
+                      <CallName>getSimilarItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseServiceResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Base response container for all service operations. Contains error
+						information associated with the request.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="ack" type="tns:AckValue">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates whether there are any errors or warnings associated with the
+								processing of the request.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="errorMessage" type="tns:ErrorMessage" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Information for an error or warning that occurred when eBay processed the
+								request. Not returned when responseStatus is Success. See &lt;a 
+								href="http://developer.ebay.com/DevZone/merchandising/docs/CallRef/Errors/ErrorMessages.html" 
+								title="All error messages by code number"&gt;Errors by Number&lt;/a&gt; 
+								for a list of errors and warnings that can be returned by Merchandising 
+								API calls.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="version" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+							The version of the response payload schema. Indicates the version of the
+							schema that eBay used to process the request. Developer Technical Support 
+							may ask you for the version value when you work with them to troubleshoot 
+							issues.
+						</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="timestamp" type="xs:dateTime" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								This value represents the date and time when eBay processed the
+								request. The time zone of this value is &lt;a 
+								href="types/simpleTypes.html#dateTime"&gt;GMT&lt;/a&gt;
+								and the format is the ISO 8601 date and time format 
+								(YYYY-MM-DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about
+								this time format and converting to and from the GMT time zone.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AckValue">
+        <xs:annotation>
+          <xs:documentation>
+						Indicates the status of the call.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Success">
+            <xs:annotation>
+              <xs:documentation>
+								The request was processed successfully without errors or warnings.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Failure">
+            <xs:annotation>
+              <xs:documentation>
+								Errors occurred that prevented the request from being processed
+								successfully.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+								The request was processed successfully, but some warnings were returned.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PartialFailure">
+            <xs:annotation>
+              <xs:documentation>
+								Reserved for future use.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType abstract="true" name="BaseMerchandisingServiceResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Base response container for all service operations in the Merchandising
+						Service.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+		</xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MerchandisingServiceItemResponse">
+        <xs:annotation>
+          <xs:documentation>
+						This is a response for operations that return item recommendations. Results
+						consist of an itemRecommendations array containing one or more item
+						containers.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceResponse">
+            <xs:sequence>
+              <xs:element name="itemRecommendations" type="tns:ItemRecommendations" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										A list of items matching the given criteria. Item sort order is
+										different for each call. Returned when there are items that match the
+										search criteria.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getDeals</CallName>
+                      <CallName>getMostWatchedItems</CallName>
+                      <CallName>getRelatedCategoryItems</CallName>
+                      <CallName>getSimilarItems</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MerchandisingServiceProductResponse">
+        <xs:annotation>
+          <xs:documentation>
+						This is a response for calls that return Product
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseMerchandisingServiceResponse">
+            <xs:sequence>
+              <xs:element name="productRecommendations" type="tns:ProductRecommendations" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Array of products. Recommendations. Returned when there are products
+										that match the search criteria.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getTopSellingProducts</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ItemRecommendations">
+        <xs:annotation>
+          <xs:documentation>
+						This is a container for list of item recommendations.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="item" nillable="true" type="tns:Item" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>
+								Contains details for a single recommended item. Returned when there is
+								at least one item that matches the search criteria.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductRecommendations">
+        <xs:annotation>
+          <xs:documentation>
+						List of suggested products sorted by sales rank, with top selling products
+						listed first.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="product" nillable="true" type="tns:Product" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>
+								An eBay catalog product. This contains stock information about a
+								particular DVD, camera, set of golf clubs, or other product. Returned
+								when there is at least one product that matches the search criteria.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Item">
+        <xs:annotation>
+          <xs:documentation>
+						Contains details for an active item listing.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="itemId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								The ID that uniquely identifies the item listing. The ID is generated by
+								eBay after an item is listed. You cannot choose or revise this value.
+							</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>19</MaxLength>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="title" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Name of the item as it appears in the listing or search results.
+							</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>55</MaxLength>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="viewItemURL" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+								The URL of the web page where a user can view the listing. On the US
+								site, this is called the "View Item" page. If you enabled affiliate
+								tracking in the call, viewItemURL contains a string that includes
+								affiliate tracking information (see the
+								&lt;a href="https://www.ebaypartnernetwork.com/"&gt;eBay Partner
+								Network&lt;/a&gt;).
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="currentPrice" type="tns:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								For competitive-bidding listings (Chinese and Dutch auctions), current
+								minimum asking price (start price) or the current highest bid for the
+								item if bids have been placed. Shows minimum bid if no bids have been
+								placed on the item. For Basic Fixed-Price, Store Inventory, or Ad type
+								listings, this returns the original price specified when the item was
+								listed/re-listed or the revised price if the item was revised.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="originalPrice" type="tns:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Original price of an item whose price a seller has reduced with the
+								Promotional Price Display feature. Only returned if the price has been
+								revised.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="globalId" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The site upon which the item is listed. Returns a Global ID, which is a
+								unique identifier for combinations of site, language, and territory.
+								&lt;br&gt;&lt;br&gt;
+								For a list of possible enumeration values and how they map to eBay sites,
+								see &lt;a href="Enums/GlobalIdList.html"&gt;Global ID Values&lt;/a&gt;.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="timeLeft" type="xs:duration" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Time left before the item listing ends. The duration is represented in
+								the ISO 8601 duration format (PnDTnHnMnS). For ended listings, the time
+								left is P0DT0H0M0S (zero days, zero hours, zero minutes, and zero
+								seconds).
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="primaryCategoryId" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Numeric ID of the first (or only) category in which the item is listed.
+								(Listings can appear in more than one category.)&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Currently, the
+								Merchandising API calls do not return a listing's secondary category, if 
+								any.&lt;/span&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>10</MaxLength>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="primaryCategoryName" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Display name of the first (or only) category in which the item is listed.
+								This is a fully qualified category breadcrumb (e.g., Computers &amp;
+								Networking:Laptops, Notebooks).
+							</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>30</MaxLength>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="subtitle" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Subtitle of the item. Only returned if the seller included a subtitle for
+								the listing.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <MaxLength>55</MaxLength>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="bidCount" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The number of bids that have been placed on the item.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="buyItNowPrice" type="tns:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The Buy It Now Price of the item (if any), in the currency of the site on
+								which the item was listed.
+								&lt;br&gt;&lt;br&gt;
+								For Chinese auctions (Quantity=1, competitive bidding online auctions),
+								Buy It Now lets a user purchase the item at a fixed price and end the
+								auction immediately. On most sites, after a Chinese auction has bids, the
+								listing is no longer eligible for Buy It Now. However, calls can still
+								return the Buy It Now Price that the seller set for the listing. Use the
+								item.bidCount field to determine whether an auction with Buy It Now has
+								bids or not.
+								&lt;br&gt;&lt;br&gt;
+								Some eBay sites also support Buy It Now for Dutch auctions (multi-
+								quantity, competitive bidding), where you can buy multiple items from the
+								same listing at a fixed price, instead of bidding. On some sites, the Buy
+								It Now option remains available for Dutch auctions even after there are
+								bids.
+								&lt;br&gt;&lt;br&gt;
+								For fixed-price (FixedPriceItem) and Store Inventory listings
+								(StoresFixedPrice), see currentPrice instead.
+								&lt;br&gt;&lt;br&gt;
+								Only returned if an item was listed with Buy It Now.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="country" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Two-letter ISO 3166 country code to indicate the country where the item
+								is located. For English names that correspond to each code (e.g.,
+								KY="Cayman Islands"), see the ISO site: &lt;a
+								href="http://www.iso.ch/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"&gt;
+								http://www.iso.ch/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html&lt;/a&gt;.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="imageURL" type="xs:anyURI" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								URL for a picture used as the Gallery thumbnail, if any. The image uses
+								one of the following graphics formats: JPEG, BMP, TIF, or GIF. Only
+								returned if the seller chose to show a gallery image.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="shippingCost" type="tns:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The shipping cost associated with the first shipping service. Only
+								returned when shipping type is flat.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="shippingType" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The shipping cost model offered by the seller.
+								&lt;br&gt;&lt;br&gt;
+								&lt;dl&gt;
+								&lt;lh&gt;Applicable values:&lt;/lh&gt;
+								&lt;dt&gt;Calculated&lt;/dt&gt;
+								&lt;dd&gt;
+									Calculated shipping model: the cost of shipping is determined in large
+									part by the seller-offered and buyer-selected shipping service. The
+									seller might assess an additional fee via PackagingHandlingCosts.
+								&lt;/dd&gt;
+								&lt;dt&gt;CalculatedDomesticFlatInternational&lt;/dt&gt;
+								&lt;dd&gt;
+									The seller specified one or more calculated domestic shipping
+									services and one or more flat international shipping services.
+								&lt;/dd&gt;
+								&lt;dt&gt;Flat&lt;/dt&gt;
+								&lt;dd&gt;
+									Flat shipping model: the seller establishes the cost of shipping and
+									cost of shipping insurance, regardless of what any buyer-selected
+									shipping service might charge the seller.
+								&lt;/dd&gt;
+								&lt;dt&gt;FlatDomesticCalculatedInternational&lt;/dt&gt;
+								&lt;dd&gt;
+									The seller specified one or more flat domestic shipping services and
+									one or more calculated international shipping services.
+								&lt;/dd&gt;
+								&lt;dt&gt;Free&lt;/dt&gt;
+								&lt;dd&gt;
+									Free shipping: Seller has specified free shipping for the item. The
+									cost of shipping is zero for the first domestic shipping service (for
+									flat or calculated shipping).
+								&lt;/dd&gt;
+								&lt;dt&gt;Freight&lt;/dt&gt;
+								&lt;dd&gt;
+									Freight shipping model: The cost of shipping is determined by a third
+									party, FreightQuote.com, based on the item location (zip code).
+								&lt;/dd&gt;
+								&lt;dt&gt;NotSpecified&lt;/dt&gt;
+								&lt;dd&gt;
+									The seller did not specify the shipping type.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDeals</CallName>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="watchCount" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The number of watches placed on this item from buyers' My eBay accounts.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getMostWatchedItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="discountPriceInfo" type="tns:DiscountPriceInfo" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price
+								(MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings and auction listings with the Buy
+								It Now opton. STP is available on the US, UK, and German (DE) sites, while MAP is available only on the US site.
+								&lt;br /&gt; &lt;br /&gt;
+								Discount pricing is available to qualified sellers (and their associated developers) who
+								participate in the Discount Pricing Program. Once qualified, sellers receive a
+								"special account flag" (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation
+								items. Sellers should contact their account manager or Customer Service to
+								see if they qualify for the Strikethrough Pricing program.
+								&lt;br&gt;&lt;br&gt;
+								As a seller listing Discount Price items, you are required to maintain records of your discount
+								pricing in the event you are called upon to substantiate your item pricing. The following
+								link details your legal obligations when you utilize Discount Pricing to sell items: &lt;a href=
+								"http://pages.ebay.com/help/sell/strike-through.html"&gt;Strikethrough Pricing Requirements
+								&lt;/a&gt;
+								&lt;br&gt;&lt;br&gt;
+								&lt;b&gt;For AddFixedPriceItem, RelistFixedPriceItem, ReviseFixedPriceItem, and
+								VerifyAddFixedPriceItem:&lt;/b&gt;
+								If you are listing variations (MSKU items), use Variation.DiscountPriceInfo for each variation.
+							</xs:documentation>
+              <xs:appinfo>
+                <SeeLink>
+                  <Title>Displaying Discount Pricing Information to Buyers</Title>
+                  <URL>http://developer.ebay.com/DevZone/XML/docs/WebHelp/index.htm?context=eBay_XML_API&amp;topic=DiscountPricing</URL>
+                </SeeLink>
+                <CallInfo>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:sequence minOccurs="0">
+            <xs:element name="delimiter" type="xs:string"/>
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DiscountPriceInfo">
+        <xs:annotation>
+          <xs:documentation>
+						Using this container, a seller can supply original retail price and discount 
+						price for an item to clarify the discount treatment (also known as strike-through 
+						pricing). This only applies to fixed-price listings and auction listings with 
+						the Buy It Now option. This feature is available for large enterprise sellers 
+						via white list. A seller can provide discount treatment regardless of whether 
+						the listing includes a SKU. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="originalRetailPrice" type="tns:Amount">
+            <xs:annotation>
+              <xs:documentation>
+								The actual retail price set by the manufacturer (OEM). eBay does not maintain 
+								or validate the OriginalRetailPrice supplied by the seller. OriginalRetailPrice 
+								should always be more than StartPrice. Compare the StartPrice/BuyItNowPrice to 
+								OriginalRetailPrice to determine the amount of savings to the buyer. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="pricingTreatment" type="tns:PriceTreatmentEnum">
+            <xs:annotation>
+              <xs:documentation>
+								Based on OriginalRetailPrice, MinimumAdvertisedPrice, and StartPrice values, eBay 
+								identifies whether the listing falls under MAP or STP (aka OriginalRetailPrice). 
+								GetItem returns this for items listed with one of these discount pricing treatments. 
+								GetSellerList returns the DiscountPriceInfo container. This field is not applicable for 
+								Add/Revise/Relist calls. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="soldOnEbay" type="xs:boolean" default="false" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Used by the eBay UK and eBay Germany (DE) sites, this flag indicates that the discount price 
+								(specified as StartPrice) is the price for which the seller offered the same (or similar) item 
+								for sale on a Web site or offline store other than eBay in the previous 30 days. The discount 
+								price is always in reference to the seller's own price for the item. 
+								&lt;br/&gt;&lt;br/&gt;
+								If this field is set to 'true', eBay displays 'Was*' in the UK and 'Ursprunglich*' in 
+								Germany, next to the discounted price of the item. In the event both SoldOffeBay and 
+								SoldOneBay fields are set, SoldOneBay takes precedence. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="soldOffEbay" type="xs:boolean" default="false" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Used by the eBay UK and eBay Germany (DE) sites, this flag indicates that the discount price 
+								(specified as StartPrice) is the price for which the seller offered the same (or similar) 
+								item for sale on a Web site or offline store other than eBay in the previous 30 days. 
+								The discount price is always in reference to the seller's own price for the item. 
+								&lt;br/&gt;&lt;br/&gt;								
+								If this field is set to 'true', eBay displays 'Was*' in the UK and 'Ursprunglich*' 
+								in Germany, next to the discounted price of the item. In the event both SoldOffeBay and 
+								SoldOneBay fields are set, SoldOneBay takes precedence. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getMostWatchedItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PriceTreatmentEnum">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="STP">
+            <xs:annotation>
+              <xs:documentation>
+									Strike through price
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="MAP">
+            <xs:annotation>
+              <xs:documentation>
+									Miminum Advertised Price
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="NONE">
+            <xs:annotation>
+              <xs:documentation>
+									None
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Product">
+        <xs:annotation>
+          <xs:documentation>
+						An eBay catalog product. This contains stock information about a particular
+						DVD, camera, set of golf clubs, or other product.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="productId" type="tns:ProductId">
+            <xs:annotation>
+              <xs:documentation>
+								The eBay or external IDs associated with the product. Use the Reference
+								value as input to search for the same product in the future, or use the
+								ISBN, EAN, or UPC value (if returned). The productId values can be used
+								as input for calls in the Shopping and Trading APIs to retrieve products,
+								item listings, or guides and reviews. &lt;br&gt; The ISBN, EAN, and UPC
+								values can also be useful as keys if your application is comparing
+								products across different sites.
+							</xs:documentation>
+              <xs:appinfo>
+                <RelatedCallsOther>
+                  <ApiNickname>Shopping</ApiNickname>
+                  <ApiCallRefBaseURL>
+										http://developer.ebay.com/DevZone/shopping/docs/CallRef
+									</ApiCallRefBaseURL>
+                  <RelatedCall>
+                    <Name>FindItemsAdvanced</Name>
+                    <Summary>
+											Searches for items based on many possible input fields, including
+											the product ID. Provides detailed item information.
+										</Summary>
+                  </RelatedCall>
+                  <RelatedCall>
+                    <Name>FindProducts</Name>
+                    <Summary>
+											When product ID is specified, retrieve product details for one 
+											specific product. Specify the ID as a string, and use the type 
+											attribute to indicate the nature of the ID you are specifying.
+										</Summary>
+                  </RelatedCall>
+                  <RelatedCall>
+                    <Name>FindReviewsAndGuides</Name>
+                    <Summary>
+											When product ID is specified, retrieves reviews (not guides) for 
+											one specific product. Specify the ID as a string, and use the type 
+											attribute to indicate the nature of the ID you are specifying.
+										</Summary>
+                  </RelatedCall>
+                </RelatedCallsOther>
+                <MaxLength>4000</MaxLength>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="title" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								The title of the product, as specified in the catalog. Always returned
+								when Product is returned.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="productURL" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+								Fully qualified URL for optional information about the product, such as a
+								movie's description or film credits. This information is hosted through
+								the eBay Web site and it cannot be edited. Portions of the content are
+								protected by copyright. Applications can include this URL as a link in
+								product search results so that end users can view additional descriptive
+								details about the product. This is usually always returned when Product
+								is returned, but it may be safest to check for the existence of this
+								field.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="catalogName" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Name of the catalog the product is in. Only returned if product is in a
+								catalog.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="imageURL" type="xs:anyURI" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Fully qualified URL for a stock image (if any) associated with the eBay
+								catalog product. The URL is for the image eBay usually displays in
+								product search results (usually 70px tall). It may be helpful to
+								calculate the dimensions of the photo programmatically before displaying
+								it. Only returned if a URL is available for the product.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="reviewCount" type="xs:long" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The total number of reviews available for this product on the eBay Web
+								site. Always returned when product is returned.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="priceRangeMin" type="tns:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The lowest price for items listed as this product.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="priceRangeMax" type="tns:Amount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The highest price for items listed as this product.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getTopSellingProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:sequence minOccurs="0">
+            <xs:element name="delimiter" type="xs:string"/>
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Amount">
+        <xs:annotation>
+          <xs:documentation>
+						Basic type for specifying monetary amounts. A double value (e.g.,1.00 or 1.0)
+						is meaningful as a monetary amount when accompanied by a specification of the
+						currency, in which case the value specifies the amount in that currency. An
+						AmountType expresses both the value (a double) and the currency. Details such
+						as prices, fees, costs,and payments are specified as amount types.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:double">
+            <xs:attribute name="currencyId" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>
+									Currency in which the monetary amount is specified.
+									&lt;br&gt;&lt;br&gt;
+									For a list of possible enumeration values, see
+									&lt;a href="Enums/currencyIdList.html"&gt;currencyId Values&lt;/a&gt;.
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <AllCalls/>
+                    <Returned>Always</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:complexType name="Affiliate">
+        <xs:annotation>
+          <xs:documentation>
+						eBay uses the specified details to build a View Item URL and Product URL
+						string in the response that includes your affiliate tracking information in
+						the correct format. When a user clicks through the URL to eBay and performs
+						certain tasks, you may get a commission.
+						&lt;br&gt;&lt;br&gt;
+						For information about commissions, see the
+						&lt;a href="https://www.ebaypartnernetwork.com/"&gt;
+						eBay Partner Network&lt;/a&gt;.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="trackingId" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The value you specify is obtained from your tracking partner. For eBay
+								Partner Network, the TrackingID is the Campaign ID ("campid") provided by
+								eBay Partner Network. A Campaign ID is a 10-digit, unique number to be
+								used for associating traffic. A Campaign ID is valid across all programs
+								to which you have been accepted. Another example is the Affiliate ID
+								given to you by TradeDoubler.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="networkId" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies your tracking partner for affiliate commissions. Affiliates
+								earn money from eBay for driving traffic to eBay. Required if you specify
+								a TrackingID. Depending on your tracking partner, specify one of the
+								following values. Not all partners are valid for all sites. For
+								PlaceOffer, only eBay Partner Network and Mediaplex are valid:
+								&lt;br&gt;2 = Be Free
+								&lt;br&gt;3 = Affilinet
+								&lt;br&gt;4 = TradeDoubler
+								&lt;br&gt;5 = Mediaplex
+								&lt;br&gt;6 = DoubleClick
+								&lt;br&gt;7 = Allyes
+								&lt;br&gt;8 = BJMT
+								&lt;br&gt;9 = eBay Partner Network
+								For information about commissions, see the
+								&lt;a href="https://www.ebaypartnernetwork.com/"&gt;
+								eBay Partner Network&lt;/a&gt;.
+						</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="customId" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Need not be specified. You can define an AffiliateUserID (up to 256
+								characters) if you want to leverage it to better monitor your marketing
+								efforts. If you are using the eBay Partner Network, and you provide an
+								AffiliateUserID, the tracking URL returned by eBay Partner Network will
+								contain the AffiliateUserID, but it will be referred to as a "customid".
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:sequence minOccurs="0">
+            <xs:element name="delimiter" type="xs:string"/>
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductId">
+        <xs:annotation>
+          <xs:documentation>
+						Unique identifier for a product.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="type" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>
+									Defines the type of ProductId.
+									&lt;dl&gt;
+									&lt;lh&gt;Enumeration Values:&lt;/lh&gt;
+									&lt;dt&gt;
+										EAN
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										EAN value for books. (This is used more commonly in European
+										countries.) If you know a book's EAN, you can use this instead of the
+										eBay CatalogItem or Reference ID to search for that book.
+										&lt;br&gt;&lt;br&gt;
+										&lt;b&gt;Max length of corresponding value: 13&lt;/b&gt;
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										ISBN
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										ISBN-10 or ISBN-13 value for books. (The string length of ProductID
+										indicates whether the ID is 10 or 13 characters.) If you know a
+										book's ISBN, you can use this instead of the eBay CatalogItem or
+										Reference ID to search for that book.
+										&lt;br&gt;&lt;br&gt;
+										&lt;b&gt;Max length of corresponding value: 13&lt;/b&gt;
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										Reference
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										The global reference ID for an eBay catalog product. A reference ID
+										is a fixed reference to a product (regardless of version). Use this
+										instead of CatalogItem when you know a product's reference ID
+										(because older CatalogItem IDs are more likely to become obsolete
+										over time.) One reference ID can be associated with multiple
+										CatalogItem IDs. To determine valid reference IDs for products, first
+										call FindProducts with QueryKeywords (or ProductID). Each product in
+										the response includes a reference ID.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										UPC
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										UPC value for products in Music (e.g., CDs), DVDs &amp; Movies, and
+										Video Games categories (or domains). If you know a product's UPC, you
+										can use this instead of the eBay CatalogItem or Reference ID to
+										search for that product.
+										&lt;br&gt;&lt;br&gt;
+										&lt;b&gt;Max length of corresponding value: 12&lt;/b&gt;
+									&lt;/dd&gt;
+									&lt;/dl&gt;
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>getTopSellingProducts</CallName>
+                    <Returned>Always</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:complexType name="ItemFilter">
+        <xs:annotation>
+          <xs:documentation>
+						Reduce the number of items returned by a request using itemFilters.
+						Use the itemFilter container to specify itemFilter Name/Value pairs. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="paramName" type="xs:token" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								In addition to filter Name/Value pairs, some item filters use an
+								additional parameter Name/Value pair.
+								&lt;br&gt;&lt;br&gt;
+								For example, if you use the WorldOfGoodOnly item filter, you can
+								optionally specify a parameter name of WOGCategory with a parameter value
+								that specifies the World of Good category. This restricts the item
+								recommendations to items available in the specified World of Good
+								category only.
+								&lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; 
+								To locate a specific World of Good category, go to the
+								worldofgood.ebay.com home page. Top-level categories are listed under
+								Shop by Category on the left-hand side of the page. Click the category
+								you want to use to restrict your search results. The resultant URL
+								contains the category ID as a numeric value, appearing before "/list" at
+								the end of the URL (e.g.,
+								http://worldofgood.ebay.com/Belts-Hats-Scarves-Shawls/&lt;b&gt;40&lt;/b&gt;/list). 
+								If a category has children categories, they will be displayed under the
+								Category on the left-hand side of the page. The numeric category ID can
+								be determined from the URL for child categories in the same fashion.
+								&lt;/p&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <ListBasedOn/>
+                <CallInfo>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="paramValue" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								The value for the parameter name used in an item filter. 
+								&lt;br&gt;&lt;br&gt;
+								For example, if your item filter is WorldOfGoodOnly (true), you can
+								further restrict the item recommendations in the response to items
+								available in a specific World of Good category. In this case, the
+								paramter name is set to WOGCategory and the parameter values is a numeric
+								World of Good category ID.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="name" type="tns:ItemFilterType" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>
+								Name of the item filter from the set of allowed filters. The
+								Merchandising API supports a World of Good item filter only.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="value" type="xs:string" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>
+								The value associated with the respective item filter name. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getRelatedCategoryItems</CallName>
+                  <CallName>getSimilarItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:sequence minOccurs="0">
+            <xs:element name="delimiter" type="xs:string"/>
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ItemFilterType">
+        <xs:annotation>
+          <xs:documentation>
+						Values that can be used for the itemFilter.name field.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="WorldOfGoodOnly">
+            <xs:annotation>
+              <xs:documentation>
+								If true, returns only items listed in the World of Good marketplace.
+								Defaults to false.
+								&lt;br&gt;&lt;br&gt;
+								&lt;b&gt;Allowed values (&lt;a 
+								class="defn_type" 
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								&lt;br&gt;
+								true, false
+								&lt;br&gt;&lt;br&gt;
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ErrorMessage">
+        <xs:annotation>
+          <xs:documentation>
+						ErrorMessage to indicate any Error/Warning that occured as part of service 
+						call. Any run time error will not be reported here, but will be reported as 
+						part of a SOAP fault.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="error" nillable="true" type="tns:ErrorData" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>
+								Details about a single error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorData">
+        <xs:annotation>
+          <xs:documentation>
+						This represents error details.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="errorId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>
+								A unique code that identifies the particular error condition that
+								occurred. Your application can use error codes as identifiers in your
+								customized error-handling algorithms.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="domain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Name of the domain upon which the error occurred.
+								&lt;dl&gt;
+								&lt;lh&gt;Domains include:&lt;/lh&gt;
+								&lt;dt&gt;
+									Marketplace
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									A business or validation error occurred for the Merchandising Service.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									SOA
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									An exception occurred in the Service Oriented Architecture (SOA)
+									framework.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="severity" type="tns:ErrorSeverity">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates whether the error caused the request to fail (Error) or not
+								(Warning).
+								&lt;br&gt;&lt;br&gt;
+								If the request fails and the source of the problem is within the
+								application (such as a missing required element), please change the
+								application before you retry the request. If the problem is due to end-
+								user input data, please alert the end-user to the problem and provide the
+								means for them to correct the data. Once the problem in the application
+								or data is resolved, you can attempt to re- send the request to eBay.
+								&lt;br&gt;&lt;br&gt;
+								If the source of the problem is on eBay's side, you can retry the request
+								as-is a reasonable number of times (eBay recommends twice). If the error
+								persists, contact Developer Technical Support. Once the problem has been
+								resolved, the request may be resent in its original form.
+								&lt;br&gt;&lt;br&gt;
+								When a warning occurs, the error is returned in addition to the business
+								data. In this case, you do not need to retry the request (as the original
+								request was successful). However, depending on the cause or nature of the
+								warning, you might need to contact either the end user or eBay to effect
+								a long term solution to the problem to prevent it from reoccurring in the
+								future.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="category" type="tns:ErrorCategory">
+            <xs:annotation>
+              <xs:documentation>
+								There are three categories of errors: request errors, application errors,
+								and system errors.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="message" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								A detailed description of the condition that resulted in the error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="subdomain" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Name of the subdomain upon which the error occurred.
+								&lt;dl&gt;
+								&lt;lh&gt;Subdomains include:&lt;/lh&gt;
+								&lt;dt&gt;
+									Merchandising
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The error is specific to the Merchandising service.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									MarketplaceCommon
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The error is common to all Marketplace services.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="exceptionId" type="xs:token" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Unique identifier for an exception associated with an error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parameter" nillable="true" type="tns:ErrorParameter" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>
+								Some warning and error messages return one or more variables that contain
+								contextual information about the error. This is often the field or value
+								that triggered the error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameter">
+        <xs:annotation>
+          <xs:documentation>
+						Contextual information associated with an error.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+									The name of the parameter in the list of parameter types returned
+									within the error type.
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <AllCalls/>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="ErrorSeverity">
+        <xs:annotation>
+          <xs:documentation>
+						Indicates whether the error is a severe error (causing the request to fail)
+						or an informational error (a warning) that should be communicated to the
+						user.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Error">
+            <xs:annotation>
+              <xs:documentation>
+								The request that triggered the error was not processed successfully.
+								When a serious application-level error occurs, the error is returned
+								instead of the business data.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+								The request was processed successfully, but something occurred that may
+								affect your application or the user. For example, eBay may have changed a
+								value the user sent in. In this case, eBay returns a normal, successful
+								response and also returns the warning.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ErrorCategory">
+        <xs:annotation>
+          <xs:documentation>
+						There are three categories of error: request errors, application errors,
+						and system errors. Request and application errors are caused primarily by
+						invalid data passed in the request. System errors are caused primarily by
+						application failures and cannot be corrected by changing request values.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="System">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates that an error has occurred on the eBay system side, such as a
+								database or server down. An application can retry the request as-is a
+								reasonable number of times (eBay recommends twice). If the error
+								persists, contact Developer Technical Support. Once the problem has been
+								resolved, the request may be resent in its original form.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Application">
+            <xs:annotation>
+              <xs:documentation>
+								An error occurred due to a problem with the request, such as missing or
+								invalid fields. The problem must be corrected before the request can be
+								made again. If the problem is due to something in the application (such
+								as a missing required field), the application must be changed. Once the
+								problem in the application or data is resolved, resend the corrected
+								request to eBay.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Request">
+            <xs:annotation>
+              <xs:documentation>
+								An error occurred due to a problem with the request, such as invalid or
+								missing data. The problem must be corrected before the request can be
+								made again. If the problem is a result of end-user data, the application
+								must alert the end-user to the problem and provide the means for the
+								end-user to correct the data. Once the problem in the data is resolved,
+								resend the request to eBay with the corrected data.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getDealsRequest">
+    <wsdl:part name="params" element="ns0:getDealsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getRelatedCategoryItemsResponse">
+    <wsdl:part name="params" element="ns0:getRelatedCategoryItemsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getMostWatchedItemsResponse">
+    <wsdl:part name="params" element="ns0:getMostWatchedItemsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getTopSellingProductsRequest">
+    <wsdl:part name="params" element="ns0:getTopSellingProductsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getTopSellingProductsResponse">
+    <wsdl:part name="params" element="ns0:getTopSellingProductsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getMostWatchedItemsRequest">
+    <wsdl:part name="params" element="ns0:getMostWatchedItemsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getDealsResponse">
+    <wsdl:part name="params" element="ns0:getDealsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getRelatedCategoryItemsRequest">
+    <wsdl:part name="params" element="ns0:getRelatedCategoryItemsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getSimilarItemsRequest">
+    <wsdl:part name="params" element="ns0:getSimilarItemsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getSimilarItemsResponse">
+    <wsdl:part name="params" element="ns0:getSimilarItemsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionRequest">
+    <wsdl:part name="messageParameters" element="ns0:getVersionRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part name="messageParameters" element="ns0:getVersionResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="MerchandisingServicePort">
+    <wsdl:operation name="getRelatedCategoryItems">
+      <wsdl:input message="ns0:getRelatedCategoryItemsRequest"/>
+      <wsdl:output message="ns0:getRelatedCategoryItemsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getMostWatchedItems">
+      <wsdl:input message="ns0:getMostWatchedItemsRequest"/>
+      <wsdl:output message="ns0:getMostWatchedItemsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getTopSellingProducts">
+      <wsdl:input message="ns0:getTopSellingProductsRequest"/>
+      <wsdl:output message="ns0:getTopSellingProductsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDeals">
+      <wsdl:input message="ns0:getDealsRequest"/>
+      <wsdl:output message="ns0:getDealsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getSimilarItems">
+      <wsdl:input message="ns0:getSimilarItemsRequest"/>
+      <wsdl:output message="ns0:getSimilarItemsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <wsdl:input message="ns0:getVersionRequest"/>
+      <wsdl:output message="ns0:getVersionResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MerchandisingServiceHttpBinding" type="ns0:MerchandisingServicePort">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getRelatedCategoryItems">
+      <http:operation location="MerchandisingService/getRelatedCategoryItems"/>
+      <wsdl:input>
+        <mime:content part="getRelatedCategoryItems" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getRelatedCategoryItems" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMostWatchedItems">
+      <http:operation location="MerchandisingService/getMostWatchedItems"/>
+      <wsdl:input>
+        <mime:content part="getMostWatchedItems" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getMostWatchedItems" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTopSellingProducts">
+      <http:operation location="MerchandisingService/getTopSellingProducts"/>
+      <wsdl:input>
+        <mime:content part="getTopSellingProducts" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getTopSellingProducts" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeals">
+      <http:operation location="MerchandisingService/getDeals"/>
+      <wsdl:input>
+        <mime:content part="getDeals" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getDeals" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSimilarItems">
+      <http:operation location="MerchandisingService/getSimilarItems"/>
+      <wsdl:input>
+        <mime:content part="getSimilarItems" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getSimilarItems" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MerchandisingServiceSOAPBinding" type="ns0:MerchandisingServicePort">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getRelatedCategoryItems">
+      <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:getRelatedCategoryItems" style="document"/>
+      <wsdl:input>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMostWatchedItems">
+      <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:getMostWatchedItems" style="document"/>
+      <wsdl:input>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTopSellingProducts">
+      <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:getTopSellingProducts" style="document"/>
+      <wsdl:input>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeals">
+      <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:getDeals" style="document"/>
+      <wsdl:input>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSimilarItems">
+      <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:getSimilarItems" style="document"/>
+      <wsdl:input>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <soap12:operation soapAction="urn:getVersion" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MerchandisingService">
+    <wsdl:documentation>
+      <Version>1.5.0</Version>
+    </wsdl:documentation>
+    <wsdl:port name="MerchandisingServiceHttpPort" binding="ns0:MerchandisingServiceHttpBinding">
+      <http:address location="http://svcs.ebay.com/MerchandisingService"/>
+    </wsdl:port>
+    <wsdl:port name="MerchandisingServiceSOAPPort" binding="ns0:MerchandisingServiceSOAPBinding">
+      <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://svcs.ebay.com/MerchandisingService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

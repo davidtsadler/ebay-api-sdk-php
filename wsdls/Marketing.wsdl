@@ -1,0 +1,1649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:complexType name="Ad">
+        <xs:sequence>
+          <xs:element name="adId" type="xs:string"/>
+          <xs:element name="bidPercentage" type="xs:string"/>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
+          <xs:element name="listingId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdIds">
+        <xs:sequence>
+          <xs:element name="adIds" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdPagedCollection">
+        <xs:sequence>
+          <xs:element name="ads" type="ns:Ad" maxOccurs="unbounded"/>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdReference">
+        <xs:sequence>
+          <xs:element name="adId" type="xs:string"/>
+          <xs:element name="href" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdReferences">
+        <xs:sequence>
+          <xs:element name="ads" type="ns:AdReference" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdResponse">
+        <xs:sequence>
+          <xs:element name="adId" type="xs:string"/>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="statusCode" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Ads">
+        <xs:sequence>
+          <xs:element name="ads" type="ns:Ad" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pls:Amount">
+        <xs:sequence>
+          <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sme:Amount">
+        <xs:sequence>
+          <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkAdResponse">
+        <xs:sequence>
+          <xs:element name="responses" type="ns:AdResponse" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkCreateAdRequest">
+        <xs:sequence>
+          <xs:element name="requests" type="ns:CreateAdRequest" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkCreateAdsByInventoryReferenceRequest">
+        <xs:sequence>
+          <xs:element name="requests" type="ns:CreateAdsByInventoryReferenceRequest" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkCreateAdsByInventoryReferenceResponse">
+        <xs:sequence>
+          <xs:element name="responses" type="ns:CreateAdsByInventoryReferenceResponse" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkDeleteAdRequest">
+        <xs:sequence>
+          <xs:element name="requests" type="ns:DeleteAdRequest" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkDeleteAdResponse">
+        <xs:sequence>
+          <xs:element name="responses" type="ns:DeleteAdResponse" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkDeleteAdsByInventoryReferenceRequest">
+        <xs:sequence>
+          <xs:element name="requests" type="ns:DeleteAdsByInventoryReferenceRequest" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkDeleteAdsByInventoryReferenceResponse">
+        <xs:sequence>
+          <xs:element name="responses" type="ns:DeleteAdsByInventoryReferenceResponse" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CurrencyCodeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AED"/>
+          <xs:enumeration value="AFN"/>
+          <xs:enumeration value="ALL"/>
+          <xs:enumeration value="AMD"/>
+          <xs:enumeration value="ANG"/>
+          <xs:enumeration value="AOA"/>
+          <xs:enumeration value="ARS"/>
+          <xs:enumeration value="AUD"/>
+          <xs:enumeration value="AWG"/>
+          <xs:enumeration value="AZN"/>
+          <xs:enumeration value="BAM"/>
+          <xs:enumeration value="BBD"/>
+          <xs:enumeration value="BDT"/>
+          <xs:enumeration value="BGN"/>
+          <xs:enumeration value="BHD"/>
+          <xs:enumeration value="BIF"/>
+          <xs:enumeration value="BMD"/>
+          <xs:enumeration value="BND"/>
+          <xs:enumeration value="BOB"/>
+          <xs:enumeration value="BRL"/>
+          <xs:enumeration value="BSD"/>
+          <xs:enumeration value="BTN"/>
+          <xs:enumeration value="BWP"/>
+          <xs:enumeration value="BYR"/>
+          <xs:enumeration value="BZD"/>
+          <xs:enumeration value="CAD"/>
+          <xs:enumeration value="CDF"/>
+          <xs:enumeration value="CHF"/>
+          <xs:enumeration value="CLP"/>
+          <xs:enumeration value="CNY"/>
+          <xs:enumeration value="COP"/>
+          <xs:enumeration value="CRC"/>
+          <xs:enumeration value="CUP"/>
+          <xs:enumeration value="CVE"/>
+          <xs:enumeration value="CZK"/>
+          <xs:enumeration value="DJF"/>
+          <xs:enumeration value="DKK"/>
+          <xs:enumeration value="DOP"/>
+          <xs:enumeration value="DZD"/>
+          <xs:enumeration value="EGP"/>
+          <xs:enumeration value="ERN"/>
+          <xs:enumeration value="ETB"/>
+          <xs:enumeration value="EUR"/>
+          <xs:enumeration value="FJD"/>
+          <xs:enumeration value="FKP"/>
+          <xs:enumeration value="GBP"/>
+          <xs:enumeration value="GEL"/>
+          <xs:enumeration value="GHS"/>
+          <xs:enumeration value="GIP"/>
+          <xs:enumeration value="GMD"/>
+          <xs:enumeration value="GNF"/>
+          <xs:enumeration value="GTQ"/>
+          <xs:enumeration value="GYD"/>
+          <xs:enumeration value="HKD"/>
+          <xs:enumeration value="HNL"/>
+          <xs:enumeration value="HRK"/>
+          <xs:enumeration value="HTG"/>
+          <xs:enumeration value="HUF"/>
+          <xs:enumeration value="IDR"/>
+          <xs:enumeration value="ILS"/>
+          <xs:enumeration value="INR"/>
+          <xs:enumeration value="IQD"/>
+          <xs:enumeration value="IRR"/>
+          <xs:enumeration value="ISK"/>
+          <xs:enumeration value="JMD"/>
+          <xs:enumeration value="JOD"/>
+          <xs:enumeration value="JPY"/>
+          <xs:enumeration value="KES"/>
+          <xs:enumeration value="KGS"/>
+          <xs:enumeration value="KHR"/>
+          <xs:enumeration value="KMF"/>
+          <xs:enumeration value="KPW"/>
+          <xs:enumeration value="KRW"/>
+          <xs:enumeration value="KWD"/>
+          <xs:enumeration value="KYD"/>
+          <xs:enumeration value="KZT"/>
+          <xs:enumeration value="LAK"/>
+          <xs:enumeration value="LBP"/>
+          <xs:enumeration value="LKR"/>
+          <xs:enumeration value="LRD"/>
+          <xs:enumeration value="LSL"/>
+          <xs:enumeration value="LTL"/>
+          <xs:enumeration value="LYD"/>
+          <xs:enumeration value="MAD"/>
+          <xs:enumeration value="MDL"/>
+          <xs:enumeration value="MGA"/>
+          <xs:enumeration value="MKD"/>
+          <xs:enumeration value="MMK"/>
+          <xs:enumeration value="MNT"/>
+          <xs:enumeration value="MOP"/>
+          <xs:enumeration value="MRO"/>
+          <xs:enumeration value="MUR"/>
+          <xs:enumeration value="MVR"/>
+          <xs:enumeration value="MWK"/>
+          <xs:enumeration value="MXN"/>
+          <xs:enumeration value="MYR"/>
+          <xs:enumeration value="MZN"/>
+          <xs:enumeration value="NAD"/>
+          <xs:enumeration value="NGN"/>
+          <xs:enumeration value="NIO"/>
+          <xs:enumeration value="NOK"/>
+          <xs:enumeration value="NPR"/>
+          <xs:enumeration value="NZD"/>
+          <xs:enumeration value="OMR"/>
+          <xs:enumeration value="PAB"/>
+          <xs:enumeration value="PEN"/>
+          <xs:enumeration value="PGK"/>
+          <xs:enumeration value="PHP"/>
+          <xs:enumeration value="PKR"/>
+          <xs:enumeration value="PLN"/>
+          <xs:enumeration value="PYG"/>
+          <xs:enumeration value="QAR"/>
+          <xs:enumeration value="RON"/>
+          <xs:enumeration value="RSD"/>
+          <xs:enumeration value="RUB"/>
+          <xs:enumeration value="RWF"/>
+          <xs:enumeration value="SAR"/>
+          <xs:enumeration value="SBD"/>
+          <xs:enumeration value="SCR"/>
+          <xs:enumeration value="SDG"/>
+          <xs:enumeration value="SEK"/>
+          <xs:enumeration value="SGD"/>
+          <xs:enumeration value="SHP"/>
+          <xs:enumeration value="SLL"/>
+          <xs:enumeration value="SOS"/>
+          <xs:enumeration value="SRD"/>
+          <xs:enumeration value="STD"/>
+          <xs:enumeration value="SYP"/>
+          <xs:enumeration value="SZL"/>
+          <xs:enumeration value="THB"/>
+          <xs:enumeration value="TJS"/>
+          <xs:enumeration value="TMT"/>
+          <xs:enumeration value="TND"/>
+          <xs:enumeration value="TOP"/>
+          <xs:enumeration value="TRY"/>
+          <xs:enumeration value="TTD"/>
+          <xs:enumeration value="TWD"/>
+          <xs:enumeration value="TZS"/>
+          <xs:enumeration value="UAH"/>
+          <xs:enumeration value="UGX"/>
+          <xs:enumeration value="USD"/>
+          <xs:enumeration value="UYU"/>
+          <xs:enumeration value="UZS"/>
+          <xs:enumeration value="VEF"/>
+          <xs:enumeration value="VND"/>
+          <xs:enumeration value="VUV"/>
+          <xs:enumeration value="WST"/>
+          <xs:enumeration value="XAF"/>
+          <xs:enumeration value="XCD"/>
+          <xs:enumeration value="XOF"/>
+          <xs:enumeration value="XPF"/>
+          <xs:enumeration value="YER"/>
+          <xs:enumeration value="ZAR"/>
+          <xs:enumeration value="ZMW"/>
+          <xs:enumeration value="ZWL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="CreateReportTask">
+        <xs:sequence>
+          <xs:element name="campaignIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="dateFrom" type="xs:string"/>
+          <xs:element name="dateTo" type="xs:string"/>
+          <xs:element name="dimensions" type="ns:Dimension" maxOccurs="unbounded"/>
+          <xs:element name="inventoryReferences" type="ns:InventoryReference" maxOccurs="unbounded"/>
+          <xs:element name="listingIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="marketplaceId" type="ns:bas:MarketplaceIdEnum"/>
+          <xs:element name="metricKeys" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="reportFormat" type="ns:ReportFormatEnum"/>
+          <xs:element name="reportType" type="ns:ReportTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Campaign">
+        <xs:sequence>
+          <xs:element name="campaignCriterion" type="ns:CampaignCriterion"/>
+          <xs:element name="campaignId" type="xs:string"/>
+          <xs:element name="campaignName" type="xs:string"/>
+          <xs:element name="campaignStatus" type="ns:CampaignStatusEnum"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="fundingStrategy" type="ns:FundingStrategy"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CampaignCriterion">
+        <xs:sequence>
+          <xs:element name="autoSelectFutureInventory" type="xs:boolean"/>
+          <xs:element name="criterionType" type="ns:CriterionTypeEnum"/>
+          <xs:element name="selectionRules" type="ns:pls:SelectionRule" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CampaignPagedCollection">
+        <xs:sequence>
+          <xs:element name="campaigns" type="ns:Campaign" maxOccurs="unbounded"/>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CampaignStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DELETED"/>
+          <xs:enumeration value="ENDED"/>
+          <xs:enumeration value="ENDING_SOON"/>
+          <xs:enumeration value="PAUSED"/>
+          <xs:enumeration value="PENDING"/>
+          <xs:enumeration value="RUNNING"/>
+          <xs:enumeration value="SCHEDULED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Campaigns">
+        <xs:sequence>
+          <xs:element name="campaigns" type="ns:Campaign" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="pls:CategoryScopeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="MARKETPLACE"/>
+          <xs:enumeration value="STORE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="CloneCampaignRequest">
+        <xs:sequence>
+          <xs:element name="campaignName" type="xs:string"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="fundingStrategy" type="ns:FundingStrategy"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateAdRequest">
+        <xs:sequence>
+          <xs:element name="bidPercentage" type="xs:string"/>
+          <xs:element name="listingId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateAdsByInventoryReferenceRequest">
+        <xs:sequence>
+          <xs:element name="bidPercentage" type="xs:string"/>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateAdsByInventoryReferenceResponse">
+        <xs:sequence>
+          <xs:element name="ads" type="ns:AdReference" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
+          <xs:element name="statusCode" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateCampaignRequest">
+        <xs:sequence>
+          <xs:element name="campaignCriterion" type="ns:CampaignCriterion"/>
+          <xs:element name="campaignName" type="xs:string"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="fundingStrategy" type="ns:FundingStrategy"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CriterionTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_PARTITION"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="sme:CategoryScopeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="MARKETPLACE"/>
+          <xs:enumeration value="STORE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DataTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DATE"/>
+          <xs:enumeration value="DOUBLE"/>
+          <xs:enumeration value="INTEGER"/>
+          <xs:enumeration value="LONG"/>
+          <xs:enumeration value="STRING"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Dimension">
+        <xs:sequence>
+          <xs:element name="annotationKeys" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="dimensionKey" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DimensionKeyAnnotation">
+        <xs:sequence>
+          <xs:element name="annotationKey" type="xs:string"/>
+          <xs:element name="dataType" type="ns:DataTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DimensionMetadata">
+        <xs:sequence>
+          <xs:element name="dataType" type="ns:DataTypeEnum"/>
+          <xs:element name="dimensionKey" type="xs:string"/>
+          <xs:element name="dimensionKeyAnnotations" type="ns:DimensionKeyAnnotation" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAdRequest">
+        <xs:sequence>
+          <xs:element name="listingId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAdResponse">
+        <xs:sequence>
+          <xs:element name="adId" type="xs:string"/>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="statusCode" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAdsByInventoryReferenceRequest">
+        <xs:sequence>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAdsByInventoryReferenceResponse">
+        <xs:sequence>
+          <xs:element name="adIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
+          <xs:element name="statusCode" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DiscountBenefit">
+        <xs:sequence>
+          <xs:element name="amountOffItem" type="ns:sme:Amount"/>
+          <xs:element name="amountOffOrder" type="ns:sme:Amount"/>
+          <xs:element name="percentageOffItem" type="xs:string"/>
+          <xs:element name="percentageOffOrder" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DiscountRule">
+        <xs:sequence>
+          <xs:element name="discountBenefit" type="ns:DiscountBenefit"/>
+          <xs:element name="discountSpecification" type="ns:DiscountSpecification"/>
+          <xs:element name="ruleOrder" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DiscountSpecification">
+        <xs:sequence>
+          <xs:element name="forEachAmount" type="ns:sme:Amount"/>
+          <xs:element name="forEachQuantity" type="xs:integer"/>
+          <xs:element name="minAmount" type="ns:sme:Amount"/>
+          <xs:element name="minQuantity" type="xs:integer"/>
+          <xs:element name="numberOfDiscountedItems" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="FundingModelEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="COST_PER_SALE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="FundingStrategy">
+        <xs:sequence>
+          <xs:element name="bidPercentage" type="xs:string"/>
+          <xs:element name="fundingModel" type="ns:FundingModelEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemPromotionResponse">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="discountRules" type="ns:DiscountRule" maxOccurs="unbounded"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="inventoryCriterion" type="ns:InventoryCriterion"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="priority" type="ns:PromotionPriorityEnum"/>
+          <xs:element name="promotionId" type="xs:string"/>
+          <xs:element name="promotionImageUrl" type="xs:string"/>
+          <xs:element name="promotionStatus" type="ns:PromotionStatusEnum"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemsPagedCollection">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="listings" type="ns:ListingDetail" maxOccurs="unbounded"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryReference">
+        <xs:sequence>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="ns:plse:InventoryReferenceTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="pls:InventoryReferenceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_ITEM"/>
+          <xs:enumeration value="INVENTORY_ITEM_GROUP"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="plse:InventoryReferenceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_ITEM"/>
+          <xs:enumeration value="INVENTORY_ITEM_GROUP"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="InventoryCriterion">
+        <xs:sequence>
+          <xs:element name="inventoryCriterionType" type="ns:InventoryCriterionEnum"/>
+          <xs:element name="inventoryItems" type="ns:InventoryItem" maxOccurs="unbounded"/>
+          <xs:element name="listingIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="ruleCriteria" type="ns:RuleCriteria"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="InventoryCriterionEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_ANY"/>
+          <xs:enumeration value="INVENTORY_BY_RULE"/>
+          <xs:enumeration value="INVENTORY_BY_VALUE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="InventoryItem">
+        <xs:sequence>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="sme:InventoryReferenceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_ITEM"/>
+          <xs:enumeration value="INVENTORY_ITEM_GROUP"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ItemPromotion">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="discountRules" type="ns:DiscountRule" maxOccurs="unbounded"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="inventoryCriterion" type="ns:InventoryCriterion"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="priority" type="ns:PromotionPriorityEnum"/>
+          <xs:element name="promotionImageUrl" type="xs:string"/>
+          <xs:element name="promotionStatus" type="ns:PromotionStatusEnum"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListingDetail">
+        <xs:sequence>
+          <xs:element name="currentPrice" type="ns:sme:Amount"/>
+          <xs:element name="freeShipping" type="xs:boolean"/>
+          <xs:element name="inventoryReferenceId" type="xs:string"/>
+          <xs:element name="inventoryReferenceType" type="xs:string"/>
+          <xs:element name="listingCategoryId" type="xs:string"/>
+          <xs:element name="listingCondition" type="xs:string"/>
+          <xs:element name="listingConditionId" type="xs:string"/>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+          <xs:element name="storeCategoryId" type="xs:string"/>
+          <xs:element name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ba:MarketplaceIdEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_CN"/>
+          <xs:enumeration value="EBAY_CZ"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_DK"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FI"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_GR"/>
+          <xs:enumeration value="EBAY_HALF_US"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_HU"/>
+          <xs:enumeration value="EBAY_ID"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IL"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_JP"/>
+          <xs:enumeration value="EBAY_MOTORS_US"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_NO"/>
+          <xs:enumeration value="EBAY_NZ"/>
+          <xs:enumeration value="EBAY_PE"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_PR"/>
+          <xs:enumeration value="EBAY_PT"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SE"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_TH"/>
+          <xs:enumeration value="EBAY_TW"/>
+          <xs:enumeration value="EBAY_US"/>
+          <xs:enumeration value="EBAY_VN"/>
+          <xs:enumeration value="EBAY_ZA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="bas:MarketplaceIdEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_CN"/>
+          <xs:enumeration value="EBAY_CZ"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_DK"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FI"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_GR"/>
+          <xs:enumeration value="EBAY_HALF_US"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_HU"/>
+          <xs:enumeration value="EBAY_ID"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IL"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_JP"/>
+          <xs:enumeration value="EBAY_MOTORS_US"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_NO"/>
+          <xs:enumeration value="EBAY_NZ"/>
+          <xs:enumeration value="EBAY_PE"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_PR"/>
+          <xs:enumeration value="EBAY_PT"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SE"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_TH"/>
+          <xs:enumeration value="EBAY_TW"/>
+          <xs:enumeration value="EBAY_US"/>
+          <xs:enumeration value="EBAY_VN"/>
+          <xs:enumeration value="EBAY_ZA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="MetricMetadata">
+        <xs:sequence>
+          <xs:element name="dataType" type="ns:DataTypeEnum"/>
+          <xs:element name="metricKey" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PromotionDetail">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="priority" type="ns:PromotionPriorityEnum"/>
+          <xs:element name="promotionHref" type="xs:string"/>
+          <xs:element name="promotionId" type="xs:string"/>
+          <xs:element name="promotionImageUrl" type="xs:string"/>
+          <xs:element name="promotionStatus" type="ns:PromotionStatusEnum"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PromotionsPagedCollection">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="promotions" type="ns:PromotionDetail" maxOccurs="unbounded"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PromotionPriorityEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVALID"/>
+          <xs:enumeration value="PRIORITY_1"/>
+          <xs:enumeration value="PRIORITY_2"/>
+          <xs:enumeration value="PRIORITY_3"/>
+          <xs:enumeration value="PRIORITY_4"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="PromotionStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DRAFT"/>
+          <xs:enumeration value="ENDED"/>
+          <xs:enumeration value="INVALID"/>
+          <xs:enumeration value="PAUSED"/>
+          <xs:enumeration value="RUNNING"/>
+          <xs:enumeration value="SCHEDULED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ReportFormatEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="TSV_GZIP"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ReportMetadata">
+        <xs:sequence>
+          <xs:element name="dimensionMetadata" type="ns:DimensionMetadata" maxOccurs="unbounded"/>
+          <xs:element name="maxNumberOfDimensionsToRequest" type="xs:integer"/>
+          <xs:element name="maxNumberOfMetricsToRequest" type="xs:integer"/>
+          <xs:element name="metricMetadata" type="ns:MetricMetadata" maxOccurs="unbounded"/>
+          <xs:element name="reportType" type="ns:ReportTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReportMetadatas">
+        <xs:sequence>
+          <xs:element name="reportMetadata" type="ns:ReportMetadata" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReportTask">
+        <xs:sequence>
+          <xs:element name="campaignIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="dateFrom" type="xs:string"/>
+          <xs:element name="dateTo" type="xs:string"/>
+          <xs:element name="dimensions" type="ns:Dimension" maxOccurs="unbounded"/>
+          <xs:element name="inventoryReferences" type="ns:InventoryReference" maxOccurs="unbounded"/>
+          <xs:element name="listingIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="marketplaceId" type="ns:bas:MarketplaceIdEnum"/>
+          <xs:element name="metricKeys" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="reportExpirationDate" type="xs:string"/>
+          <xs:element name="reportFormat" type="ns:ReportFormatEnum"/>
+          <xs:element name="reportHref" type="xs:string"/>
+          <xs:element name="reportId" type="xs:string"/>
+          <xs:element name="reportName" type="xs:string"/>
+          <xs:element name="reportTaskCompletionDate" type="xs:string"/>
+          <xs:element name="reportTaskCreationDate" type="xs:string"/>
+          <xs:element name="reportTaskExpectedCompletionDate" type="xs:string"/>
+          <xs:element name="reportTaskId" type="xs:string"/>
+          <xs:element name="reportTaskStatus" type="ns:TaskStatusEnum"/>
+          <xs:element name="reportTaskStatusMessage" type="xs:string"/>
+          <xs:element name="reportType" type="ns:ReportTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReportTaskPagedCollection">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="reportTasks" type="ns:ReportTask" maxOccurs="unbounded"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ReportTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ACCOUNT_PERFORMANCE_REPORT"/>
+          <xs:enumeration value="CAMPAIGN_PERFORMANCE_REPORT"/>
+          <xs:enumeration value="CAMPAIGN_PERFORMANCE_SUMMARY_REPORT"/>
+          <xs:enumeration value="INVENTORY_PERFORMANCE_REPORT"/>
+          <xs:enumeration value="LISTING_PERFORMANCE_REPORT"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="RuleCriteria">
+        <xs:sequence>
+          <xs:element name="excludeInventoryItems" type="ns:InventoryItem" maxOccurs="unbounded"/>
+          <xs:element name="excludeListingIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="selectionRules" type="ns:sme:SelectionRule" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SummaryReportResponse">
+        <xs:sequence>
+          <xs:element name="baseSale" type="ns:sme:Amount"/>
+          <xs:element name="lastUpdated" type="xs:string"/>
+          <xs:element name="percentageSalesLift" type="xs:string"/>
+          <xs:element name="promotionSale" type="ns:sme:Amount"/>
+          <xs:element name="totalSale" type="ns:sme:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SortField">
+        <xs:sequence>
+          <xs:element name="ascending" type="xs:boolean"/>
+          <xs:element name="field" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pls:SelectionRule">
+        <xs:sequence>
+          <xs:element name="brands" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="categoryIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="categoryScope" type="ns:pls:CategoryScopeEnum"/>
+          <xs:element name="listingConditionIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="maxPrice" type="ns:pls:Amount"/>
+          <xs:element name="minPrice" type="ns:pls:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sme:SelectionRule">
+        <xs:sequence>
+          <xs:element name="brands" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="categoryIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="categoryScope" type="ns:sme:CategoryScopeEnum"/>
+          <xs:element name="listingConditionIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="maxPrice" type="ns:sme:Amount"/>
+          <xs:element name="minPrice" type="ns:sme:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="TaskStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FAILED"/>
+          <xs:enumeration value="PENDING"/>
+          <xs:enumeration value="SUCCESS"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="UpdateBidPercentageRequest">
+        <xs:sequence>
+          <xs:element name="bidPercentage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateCampaignIdentificationRequest">
+        <xs:sequence>
+          <xs:element name="campaignName" type="xs:string"/>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="startDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BulkCreateAdsByInventoryReferenceRestRequest" type="ns:BulkCreateAdsByInventoryReferenceRestRequest"/>
+      <xs:element name="BulkCreateAdsByInventoryReferenceRestResponse" type="ns:BulkCreateAdsByInventoryReferenceRestResponse"/>
+      <xs:complexType name="BulkCreateAdsByInventoryReferenceRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkCreateAdsByInventoryReferenceRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkCreateAdsByInventoryReferenceRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BulkCreateAdsByListingIDRestRequest" type="ns:BulkCreateAdsByListingIDRestRequest"/>
+      <xs:element name="BulkCreateAdsByListingIDRestResponse" type="ns:BulkCreateAdsByListingIDRestResponse"/>
+      <xs:complexType name="BulkCreateAdsByListingIDRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkCreateAdRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkCreateAdsByListingIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkAdResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="BulkDeleteAdsByInventoryReferenceRestRequest" type="ns:BulkDeleteAdsByInventoryReferenceRestRequest"/>
+      <xs:element name="BulkDeleteAdsByInventoryReferenceRestResponse" type="ns:BulkDeleteAdsByInventoryReferenceRestResponse"/>
+      <xs:complexType name="BulkDeleteAdsByInventoryReferenceRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkDeleteAdsByInventoryReferenceRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkDeleteAdsByInventoryReferenceRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BulkDeleteAdsByListingIDRestRequest" type="ns:BulkDeleteAdsByListingIDRestRequest"/>
+      <xs:element name="BulkDeleteAdsByListingIDRestResponse" type="ns:BulkDeleteAdsByListingIDRestResponse"/>
+      <xs:complexType name="BulkDeleteAdsByListingIDRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkDeleteAdRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkDeleteAdsByListingIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkDeleteAdResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="BulkUpdateAdBidsByInventoryReferenceRestRequest" type="ns:BulkUpdateAdBidsByInventoryReferenceRestRequest"/>
+      <xs:element name="BulkUpdateAdBidsByInventoryReferenceRestResponse" type="ns:BulkUpdateAdBidsByInventoryReferenceRestResponse"/>
+      <xs:complexType name="BulkUpdateAdBidsByInventoryReferenceRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkCreateAdsByInventoryReferenceRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkUpdateAdBidsByInventoryReferenceRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BulkUpdateAdBidsByListingIDRestRequest" type="ns:BulkUpdateAdBidsByListingIDRestRequest"/>
+      <xs:element name="BulkUpdateAdBidsByListingIDRestResponse" type="ns:BulkUpdateAdBidsByListingIDRestResponse"/>
+      <xs:complexType name="BulkUpdateAdBidsByListingIDRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkCreateAdRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkUpdateAdBidsByListingIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkAdResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateAdByListingIDRestRequest" type="ns:CreateAdByListingIDRestRequest"/>
+      <xs:element name="CreateAdByListingIDRestResponse" type="ns:CreateAdByListingIDRestResponse"/>
+      <xs:complexType name="CreateAdByListingIDRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CreateAdRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateAdByListingIDRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateAdsByInventoryReferenceRestRequest" type="ns:CreateAdsByInventoryReferenceRestRequest"/>
+      <xs:element name="CreateAdsByInventoryReferenceRestResponse" type="ns:CreateAdsByInventoryReferenceRestResponse"/>
+      <xs:complexType name="CreateAdsByInventoryReferenceRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CreateAdsByInventoryReferenceRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateAdsByInventoryReferenceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:AdReferences">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteAdByIDRestRequest" type="ns:DeleteAdByIDRestRequest"/>
+      <xs:element name="DeleteAdByIDRestResponse" type="ns:DeleteAdByIDRestResponse"/>
+      <xs:complexType name="DeleteAdByIDRestRequest">
+        <xs:sequence>
+          <xs:element name="ad_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteAdByIDRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteAdsByInventoryReferenceRestRequest" type="ns:DeleteAdsByInventoryReferenceRestRequest"/>
+      <xs:element name="DeleteAdsByInventoryReferenceRestResponse" type="ns:DeleteAdsByInventoryReferenceRestResponse"/>
+      <xs:complexType name="DeleteAdsByInventoryReferenceRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:DeleteAdsByInventoryReferenceRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeleteAdsByInventoryReferenceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:AdIds">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAdByIDRestRequest" type="ns:GetAdByIDRestRequest"/>
+      <xs:element name="GetAdByIDRestResponse" type="ns:GetAdByIDRestResponse"/>
+      <xs:complexType name="GetAdByIDRestRequest">
+        <xs:sequence>
+          <xs:element name="ad_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAdByIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Ad">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAdsRestRequest" type="ns:GetAdsRestRequest"/>
+      <xs:element name="GetAdsRestResponse" type="ns:GetAdsRestResponse"/>
+      <xs:complexType name="GetAdsRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="listing_ids" type="xs:string" valid="string" required="true"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAdsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:AdPagedCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAdsByInventoryReferenceRestRequest" type="ns:GetAdsByInventoryReferenceRestRequest"/>
+      <xs:element name="GetAdsByInventoryReferenceRestResponse" type="ns:GetAdsByInventoryReferenceRestResponse"/>
+      <xs:complexType name="GetAdsByInventoryReferenceRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="inventory_reference_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="inventory_reference_type" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAdsByInventoryReferenceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Ads">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateBidRestRequest" type="ns:UpdateBidRestRequest"/>
+      <xs:element name="UpdateBidRestResponse" type="ns:UpdateBidRestResponse"/>
+      <xs:complexType name="UpdateBidRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdateBidPercentageRequest">
+            <xs:sequence>
+              <xs:element name="ad_id" type="xs:string" valid="string" required="true"/>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateBidRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CloneCampaignRestRequest" type="ns:CloneCampaignRestRequest"/>
+      <xs:element name="CloneCampaignRestResponse" type="ns:CloneCampaignRestResponse"/>
+      <xs:complexType name="CloneCampaignRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CloneCampaignRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CloneCampaignRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateCampaignRestRequest" type="ns:CreateCampaignRestRequest"/>
+      <xs:element name="CreateCampaignRestResponse" type="ns:CreateCampaignRestResponse"/>
+      <xs:complexType name="CreateCampaignRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CreateCampaignRequest">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateCampaignRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteCampaignRestRequest" type="ns:DeleteCampaignRestRequest"/>
+      <xs:element name="DeleteCampaignRestResponse" type="ns:DeleteCampaignRestResponse"/>
+      <xs:complexType name="DeleteCampaignRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteCampaignRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EndCampaignRestRequest" type="ns:EndCampaignRestRequest"/>
+      <xs:element name="EndCampaignRestResponse" type="ns:EndCampaignRestResponse"/>
+      <xs:complexType name="EndCampaignRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EndCampaignRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FindCampaignByAdReferenceRestRequest" type="ns:FindCampaignByAdReferenceRestRequest"/>
+      <xs:element name="FindCampaignByAdReferenceRestResponse" type="ns:FindCampaignByAdReferenceRestResponse"/>
+      <xs:complexType name="FindCampaignByAdReferenceRestRequest">
+        <xs:sequence>
+          <xs:element name="inventory_reference_id" type="xs:string" valid="string"/>
+          <xs:element name="inventory_reference_type" type="xs:string" valid="string"/>
+          <xs:element name="listing_id" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindCampaignByAdReferenceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Campaigns">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAllCampaignsRestRequest" type="ns:GetAllCampaignsRestRequest"/>
+      <xs:element name="GetAllCampaignsRestResponse" type="ns:GetAllCampaignsRestResponse"/>
+      <xs:complexType name="GetAllCampaignsRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_name" type="xs:string" valid="string"/>
+          <xs:element name="campaign_status" type="xs:string" valid="string"/>
+          <xs:element name="end_date_range" type="xs:string" valid="string"/>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+          <xs:element name="start_date_range" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllCampaignsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CampaignPagedCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetCampaignByNameRestRequest" type="ns:GetCampaignByNameRestRequest"/>
+      <xs:element name="GetCampaignByNameRestResponse" type="ns:GetCampaignByNameRestResponse"/>
+      <xs:complexType name="GetCampaignByNameRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_name" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCampaignByNameRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Campaign">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetCampaignByIDRestRequest" type="ns:GetCampaignByIDRestRequest"/>
+      <xs:element name="GetCampaignByIDRestResponse" type="ns:GetCampaignByIDRestResponse"/>
+      <xs:complexType name="GetCampaignByIDRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCampaignByIDRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Campaign">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PauseCampaignRestRequest" type="ns:PauseCampaignRestRequest"/>
+      <xs:element name="PauseCampaignRestResponse" type="ns:PauseCampaignRestResponse"/>
+      <xs:complexType name="PauseCampaignRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PauseCampaignRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResumeCampaignRestRequest" type="ns:ResumeCampaignRestRequest"/>
+      <xs:element name="ResumeCampaignRestResponse" type="ns:ResumeCampaignRestResponse"/>
+      <xs:complexType name="ResumeCampaignRestRequest">
+        <xs:sequence>
+          <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResumeCampaignRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UpdateCampaignIDentificationRestRequest" type="ns:UpdateCampaignIDentificationRestRequest"/>
+      <xs:element name="UpdateCampaignIDentificationRestResponse" type="ns:UpdateCampaignIDentificationRestResponse"/>
+      <xs:complexType name="UpdateCampaignIDentificationRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdateCampaignIdentificationRequest">
+            <xs:sequence>
+              <xs:element name="campaign_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateCampaignIDentificationRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateItemPromotionRestRequest" type="ns:CreateItemPromotionRestRequest"/>
+      <xs:element name="CreateItemPromotionRestResponse" type="ns:CreateItemPromotionRestResponse"/>
+      <xs:complexType name="CreateItemPromotionRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:ItemPromotion">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateItemPromotionRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteItemPromotionRestRequest" type="ns:DeleteItemPromotionRestRequest"/>
+      <xs:element name="DeleteItemPromotionRestResponse" type="ns:DeleteItemPromotionRestResponse"/>
+      <xs:complexType name="DeleteItemPromotionRestRequest">
+        <xs:sequence>
+          <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteItemPromotionRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetItemPromotionRestRequest" type="ns:GetItemPromotionRestRequest"/>
+      <xs:element name="GetItemPromotionRestResponse" type="ns:GetItemPromotionRestResponse"/>
+      <xs:complexType name="GetItemPromotionRestRequest">
+        <xs:sequence>
+          <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetItemPromotionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ItemPromotionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateItemPromotionRestRequest" type="ns:UpdateItemPromotionRestRequest"/>
+      <xs:element name="UpdateItemPromotionRestResponse" type="ns:UpdateItemPromotionRestResponse"/>
+      <xs:complexType name="UpdateItemPromotionRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:ItemPromotion">
+            <xs:sequence>
+              <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateItemPromotionRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetListingsInSpecificPromotionRestRequest" type="ns:GetListingsInSpecificPromotionRestRequest"/>
+      <xs:element name="GetListingsInSpecificPromotionRestResponse" type="ns:GetListingsInSpecificPromotionRestResponse"/>
+      <xs:complexType name="GetListingsInSpecificPromotionRestRequest">
+        <xs:sequence>
+          <xs:element name="promotion_id" type="xs:string" valid="string"/>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+          <xs:element name="q" type="xs:string" valid="string"/>
+          <xs:element name="sort" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetListingsInSpecificPromotionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ItemsPagedCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPromotionsRestRequest" type="ns:GetPromotionsRestRequest"/>
+      <xs:element name="GetPromotionsRestResponse" type="ns:GetPromotionsRestResponse"/>
+      <xs:complexType name="GetPromotionsRestRequest">
+        <xs:sequence>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+          <xs:element name="promotion_status" type="xs:string" valid="string"/>
+          <xs:element name="q" type="xs:string" valid="string"/>
+          <xs:element name="sort" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPromotionsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PromotionsPagedCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PauseAPromotionRestRequest" type="ns:PauseAPromotionRestRequest"/>
+      <xs:element name="PauseAPromotionRestResponse" type="ns:PauseAPromotionRestResponse"/>
+      <xs:complexType name="PauseAPromotionRestRequest">
+        <xs:sequence>
+          <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PauseAPromotionRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResumeAPromotionRestRequest" type="ns:ResumeAPromotionRestRequest"/>
+      <xs:element name="ResumeAPromotionRestResponse" type="ns:ResumeAPromotionRestResponse"/>
+      <xs:complexType name="ResumeAPromotionRestRequest">
+        <xs:sequence>
+          <xs:element name="promotion_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResumeAPromotionRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPromotionSummaryReportRestRequest" type="ns:GetPromotionSummaryReportRestRequest"/>
+      <xs:element name="GetPromotionSummaryReportRestResponse" type="ns:GetPromotionSummaryReportRestResponse"/>
+      <xs:complexType name="GetPromotionSummaryReportRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPromotionSummaryReportRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:SummaryReportResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="BulkCreateAdsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/bulk_create_ads_by_inventory_reference">
+      <wsdl:input message="ns:BulkCreateAdsByInventoryReferenceRestRequest"/>
+      <wsdl:output message="ns:BulkCreateAdsByInventoryReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="BulkCreateAdsByListingID" method="POST" resource="campaign/{campaign_id}/bulk_create_ads_by_listing_id">
+      <wsdl:input message="ns:BulkCreateAdsByListingIDRestRequest"/>
+      <wsdl:output message="ns:BulkCreateAdsByListingIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="BulkDeleteAdsByInventoryReference" method="POST" resource="campaign/{campaign_id}/bulk_delete_ads_by_inventory_reference">
+      <wsdl:input message="ns:BulkDeleteAdsByInventoryReferenceRestRequest"/>
+      <wsdl:output message="ns:BulkDeleteAdsByInventoryReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="BulkDeleteAdsByListingID" method="POST" resource="campaign/{campaign_id}/bulk_delete_ads_by_listing_id">
+      <wsdl:input message="ns:BulkDeleteAdsByListingIDRestRequest"/>
+      <wsdl:output message="ns:BulkDeleteAdsByListingIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="BulkUpdateAdBidsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/bulk_update_ads_bid_by_inventory_reference">
+      <wsdl:input message="ns:BulkUpdateAdBidsByInventoryReferenceRestRequest"/>
+      <wsdl:output message="ns:BulkUpdateAdBidsByInventoryReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="BulkUpdateAdBidsByListingID" method="POST" resource="ad_campaign/{campaign_id}/bulk_update_ads_bid_by_listing_id">
+      <wsdl:input message="ns:BulkUpdateAdBidsByListingIDRestRequest"/>
+      <wsdl:output message="ns:BulkUpdateAdBidsByListingIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateAdByListingID" method="POST" resource="ad_campaign/{campaign_id}/ad">
+      <wsdl:input message="ns:CreateAdByListingIDRestRequest"/>
+      <wsdl:output message="ns:CreateAdByListingIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateAdsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/create_ads_by_inventory_reference">
+      <wsdl:input message="ns:CreateAdsByInventoryReferenceRestRequest"/>
+      <wsdl:output message="ns:CreateAdsByInventoryReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteAdByID" method="DELETE" resource="ad_campaign/{campaign_id}/ad/{ad_id}">
+      <wsdl:input message="ns:DeleteAdByIDRestRequest"/>
+      <wsdl:output message="ns:DeleteAdByIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteAdsByInventoryReference" method="POST" resource="ad_campaign/{campaign_id}/delete_ads_by_inventory_reference">
+      <wsdl:input message="ns:DeleteAdsByInventoryReferenceRestRequest"/>
+      <wsdl:output message="ns:DeleteAdsByInventoryReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAdByID" method="GET" resource="ad_campaign/{campaign_id}/ad/{ad_id}">
+      <wsdl:input message="ns:GetAdByIDRestRequest"/>
+      <wsdl:output message="ns:GetAdByIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAds" method="GET" resource="ad_campaign/{campaign_id}/ad">
+      <wsdl:input message="ns:GetAdsRestRequest"/>
+      <wsdl:output message="ns:GetAdsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAdsByInventoryReference" method="GET" resource="ad_campaign/{campaign_id}/get_ads_by_inventory_reference">
+      <wsdl:input message="ns:GetAdsByInventoryReferenceRestRequest"/>
+      <wsdl:output message="ns:GetAdsByInventoryReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateBid" method="POST" resource="ad_campaign/{campaign_id}/ad/{ad_id}/update_bid">
+      <wsdl:input message="ns:UpdateBidRestRequest"/>
+      <wsdl:output message="ns:UpdateBidRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CloneCampaign" method="POST" resource="ad_campaign/{campaign_id}/clone">
+      <wsdl:input message="ns:CloneCampaignRestRequest"/>
+      <wsdl:output message="ns:CloneCampaignRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateCampaign" method="POST" resource="ad_campaign">
+      <wsdl:input message="ns:CreateCampaignRestRequest"/>
+      <wsdl:output message="ns:CreateCampaignRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteCampaign" method="DELETE" resource="ad_campaign/{campaign_id}">
+      <wsdl:input message="ns:DeleteCampaignRestRequest"/>
+      <wsdl:output message="ns:DeleteCampaignRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="EndCampaign" method="POST" resource="ad_campaign/{campaign_id}/end">
+      <wsdl:input message="ns:EndCampaignRestRequest"/>
+      <wsdl:output message="ns:EndCampaignRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="FindCampaignByAdReference" method="GET" resource="ad_campaign/find_campaign_by_ad_reference">
+      <wsdl:input message="ns:FindCampaignByAdReferenceRestRequest"/>
+      <wsdl:output message="ns:FindCampaignByAdReferenceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAllCampaigns" method="GET" resource="ad_campaign">
+      <wsdl:input message="ns:GetAllCampaignsRestRequest"/>
+      <wsdl:output message="ns:GetAllCampaignsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetCampaignByName" method="GET" resource="ad_campaign/get_campaign_by_name">
+      <wsdl:input message="ns:GetCampaignByNameRestRequest"/>
+      <wsdl:output message="ns:GetCampaignByNameRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetCampaignByID" method="GET" resource="ad_campaign/{campaign_id}">
+      <wsdl:input message="ns:GetCampaignByIDRestRequest"/>
+      <wsdl:output message="ns:GetCampaignByIDRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="PauseCampaign" method="POST" resource="ad_campaign/{campaign_id}/pause">
+      <wsdl:input message="ns:PauseCampaignRestRequest"/>
+      <wsdl:output message="ns:PauseCampaignRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="ResumeCampaign" method="POST" resource="ad_campaign/{campaign_id}/resume">
+      <wsdl:input message="ns:ResumeCampaignRestRequest"/>
+      <wsdl:output message="ns:ResumeCampaignRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateCampaignIDentification" method="POST" resource="ad_campaign/{campaign_id}/update_campaign_identification">
+      <wsdl:input message="ns:UpdateCampaignIDentificationRestRequest"/>
+      <wsdl:output message="ns:UpdateCampaignIDentificationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateItemPromotion" method="POST" resource="item_promotion">
+      <wsdl:input message="ns:CreateItemPromotionRestRequest"/>
+      <wsdl:output message="ns:CreateItemPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteItemPromotion" method="DELETE" resource="item_promotion/{promotion_id}">
+      <wsdl:input message="ns:DeleteItemPromotionRestRequest"/>
+      <wsdl:output message="ns:DeleteItemPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetItemPromotion" method="GET" resource="item_promotion/{promotion_id}">
+      <wsdl:input message="ns:GetItemPromotionRestRequest"/>
+      <wsdl:output message="ns:GetItemPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateItemPromotion" method="PUT" resource="item_promotion/{promotion_id}">
+      <wsdl:input message="ns:UpdateItemPromotionRestRequest"/>
+      <wsdl:output message="ns:UpdateItemPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetListingsInSpecificPromotion" method="GET" resource="promotion/{promotion_id}/get_listing_set">
+      <wsdl:input message="ns:GetListingsInSpecificPromotionRestRequest"/>
+      <wsdl:output message="ns:GetListingsInSpecificPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPromotions" method="GET" resource="promotion">
+      <wsdl:input message="ns:GetPromotionsRestRequest"/>
+      <wsdl:output message="ns:GetPromotionsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="PauseAPromotion" method="POST" resource="promotion/{promotion_id}/pause">
+      <wsdl:input message="ns:PauseAPromotionRestRequest"/>
+      <wsdl:output message="ns:PauseAPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="ResumeAPromotion" method="POST" resource="promotion/{promotion_id}/resume">
+      <wsdl:input message="ns:ResumeAPromotionRestRequest"/>
+      <wsdl:output message="ns:ResumeAPromotionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPromotionSummaryReport" method="GET" resource="promotion_summary_report">
+      <wsdl:input message="ns:GetPromotionSummaryReportRestRequest"/>
+      <wsdl:output message="ns:GetPromotionSummaryReportRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

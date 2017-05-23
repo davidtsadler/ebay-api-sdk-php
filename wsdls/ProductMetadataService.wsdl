@@ -1,0 +1,3021 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProductMetadataService" targetNamespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+  <wsdl:documentation/>
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+      <xs:element name="getProductSearchNamesRequest" type="tns:GetProductSearchNamesRequest"/>
+      <xs:element name="getProductSearchNamesResponse" type="tns:GetProductSearchNamesResponse"/>
+      <xs:complexType name="GetProductSearchNamesRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Retrieves all properties available for a given catalog-enabled category.
+						These properties, along with their respective values, can be used as input
+						for find and get calls to retrive products.
+						&lt;br&gt;&lt;br&gt;
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Returns all properties available for a given catalog enabled category. 
+						</Summary>
+            <RelatedCalls>getProductSearchDataVersion, getProductSearchValues, getProductSearchValuesBulk</RelatedCalls>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="categoryId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the category from which you want to retrieve properties
+										that can be used to search for products. The category must be
+										catalog-enabled, or it will contain no product data, and the request
+										will fail.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getProductSearchNames</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategory2CS.html</URL>
+                      <Title>GetCategory2CS</Title>
+                      <For>information to identify catalog-enabled categories.</For>
+                    </SeeLink>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="dataset" type="xs:token">
+                <xs:annotation>
+                  <xs:documentation>
+										This will define what are properties that will be returned for this
+										catelog-enabled category. 
+										&lt;dl&gt;
+										&lt;dt&gt;
+											&lt;strong&gt;Dataset values:&lt;/strong&gt;
+										&lt;/dt&gt;
+										&lt;dt&gt;
+											DisplayableProductDetails
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properies for use in a user interface to describe products.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											DisplayableSearchResults
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in results for product searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Searchable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Sortable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties that are suitable for sorting.
+										&lt;/dd&gt;
+										&lt;/dl&gt;
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default/>
+                    <ListBasedOn/>
+                    <CallInfo>
+                      <CallName>getProductSearchNames</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductSearchNamesResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Response containing the list of properties
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="categoryId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										The category specified in the request. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <Default/>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchNames</CallName>
+                      <CallName>getProductSearchNames</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="properties" type="tns:Properties">
+                <xs:annotation>
+                  <xs:documentation>
+										This contains all the properties for the specified category, as well
+										as the dataset from which the properties are returned (e.g.,
+										DisplayableSearchResults). The properties container also includes the
+										metatdata version associated with the most recent update of the
+										properties.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default/>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchNames</CallName>
+                      <CallName>getProductSearchNames</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="getProductSearchValuesRequest" type="tns:GetProductSearchValuesRequest"/>
+      <xs:element name="getProductSearchValuesResponse" type="tns:GetProductSearchValuesResponse"/>
+      <xs:complexType name="GetProductSearchValuesRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:GetProductSearchValuesBaseRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="propertyName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										This is the canonical name of the property. Used
+										to identify a property within a catalog that
+										this category belongs to.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductSearchValuesBaseRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Base request type used by the GetProductSearchValuesRequest type. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="categoryId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the category from which you want to retrieve property 
+										values that can be used to search for products. 
+										&lt;br&gt;&lt;br&gt;
+										If a specified category ID doesn't match an existing category for the
+										site, eBay returns an invalid-category error message. To determine
+										valid categories, use the Trading API &lt;a
+										href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategories.html"
+										&gt;GetCategories&lt;/a&gt; call. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="propertyFilter" type="tns:PropertyValue">
+                <xs:annotation>
+                  <xs:documentation>
+										Constrains the output of values for the given PropertyLiteral (or
+										group of properties) as per given
+										ConstrainingPropertyLiteral:ConstrainingValueLiteral pair (or pairs)
+										according to the respective dependency graph. AND-logic will be
+										applied within the constraint.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="listFormatOnly" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>
+										Return properties for a given catalog enabled category. We will throw
+										an error if the category is not catalog enabled.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default>false</Default>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="sortOrder" type="tns:SortOrder">
+                <xs:annotation>
+                  <xs:documentation>
+										Sort order for property values in the result set. You can sort by any
+										of the searchable properties, such as Year, Make, or Model. If no
+										sort order is specified then values are sorted in ascending order. 
+										&lt;br&gt;&lt;br&gt;
+										Sorting can be applied only when the response is in list format 
+										(i.e., &lt;b class="con"&gt;treeFormat&lt;/b&gt; in the response is 
+										false). 
+										&lt;br&gt;&lt;br&gt;
+										For sorting, characters are compared at each position (i.e., first
+										character, second character, etc.). When values are sorted in
+										ascending order, numbers (0-9) sort before uppercase letters (A-Z),
+										which sort before lowercase letters (a-z). For example, 268 precedes
+										3, CTS comes before Camry, and 911 comes before A3.
+										&lt;br&gt;&lt;br&gt;
+										Descending order is the opposite of ascending, with lowercase letters (z-a) before uppercase letters (Z-A) and numbers last (9-0).
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductSearchValuesResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="metadataVersion" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										Version information reflects the last update of the values within the
+										dependency graph.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default/>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="propertyValues" type="tns:PropertyValue">
+                <xs:annotation>
+                  <xs:documentation>
+										This will be populated for the
+										non-fitment enabled category
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="propertyValuesTree" type="tns:PropertyNameValue">
+                <xs:annotation>
+                  <xs:documentation>
+										This will be populated for
+										non-fitment enabled category
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="1" name="treeFormat" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>
+										Indicates whether the response is flat or in a hierarchical tree 
+										format.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default>false</Default>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValues</CallName>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValues</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SortOrder">
+        <xs:annotation>
+          <xs:documentation>
+						Sort order input for the result set. Any of the searchable properties can be
+						used for property name and order can be either Ascending or Descending.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+						</typeLibrarySource>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="propertyName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Output can be sorted by one or more (for bulk calls) property names. You 
+								can look up valid values using either the &lt;b 
+								class="con"&gt;getProductSearchNames&lt;/b&gt; call or the &lt;b 
+								class="con"&gt;getCompatibilitySearchNames&lt;/b&gt; call. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="order" type="tns:OrderType">
+            <xs:annotation>
+              <xs:documentation>
+								Order of the sort, either Ascending or Descending.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax">
+					</xs:any>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="OrderType">
+        <xs:annotation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+          <xs:documentation>
+						[NOT USED BY ANY CALLS] Orphan type.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Ascending">
+            <xs:annotation>
+              <xs:documentation>
+								Sorts results in ascending (low to high) order.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Descending">
+            <xs:annotation>
+              <xs:documentation>
+								Sorts results in descending (high to low) order.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="getCompatibilitySearchNamesRequest" type="tns:GetCompatibilitySearchNamesRequest"/>
+      <xs:element name="getCompatibilitySearchNamesResponse" type="tns:GetCompatibilitySearchNamesResponse"/>
+      <xs:complexType name="GetCompatibilitySearchNamesRequest">
+        <xs:annotation>
+          <xs:documentation>
+						This operation will provide the ability to get properties of the application.
+						For example, if the input category is tires, then the response would return
+						the following properties:
+						&lt;ul&gt;
+						&lt;li&gt;Make&lt;/li&gt;
+						&lt;li&gt;Model&lt;/li&gt;
+						&lt;li&gt;Year&lt;/li&gt;
+						&lt;li&gt;Trim&lt;/li&gt;
+						&lt;li&gt;Engine&lt;/li&gt;
+						&lt;/ul&gt;
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Returns all properties within a fitment category of the specified catalog-
+							enabled category.
+						</Summary>
+            <RelatedCalls>getCompatibilitySearchDataVersion, getCompatibilitySearchValues, getCompatibilitySearchValuesBulk</RelatedCalls>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="categoryId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the category from which you want to retrieve compatibility
+										property names that can be used to search for products. Provide the
+										interface category ID. For example, to get the cars properties,
+										provide tires category ID. The category must be compatibility-
+										enabled. 
+										&lt;br&gt;&lt;br&gt; 
+										If a specified category ID doesn't match an existing compatibility-
+										enabled category for the site, eBay returns an error. To determine
+										valid compatibility-enabled categories, use the Trading API &lt;a
+										href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html"
+										&gt;GetCategoryFeatures&lt;/a&gt; call. 
+								</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchNames</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="dataset" type="xs:token">
+                <xs:annotation>
+                  <xs:documentation>
+										This will define what are properties that will be returned for this
+										catelog-enabled category. 
+										&lt;dl&gt;
+										&lt;dt&gt;
+											&lt;strong&gt;Dataset values:&lt;/strong&gt;
+										&lt;/dt&gt;
+										&lt;dt&gt;
+											DisplayableProductDetails
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properies for use in a user interface to describe products.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											DisplayableSearchResults
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in results for product searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Searchable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Sortable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties that are suitable for sorting.
+										&lt;/dd&gt;
+										&lt;/dl&gt;
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default>DisplayableSearchResults</Default>
+                    <ListBasedOn/>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchNames</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="getCompatibilitySearchValuesRequest" type="tns:GetCompatibilitySearchValuesRequest"/>
+      <xs:element name="getCompatibilitySearchValuesResponse" type="tns:GetCompatibilitySearchValuesResponse"/>
+      <xs:element name="getProductSearchValuesBulkRequest" type="tns:GetProductSearchValuesBulkRequest"/>
+      <xs:element name="getProductSearchValuesBulkResponse" type="tns:GetProductSearchValuesBulkResponse"/>
+      <xs:element name="getCompatibilitySearchValuesBulkRequest" type="tns:GetCompatibilitySearchValuesBulkRequest"/>
+      <xs:element name="getCompatibilitySearchValuesBulkResponse" type="tns:GetCompatibilitySearchValuesBulkResponse"/>
+      <xs:complexType name="GetProductSearchValuesBulkResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Response containter for getProductSearchValuesBulk call.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:GetProductSearchValuesResponse"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCompatibilitySearchValuesBulkResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Response containter for getCompatibilitySearchValuesBulk call.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:GetProductSearchValuesResponse">
+            <xs:sequence>
+              <xs:element name="medataDetails" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										TBD
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default/>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductSearchValuesBulkRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Container for request to retrieve product search values in bulk. 
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Retrieves property values for multiple fields (up to 10). 
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:GetProductSearchValuesBaseRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="propertyName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										This is the canonical name of the property. Used
+										to identify a property within a catalog that
+										this category belongs to.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>10</MaxOccurs>
+                    <MaxLength>100</MaxLength>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchValuesBulk</CallName>
+                      <CallName>getProductSearchValuesBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:simpleType name="DatasetValue">
+        <xs:annotation>
+          <xs:documentation>
+						Specifies the type of dataset.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Searchable">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates ....
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Sortable">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates ....
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DisplayableSmall">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates ....
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DisplayableMedium">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates ....
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DisplayableLarge">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates ....
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DisplayableAll">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates ....
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="getProductSearchDataVersionResponse" type="tns:GetProductSearchDataVersionResponse"/>
+      <xs:element name="getCompatibilitySearchDataVersionRequest" type="tns:GetCompatibilitySearchDataVersionRequest"/>
+      <xs:element name="getCompatibilitySearchDataVersionResponse" type="tns:GetCompatibilitySearchDataVersionResponse"/>
+      <xs:element name="getProductSearchDataVersionRequest" type="tns:GetProductSearchDataVersionRequest"/>
+      <xs:complexType name="GetProductSearchDataVersionRequest">
+        <xs:annotation>
+          <xs:documentation>
+						This will return the metadata version of the name and/or
+						value metadata for the input catalog id.
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Get the metadata version for the specified category.
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="categoryId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the category for which you want to retrieve version
+										information about the product metadata.
+										&lt;br&gt;&lt;br&gt;
+										If a specified category ID doesn't match an existing category for the
+										site, eBay returns an invalid-category error message. To determine
+										valid categories, use the Trading API &lt;a
+										href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategories.html"&gt;GetCategories&lt;/a&gt; 
+										call. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchDataVersion</CallName>
+                      <CallName>getProductSearchDataVersion</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductSearchDataVersionResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Response container for getCompatibilitySearchDataVersion and 
+						getProductSearchDataVersion calls. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="namesDetails" type="tns:VersionDetails">
+                <xs:annotation>
+                  <xs:documentation>
+										Time and version for the most recent update of catalog property names 
+										for the specified category.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchDataVersion</CallName>
+                      <CallName>getProductSearchDataVersion</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="valueDetails" type="tns:VersionDetails">
+                <xs:annotation>
+                  <xs:documentation>
+										Time and version for the most recent update of catalog property 
+										values for the specified category.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getCompatibilitySearchDataVersion</CallName>
+                      <CallName>getProductSearchDataVersion</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="VersionDetails">
+        <xs:annotation>
+          <xs:documentation>
+						Details about the current version of the metadata used for searching for compatibilities or products. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="version" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Version number for the current search metadata (product or
+								compatibility). If you are maintaining search metadata locally, compare
+								this value to the version of the search metadata you last downloaded to
+								determine whether the data may have changed. 
+							</xs:documentation>
+              <xs:appinfo>
+                <Default/>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchDataVersion</CallName>
+                  <CallName>getProductSearchDataVersion</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="updateTime" type="xs:dateTime">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates the date and time the current search metadata was updated.
+							</xs:documentation>
+              <xs:appinfo>
+                <Default/>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchDataVersion</CallName>
+                  <CallName>getProductSearchDataVersion</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xsd:complexType abstract="true" name="BaseServiceRequest">
+        <xsd:annotation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+          <xs:documentation>
+						This is the base class for request container for
+						all service operations.
+					</xs:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType abstract="true" name="BaseServiceResponse">
+        <xsd:annotation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+          <xs:documentation>
+						Base response container for all service operations. Contains error
+						information associated with the request.
+					</xs:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="ack" type="tns:AckValue">
+            <xsd:annotation>
+              <xs:documentation>
+								Indicates whether or not errors or warnings were generated during the
+								processing of the request.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="errorMessage" type="tns:ErrorMessage">
+            <xsd:annotation>
+              <xs:documentation>
+								Description of an error or warning that occurred when eBay processed the
+								request. Not returned if the ack value is Success.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="version" type="xsd:string">
+            <xsd:annotation>
+              <xs:documentation>
+								The release version that eBay used to process the request. Developer
+								Technical Support may ask you for the version value if you work with them
+								to troubleshoot issues.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+									The version in use is normally the latest release version, as specified
+									in the release notes. Note that eBay releases the API to international
+									sites about a week after the API version is released to the US site.
+								&lt;/span&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="timestamp" type="xsd:dateTime">
+            <xsd:annotation>
+              <xs:documentation>
+								This value represents the date and time when eBay processed the request.
+								This value is returned in GMT, the ISO 8601 date and time format (YYYY-
+								MM- DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about the
+								time format, and for details on converting to and from the GMT time zone.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xs:complexType name="ExtensionType">
+        <xs:annotation>
+          <xs:documentation>
+						Documentation goes here
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="id" type="xs:positiveInteger"/>
+          <xs:element name="version" type="xs:string"/>
+          <xs:element name="contentType" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseRequest">
+        <xs:annotation>
+          <xs:documentation>
+						This is the base class for request container for
+						all service operations.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extension" type="tns:ExtensionType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Base response container for service operations. Contains error information
+						associated with the request.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="ack" type="tns:AckValue">
+            <xs:annotation>
+              <xs:documentation/>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="errorMessage" type="tns:ErrorMessage">
+            <xs:annotation>
+              <xs:documentation>
+								Description of an error or warning that occurred when eBay processed the
+								request. Not returned if the ack value is Success.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="version" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Version number for the current search metadata (product or
+								compatibility). If you are maintaining search metadata locally, compare
+								this value to the version of the search metadata you last downloaded to
+								determine whether the data may have changed. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="timestamp" type="xs:dateTime">
+            <xs:annotation>
+              <xs:documentation>
+								This value represents the date and time when eBay processed the request.
+								This value is returned in GMT, the ISO 8601 date and time format (YYYY-
+								MM- DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about the
+								time format, and for details on converting to and from the GMT time zone.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extension" type="tns:ExtensionType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xsd:simpleType name="ErrorCategory">
+        <xsd:annotation>
+          <xs:documentation>
+						There are three categories of error: request errors, application errors,
+						and system errors. Request and application errors are often caused by
+						passing invalid data in the request. System errors are primarily caused by
+						application failures and cannot be corrected by changing request values.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="System">
+            <xsd:annotation>
+              <xs:documentation>
+								Indicates that an error has occurred on the eBay system side. For
+								example, a database or server could be down. Inspect the error message to
+								find the cause of the problem. If the problem is on the eBay side, an
+								application can retry the request as-is a reasonable number of times
+								(eBay recommends twice). If the error persists, contact Developer
+								Technical Support. Once the problem has been resolved, the request may be
+								resent in its original form.
+							</xs:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Application">
+            <xsd:annotation>
+              <xs:documentation>
+								An error occurred due to a problem with the request, with the most likely
+								source being the application sending the request. For example, the
+								request is missing a required data element or it contains an invalid
+								field. The problem must be corrected before the request can be resent.
+								Inspect the error message to find the cause of the problem. If the
+								problem is due to an application error, modify the application and resend
+								the request. If the error is due to invalid data, the source of the data
+								must be corrected before you resend the resend request to eBay.
+							</xs:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Request">
+            <xsd:annotation>
+              <xs:documentation>
+								An error occurred due to a problem with the request, with the most likely
+								source being missing or invalid data in the request. The problem must be
+								corrected before the request can be retried. Inspect the error message to
+								find the cause of the problem. If the problem is a result of end-user
+								data, alert the end-user to the problem and provide the means for them to
+								correct the problem. Once the problem is resolved, resend the request to
+								eBay.
+							</xs:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ErrorData">
+        <xsd:annotation>
+          <xs:documentation>
+						A container for error details.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="errorId" type="xsd:long">
+            <xsd:annotation>
+              <xs:documentation>
+								A unique code that identifies the particular error condition that
+								occurred. Your application can use error codes as identifiers in your
+								customized error-handling algorithms.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="domain" type="xsd:string">
+            <xsd:annotation>
+              <xs:documentation>
+								Name of the domain in which the error occurred.
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;domain values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									Marketplace
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									A business or validation error occurred in the service.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									SOA
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									An exception occurred in the Service Oriented Architecture (SOA) 
+									framework.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="subdomain" type="xsd:string">
+            <xsd:annotation>
+              <xs:documentation>
+								Name of the subdomain in which the error occurred.
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;subdomain values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									MarketplaceCatalog
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The error is specific to the Marketplace Catalog subdomain.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									MarketplaceCommon
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The error is common to all Marketplace services.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="severity" type="tns:ErrorSeverity">
+            <xsd:annotation>
+              <xs:documentation>
+								Indicates whether the reported problem is fatal (an error) or is less-
+								severe (a warning). Review the error message details for information on
+								the cause.
+								&lt;br&gt;&lt;br&gt;
+								If the request fails and the application is the source of the error (for
+								example, a required element is missing), update the application before
+								you retry the request. If the problem is due to incorrect user data,
+								alert the end-user to the problem and provide the means for them to
+								correct the data. Once the problem in the application or data is
+								resolved, re-send the request to eBay.
+								&lt;br&gt;&lt;br&gt;
+								If the source of the problem is on eBay's side, you can retry the request
+								a reasonable number of times (eBay recommends you try the request twice).
+								If the error persists, contact Developer Technical Support. Once the
+								problem has been resolved, you can resend the request in its original
+								form.
+								&lt;br&gt;&lt;br&gt;
+								If a warning occurs, warning information is returned in addition to the
+								business data. Normally, you do not need to resend the request (as the
+								original request was successful). However, depending on the cause of the
+								warning, you might need to contact the end user, or eBay, to effect a
+								long term solution to the problem.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="category" type="tns:ErrorCategory">
+            <xsd:annotation>
+              <xs:documentation>
+								There are three categories of errors: request errors, application 
+								errors, and system errors.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="message" type="xsd:string">
+            <xsd:annotation>
+              <xs:documentation>
+								A detailed description of the condition that caused in the error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="exceptionId" type="xsd:token">
+            <xsd:annotation>
+              <xs:documentation>
+								Unique identifier for an exception associated with an error.
+							</xs:documentation>
+              <xs:appinfo>
+                <ListBasedOn/>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="tns:ErrorParameter">
+            <xsd:annotation>
+              <xs:documentation>
+								Various warning and error messages return one or more variables that 
+								contain contextual information about the error. This is often the 
+								field or value that triggered the error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrorMessage">
+        <xsd:annotation>
+          <xs:documentation>
+						Information regarding an error or warning that occurred when eBay processed
+						the request. Not returned when the ack value is Success. Run-time errors are
+						not reported here, but are instead reported as part of a SOAP fault.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="error" type="tns:ErrorData">
+            <xsd:annotation>
+              <xs:documentation>
+								Details about a single error.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrorParameter">
+        <xsd:annotation>
+          <xs:documentation>
+						Contextual data associated with an error.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="name" type="xsd:string" use="optional">
+              <xsd:annotation>
+                <xs:documentation>
+									The name of the input parameter returned with the error.
+									Inspecting the parameter (or its input value) will often aid in
+									understanding the cause of the error. Not all error messages
+									contain this value.
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <AllCalls/>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xsd:annotation>
+            </xsd:attribute>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="ErrorSeverity">
+        <xsd:annotation>
+          <xs:documentation>
+						Indicates whether the error is a fatal error (causing the request to fail)
+						or a less severe error (a warning) that should be communicated to the user.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="Error">
+            <xsd:annotation>
+              <xs:documentation>
+								eBay encountered a fatal error during the processing of the request,
+								causing the request to fail. When eBay encounters an error, it returns
+								error data instead of the requested business data. Inspect the error
+								details and resolve the problem before resubmitting the request.
+							</xs:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Warning">
+            <xsd:annotation>
+              <xs:documentation>
+								The request was successfully processed, but eBay encountered a non-fatal
+								error during the processing that could affect the data returned. For
+								example, eBay might have changed the value of an input field. In this
+								case, eBay returns a successful response, but it also returns a warning.
+								For best results, requests should return without warnings. Inspect the
+								warning details and resolve the problem before resubmitting the request.
+							</xs:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xs:complexType name="NumericValue">
+        <xs:annotation>
+          <xs:documentation>
+						This type holds a numeric value.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								A number value.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="unitOfMeasurement" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								Unit of measure for a numeric value. 
+								
+								&lt;dl&gt;
+								&lt;dt&gt;
+								&lt;b&gt;Allowed values:&lt;/b&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									bps
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Bits per second. A unit of data transmission.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									kbps
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Kilobits per second. A unit of data transmission.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									bit
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Binary digit. A unit of information storage.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									byte
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									An ordered collection of bits. A unit of information 
+									storage equal to 8 bits in most contexts.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									kb
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Kilobit. A unit of information storage equal to 1024 bits.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									MB
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Megabyte. A unit of information storage equal to one million bytes. 
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									mW
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Megawatt. A unit of power equal to one million watts.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									W
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Watt. The base SI unit of power.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Hz
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Hertz. A unit of frequency equal to one cycle per second.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									kHz
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Kilohertz. A unit of frequency equal to 1,000 cycles per second.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									m
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Meter. The base unit of distance.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									mm
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Megameter. A unit of distance equal to one million meters.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									rph
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Revolutions per hour. A unit of frequency. 
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									hr
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Hour. A unit of time equal to 3,600 seconds.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									min
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Minute. A unit of time equal to 60 seconds.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									ms
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Microsecond. A unit of time equal to one millionth of a second.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									ns
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Nanosecond. A unit of time equal to 10&lt;sup&gt;-9&lt;/sup&gt; 
+									seconds.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									sec
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Seconds. The base unit of time.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									g
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Grams. A unit of mass equal to one one-thousandth of the SI base unit, 
+									the kilogram.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									lbs
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Pounds. The base Imperial unit of mass.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+								
+								The allowed units of measure do not apply to all numeric values. For
+								example, when specifying the number of doors, unitOfMeasurement is not
+								needed.
+							</xs:documentation>
+              <xs:appinfo>
+                <ListBasedOn/>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Properties">
+        <xs:annotation>
+          <xs:documentation>
+						Properties about ...
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="metadataVersion" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Version information reflects the latest update of the properties or
+								values.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="propertyName" type="tns:Property">
+            <xs:annotation>
+              <xs:documentation>
+								This is the canonical name of the property. Used
+								to identify a property within a catalog that
+								this category belongs to.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="dataset" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								This will define what are properties that will be returned for this
+								catelog-enabled category. 
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;Dataset values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									DisplayableProductDetails
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properies for use in a user interface to describe products.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									DisplayableSearchResults
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties for use in results for product searches.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Searchable
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties for use in searches.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Sortable
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties that are suitable for sorting.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <ListBasedOn/>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Property">
+        <xs:annotation>
+          <xs:documentation>
+						Container for details about an individual compatibility or product property. 
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="propertyName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								This is the canonical name of the property. Used
+								to identify a property within a catalog that
+								this category belongs to.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="propertyNameMetadata" type="tns:PropertyNameMetadata">
+            <xs:annotation>
+              <xs:documentation>
+								Metadata for the property.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="propertyDisplayName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								This will be the display name of the property
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PropertyNameMetadata">
+        <xs:annotation>
+          <xs:documentation>
+						This will contain any metadata about the propert name.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="displaySequence" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+								A numeric value indicating the ordering position for the property.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchNames</CallName>
+                  <CallName>getProductSearchNames</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PropertyNameValue">
+        <xs:annotation>
+          <xs:documentation>
+						Container type for property name value pairs.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="propertyName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								This is the canonical name of the property. Used
+								to identify a property within a catalog that
+								this category belongs to.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="value" type="tns:Value">
+            <xs:annotation>
+              <xs:documentation>
+								A value for the property.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="childPropertyNameValue" type="tns:PropertyNameValue">
+            <xs:annotation>
+              <xs:documentation>
+								Property name value pairs that are children to other properties. Only
+								returned when the response is returned as a propertyValuesTree.
+							</xs:documentation>
+              <xs:appinfo>
+                <MaxDepth>2</MaxDepth>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PropertyValue">
+        <xs:annotation>
+          <xs:documentation>
+						Contains a property name and corresponding value or values.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="propertyName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								This is the canonical name of the property. Used
+								to identify a property within a catalog that
+								this category belongs to.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="value" type="tns:Value">
+            <xs:annotation>
+              <xs:documentation>
+								A value for the property.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StringValue">
+        <xs:annotation>
+          <xs:documentation>
+					This class holds a String value
+				</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								A string value.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="URIValue">
+        <xs:annotation>
+          <xs:documentation>
+						This class holds a URL value
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="value" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+								As part of request, this will be the URL to
+								download media file. As part of response, this
+								will be the URL where the media file is stored
+								on eBay.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getCompatibilitySearchValues</CallName>
+                  <CallName>getCompatibilitySearchValuesBulk</CallName>
+                  <CallName>getProductSearchValues</CallName>
+                  <CallName>getProductSearchValuesBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Value">
+        <xs:annotation>
+          <xs:documentation>
+						Defines the different types of values that a property can have.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:choice>
+            <xs:element name="text" type="tns:StringValue">
+              <xs:annotation>
+                <xs:documentation>
+									For string value type.
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>getCompatibilitySearchValues</CallName>
+                    <CallName>getCompatibilitySearchValuesBulk</CallName>
+                    <CallName>getProductSearchValues</CallName>
+                    <CallName>getProductSearchValuesBulk</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <CallName>getCompatibilitySearchValues</CallName>
+                    <CallName>getCompatibilitySearchValuesBulk</CallName>
+                    <CallName>getProductSearchValues</CallName>
+                    <CallName>getProductSearchValuesBulk</CallName>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="number" type="tns:NumericValue">
+              <xs:annotation>
+                <xs:documentation>
+									For numeric value type.
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>getCompatibilitySearchValues</CallName>
+                    <CallName>getCompatibilitySearchValuesBulk</CallName>
+                    <CallName>getProductSearchValues</CallName>
+                    <CallName>getProductSearchValuesBulk</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <CallName>getCompatibilitySearchValues</CallName>
+                    <CallName>getCompatibilitySearchValuesBulk</CallName>
+                    <CallName>getProductSearchValues</CallName>
+                    <CallName>getProductSearchValuesBulk</CallName>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="URL" type="tns:URIValue">
+              <xs:annotation>
+                <xs:documentation>
+									For URL value type.
+								</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>getCompatibilitySearchValues</CallName>
+                    <CallName>getCompatibilitySearchValuesBulk</CallName>
+                    <CallName>getProductSearchValues</CallName>
+                    <CallName>getProductSearchValuesBulk</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <CallName>getCompatibilitySearchValues</CallName>
+                    <CallName>getCompatibilitySearchValuesBulk</CallName>
+                    <CallName>getProductSearchValues</CallName>
+                    <CallName>getProductSearchValuesBulk</CallName>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AckValue">
+        <xs:annotation>
+          <xs:documentation>
+						Indicates whether the error is a severe error (causing the request to fail)
+						or an informational error (a warning) that should be communicated to the
+						user.
+					</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Success">
+            <xs:annotation>
+              <xs:documentation>
+								The request was processed successfully, but something occurred that may
+								affect your application or the user.				
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Failure">
+            <xs:annotation>
+              <xs:documentation>
+								The request that triggered the error was not processed successfully.
+								When a serious application-level error occurs, the error is returned
+								instead of the business data.
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+					The request that triggered the error was processed successfully but with some warnings.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PartialFailure">
+            <xs:annotation>
+              <xs:documentation>
+								The request that triggered the error was processed successfully but with 
+								some warnings.
+					</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="getProductMetadataBulkRequest" type="tns:ProductMetadataBulkRequest"/>
+      <xs:element name="getProductMetadataBulkResponse" type="tns:ProductMetadataBulkResponse"/>
+      <xs:complexType name="PropertyMetadata">
+        <xs:annotation>
+          <xs:documentation>
+						Defines the characteristics of a property for a  community catalog metadata.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="propertyName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								this is label for the property that
+								should be used for making products data.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="alternatePropertyName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+								Value that may be used in place of the property name value 
+								(propertyMetadata.propertyName) when adding a product to an eBay catalog. 
+								Only returned when there are synonymous property names available.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="dataType" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								The data type for the property value.
+								
+								&lt;dl&gt;
+									&lt;dt&gt;
+										&lt;strong&gt;dataType values:&lt;/strong&gt;
+									&lt;/dt&gt;
+									&lt;dt&gt;
+										STRING
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										A string of characters. This data type typically applies to 
+										text-based property values, such as names, titles, and descriptions.
+										All characters in the Unicode character set are supported. 
+										&lt;br&gt;&lt;br&gt;
+										Refer to &lt;b 
+										class="con"&gt;typeSpecificInformation.stringTypeSpecificInformation&lt;/b&gt; 
+										for additional value constraints.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										NUMERIC
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										A number, which typically describes a product dimension, such as 
+										weight or memory capacity. 
+										&lt;br&gt;&lt;br&gt;
+										Refer to &lt;b 
+										class="con"&gt;typeSpecificInformation.numericTypeSpecificInformation&lt;/b&gt; 
+										for additional value constraints.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										URI
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										Specifies a Uniform Resource Identifier (URI), a compact sequence of 
+										characters that identifies an abstract or physical resource. 
+										&lt;br&gt;&lt;br&gt;
+										Refer to &lt;b 
+										class="con"&gt;typeSpecificInformation.uriTypeSpecificInformation&lt;/b&gt; 
+										for additional value constraints.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										MEDIA
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										Reserved for future use.
+										&lt;br&gt;&lt;br&gt;
+										Refer to &lt;b 
+										class="con"&gt;typeSpecificInformation.stringTypeSpecificInformation&lt;/b&gt; 
+										for additional value constraints.
+									&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="typeSpecificInformation" type="tns:TypeSpecificInformation">
+            <xs:annotation>
+              <xs:documentation>
+								Container for any type-specific constraints for property values.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="multiValued" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates whether or not more than one value can be specified for a given 
+								property when adding a product to an eBay catalog. When true, multiple values can be specified for the given property.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="canonicalName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								The official unique property name for use as a primary key for locally 
+								stored metadata. This value is not used for product creation. Use 
+								productMetadata.propertyName  instead for adding a product to an eBay 
+								catalog.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="propertyTags" type="tns:Tag">
+            <xs:annotation>
+              <xs:documentation>
+								Name-value pairs that provide additional descriptive details about the
+								property when needed. This information is not used for adding a product
+								to an eBay catalog, but can provide clarification about an individual
+								property. For example, propertyTags information could indicate that a
+								specific property constitutes a unique product identifier.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Describes the given property. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TypeSpecificInformation">
+        <xs:annotation>
+          <xs:documentation>
+						Container for data type-specific constraints for property values.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="uriTypeSpecificInformation" type="tns:URITypeSpecificInformation">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the constraints for property values that are of type URI.
+								Currently, there are no constraints for URI type properties.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="numericTypeSpecificInformation" type="tns:NumericTypeSpecificInformation">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the constraints for property values that are of type numeric. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="mediaTypeSpecificInformation" type="tns:MediaTypeSpecificInformation">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the constraints, if any, for property values that are of type
+								media. Currently, there are no constraints for media type properties,
+								which apply to images only. Media type properties are specified as a URL
+								in the addProducts request.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="stringTypeSpecificInformation" type="tns:StringTypeSpecificInformation">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the constraints for property values that are of type string. In
+								most cases, this is simply the maximum number of characters allowed in
+								the string. In some cases, a list of managed (known good) values may also
+								be returned.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StringTypeSpecificInformation">
+        <xs:annotation>
+          <xs:documentation>
+						Container for any string type constraint information. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="managedValue" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies a known good value for the given property. For example, for
+								digital cameras, eBay may maintain a list of brands, camera types, lens
+								types, focus types, etc. When possible, use a managed value to ensure
+								consistent spelling and capitalization. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="maximumCharactersAllowed" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the maximum number of characters that can be submitted for the
+								given property value. Always returned for string values.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NumericTypeSpecificInformation">
+        <xs:annotation>
+          <xs:documentation>
+						Container for any numeric type constraint information. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="unitOfMeasurement" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the unit of measurement (e.g., lb or kg) associated with the
+								given numeric value.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maximumValueAllowed" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the highest numeric value that can be submitted for the given
+								property value. Always returned for numeric values.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="URITypeSpecificInformation">
+        <xs:annotation>
+          <xs:documentation>
+						Container for any URI type constraint information. 
+					</xs:documentation>
+        </xs:annotation>
+      </xs:complexType>
+      <xs:complexType name="MediaTypeSpecificInformation">
+        <xs:annotation>
+          <xs:documentation>
+						Container for any media type constraint information. 
+					</xs:documentation>
+        </xs:annotation>
+      </xs:complexType>
+      <xs:complexType name="ProductMetadata">
+        <xs:annotation>
+          <xs:documentation>
+						Defines the product metadata associated with eBay catalog products for the
+						given category.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="propertyMetadata" type="tns:PropertyMetadata">
+            <xs:annotation>
+              <xs:documentation>
+								Contains all the metadata associated with a specific property, such as
+								Title or Brand.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="groupProperties" type="tns:GroupProperties">
+            <xs:annotation>
+              <xs:documentation>
+								Some product properties share a common characteristic, such as being
+								required for product creation or qualifying as a globally unique
+								identifier (GUID). The required properties group contains the minimum set
+								of properties you must submit to add a product to an eBay catalog. GUID
+								properties make products easier to find and can improve search rankings
+								for associated listings.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="productMetadataVersion" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Specifies the current version of the metadata for the given category.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductMetadataResponse">
+        <xs:annotation>
+          <xs:documentation>
+						contains the product metadata ( aka catalog metadata) 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="productMetadata" type="tns:ProductMetadata">
+                <xs:annotation>
+                  <xs:documentation>
+										Product metadata for the specified category. This product metadata
+										provides all the requirements and constraints to submit a new product
+										for inclusion into the eBay catalog associated with the given
+										category. Product metadata consists of metadata for individual
+										properties, property group information, and the version of the
+										product metadata for the category.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="1" name="requestInformation" type="tns:ProductMetadataRequest">
+                <xs:annotation>
+                  <xs:documentation>
+										The corresponding productMetadataRequest that was passed in the 
+										getProductMetadataBulk request. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProductMetadataBulkRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Request container for a batch of individual requests for product metadata for
+						a specific category.
+					</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Retrieves product metadata needed to add a product to the eBay catalog for 
+							the specified category.
+						</Summary>
+            <RelatedCallsOther>
+              <ApiNickname>Trading</ApiNickname>
+              <ApiCallRefBaseURL>http://developer.ebay.com/DevZone/XML/docs/Reference/eBay</ApiCallRefBaseURL>
+              <RelatedCall>
+                <Name>GetCategoryFeatures</Name>
+                <Summary>Returns information about the features that are applicable to different categories, such as Product Creation.</Summary>
+              </RelatedCall>
+            </RelatedCallsOther>
+            <RelatedCallsOther>
+              <ApiNickname>Product</ApiNickname>
+              <ApiCallRefBaseURL>http://developer.ebay.com/DevZone/product/CallRef</ApiCallRefBaseURL>
+              <RelatedCall>
+                <Name>addProducts</Name>
+                <Summary>Adds products to the eBay catalog.</Summary>
+              </RelatedCall>
+            </RelatedCallsOther>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="1" name="productMetadataRequest" type="tns:ProductMetadataRequest">
+                <xs:annotation>
+                  <xs:documentation>
+										Request to retrieve product metadata for a single category. Your 
+										getProductMetadtaBulk request may contain three 
+										productMetadataRequest containers. Each container must specify a 
+										valid category ID for the eBay site specified in the 
+										X-EBAY-SOA-GLOBAL-ID header.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>3</MaxOccurs>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProductMetadataRequest">
+        <xs:annotation>
+          <xs:documentation>
+						Defines single request to fetch  product metadata( aka catalog metadata) based on category
+						id and site id and some optional parameters
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseRequest">
+            <xs:sequence>
+              <xs:element name="categoryId" type="xs:string" maxOccurs="1" minOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+										Specifies the leaf category from which you want to retrieve product metadata information that can be used to add products into the corresponding eBay catalog. 
+										&lt;br&gt;&lt;br&gt; 
+										If the specified category is not enabled for product creation, eBay returns an error. Use &lt;a
+										href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html"
+										&gt;GetCategoryFeatures&lt;/a&gt; (Trading API) with &lt;b 
+										class="con"&gt;FeatureID&lt;/b&gt; set to "ProductCreationEnabled" 
+										to identify categories that are enabled for product creation. 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="includeManagedValues" type="xs:boolean" maxOccurs="1" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										If true, the response will include managed values (approved standard
+										values) for certain string-based properties, such as brand or device
+										type. Managed values are not maintained for all properties, but when
+										they are available, they can be used as an enumeration list to create
+										a selection list. When possible, use a managed value to ensure
+										consistent spelling and capitalization.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default>false</Default>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="includeGroupPropertiesOnly" type="xs:boolean" maxOccurs="1" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Reserved for future use. Currently, both group properties (&lt;b 
+										class="con"
+										&gt;productMetadataResponse.productMetadata.groupProperties&lt;/b&gt;) 
+										and property metadata (&lt;b 
+										class="con"
+										&gt;productMetadataResponse.productMetadata.propertyMetadata&lt;/b&gt;) 
+										are always returned.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <Default>false</Default>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="groupType" type="xs:token" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+										Reserved for future use. Currently, all supported group types are 
+										returned.
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <RequiredInput>No</RequiredInput>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProductMetadataBulkResponse">
+        <xs:annotation>
+          <xs:documentation>
+						Defines batch response where each response elements contains product metadata ( aka catalog
+						metadata) based on request criteria
+					</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="1" name="productMetadataResponse" type="tns:ProductMetadataResponse">
+                <xs:annotation>
+                  <xs:documentation>
+										Product metadata for the category specified in the corresponding &lt;b 
+										class="con"&gt;productMetadataRequest&lt;/b&gt; in the request. 
+										Product metadata consists of individual property metadata, group 
+										properties, the metadata version, and the corresponding request.+++ 
+									</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getProductMetadataBulk</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Tag">
+        <xs:annotation>
+          <xs:documentation>
+						Supplemental information about a property in the form of name-value pairs. 
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								The name part of the name-value pair. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="dataType" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								The datatype of the value part of the name-value pair (e.g., BOOLEAN, 
+								STRING, or NUMERIC).
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Value part of the name-value pair. One or more values may be associated 
+								with a given name. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Reserved for future use.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GroupProperties">
+        <xs:annotation>
+          <xs:documentation>
+						Response container for defining a group of properties. It contains the group
+						type, the display name of the group, and the properties included in the
+						group.
+					</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="groupType" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+								Identifies the nature of a given group of properties. 
+								&lt;dl&gt;
+								&lt;dt&gt;
+								&lt;b&gt;Allowed values:&lt;/b&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									REQUIRED_PROPERTIES
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties that must be specified to add a product to the eBay 
+									catalog for the given category.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									GUID_PROPERTIES
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties (e.g., EAN or MPN) that qualify as globally unique 
+									identifiers (GUIDs) for  a product. GUID properties make products 
+									easier to find and can improve search rankings for associated 
+									listings. 
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="groupName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								A displayable name for the given group type.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="groupProperty" type="tns:GroupProperty">
+            <xs:annotation>
+              <xs:documentation>
+								Basic information for an individual property, consisting of the property 
+								name and any supplemental tags (name-value pair information) to describe 
+								the property, when needed. Use property metadata for more details about a property, including datatype constraints.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Reserved for future use. 
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GroupProperty">
+        <xs:annotation>
+          <xs:documentation>
+							Defines a container for properties contained in this group.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="propertyName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+								Name of the property for use as input in the corresponding propertyName 
+								field in the addProducts request. See the corresponding propertyMetadata 
+								container with the same propertyName for property details.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="tag" type="tns:Tag">
+            <xs:annotation>
+              <xs:documentation>
+								Name-value pairs that provide additional descriptive details about the
+								property when needed. This information is not used for adding a product
+								to an eBay catalog, but can provide clarification about an individual
+								property. For example, tag information could indicate that a specific
+								property constitutes a unique product identifier.
+							</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getProductMetadataBulk</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCompatibilitySearchValuesResponse">
+    <wsdl:part element="ns0:getCompatibilitySearchValuesResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchValuesRequest">
+    <wsdl:part element="ns0:getProductSearchValuesRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchValuesBulkRequest">
+    <wsdl:part element="ns0:getProductSearchValuesBulkRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchValuesBulkResponse">
+    <wsdl:part element="ns0:getCompatibilitySearchValuesBulkResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchValuesBulkRequest">
+    <wsdl:part element="ns0:getCompatibilitySearchValuesBulkRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchValuesBulkResponse">
+    <wsdl:part element="ns0:getProductSearchValuesBulkResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchNamesResponse">
+    <wsdl:part element="ns0:getProductSearchNamesResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchValuesRequest">
+    <wsdl:part element="ns0:getCompatibilitySearchValuesRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchValuesResponse">
+    <wsdl:part element="ns0:getProductSearchValuesResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchNamesRequest">
+    <wsdl:part element="ns0:getProductSearchNamesRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchNamesResponse">
+    <wsdl:part element="ns0:getCompatibilitySearchNamesResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchNamesRequest">
+    <wsdl:part element="ns0:getCompatibilitySearchNamesRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchDataVersionRequest">
+    <wsdl:part element="ns0:getProductSearchDataVersionRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductSearchDataVersionResponse">
+    <wsdl:part element="ns0:getProductSearchDataVersionResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchDataVersionRequest">
+    <wsdl:part element="ns0:getCompatibilitySearchDataVersionRequest" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getCompatibilitySearchDataVersionResponse">
+    <wsdl:part element="ns0:getCompatibilitySearchDataVersionResponse" name="params"/>
+  </wsdl:message>
+  <wsdl:message name="getProductMetadataBulkRequest">
+    <wsdl:part element="tns:getProductMetadataBulkRequest" name="getProductMetadataBulkRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getProductMetadataBulkResponse">
+    <wsdl:part element="tns:getProductMetadataBulkResponse" name="getProductMetadataBulkResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ProductMetadataServicePortType">
+    <wsdl:operation name="getProductSearchNames">
+      <wsdl:input message="ns0:getProductSearchNamesRequest"/>
+      <wsdl:output message="ns0:getProductSearchNamesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchNames">
+      <wsdl:input message="ns0:getCompatibilitySearchNamesRequest"/>
+      <wsdl:output message="ns0:getCompatibilitySearchNamesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSearchValues">
+      <xs:documentation><wsdl:operation name="getProductMetadataBulk"><wsdl:input message="tns:getProductMetadataBulkRequest"/><wsdl:output message="tns:getProductMetadataBulkResponse"/></wsdl:operation>
+				Retrieves all available values and their dependencies for a given product 
+				property or a group of properties (of the product catalog). These values, 
+				along with their respective properties, can be used to search for products. 
+			</xs:documentation>
+      <wsdl:input message="ns0:getProductSearchValuesRequest"/>
+      <wsdl:output message="ns0:getProductSearchValuesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSearchValuesBulk">
+      <wsdl:input message="ns0:getProductSearchValuesBulkRequest"/>
+      <wsdl:output message="ns0:getProductSearchValuesBulkResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchValues">
+      <xs:documentation>
+				Retrieves all available values and their dependencies for a given compatibility
+				property or a group of compatibility properties. These values, along with their
+				respective properties, can be used to search for products .
+			</xs:documentation>
+      <wsdl:input message="ns0:getCompatibilitySearchValuesRequest"/>
+      <wsdl:output message="ns0:getCompatibilitySearchValuesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchValuesBulk">
+      <wsdl:input message="ns0:getCompatibilitySearchValuesBulkRequest"/>
+      <wsdl:output message="ns0:getCompatibilitySearchValuesBulkResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSearchDataVersion">
+      <wsdl:input message="ns0:getProductSearchDataVersionRequest"/>
+      <wsdl:output message="ns0:getProductSearchDataVersionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchDataVersion">
+      <wsdl:input message="ns0:getCompatibilitySearchDataVersionRequest"/>
+      <wsdl:output message="ns0:getCompatibilitySearchDataVersionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getProductMetadataBulk">
+      <wsdl:documentation>This operation provides product metadata( aka catalog metadata). This can be used to create addProduct call in ProductService API.
+</wsdl:documentation>
+      <wsdl:input message="ns0:getProductMetadataBulkRequest"/>
+      <wsdl:output message="ns0:getProductMetadataBulkResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductMetadataServiceSOAP12Binding" type="ns0:ProductMetadataServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getProductSearchNames">
+      <soap12:operation soapAction="urn:getProductSearchNames" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSearchValues">
+      <soap12:operation soapAction="urn:getProductSearchValues" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchNames">
+      <soap12:operation soapAction="urn:getCompatibilitySearchNames" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSearchValuesBulk">
+      <soap12:operation soapAction="urn:getProductSearchValuesBulk" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchValues">
+      <soap12:operation soapAction="urn:getCompatibilitySearchValues" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchValuesBulk">
+      <soap12:operation soapAction="urn:getCompatibilitySearchValuesBulk" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSearchDataVersion">
+      <soap12:operation soapAction="urn:getProductSearchDataVersion" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompatibilitySearchDataVersion">
+      <soap12:operation soapAction="urn:getCompatibilitySearchDataVersion" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductMetadataBulk">
+      <soap12:operation soapAction="urn:getProductMetadataBulk" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductMetadataService">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <ver/>
+      </xsd:appinfo>
+      <xs:documentation>
+				This service provides the ability to get product medata. Metadata includes
+				product property names and values. This also provides the ability to get metadata
+				about specific kind of properties like searchable, sortable, displayable etc
+				<ver/>
+			</xs:documentation>
+    </xsd:annotation>
+    <wsdl:documentation>
+      <Version>1.3.0</Version>
+    </wsdl:documentation>
+    <wsdl:port binding="ns0:ProductMetadataServiceSOAP12Binding" name="ProductMetadataServiceSOAP12port_http">
+      <soap12:address location="http://svcs.ebay.com/services/marketplacecatalog/ProductMetadataService/v1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

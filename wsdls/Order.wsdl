@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:complexType name="Adjustment">
+        <xs:sequence>
+          <xs:element name="amount" type="ns:Amount"/>
+          <xs:element name="label" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Amount">
+        <xs:sequence>
+          <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BillingAddress">
+        <xs:sequence>
+          <xs:element name="addressLine1" type="xs:string"/>
+          <xs:element name="addressLine2" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="country" type="ns:CountryCodeEnum"/>
+          <xs:element name="county" type="xs:string"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CountryCodeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AD"/>
+          <xs:enumeration value="AE"/>
+          <xs:enumeration value="AF"/>
+          <xs:enumeration value="AG"/>
+          <xs:enumeration value="AI"/>
+          <xs:enumeration value="AL"/>
+          <xs:enumeration value="AM"/>
+          <xs:enumeration value="AN"/>
+          <xs:enumeration value="AO"/>
+          <xs:enumeration value="AQ"/>
+          <xs:enumeration value="AR"/>
+          <xs:enumeration value="AS"/>
+          <xs:enumeration value="AT"/>
+          <xs:enumeration value="AU"/>
+          <xs:enumeration value="AW"/>
+          <xs:enumeration value="AX"/>
+          <xs:enumeration value="AZ"/>
+          <xs:enumeration value="BA"/>
+          <xs:enumeration value="BB"/>
+          <xs:enumeration value="BD"/>
+          <xs:enumeration value="BE"/>
+          <xs:enumeration value="BF"/>
+          <xs:enumeration value="BG"/>
+          <xs:enumeration value="BH"/>
+          <xs:enumeration value="BI"/>
+          <xs:enumeration value="BJ"/>
+          <xs:enumeration value="BL"/>
+          <xs:enumeration value="BM"/>
+          <xs:enumeration value="BN"/>
+          <xs:enumeration value="BO"/>
+          <xs:enumeration value="BQ"/>
+          <xs:enumeration value="BR"/>
+          <xs:enumeration value="BS"/>
+          <xs:enumeration value="BT"/>
+          <xs:enumeration value="BV"/>
+          <xs:enumeration value="BW"/>
+          <xs:enumeration value="BY"/>
+          <xs:enumeration value="BZ"/>
+          <xs:enumeration value="CA"/>
+          <xs:enumeration value="CC"/>
+          <xs:enumeration value="CD"/>
+          <xs:enumeration value="CF"/>
+          <xs:enumeration value="CG"/>
+          <xs:enumeration value="CH"/>
+          <xs:enumeration value="CI"/>
+          <xs:enumeration value="CK"/>
+          <xs:enumeration value="CL"/>
+          <xs:enumeration value="CM"/>
+          <xs:enumeration value="CN"/>
+          <xs:enumeration value="CO"/>
+          <xs:enumeration value="CR"/>
+          <xs:enumeration value="CU"/>
+          <xs:enumeration value="CV"/>
+          <xs:enumeration value="CW"/>
+          <xs:enumeration value="CX"/>
+          <xs:enumeration value="CY"/>
+          <xs:enumeration value="CZ"/>
+          <xs:enumeration value="DE"/>
+          <xs:enumeration value="DJ"/>
+          <xs:enumeration value="DK"/>
+          <xs:enumeration value="DM"/>
+          <xs:enumeration value="DO"/>
+          <xs:enumeration value="DZ"/>
+          <xs:enumeration value="EC"/>
+          <xs:enumeration value="EE"/>
+          <xs:enumeration value="EG"/>
+          <xs:enumeration value="EH"/>
+          <xs:enumeration value="ER"/>
+          <xs:enumeration value="ES"/>
+          <xs:enumeration value="ET"/>
+          <xs:enumeration value="FI"/>
+          <xs:enumeration value="FJ"/>
+          <xs:enumeration value="FK"/>
+          <xs:enumeration value="FM"/>
+          <xs:enumeration value="FO"/>
+          <xs:enumeration value="FR"/>
+          <xs:enumeration value="GA"/>
+          <xs:enumeration value="GB"/>
+          <xs:enumeration value="GD"/>
+          <xs:enumeration value="GE"/>
+          <xs:enumeration value="GF"/>
+          <xs:enumeration value="GG"/>
+          <xs:enumeration value="GH"/>
+          <xs:enumeration value="GI"/>
+          <xs:enumeration value="GL"/>
+          <xs:enumeration value="GM"/>
+          <xs:enumeration value="GN"/>
+          <xs:enumeration value="GP"/>
+          <xs:enumeration value="GQ"/>
+          <xs:enumeration value="GR"/>
+          <xs:enumeration value="GS"/>
+          <xs:enumeration value="GT"/>
+          <xs:enumeration value="GU"/>
+          <xs:enumeration value="GW"/>
+          <xs:enumeration value="GY"/>
+          <xs:enumeration value="HK"/>
+          <xs:enumeration value="HM"/>
+          <xs:enumeration value="HN"/>
+          <xs:enumeration value="HR"/>
+          <xs:enumeration value="HT"/>
+          <xs:enumeration value="HU"/>
+          <xs:enumeration value="ID"/>
+          <xs:enumeration value="IE"/>
+          <xs:enumeration value="IL"/>
+          <xs:enumeration value="IM"/>
+          <xs:enumeration value="IN"/>
+          <xs:enumeration value="IO"/>
+          <xs:enumeration value="IQ"/>
+          <xs:enumeration value="IR"/>
+          <xs:enumeration value="IS"/>
+          <xs:enumeration value="IT"/>
+          <xs:enumeration value="JE"/>
+          <xs:enumeration value="JM"/>
+          <xs:enumeration value="JO"/>
+          <xs:enumeration value="JP"/>
+          <xs:enumeration value="KE"/>
+          <xs:enumeration value="KG"/>
+          <xs:enumeration value="KH"/>
+          <xs:enumeration value="KI"/>
+          <xs:enumeration value="KM"/>
+          <xs:enumeration value="KN"/>
+          <xs:enumeration value="KP"/>
+          <xs:enumeration value="KR"/>
+          <xs:enumeration value="KW"/>
+          <xs:enumeration value="KY"/>
+          <xs:enumeration value="KZ"/>
+          <xs:enumeration value="LA"/>
+          <xs:enumeration value="LB"/>
+          <xs:enumeration value="LC"/>
+          <xs:enumeration value="LI"/>
+          <xs:enumeration value="LK"/>
+          <xs:enumeration value="LR"/>
+          <xs:enumeration value="LS"/>
+          <xs:enumeration value="LT"/>
+          <xs:enumeration value="LU"/>
+          <xs:enumeration value="LV"/>
+          <xs:enumeration value="LY"/>
+          <xs:enumeration value="MA"/>
+          <xs:enumeration value="MC"/>
+          <xs:enumeration value="MD"/>
+          <xs:enumeration value="ME"/>
+          <xs:enumeration value="MF"/>
+          <xs:enumeration value="MG"/>
+          <xs:enumeration value="MH"/>
+          <xs:enumeration value="MK"/>
+          <xs:enumeration value="ML"/>
+          <xs:enumeration value="MM"/>
+          <xs:enumeration value="MN"/>
+          <xs:enumeration value="MO"/>
+          <xs:enumeration value="MP"/>
+          <xs:enumeration value="MQ"/>
+          <xs:enumeration value="MR"/>
+          <xs:enumeration value="MS"/>
+          <xs:enumeration value="MT"/>
+          <xs:enumeration value="MU"/>
+          <xs:enumeration value="MV"/>
+          <xs:enumeration value="MW"/>
+          <xs:enumeration value="MX"/>
+          <xs:enumeration value="MY"/>
+          <xs:enumeration value="MZ"/>
+          <xs:enumeration value="NA"/>
+          <xs:enumeration value="NC"/>
+          <xs:enumeration value="NE"/>
+          <xs:enumeration value="NF"/>
+          <xs:enumeration value="NG"/>
+          <xs:enumeration value="NI"/>
+          <xs:enumeration value="NL"/>
+          <xs:enumeration value="NO"/>
+          <xs:enumeration value="NP"/>
+          <xs:enumeration value="NR"/>
+          <xs:enumeration value="NU"/>
+          <xs:enumeration value="NZ"/>
+          <xs:enumeration value="OM"/>
+          <xs:enumeration value="PA"/>
+          <xs:enumeration value="PE"/>
+          <xs:enumeration value="PF"/>
+          <xs:enumeration value="PG"/>
+          <xs:enumeration value="PH"/>
+          <xs:enumeration value="PK"/>
+          <xs:enumeration value="PL"/>
+          <xs:enumeration value="PM"/>
+          <xs:enumeration value="PN"/>
+          <xs:enumeration value="PR"/>
+          <xs:enumeration value="PS"/>
+          <xs:enumeration value="PT"/>
+          <xs:enumeration value="PW"/>
+          <xs:enumeration value="PY"/>
+          <xs:enumeration value="QA"/>
+          <xs:enumeration value="RE"/>
+          <xs:enumeration value="RO"/>
+          <xs:enumeration value="RS"/>
+          <xs:enumeration value="RU"/>
+          <xs:enumeration value="RW"/>
+          <xs:enumeration value="SA"/>
+          <xs:enumeration value="SB"/>
+          <xs:enumeration value="SC"/>
+          <xs:enumeration value="SD"/>
+          <xs:enumeration value="SE"/>
+          <xs:enumeration value="SG"/>
+          <xs:enumeration value="SH"/>
+          <xs:enumeration value="SI"/>
+          <xs:enumeration value="SJ"/>
+          <xs:enumeration value="SK"/>
+          <xs:enumeration value="SL"/>
+          <xs:enumeration value="SM"/>
+          <xs:enumeration value="SN"/>
+          <xs:enumeration value="SO"/>
+          <xs:enumeration value="SR"/>
+          <xs:enumeration value="ST"/>
+          <xs:enumeration value="SV"/>
+          <xs:enumeration value="SX"/>
+          <xs:enumeration value="SY"/>
+          <xs:enumeration value="SZ"/>
+          <xs:enumeration value="TC"/>
+          <xs:enumeration value="TD"/>
+          <xs:enumeration value="TF"/>
+          <xs:enumeration value="TG"/>
+          <xs:enumeration value="TH"/>
+          <xs:enumeration value="TJ"/>
+          <xs:enumeration value="TK"/>
+          <xs:enumeration value="TL"/>
+          <xs:enumeration value="TM"/>
+          <xs:enumeration value="TN"/>
+          <xs:enumeration value="TO"/>
+          <xs:enumeration value="TR"/>
+          <xs:enumeration value="TT"/>
+          <xs:enumeration value="TV"/>
+          <xs:enumeration value="TW"/>
+          <xs:enumeration value="TZ"/>
+          <xs:enumeration value="UA"/>
+          <xs:enumeration value="UG"/>
+          <xs:enumeration value="UM"/>
+          <xs:enumeration value="US"/>
+          <xs:enumeration value="UY"/>
+          <xs:enumeration value="UZ"/>
+          <xs:enumeration value="VA"/>
+          <xs:enumeration value="VC"/>
+          <xs:enumeration value="VE"/>
+          <xs:enumeration value="VG"/>
+          <xs:enumeration value="VI"/>
+          <xs:enumeration value="VN"/>
+          <xs:enumeration value="VU"/>
+          <xs:enumeration value="WF"/>
+          <xs:enumeration value="WS"/>
+          <xs:enumeration value="YE"/>
+          <xs:enumeration value="YT"/>
+          <xs:enumeration value="ZA"/>
+          <xs:enumeration value="ZM"/>
+          <xs:enumeration value="ZW"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CurrencyCodeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AED"/>
+          <xs:enumeration value="AFN"/>
+          <xs:enumeration value="ALL"/>
+          <xs:enumeration value="AMD"/>
+          <xs:enumeration value="ANG"/>
+          <xs:enumeration value="AOA"/>
+          <xs:enumeration value="ARS"/>
+          <xs:enumeration value="AUD"/>
+          <xs:enumeration value="AWG"/>
+          <xs:enumeration value="AZN"/>
+          <xs:enumeration value="BAM"/>
+          <xs:enumeration value="BBD"/>
+          <xs:enumeration value="BDT"/>
+          <xs:enumeration value="BGN"/>
+          <xs:enumeration value="BHD"/>
+          <xs:enumeration value="BIF"/>
+          <xs:enumeration value="BMD"/>
+          <xs:enumeration value="BND"/>
+          <xs:enumeration value="BOB"/>
+          <xs:enumeration value="BRL"/>
+          <xs:enumeration value="BSD"/>
+          <xs:enumeration value="BTN"/>
+          <xs:enumeration value="BWP"/>
+          <xs:enumeration value="BYR"/>
+          <xs:enumeration value="BZD"/>
+          <xs:enumeration value="CAD"/>
+          <xs:enumeration value="CDF"/>
+          <xs:enumeration value="CHF"/>
+          <xs:enumeration value="CLP"/>
+          <xs:enumeration value="CNY"/>
+          <xs:enumeration value="COP"/>
+          <xs:enumeration value="CRC"/>
+          <xs:enumeration value="CUP"/>
+          <xs:enumeration value="CVE"/>
+          <xs:enumeration value="CZK"/>
+          <xs:enumeration value="DJF"/>
+          <xs:enumeration value="DKK"/>
+          <xs:enumeration value="DOP"/>
+          <xs:enumeration value="DZD"/>
+          <xs:enumeration value="EGP"/>
+          <xs:enumeration value="ERN"/>
+          <xs:enumeration value="ETB"/>
+          <xs:enumeration value="EUR"/>
+          <xs:enumeration value="FJD"/>
+          <xs:enumeration value="FKP"/>
+          <xs:enumeration value="GBP"/>
+          <xs:enumeration value="GEL"/>
+          <xs:enumeration value="GHS"/>
+          <xs:enumeration value="GIP"/>
+          <xs:enumeration value="GMD"/>
+          <xs:enumeration value="GNF"/>
+          <xs:enumeration value="GTQ"/>
+          <xs:enumeration value="GYD"/>
+          <xs:enumeration value="HKD"/>
+          <xs:enumeration value="HNL"/>
+          <xs:enumeration value="HRK"/>
+          <xs:enumeration value="HTG"/>
+          <xs:enumeration value="HUF"/>
+          <xs:enumeration value="IDR"/>
+          <xs:enumeration value="ILS"/>
+          <xs:enumeration value="INR"/>
+          <xs:enumeration value="IQD"/>
+          <xs:enumeration value="IRR"/>
+          <xs:enumeration value="ISK"/>
+          <xs:enumeration value="JMD"/>
+          <xs:enumeration value="JOD"/>
+          <xs:enumeration value="JPY"/>
+          <xs:enumeration value="KES"/>
+          <xs:enumeration value="KGS"/>
+          <xs:enumeration value="KHR"/>
+          <xs:enumeration value="KMF"/>
+          <xs:enumeration value="KPW"/>
+          <xs:enumeration value="KRW"/>
+          <xs:enumeration value="KWD"/>
+          <xs:enumeration value="KYD"/>
+          <xs:enumeration value="KZT"/>
+          <xs:enumeration value="LAK"/>
+          <xs:enumeration value="LBP"/>
+          <xs:enumeration value="LKR"/>
+          <xs:enumeration value="LRD"/>
+          <xs:enumeration value="LSL"/>
+          <xs:enumeration value="LTL"/>
+          <xs:enumeration value="LYD"/>
+          <xs:enumeration value="MAD"/>
+          <xs:enumeration value="MDL"/>
+          <xs:enumeration value="MGA"/>
+          <xs:enumeration value="MKD"/>
+          <xs:enumeration value="MMK"/>
+          <xs:enumeration value="MNT"/>
+          <xs:enumeration value="MOP"/>
+          <xs:enumeration value="MRO"/>
+          <xs:enumeration value="MUR"/>
+          <xs:enumeration value="MVR"/>
+          <xs:enumeration value="MWK"/>
+          <xs:enumeration value="MXN"/>
+          <xs:enumeration value="MYR"/>
+          <xs:enumeration value="MZN"/>
+          <xs:enumeration value="NAD"/>
+          <xs:enumeration value="NGN"/>
+          <xs:enumeration value="NIO"/>
+          <xs:enumeration value="NOK"/>
+          <xs:enumeration value="NPR"/>
+          <xs:enumeration value="NZD"/>
+          <xs:enumeration value="OMR"/>
+          <xs:enumeration value="PAB"/>
+          <xs:enumeration value="PEN"/>
+          <xs:enumeration value="PGK"/>
+          <xs:enumeration value="PHP"/>
+          <xs:enumeration value="PKR"/>
+          <xs:enumeration value="PLN"/>
+          <xs:enumeration value="PYG"/>
+          <xs:enumeration value="QAR"/>
+          <xs:enumeration value="RON"/>
+          <xs:enumeration value="RSD"/>
+          <xs:enumeration value="RUB"/>
+          <xs:enumeration value="RWF"/>
+          <xs:enumeration value="SAR"/>
+          <xs:enumeration value="SBD"/>
+          <xs:enumeration value="SCR"/>
+          <xs:enumeration value="SDG"/>
+          <xs:enumeration value="SEK"/>
+          <xs:enumeration value="SGD"/>
+          <xs:enumeration value="SHP"/>
+          <xs:enumeration value="SLL"/>
+          <xs:enumeration value="SOS"/>
+          <xs:enumeration value="SRD"/>
+          <xs:enumeration value="STD"/>
+          <xs:enumeration value="SYP"/>
+          <xs:enumeration value="SZL"/>
+          <xs:enumeration value="THB"/>
+          <xs:enumeration value="TJS"/>
+          <xs:enumeration value="TMT"/>
+          <xs:enumeration value="TND"/>
+          <xs:enumeration value="TOP"/>
+          <xs:enumeration value="TRY"/>
+          <xs:enumeration value="TTD"/>
+          <xs:enumeration value="TWD"/>
+          <xs:enumeration value="TZS"/>
+          <xs:enumeration value="UAH"/>
+          <xs:enumeration value="UGX"/>
+          <xs:enumeration value="USD"/>
+          <xs:enumeration value="UYU"/>
+          <xs:enumeration value="UZS"/>
+          <xs:enumeration value="VEF"/>
+          <xs:enumeration value="VND"/>
+          <xs:enumeration value="VUV"/>
+          <xs:enumeration value="WST"/>
+          <xs:enumeration value="XAF"/>
+          <xs:enumeration value="XCD"/>
+          <xs:enumeration value="XOF"/>
+          <xs:enumeration value="XPF"/>
+          <xs:enumeration value="YER"/>
+          <xs:enumeration value="ZAR"/>
+          <xs:enumeration value="ZMW"/>
+          <xs:enumeration value="ZWL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="CheckoutSessionResponse">
+        <xs:sequence>
+          <xs:element name="acceptedPaymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
+          <xs:element name="checkoutSessionId" type="xs:string"/>
+          <xs:element name="expirationDate" type="xs:string"/>
+          <xs:element name="lineItems" type="ns:LineItem" maxOccurs="unbounded"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="providedPaymentInstrument" type="ns:ProvidedPaymentInstrument"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateGuestCheckoutSessionRequest">
+        <xs:sequence>
+          <xs:element name="contactEmail" type="xs:string"/>
+          <xs:element name="contactFirstName" type="xs:string"/>
+          <xs:element name="contactLastName" type="xs:string"/>
+          <xs:element name="creditCard" type="ns:CreditCard"/>
+          <xs:element name="lineItemInputs" type="ns:LineItemInput" maxOccurs="unbounded"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateSignInCheckoutSessionRequest">
+        <xs:sequence>
+          <xs:element name="creditCard" type="ns:CreditCard"/>
+          <xs:element name="lineItemInputs" type="ns:LineItemInput" maxOccurs="unbounded"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreditCard">
+        <xs:sequence>
+          <xs:element name="accountHolderName" type="xs:string"/>
+          <xs:element name="billingAddress" type="ns:BillingAddress"/>
+          <xs:element name="brand" type="xs:string"/>
+          <xs:element name="cardNumber" type="xs:string"/>
+          <xs:element name="cvvNumber" type="xs:string"/>
+          <xs:element name="expireMonth" type="xs:integer"/>
+          <xs:element name="expireYear" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GuestPurchaseOrder">
+        <xs:sequence>
+          <xs:element name="lineItems" type="ns:LineItem" maxOccurs="unbounded"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="purchaseOrderCreationDate" type="xs:string"/>
+          <xs:element name="purchaseOrderId" type="xs:string"/>
+          <xs:element name="purchaseOrderPaymentStatus" type="ns:PurchaseOrderPaymentStatusEnum"/>
+          <xs:element name="purchaseOrderStatus" type="ns:PurchaseOrderStatusEnum"/>
+          <xs:element name="refundedAmount" type="ns:Amount"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Image">
+        <xs:sequence>
+          <xs:element name="height" type="xs:integer"/>
+          <xs:element name="imageUrl" type="xs:string"/>
+          <xs:element name="width" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LineItemReference">
+        <xs:sequence>
+          <xs:element name="lineItemId" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LineItem">
+        <xs:sequence>
+          <xs:element name="image" type="ns:Image"/>
+          <xs:element name="itemId" type="xs:string"/>
+          <xs:element name="lineItemId" type="xs:string"/>
+          <xs:element name="lineItemPaymentStatus" type="ns:LineItemPaymentStatusEnum"/>
+          <xs:element name="lineItemStatus" type="ns:LineItemStatusEnum"/>
+          <xs:element name="netPrice" type="ns:Amount"/>
+          <xs:element name="quantity" type="xs:integer"/>
+          <xs:element name="seller" type="ns:Seller"/>
+          <xs:element name="shippingDetail" type="ns:ShippingDetail"/>
+          <xs:element name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LineItemInput">
+        <xs:sequence>
+          <xs:element name="itemId" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="LineItemPaymentStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FAILED"/>
+          <xs:enumeration value="PAID"/>
+          <xs:enumeration value="PENDING"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="LineItemStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CANCELLED"/>
+          <xs:enumeration value="DELIVERED"/>
+          <xs:enumeration value="FULFILLMENT_IN_PROGRESS"/>
+          <xs:enumeration value="PENDING"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PaymentInstrument">
+        <xs:sequence>
+          <xs:element name="brand" type="ns:PaymentMethodBrand"/>
+          <xs:element name="paymentMethodType" type="ns:PaymentMethodTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PaymentInstrumentReference">
+        <xs:sequence>
+          <xs:element name="lastFourDigitForCreditCard" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PaymentMethod">
+        <xs:sequence>
+          <xs:element name="label" type="xs:string"/>
+          <xs:element name="logoImage" type="ns:Image"/>
+          <xs:element name="paymentMethodBrands" type="ns:PaymentMethodBrand" maxOccurs="unbounded"/>
+          <xs:element name="paymentMethodMessages" type="ns:PaymentMethodMessage" maxOccurs="unbounded"/>
+          <xs:element name="paymentMethodType" type="ns:PaymentMethodTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PaymentMethodBrand">
+        <xs:sequence>
+          <xs:element name="logoImage" type="ns:Image"/>
+          <xs:element name="paymentMethodBrandType" type="ns:PaymentMethodBrandEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PaymentMethodBrandEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AMERICAN_EXPRESS"/>
+          <xs:enumeration value="DISCOVER"/>
+          <xs:enumeration value="MASTERCARD"/>
+          <xs:enumeration value="VISA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PaymentMethodMessage">
+        <xs:sequence>
+          <xs:element name="legalMessage" type="xs:string"/>
+          <xs:element name="requiredForUserConfirmation" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PaymentMethodTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CREDIT_CARD"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PricingSummary">
+        <xs:sequence>
+          <xs:element name="adjustment" type="ns:Adjustment"/>
+          <xs:element name="deliveryCost" type="ns:Amount"/>
+          <xs:element name="deliveryDiscount" type="ns:Amount"/>
+          <xs:element name="fee" type="ns:Amount"/>
+          <xs:element name="priceDiscount" type="ns:Amount"/>
+          <xs:element name="priceSubtotal" type="ns:Amount"/>
+          <xs:element name="tax" type="ns:Amount"/>
+          <xs:element name="total" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Promotion">
+        <xs:sequence>
+          <xs:element name="discount" type="ns:Amount"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="promotionCode" type="xs:string"/>
+          <xs:element name="promotionType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProvidedPaymentInstrument">
+        <xs:sequence>
+          <xs:element name="paymentInstrumentReference" type="ns:PaymentInstrumentReference"/>
+          <xs:element name="paymentMethodBrand" type="ns:PaymentMethodBrand"/>
+          <xs:element name="paymentMethodType" type="ns:PaymentMethodTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PurchaseOrder">
+        <xs:sequence>
+          <xs:element name="lineItems" type="ns:LineItem" maxOccurs="unbounded"/>
+          <xs:element name="paymentInstrument" type="ns:PaymentInstrument"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="purchaseOrderCreationDate" type="xs:string"/>
+          <xs:element name="purchaseOrderId" type="xs:string"/>
+          <xs:element name="purchaseOrderPaymentStatus" type="ns:PurchaseOrderPaymentStatusEnum"/>
+          <xs:element name="purchaseOrderStatus" type="ns:PurchaseOrderStatusEnum"/>
+          <xs:element name="refundedAmount" type="ns:Amount"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+          <xs:element name="shippingFulfillments" type="ns:ShippingFulfillment" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PurchaseOrderPaymentStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FAILED"/>
+          <xs:enumeration value="PAID"/>
+          <xs:enumeration value="PARTIALLY_PAID"/>
+          <xs:enumeration value="PENDING"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="PurchaseOrderStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CANCELLED"/>
+          <xs:enumeration value="DELIVERED"/>
+          <xs:enumeration value="FULFILLMENT_IN_PROGRESS"/>
+          <xs:enumeration value="PENDING"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PurchaseOrderSummary">
+        <xs:sequence>
+          <xs:element name="purchaseOrderHref" type="xs:string"/>
+          <xs:element name="purchaseOrderId" type="xs:string"/>
+          <xs:element name="purchaseOrderPaymentStatus" type="ns:PurchaseOrderPaymentStatusEnum"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Seller">
+        <xs:sequence>
+          <xs:element name="feedbackPercentage" type="xs:string"/>
+          <xs:element name="feedbackScore" type="xs:integer"/>
+          <xs:element name="sellerAccountType" type="xs:string"/>
+          <xs:element name="username" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingAddress">
+        <xs:sequence>
+          <xs:element name="addressLine1" type="xs:string"/>
+          <xs:element name="addressLine2" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="country" type="ns:CountryCodeEnum"/>
+          <xs:element name="county" type="xs:string"/>
+          <xs:element name="phoneNumber" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="recipient" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingAddressImpl">
+        <xs:sequence>
+          <xs:element name="addressLine1" type="xs:string"/>
+          <xs:element name="addressLine2" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="country" type="ns:CountryCodeEnum"/>
+          <xs:element name="county" type="xs:string"/>
+          <xs:element name="phoneNumber" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="recipient" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingDetail">
+        <xs:sequence>
+          <xs:element name="maxEstimatedDeliveryDate" type="xs:string"/>
+          <xs:element name="minEstimatedDeliveryDate" type="xs:string"/>
+          <xs:element name="shippingCarrierCode" type="xs:string"/>
+          <xs:element name="shippingServiceCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingFulfillment">
+        <xs:sequence>
+          <xs:element name="actualDeliveryDate" type="xs:string"/>
+          <xs:element name="lineItemReferences" type="ns:LineItemReference" maxOccurs="unbounded"/>
+          <xs:element name="maxEstimatedDeliveryDate" type="xs:string"/>
+          <xs:element name="minEstimatedDeliveryDate" type="xs:string"/>
+          <xs:element name="shipmentTrackingNumber" type="xs:string"/>
+          <xs:element name="shipmentTrackingUrl" type="xs:string"/>
+          <xs:element name="shippedDate" type="xs:string"/>
+          <xs:element name="shippingCarrierCode" type="xs:string"/>
+          <xs:element name="shippingServiceCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingOption">
+        <xs:sequence>
+          <xs:element name="baseDeliveryCost" type="ns:Amount"/>
+          <xs:element name="deliveryDiscount" type="ns:Amount"/>
+          <xs:element name="maxEstimatedDeliveryDate" type="xs:string"/>
+          <xs:element name="minEstimatedDeliveryDate" type="xs:string"/>
+          <xs:element name="selected" type="xs:boolean"/>
+          <xs:element name="shippingCarrierCode" type="xs:string"/>
+          <xs:element name="shippingOptionId" type="xs:string"/>
+          <xs:element name="shippingServiceCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdatePaymentInformation">
+        <xs:sequence>
+          <xs:element name="creditCard" type="ns:CreditCard"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateQuantity">
+        <xs:sequence>
+          <xs:element name="lineItemId" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateShippingOption">
+        <xs:sequence>
+          <xs:element name="lineItemId" type="xs:string"/>
+          <xs:element name="shippingOptionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCheckoutSessionRestRequest" type="ns:GetCheckoutSessionRestRequest"/>
+      <xs:element name="GetCheckoutSessionRestResponse" type="ns:GetCheckoutSessionRestResponse"/>
+      <xs:complexType name="GetCheckoutSessionRestRequest">
+        <xs:sequence>
+          <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCheckoutSessionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="InitiateCheckoutSessionRestRequest" type="ns:InitiateCheckoutSessionRestRequest"/>
+      <xs:element name="InitiateCheckoutSessionRestResponse" type="ns:InitiateCheckoutSessionRestResponse"/>
+      <xs:complexType name="InitiateCheckoutSessionRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CreateSignInCheckoutSessionRequest">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InitiateCheckoutSessionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PlaceOrderRestRequest" type="ns:PlaceOrderRestRequest"/>
+      <xs:element name="PlaceOrderRestResponse" type="ns:PlaceOrderRestResponse"/>
+      <xs:complexType name="PlaceOrderRestRequest">
+        <xs:sequence>
+          <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlaceOrderRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PurchaseOrderSummary">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdatePaymentInfoRestRequest" type="ns:UpdatePaymentInfoRestRequest"/>
+      <xs:element name="UpdatePaymentInfoRestResponse" type="ns:UpdatePaymentInfoRestResponse"/>
+      <xs:complexType name="UpdatePaymentInfoRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdatePaymentInformation">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdatePaymentInfoRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateQuantityForLineItemRestRequest" type="ns:UpdateQuantityForLineItemRestRequest"/>
+      <xs:element name="UpdateQuantityForLineItemRestResponse" type="ns:UpdateQuantityForLineItemRestResponse"/>
+      <xs:complexType name="UpdateQuantityForLineItemRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdateQuantity">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateQuantityForLineItemRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateShippingAddressRestRequest" type="ns:UpdateShippingAddressRestRequest"/>
+      <xs:element name="UpdateShippingAddressRestResponse" type="ns:UpdateShippingAddressRestResponse"/>
+      <xs:complexType name="UpdateShippingAddressRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:ShippingAddressImpl">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateShippingAddressRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateShippingOptionRestRequest" type="ns:UpdateShippingOptionRestRequest"/>
+      <xs:element name="UpdateShippingOptionRestResponse" type="ns:UpdateShippingOptionRestResponse"/>
+      <xs:complexType name="UpdateShippingOptionRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdateShippingOption">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateShippingOptionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetGuestCheckoutSessionRestRequest" type="ns:GetGuestCheckoutSessionRestRequest"/>
+      <xs:element name="GetGuestCheckoutSessionRestResponse" type="ns:GetGuestCheckoutSessionRestResponse"/>
+      <xs:complexType name="GetGuestCheckoutSessionRestRequest">
+        <xs:sequence>
+          <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGuestCheckoutSessionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="InitiateGuestCheckoutSessionRestRequest" type="ns:InitiateGuestCheckoutSessionRestRequest"/>
+      <xs:element name="InitiateGuestCheckoutSessionRestResponse" type="ns:InitiateGuestCheckoutSessionRestResponse"/>
+      <xs:complexType name="InitiateGuestCheckoutSessionRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CreateGuestCheckoutSessionRequest">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InitiateGuestCheckoutSessionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PlaceGuestOrderRestRequest" type="ns:PlaceGuestOrderRestRequest"/>
+      <xs:element name="PlaceGuestOrderRestResponse" type="ns:PlaceGuestOrderRestResponse"/>
+      <xs:complexType name="PlaceGuestOrderRestRequest">
+        <xs:sequence>
+          <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlaceGuestOrderRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PurchaseOrderSummary">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateGuestLineItemQuantityRestRequest" type="ns:UpdateGuestLineItemQuantityRestRequest"/>
+      <xs:element name="UpdateGuestLineItemQuantityRestResponse" type="ns:UpdateGuestLineItemQuantityRestResponse"/>
+      <xs:complexType name="UpdateGuestLineItemQuantityRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdateQuantity">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateGuestLineItemQuantityRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateGuestLineItemShippingAddressRestRequest" type="ns:UpdateGuestLineItemShippingAddressRestRequest"/>
+      <xs:element name="UpdateGuestLineItemShippingAddressRestResponse" type="ns:UpdateGuestLineItemShippingAddressRestResponse"/>
+      <xs:complexType name="UpdateGuestLineItemShippingAddressRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:ShippingAddressImpl">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateGuestLineItemShippingAddressRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateGuestPaymentInfoRestRequest" type="ns:UpdateGuestPaymentInfoRestRequest"/>
+      <xs:element name="UpdateGuestPaymentInfoRestResponse" type="ns:UpdateGuestPaymentInfoRestResponse"/>
+      <xs:complexType name="UpdateGuestPaymentInfoRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdatePaymentInformation">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateGuestPaymentInfoRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateGuestShippingOptionRestRequest" type="ns:UpdateGuestShippingOptionRestRequest"/>
+      <xs:element name="UpdateGuestShippingOptionRestResponse" type="ns:UpdateGuestShippingOptionRestResponse"/>
+      <xs:complexType name="UpdateGuestShippingOptionRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:UpdateShippingOption">
+            <xs:sequence>
+              <xs:element name="checkoutSessionId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateGuestShippingOptionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CheckoutSessionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetGuestPurchaseOrderRestRequest" type="ns:GetGuestPurchaseOrderRestRequest"/>
+      <xs:element name="GetGuestPurchaseOrderRestResponse" type="ns:GetGuestPurchaseOrderRestResponse"/>
+      <xs:complexType name="GetGuestPurchaseOrderRestRequest">
+        <xs:sequence>
+          <xs:element name="purchaseOrderId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGuestPurchaseOrderRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:GuestPurchaseOrder">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPurchaseOrderRestRequest" type="ns:GetPurchaseOrderRestRequest"/>
+      <xs:element name="GetPurchaseOrderRestResponse" type="ns:GetPurchaseOrderRestResponse"/>
+      <xs:complexType name="GetPurchaseOrderRestRequest">
+        <xs:sequence>
+          <xs:element name="purchaseOrderId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPurchaseOrderRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PurchaseOrder">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="GetCheckoutSession" method="GET" resource="checkout_session/{checkoutSessionId}">
+      <wsdl:input message="ns:GetCheckoutSessionRestRequest"/>
+      <wsdl:output message="ns:GetCheckoutSessionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="InitiateCheckoutSession" method="POST" resource="checkout_session/initiate">
+      <wsdl:input message="ns:InitiateCheckoutSessionRestRequest"/>
+      <wsdl:output message="ns:InitiateCheckoutSessionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="PlaceOrder" method="POST" resource="checkout_session/{checkoutSessionId}/place_order">
+      <wsdl:input message="ns:PlaceOrderRestRequest"/>
+      <wsdl:output message="ns:PlaceOrderRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdatePaymentInfo" method="POST" resource="checkout_session/{checkoutSessionId}/update_payment_info">
+      <wsdl:input message="ns:UpdatePaymentInfoRestRequest"/>
+      <wsdl:output message="ns:UpdatePaymentInfoRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateQuantityForLineItem" method="POST" resource="checkout_session/{checkoutSessionId}/update_quantity">
+      <wsdl:input message="ns:UpdateQuantityForLineItemRestRequest"/>
+      <wsdl:output message="ns:UpdateQuantityForLineItemRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateShippingAddress" method="POST" resource="_session/{checkoutSessionId}/update_shipping_address">
+      <wsdl:input message="ns:UpdateShippingAddressRestRequest"/>
+      <wsdl:output message="ns:UpdateShippingAddressRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateShippingOption" method="POST" resource="checkout_session/{checkoutSessionId}/update_shipping_option">
+      <wsdl:input message="ns:UpdateShippingOptionRestRequest"/>
+      <wsdl:output message="ns:UpdateShippingOptionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetGuestCheckoutSession" method="GET" resource="guest_checkout_session/{checkoutSessionId}">
+      <wsdl:input message="ns:GetGuestCheckoutSessionRestRequest"/>
+      <wsdl:output message="ns:GetGuestCheckoutSessionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="InitiateGuestCheckoutSession" method="POST" resource="guest_checkout_session/initiate">
+      <wsdl:input message="ns:InitiateGuestCheckoutSessionRestRequest"/>
+      <wsdl:output message="ns:InitiateGuestCheckoutSessionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="PlaceGuestOrder" method="POST" resource="guest_checkout_session/{checkoutSessionId}/place_order">
+      <wsdl:input message="ns:PlaceGuestOrderRestRequest"/>
+      <wsdl:output message="ns:PlaceGuestOrderRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateGuestLineItemQuantity" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_quantity">
+      <wsdl:input message="ns:UpdateGuestLineItemQuantityRestRequest"/>
+      <wsdl:output message="ns:UpdateGuestLineItemQuantityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateGuestLineItemShippingAddress" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_shipping_address">
+      <wsdl:input message="ns:UpdateGuestLineItemShippingAddressRestRequest"/>
+      <wsdl:output message="ns:UpdateGuestLineItemShippingAddressRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateGuestPaymentInfo" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_payment_info">
+      <wsdl:input message="ns:UpdateGuestPaymentInfoRestRequest"/>
+      <wsdl:output message="ns:UpdateGuestPaymentInfoRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateGuestShippingOption" method="POST" resource="guest_checkout_session/{checkoutSessionId}/update_shipping_option">
+      <wsdl:input message="ns:UpdateGuestShippingOptionRestRequest"/>
+      <wsdl:output message="ns:UpdateGuestShippingOptionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetGuestPurchaseOrder" method="GET" resource="guest_purchase_order/{purchaseOrderId}">
+      <wsdl:input message="ns:GetGuestPurchaseOrderRestRequest"/>
+      <wsdl:output message="ns:GetGuestPurchaseOrderRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPurchaseOrder" method="GET" resource="purchase_order/{purchaseOrderId}">
+      <wsdl:input message="ns:GetPurchaseOrderRestRequest"/>
+      <wsdl:output message="ns:GetPurchaseOrderRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

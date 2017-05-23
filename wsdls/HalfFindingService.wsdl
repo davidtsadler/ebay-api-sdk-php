@@ -1,0 +1,2052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://www.ebay.com/marketplace/half/v1/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="HalfFindingService" targetNamespace="http://www.ebay.com/marketplace/half/v1/services">
+  <types>
+    <xs:schema xmlns:tns="http://www.ebay.com/marketplace/half/v1/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ebay.com/marketplace/half/v1/services">
+      <xs:element name="getVersionRequest" nillable="true" type="tns:GetVersionRequest"/>
+      <xs:element name="getVersionResponse" nillable="true" type="tns:GetVersionResponse"/>
+      <xs:element name="findHalfItemsRequest" type="tns:FindItemsRequest"/>
+      <xs:element name="findHalfItemsResponse" type="tns:FindItemsResponse"/>
+      <xs:complexType name="GetVersionRequest">
+        <xs:annotation>
+          <xs:documentation>
+							Returns the current version of the service. This simple call can be used to monitor
+							the service for availability. This call has no input parameters and the response
+							contains only the standard output fields.
+						</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+							Returns the current service version.
+						</Summary>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseRequest"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetVersionResponse">
+        <xs:annotation>
+          <xs:documentation>
+							Response container for the getVersion call.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseResponse"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindItemsRequest">
+        <xs:annotation>
+          <xs:documentation>
+							Searches Half.com for items associated with the specified product ID.
+							The number of item listings that can be returned per call varies depending
+							on the paginationInput specified. Returns a maximum of 1500 items.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="productID" type="tns:ProductIDType">
+                <xs:annotation>
+                  <xs:documentation>
+											Use this to retrieve specify which items are to be retrieved. Only those items
+											associated with this product ID are returned.
+											Specify the ID as a string, and optionally use the type attribute to
+											indicate the nature of the ID you are specifying.
+										</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>4000</MaxLength>
+                    <CallInfo>
+                      <CallName>findHalfItems</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="paginationInput" type="tns:PaginationInputType">
+                <xs:annotation>
+                  <xs:documentation>
+											Controls the pagination of the result set. Child elements specify the
+											maximum number of item listings to return per call by establishing the number
+											of items per page and the number of pages. If paginationInput is not specified, the default is
+											1 page of items and 25 items per page. These settings control the number of listings returned
+											in the response, but does not specify the details to return for each listing.
+											&lt;br&gt;&lt;br&gt;
+											&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+											No more than 1500 items can be retrieved for a given search, 
+											regardless of how many matches are found. This limit is enforced 
+											by the maximum page number allowed (60) and the maximum entries per 
+											page allowed (25). &lt;/span&gt;
+										</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>findHalfItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="itemFilter" type="tns:ItemFilter">
+                <xs:annotation>
+                  <xs:documentation>
+											Used to specify filter items. Currently the only item filters that are supported are item
+											condition and seller.
+											&lt;br&gt;&lt;br&gt;
+											&lt;b&gt;Supported Item Filter Names&lt;/b&gt;:
+											&lt;br&gt;&lt;br&gt;
+											&lt;ul&gt;
+											&lt;li&gt;Condition&lt;/li&gt;
+											&lt;li&gt;Seller&lt;/li&gt;
+											&lt;li&gt;ListingType&lt;/li&gt;
+										</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>findHalfItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="sortBy" type="tns:SortByType">
+                <xs:annotation>
+                  <xs:documentation>
+											Specifies the sort conditions for the returned items. The default is 125 days
+											for Rental Items and the itemPrice for FixedPrice items.
+										</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>findHalfItems</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindItemsResponse">
+        <xs:annotation>
+          <xs:documentation>
+							Response to findHalfItems.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="1" name="paginationOutput" type="tns:PaginationOutputType">
+                <xs:annotation>
+                  <xs:documentation>
+											Controls the pagination of the result set. Child elements specify the
+											maximum number of item listings to return per call and the page of
+											data to return. 
+											No more than 1500 items can be retrieved for a given search, 
+											regardless of how many matches are found. This limit is enforced 
+											by the maximum page number allowed (60) and the maximum entries per 
+											page allowed (25). &lt;/span&gt;
+										</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>findHalfItems</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="product" type="tns:HalfCatalogProductType">
+                <xs:annotation>
+                  <xs:documentation>
+											Info about a catalog product on Half.com. This contains stock information about a
+											particular DVD, book, or other product.																						
+										</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>1</MaxOccurs>
+                    <CallInfo>
+                      <CallName>findHalfItems</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseRequest">
+        <xs:annotation>
+          <xs:documentation>
+							The base request container for all service operations.
+						</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extension" type="tns:ExtensionType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseResponse">
+        <xs:annotation>
+          <xs:documentation>
+							The base response container for all service operations.
+						</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="ack" type="tns:AckValue">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates whether or not errors or warnings were generated during the
+								processing of the request.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="errorMessage" type="tns:ErrorMessage">
+            <xs:annotation>
+              <xs:documentation>
+									An error or warning that occurred when eBay processed the request.
+									Not returned if the ack value is Success.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="version" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The release version that eBay used to process the request. Developer
+									Technical Support may ask you for the version value if you work with them
+									to troubleshoot issues.
+									&lt;br&gt;&lt;br&gt;
+									&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+									The version in use is normally the latest release version, as specified
+									in the release notes. Note that eBay releases the API to international
+									sites about a week after the API version is released to the US site.
+									&lt;/span&gt;
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="timestamp" type="xs:dateTime">
+            <xs:annotation>
+              <xs:documentation>
+									The date and time of the response.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extension" type="tns:ExtensionType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ExtensionType">
+        <xs:annotation>
+          <xs:documentation>
+							Reserved for future use.
+						</xs:documentation>
+          <xs:appinfo>
+            <CallInfo>
+              <NoCalls/>
+            </CallInfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="id" type="xs:positiveInteger"/>
+          <xs:element name="version" type="xs:string"/>
+          <xs:element name="contentType" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorData">
+        <xs:annotation>
+          <xs:documentation>
+							This represents details about a single error, if an error is returned.
+						</xs:documentation>
+          <xs:appinfo>
+            <CallInfo>
+              <AllCalls/>
+              <Returned>Conditionally</Returned>
+            </CallInfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="errorId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>
+									Returned if there is an error. A unique code that identifies the particular error 
+									condition that occurred. Your application can use error codes as identifiers in your
+									customized error-handling algorithms.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="domain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Name of the domain upon which the error occurred.
+									&lt;dl&gt;
+									&lt;lh&gt;Domains include:&lt;/lh&gt;
+									&lt;dt&gt;
+										Marketplace
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										A business or validation error occurred in the service.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										SOA
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										An exception occurred in the Service Oriented Architecture (SOA)
+										framework.
+									&lt;/dd&gt;
+									&lt;/dl&gt;
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="subdomain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Name of the subdomain upon which the error occurred.
+									&lt;dl&gt;
+									&lt;lh&gt;Subdomains include:&lt;/lh&gt;
+									&lt;dt&gt;
+										Merchandising
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										The error is specific to the Merchandising service.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										MarketplaceCommon
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										The error is common to all Marketplace services.
+									&lt;/dd&gt;
+									&lt;/dl&gt;
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="severity" type="tns:ErrorSeverity">
+            <xs:annotation>
+              <xs:documentation>
+									Indicates whether the error caused the request to fail (Error) or not
+									(Warning).
+									&lt;br&gt;&lt;br&gt;
+									If the request fails and the source of the problem is within the
+									application (such as a missing required element), please change the
+									application before you retry the request. If the problem is due to end-
+									user input data, please alert the end-user to the problem and provide the
+									means for them to correct the data. Once the problem in the application
+									or data is resolved, you can attempt to re- send the request to eBay.
+									&lt;br&gt;&lt;br&gt;
+									If the source of the problem is on eBay's side, you can retry the request
+									without change for a reasonable number of times (eBay recommends twice). If the error
+									persists, contact Developer Technical Support. Once the problem has been
+									resolved, the request may be resent in its original form.
+									&lt;br&gt;&lt;br&gt;
+									When a warning occurs, the error is returned in addition to the business
+									data. In this case, you do not need to retry the request (as the original
+									request was successful). However, depending on the cause or nature of the
+									warning, you might need to contact either the end user or eBay to effect
+									a long term solution to the problem to prevent it from reoccurring in the
+									future.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="category" type="tns:ErrorCategory">
+            <xs:annotation>
+              <xs:documentation>
+									There are three categories of errors: request errors, application errors,
+									and system errors. 
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="message" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									A detailed description of the condition that resulted in the error.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="exceptionId" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+									Unique identifier for an exception associated with an error.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="tns:ErrorParameter">
+            <xs:annotation>
+              <xs:documentation>
+									Some warning and error messages return one or more variables that contain
+									contextual information about the error. This is often the field or value
+									that triggered the error.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorMessage">
+        <xs:annotation>
+          <xs:documentation>
+							ErrorMessage to indicate any Error/Warning that occured as part of service
+							call. Any run time error will not be reported here, but will be reported as
+							part of a SOAP fault.
+						</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="error" type="tns:ErrorData">
+            <xs:annotation>
+              <xs:documentation>
+									Details about a single error.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameter">
+        <xs:annotation>
+          <xs:documentation>
+							Various warning and error messages return one or more variables that 
+							contain contextual information about the error. This is often the 
+							field or value that triggered the error..
+						</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+										The name of the parameter in the get of parameter types returned within the
+										error type.
+									</xs:documentation>
+                <xs:appinfo>
+                  <min/>
+                  <max/>
+                  <MaxLength/>
+                  <CallInfo>
+                    <AllCalls/>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="ErrorCategory">
+        <xs:annotation>
+          <xs:appinfo>
+            <min/>
+            <max/>
+            <MaxLength/>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+          <xs:documentation>
+							There are three categories of error: request errors, application errors,
+							and system errors. Request and application errors are often caused by
+							passing invalid data in the request. System errors are primarily caused by
+							application failures and cannot be corrected by changing request values.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="System">
+            <xs:annotation>
+              <xs:documentation>
+									Indicates that an error has occurred on the eBay system side. For
+									example, a database or server could be down. Inspect the error message to
+									find the cause of the problem. If the problem is on the eBay side, an
+									application can retry the request as-is a reasonable number of times
+									(eBay recommends twice). If the error persists, contact Developer
+									Technical Support. Once the problem has been resolved, the request may be
+									resent in its original form.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Application">
+            <xs:annotation>
+              <xs:documentation>
+									An error occurred due to a problem with the request, with the most likely
+									source being the application sending the request. For example, the
+									request is missing a required data element or it contains an invalid
+									field. The problem must be corrected before the request can be resent.
+									Inspect the error message to find the cause of the problem. If the
+									problem is due to an application error, modify the application and resend
+									the request. If the error is due to invalid data, the source of the data
+									must be corrected before you resend the resend request to eBay.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Request">
+            <xs:annotation>
+              <xs:documentation>
+									An error occurred due to a problem with the request, with the most likely
+									source being missing or invalid data in the request. The problem must be
+									corrected before the request can be retried. Inspect the error message to
+									find the cause of the problem. If the problem is a result of end-user
+									data, alert the end-user to the problem and provide the means for them to
+									correct the problem. Once the problem is resolved, resend the request to
+									eBay.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ErrorSeverity">
+        <xs:annotation>
+          <xs:documentation>
+							Indicates whether the error is a severe error (causing the request to fail) or an
+							informational error (a warning) that should be communicated to the user.
+						</xs:documentation>
+          <xs:appinfo>
+            <min/>
+            <max/>
+            <MaxLength/>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Error">
+            <xs:annotation>
+              <xs:documentation>
+									The request that triggered the error was not processed successfully.
+									When a serious application-level error occurs, the error is returned
+									instead of the business data.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+									The request was processed successfully, but something occurred that may
+									affect your application or the user. For example, eBay may have changed a
+									value the user sent in. In this case, eBay returns a normal, successful
+									response and also returns the warning.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ProductIDCodeType">
+        <xs:annotation>
+          <xs:documentation>
+							ProductID type for product searches. Only Reference, ISBN, UPC,
+ 							and EAN are supported.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ISBN">
+            <xs:annotation>
+              <xs:documentation>
+									ISBN-10 or ISBN-13 value for books. (The string length of ProductID
+									indicates whether the ID is 10 or 13 characters.)
+									If you know a book's ISBN, you can use this instead of the
+									Reference ID to search for that book.
+									Max length of corresponding value: 13
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="EAN">
+            <xs:annotation>
+              <xs:documentation>
+									EAN value for books. (This is used more commonly in
+									European countries.)
+									If you know a book's EAN, you can use this instead of the
+									Reference ID to search for that book.
+									Max length of corresponding value: 13
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="UPC">
+            <xs:annotation>
+              <xs:documentation>
+									UPC value for products in Music (e.g., CDs), DVDs &amp; Movies,
+									and Video Games categories (or domains).
+									If you know a product's UPC, you can use this instead of the
+									Reference ID to search for that product.
+									Max length of corresponding value: 12
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="MPN">
+            <xs:annotation>
+              <xs:documentation>
+									Reserved for future use.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Reference">
+            <xs:annotation>
+              <xs:documentation>
+									The global reference ID for a half catalog product.
+									A reference ID is a fixed reference to a product (regardless of version).
+									To determine valid reference IDs for products to use as input to FindProducts, first call
+									FindHalfProducts with QueryKeywords (or ProductID).
+									Each product in the response includes a reference ID.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="CustomCode">
+            <xs:annotation>
+              <xs:documentation>
+									(out) Reserved for internal or future use.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="AckValue">
+        <xs:annotation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+          <xs:documentation>
+							The nature of the response.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Success">
+            <xs:annotation>
+              <xs:documentation>
+									eBay successfully processed the request and the business data is returned
+									in the response. Note that it is possible for a response to return
+									Success, but still not contain the expected data in the result.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Failure">
+            <xs:annotation>
+              <xs:documentation>
+									eBay encountered a fatal error during the processing of the request,
+									causing the request to fail. When a serious application-level error
+									occurs, the error is returned instead of the business data.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+									The request was successfully processed, but eBay encountered a non-fatal
+									error during the processing. For best results, requests should return
+									without warnings. Inspect the warning details and resolve the problem
+									before resubmitting the request.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PartialFailure">
+            <xs:annotation>
+              <xs:documentation>
+									eBay successfully processed the request, but one or more non-fatal errors
+									occurred during the processing. For best results, requests should return
+									without warning messages. Inspect the message details and resolve any
+									problems before resubmitting the request.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="HalfItemConditionCodeType">
+        <xs:annotation>
+          <xs:documentation>
+							Specifies item condition values, especially for the Books catalog.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="BrandNew">
+            <xs:annotation>
+              <xs:documentation>
+									New, unread, unused and in perfect condition.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="LikeNew">
+            <xs:annotation>
+              <xs:documentation>
+									Item still in original packaging, no wear and tear, and all facets of the product
+									are intact. The item could easily be mistaken for brand new.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="VeryGood">
+            <xs:annotation>
+              <xs:documentation>
+									Doesn't look brand new, but it has no easily noticeable damage and very minimal
+									wear and tear. You could give it to a good friend as a gift.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Good">
+            <xs:annotation>
+              <xs:documentation>
+									The item shows very minimal use or damage and it still includes all accessories
+									(such as dust jackets, liner notes, and cases). You might use the item yourself,
+									but probably wouldn't give it as a gift.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Acceptable">
+            <xs:annotation>
+              <xs:documentation>
+									The item might have minor damage, or it might be missing a part or accessory. However,
+									the item is still intact and is in working order.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <!--xs:enumeration value="Used">
+							<xs:annotation>
+								<xs:documentation>
+									The item has visible damage or it has experienced significant use. Unless noted, it should
+									still be in working order.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration-->
+          <xs:enumeration value="CustomCode">
+            <xs:annotation>
+              <xs:documentation>
+									Reserved for internal or future use.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="type">
+        <xs:annotation>
+          <xs:documentation>
+							A shipping service used to ship an Item.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ShippingMethodStandard">
+            <xs:annotation>
+              <xs:documentation>
+									Indicates either a Media Mail or Ground shipping method.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ShippingMethodExpress">
+            <xs:annotation>
+              <xs:documentation>
+									Indicates an expedited shipping method.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ItemFilterType">
+        <xs:annotation>
+          <xs:documentation>
+							Values that can be used for the itemFilter.name field.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Condition">
+            <xs:annotation>
+              <xs:documentation>
+									Return items based on the item condition: Valid values are:
+									BrandNew, LikeNew, VeryGood, Good, Acceptable
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="FeedbackScoreMin">
+            <xs:annotation>
+              <xs:documentation>
+									Return items only where the seller has a feedback score that is equal to or higher than
+									the value specified in the ItemFilter.value field.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="MaxPrice">
+            <xs:annotation>
+              <xs:documentation>
+									Return items that are equal to or below the value specified in the ItemFilter.value field.
+									The maximum price is in units of US dollars.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Seller">
+            <xs:annotation>
+              <xs:documentation>
+									Return items from only the sellerId(s) specified in the ItemFilter.value field.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ExcludeSeller">
+            <xs:annotation>
+              <xs:documentation>
+									Exclude items listed by the sellerId(s) specified in the ItemFilter.value field.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ShippingService">
+            <xs:annotation>
+              <xs:documentation>
+									Return items on the shipping method. Valid values are:
+									ShippingMethodStandard and ShippingMethodExpress
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ListingType">
+            <xs:annotation>
+              <xs:documentation>
+									Return items based on the listing type. Valid values are:
+									FixedPrice and Rental
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ProductIDType">
+        <xs:annotation>
+          <xs:documentation>
+							Product ID has an attribute of ProductIDCodeType and a string value.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="type" type="tns:ProductIDCodeType">
+              <xs:annotation>
+                <xs:documentation>
+										The nature of identifier being used. For findHalfItems
+										only Reference, ISBN, UPC,
+										and EAN are supported.										
+									</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>findHalfItems</CallName>
+                    <AllValuesExcept>MPN</AllValuesExcept>
+                    <RequiredInput>Yes</RequiredInput>
+                    <Returned>Always</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:complexType name="SortByType">
+        <xs:annotation>
+          <xs:documentation>
+							Specifies the sort order of the response entries.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="sortOrder" type="tns:SortOrder">
+            <xs:annotation>
+              <xs:documentation>
+									The order of the sort, either INCREASING or DECREASING.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="sortOn" type="tns:SortOnType">
+            <xs:annotation>
+              <xs:documentation>
+									The field on which the response entries are sorted.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="SortOrder">
+        <xs:annotation>
+          <xs:documentation>
+							Defines the order that items in the result are sorted.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="INCREASING">
+            <xs:annotation>
+              <xs:documentation>
+									Items are sorted on the specified field, from smaller to larger.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DECREASING">
+            <xs:annotation>
+              <xs:documentation>
+									Items are sorted on the specified field, from larger to smaller.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="SortOnType">
+        <xs:annotation>
+          <xs:documentation>
+							This type defines supported values you can supply in the sortOn field.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="FixedPrice">
+            <xs:annotation>
+              <xs:documentation>
+									Sort on the Fixed Price of the item.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RentalPrice30Days">
+            <xs:annotation>
+              <xs:documentation>
+									Sort on the 30 day rental price of the item.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RentalPrice45Days">
+            <xs:annotation>
+              <xs:documentation>
+									Sort on the 45 day rental price of the item.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RentalPrice60Days">
+            <xs:annotation>
+              <xs:documentation>
+									Sort on the 60 day rental price of the item.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RentalPrice90Days">
+            <xs:annotation>
+              <xs:documentation>
+									Sort on the 90 day rental price of the item.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="RentalPrice125Days">
+            <xs:annotation>
+              <xs:documentation>
+									Sort on the 125 day rental price of the item.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PaginationInputType">
+        <xs:annotation>
+          <xs:documentation>
+								Controls the pagination of the result set. Child elements 
+								specify the maximum number of item listings to return 
+								per call and the page of data to return. Controls the 
+								number of listings returned in the response, but does not 
+								specify the details to return for each listing
+							</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="pageNumber" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+										Needed result page
+									</xs:documentation>
+              <xs:appinfo>
+                <default>1</default>
+                <min>1</min>
+                <max>60</max>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="entriesPerPage" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+										No of entries per page
+									</xs:documentation>
+              <xs:appinfo>
+                <default>25</default>
+                <min>1</min>
+                <max>25</max>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <!--xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/-->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PaginationOutputType">
+        <xs:annotation>
+          <xs:documentation>
+							Indicates the pagination of the result set. 
+							Child elements indicate the page number that is 
+							returned, the maximum number of item listings 
+							to return per page, total number of pages that 
+							can be returned, and the total number of listings 
+							that match the search criteria.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pageNumber" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									Specifies the current page of the response.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max>60</max>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="entriesPerPage" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									Specifies the no of entries in the current page.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <min/>
+                  <max>25</max>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="totalEntries" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									Specifies the total no of entries found.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="totalPages" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									Specifies the number of the pages the response can span.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <!--xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/-->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Amount">
+        <xs:annotation>
+          <xs:documentation>
+							Basic type for specifying monetary amounts. A double value (e.g.,
+							1.00 or 1.0) is meaningful as a monetary amount when accompanied by a
+							specification of the currency, in which case the value specifies
+							the amount in that currency. An AmountType expresses both the value
+							(a double) and the currency. Details such as prices, fees, costs,
+							and payments are specified as amount types.
+						</xs:documentation>
+          <xs:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:double">
+            <xs:attribute name="currencyId" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+										Currency in which the monetary amount is specified.
+									</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>findHalfItems</CallName>
+                    <Returned>Conditional</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="RentalDurationType">
+        <xs:annotation>
+          <xs:documentation>
+							The amount of time for which an item is rented.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Days30">
+            <xs:annotation>
+              <xs:documentation>
+									A 30 day rental period.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Days45">
+            <xs:annotation>
+              <xs:documentation>
+									A 45 day rental period.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Days60">
+            <xs:annotation>
+              <xs:documentation>
+									A 60 day rental period.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Days90">
+            <xs:annotation>
+              <xs:documentation>
+									A 90 day rental period.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Days125">
+            <xs:annotation>
+              <xs:documentation>
+									A 125 day rental period.
+								</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="RentalAmount">
+        <xs:annotation>
+          <xs:documentation>
+							Container for specifying monetary amounts for which items are rented. A double value (e.g.,
+							1.00 or 1.0) is meaningful as a monetary amount when accompanied by a
+							specification of the currency, in which case the value specifies
+							the amount in that currency. An AmountType expresses both the value
+							(a double) and the currency. Details such as prices, fees, costs,
+							and payments are specified as amount types.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:double">
+            <xs:attribute name="duration" type="tns:RentalDurationType">
+              <xs:annotation>
+                <xs:documentation>
+										The amount of time for which the item will be rented out.
+									</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>findHalfItems</CallName>
+                    <Returned>Conditional</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="currencyId" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+										Currency in which the monetary amount is specified.
+									</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <CallName>findHalfItems</CallName>
+                    <Returned>Conditional</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:complexType name="NameValueListType">
+        <xs:annotation>
+          <xs:documentation>
+							A name and corresponding value (a name/value pair).
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The name of the item specific.
+									&lt;br&gt;
+									&lt;br&gt;
+									This field is returned only in responses if the seller included an item specific
+									Name in the listing. However, if the seller didn't also include a corresponding
+									value for the item specific, it is best to not display the name to name to avoid
+									confusing users.
+									&lt;br&gt;
+									&lt;br&gt;
+									For the item condition, this usually includes the word "Condition" for eBay US,
+									UK, Australia, and India listings; and "Artikelzustand" for eBay Germany, Austria,
+									and Switzerland listings.
+									&lt;br&gt;
+									&lt;br&gt;
+									&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt;
+										Ignore item specifics with SIFFTAS in the name. These are for internal use by
+										eBay and aren't meaningful to users.
+									&lt;/span&gt;
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									A value for the item specific.
+									&lt;br&gt;
+									&lt;br&gt;
+									This field is only returned in responses if the seller included a value
+									for an item specific. In the GetSingleItem response, this field is always
+									returned for each item specific that is returned (if any). However,
+									if the seller didn't select a value for the item specific,
+									this field may return empty, or it may return a value like "-",
+									"Not Selected", or "Unspecified" (or the equivalent in the language
+									of the site).
+									&lt;br&gt;
+									&lt;br&gt;
+									For the item condition, this usually includes the
+									word "New" or "Used" for eBay US, UK, Australia, and India listings;
+									and "Neu" or "Gebraucht" for eBay Germany, Austria, and Switzerland
+									listings.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <!--xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/-->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NameValueListArrayType">
+        <xs:annotation>
+          <xs:documentation>
+							A list of one or more valid names and corresponding values.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="nameValueList" type="tns:NameValueListType">
+            <xs:annotation>
+              <xs:documentation>
+									This list is an array of Item Specifics, which are category-specific 
+									fields that the seller added to describe the listing. The names of 
+									these fields are different for items in different categories, so 
+									they're returned in a generic name/value structure.
+									&lt;br&gt;&lt;br&gt;
+									For example, Item Specifics for a car might include a field like
+									Make=Toyota (where Make is returned in Name, and Toyota is returned 
+									in Value) and Model=Prius (where Model is returned in Name, and 
+									Prius is returned in Value).&lt;br&gt;
+									&lt;br&gt;
+									In multi-variation listings, the same name cannot appear in both
+									the VariationSpecifics node and in the ItemSpecifics node.
+									&lt;br&gt;&lt;br&gt;
+									For FindProducts, this can also be an Item Specific that is defined 
+									for a product. That is, Item Specifics can be returned both for
+									items and products in FindProducts.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemType">
+        <xs:annotation>
+          <xs:documentation>
+							Contains summary data for an item listing
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="itemID" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The ID that uniquely identifies the item listing on Half.com
+								</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>19 (Note: The eBay database specifies 38. Currently, Item IDs are usually 9 to 12 digits)</MaxLength>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="itemURL" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+									The URL to view this listing on half.com. This URL is optimized to support natural
+									search.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="quantity" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									The number of items the seller is offering in the listing. 
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="seller" type="tns:UserType">
+            <xs:annotation>
+              <xs:documentation>
+									Container for information about this listing's seller.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="price" type="tns:Amount">
+            <xs:annotation>
+              <xs:documentation>
+									The current price of the item in the currency of the site on which the item is
+									listed. That is, CurrentPrice is in the original listing currency.									
+									&lt;br /&gt;&lt;br /&gt;
+									This field is not returned if the item is a rental (ItemFilter.name is set
+									to Rental).
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="rentalPrice" type="tns:RentalAmount">
+            <xs:annotation>
+              <xs:documentation>
+									The price of the rental item in the currency of the site on which the item is listed.
+									&lt;br /&gt;&lt;br /&gt;
+									This field is returned if the item is available as a rental item. Currently, only
+									items in the Books catalog are eligible as rental items.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="shippingService" type="tns:ShippingServiceOptionsType">
+            <xs:annotation>
+              <xs:documentation>
+									Contains basic shipping-related costs for the item. If Item.Quantity
+									is greater than 1, this is the shipping cost for one item.
+									If the seller offers a choice of more than one shipping service
+									(such as UPS Ground and USPS Media mail), this is the cost of the
+									"first" shipping option (usually the lowest cost option).
+									&lt;br&gt;
+									&lt;br&gt;
+									If a listing has shipping costs, use GetShippingCosts if you want to get
+									more details about the services and costs that the seller is offering.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="itemLocation" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Returns the location of the item from where it will be shipped from.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="excludedShippingAreas" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Restricted Shipping Areas as entered by the seller using comma-separated locations.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="condition" type="tns:HalfItemConditionCodeType">
+            <xs:annotation>
+              <xs:documentation>
+									Returns the Half.com condition code for the item. For example, "brand new,"
+									"used," etc.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="comments" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Comments about the item as entered by the seller.
+								</xs:documentation>
+              <xs:appinfo>
+                <min/>
+                <max/>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Description about the item as entered by the seller.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="storefront" type="tns:StorefrontType">
+            <xs:annotation>
+              <xs:documentation>
+									Returns the seller's store information if the seller has an eBay store.
+									Returns a blank store if the seller does not have an eBay storefront.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <!--xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/-->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UserType">
+        <xs:annotation>
+          <xs:documentation>
+							Type to contain the data for one eBay user. 
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userID" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The user's unique eBay user ID.									
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="feedbackScore" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									The aggregate feedback score of a user. A user's feedback score is the net
+									positive feedback minus the net negative feedback left for the user.
+									&lt;br&gt;
+									&lt;br&gt;
+									Feedback scores are a quantitative expression of the desirability of dealing with
+									a user as a buyer or a seller in transactions. Each transaction can result in one
+									feedback entry for a given user. (The buyer can leave feedback for the seller, and
+									the seller can leave feedback for the buyer.) That one feedback can be positive,
+									negative, or neutral. The aggregate feedback score of a user represents that
+									user's overall feedback score (referred to as a "feedback rating" on the eBay
+									site). If the user has chosen to make their feedback private, then FeedbackScore
+									is not returned and FeedbackPrivate is returned with a value of true.									
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="positiveFeedbackPercent" type="xs:float">
+            <xs:annotation>
+              <xs:documentation>
+									A seller's positive feedback score. The percentage value of a seller's
+									positive feedback is calculated by dividing the seller's positive feedback
+									score by their negative feedback score. The last 12 months of feedback
+									scores are taken into consideration for this calculation.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <!--xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/-->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingServiceOptionsType">
+        <xs:annotation>
+          <xs:documentation>
+							Shipping costs and options related to a domestic shipping service.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="type" type="tns:type">
+            <xs:annotation>
+              <xs:documentation>
+									A domestic shipping service offered for shipping the item (for example, UPS
+									Ground).								
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="cost" type="tns:Amount">
+            <xs:annotation>
+              <xs:documentation>
+									The cost of shippping for the service as fixed by Half.com.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="expeditedService" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>
+									Indicates an expedited shipping service.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StorefrontType">
+        <xs:annotation>
+          <xs:documentation>
+							Contains information related to the item in the context of
+							a seller's Half.com Store. 
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="storeURL" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+									The URL of the seller's Half.com Store page. Not returned if the seller does not
+									have a store.									
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="storeName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The name of the sellerId's store on Half.com. Not returned if the seller does not
+									have a store.
+								</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>200</MaxLength>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="HalfCatalogProductType">
+        <xs:annotation>
+          <xs:documentation>
+						Information about an Half.com catalog product.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="title" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The title of the product as specified in the catalog.
+									Always returned when Product is returned.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="detailsURL" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+									Fully qualified URL for optional information about the product,
+									such as a movie's description or film credits. This information
+									is hosted through the Half.com Web site and it cannot be edited.
+									Portions of the content are protected by copyright.
+									Applications can include this URL as a link in product search results
+									so that end users can view additional descriptive details about
+									the product. This is usually always returned when Product is returned,
+									but it may be safest to check for the existence of this field.									
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="stockPhotoURL" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>
+									Fully qualified URL for a stock image (if any) that is associated
+									with the Half.com catalog product. The URL is for the image Half.com
+									usually displays in product search results (usually 70px tall).
+									It may be helpful to calculate the dimensions of the photo
+									programmatically before displaying it.
+									Only returned if a URL is available for the product.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="productID" type="tns:ProductIDType">
+            <xs:annotation>
+              <xs:documentation>
+									The Half.com or external IDs associated with the product. Use the Reference
+									value as input to search for the same product in the future, or
+									use the ISBN, EAN, or UPC value (if returned).
+									The ISBN, EAN, and UPC values can also be useful as keys
+									if your application is comparing products across different sites.
+									Always returned when Product is returned.			
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="categoryName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									The name of the domain in which the product was found.
+									If the product is mapped to multiple domains, Half.com returns
+									the most applicable domain (as determined by Half.com).									
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="itemSpecifics" type="tns:NameValueListArrayType">
+            <xs:annotation>
+              <xs:documentation>
+									A list of name/value pairs that are included in the product's
+									pre-filled Item Specifics. These indicate common aspects or
+									characteristics of the product, such as Publisher (for a book).
+									Also see ProductID for ISBN, UPC, or EAN values, if applicable.
+									This is usually returned. (We are not aware of any cases in which this
+									node is not be returned. However, it may be safest to check for the
+									existence of this node.)
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="item" type="tns:ItemType">
+            <xs:annotation>
+              <xs:documentation>
+									Contains data for an item listing.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="1" name="listPrice" type="tns:Amount">
+            <xs:annotation>
+              <xs:documentation>
+									The list price (suggested retail price) of the item.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="reviewCount" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+									The total number of reviews that are available for this product
+									on the Half.com Web site. This can be greater than the number of
+									reviews returned by FindProducts. In a future release, we will provide
+									the capability to retrieve details about reviews.
+									Always returned when Product is returned.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Min>0</Min>
+                  <Max/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="BestFixedPrice" type="tns:Amount">
+            <xs:annotation>
+              <xs:documentation>
+									The lowest fixed price that the item is offered for on the site.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" minOccurs="0" name="BestRentalPrice" type="tns:Amount">
+            <xs:annotation>
+              <xs:documentation>
+									The lowest price for which the item is offered for rent, at a 125 day duration, on the site.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <!--xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/-->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemFilter">
+        <xs:annotation>
+          <xs:documentation>
+							The filter criteria for fetching the items for the specified product.
+						</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="name" type="tns:ItemFilterType">
+            <xs:annotation>
+              <xs:documentation>
+									The item filter as selected from ItemFilterType enumeration list.
+								</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="1" name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+									Value on which to filter the returned items with regards to the associated
+									item filter Name field. For example, if you specify Seller in the Name field,
+									use this field to specify the Seller ID whose items you to include in the response.
+									You can repeat this field to list multiple Seller IDs.
+								</xs:documentation>
+              <xs:appinfo>
+                <MaxLength/>
+                <CallInfo>
+                  <CallName>findHalfItems</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="findHalfItemsResponse">
+    <part name="params" element="tns:findHalfItemsResponse">
+    </part>
+  </message>
+  <message name="findHalfItemsRequest">
+    <part name="params" element="tns:findHalfItemsRequest">
+    </part>
+  </message>
+  <message name="getVersionRequest">
+    <part name="messageParameters" element="tns:getVersionRequest">
+    </part>
+  </message>
+  <message name="getVersionResponse">
+    <part name="messageParameters" element="tns:getVersionResponse">
+    </part>
+  </message>
+  <portType name="HalfFindingServicePort">
+    <operation name="getVersion">
+      <documentation>
+			Operation to test the health ot status of the service endpoint.
+		</documentation>
+      <input name="getVersionRequest" message="tns:getVersionRequest">
+    </input>
+      <output name="getVersionResponse" message="tns:getVersionResponse">
+    </output>
+    </operation>
+    <operation name="findHalfItems">
+      <documentation>
+			Retrieves half items for the given Product from Half.com
+		</documentation>
+      <input name="findHalfItemsRequest" message="tns:findHalfItemsRequest">
+    </input>
+      <output name="findHalfItemsResponse" message="tns:findHalfItemsResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="HalfFindingServiceSOAPBinding" type="tns:HalfFindingServicePort">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getVersion">
+      <soap12:operation soapAction="urn:getVersion" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findHalfItems">
+      <soap12:operation soapAction="urn:findHalfItems" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <binding name="HalfFindingServiceHttpBinding" type="tns:HalfFindingServicePort">
+    <http:binding verb="POST"/>
+    <operation name="getVersion">
+      <http:operation location="HalfFindingService/getVersion"/>
+      <input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </input>
+      <output>
+        <mime:content type="text/xml"/>
+      </output>
+    </operation>
+    <operation name="findHalfItems">
+      <http:operation location="HalfFindingService/findHalfItems"/>
+      <input>
+        <mime:content part="findHalfItems" type="text/xml"/>
+      </input>
+      <output>
+        <mime:content part="findHalfItems" type="text/xml"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="HalfFindingService">
+    <documentation><Version>1.2.0</Version>
+				This service provides the operation to FindHalftems for a given Product 
+			</documentation>
+    <port name="HalfFindingServiceHttpPort" binding="tns:HalfFindingServiceHttpBinding">
+      <http:address location="https://svcs.ebay.com/services/half/HalfFindingService/v1"/>
+    </port>
+    <port name="HalfFindingServiceSOAPPort" binding="tns:HalfFindingServiceSOAPBinding">
+      <soap12:address location="https://svcs.ebay.com/services/half/HalfFindingService/v1"/>
+    </port>
+  </service>
+</definitions>

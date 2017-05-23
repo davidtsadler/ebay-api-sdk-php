@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:complexType name="Cycle">
+        <xs:sequence>
+          <xs:element name="cycleType" type="ns:CycleTypeEnum"/>
+          <xs:element name="evaluationDate" type="xs:string"/>
+          <xs:element name="evaluationMonth" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CycleTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CURRENT"/>
+          <xs:enumeration value="PROJECTED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DataTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DATE"/>
+          <xs:enumeration value="NUMBER"/>
+          <xs:enumeration value="STRING"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Definition">
+        <xs:sequence>
+          <xs:element name="dataType" type="ns:DataTypeEnum"/>
+          <xs:element name="key" type="xs:string"/>
+          <xs:element name="localizedName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FilterField">
+        <xs:sequence>
+          <xs:element name="field" type="xs:string"/>
+          <xs:element name="negated" type="xs:boolean"/>
+          <xs:element name="range" type="ns:RangeValue"/>
+          <xs:element name="set" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindSellerStandardsProfilesResponse">
+        <xs:sequence>
+          <xs:element name="standardsProfiles" type="ns:StandardsProfile" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Header">
+        <xs:sequence>
+          <xs:element name="dimensionKeys" type="ns:Definition" maxOccurs="unbounded"/>
+          <xs:element name="metrics" type="ns:Definition" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Metric">
+        <xs:sequence>
+          <xs:element name="level" type="ns:StandardsLevelEnum"/>
+          <xs:element name="lookbackEndDate" type="xs:string"/>
+          <xs:element name="lookbackStartDate" type="xs:string"/>
+          <xs:element name="metricKey" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="thresholdLowerBound" type="xs:any"/>
+          <xs:element name="thresholdMetaData" type="xs:string"/>
+          <xs:element name="thresholdUpperBound" type="xs:any"/>
+          <xs:element name="type" type="ns:DataTypeEnum"/>
+          <xs:element name="value" type="xs:any"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ProgramEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="PROGRAM_DE"/>
+          <xs:enumeration value="PROGRAM_GLOBAL"/>
+          <xs:enumeration value="PROGRAM_UK"/>
+          <xs:enumeration value="PROGRAM_US"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="RangeValue">
+        <xs:sequence>
+          <xs:element name="end" type="xs:string"/>
+          <xs:element name="exclusiveEnd" type="xs:boolean"/>
+          <xs:element name="exclusiveStart" type="xs:boolean"/>
+          <xs:element name="range" type="xs:boolean"/>
+          <xs:element name="start" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Record">
+        <xs:sequence>
+          <xs:element name="dimensionValues" type="ns:Value" maxOccurs="unbounded"/>
+          <xs:element name="metricValues" type="ns:Value" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Report">
+        <xs:sequence>
+          <xs:element name="endDate" type="xs:string"/>
+          <xs:element name="header" type="ns:Header"/>
+          <xs:element name="lastUpdatedDate" type="xs:string"/>
+          <xs:element name="records" type="ns:Record" maxOccurs="unbounded"/>
+          <xs:element name="startDate" type="xs:string"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="StandardsLevelEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ABOVE_STANDARD"/>
+          <xs:enumeration value="BELOW_STANDARD"/>
+          <xs:enumeration value="TOP_RATED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="StandardsProfile">
+        <xs:sequence>
+          <xs:element name="cycle" type="ns:Cycle"/>
+          <xs:element name="defaultProgram" type="xs:boolean"/>
+          <xs:element name="evaluationReason" type="xs:string"/>
+          <xs:element name="metrics" type="ns:Metric" maxOccurs="unbounded"/>
+          <xs:element name="program" type="ns:ProgramEnum"/>
+          <xs:element name="standardsLevel" type="ns:StandardsLevelEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Value">
+        <xs:sequence>
+          <xs:element name="applicable" type="xs:boolean"/>
+          <xs:element name="value" type="xs:any"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetASpecificSellerProfileRestRequest" type="ns:GetASpecificSellerProfileRestRequest"/>
+      <xs:element name="GetASpecificSellerProfileRestResponse" type="ns:GetASpecificSellerProfileRestResponse"/>
+      <xs:complexType name="GetASpecificSellerProfileRestRequest">
+        <xs:sequence>
+          <xs:element name="cycle" type="xs:string" valid="string" required="true"/>
+          <xs:element name="program" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetASpecificSellerProfileRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:StandardsProfile">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAllSellerProfilesRestResponse" type="ns:GetAllSellerProfilesRestResponse"/>
+      <xs:complexType name="GetAllSellerProfilesRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:FindSellerStandardsProfilesResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetTrafficReportRestRequest" type="ns:GetTrafficReportRestRequest"/>
+      <xs:element name="GetTrafficReportRestResponse" type="ns:GetTrafficReportRestResponse"/>
+      <xs:complexType name="GetTrafficReportRestRequest">
+        <xs:sequence>
+          <xs:element name="dimension" type="xs:string" valid="string" required="true"/>
+          <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="metric" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetTrafficReportRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Report">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="GetASpecificSellerProfile" method="GET" resource="seller_standards_profile/{program}/{cycle}">
+      <wsdl:input message="ns:GetASpecificSellerProfileRestRequest"/>
+      <wsdl:output message="ns:GetASpecificSellerProfileRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAllSellerProfiles" method="GET" resource="seller_standards_profile">
+      <wsdl:output message="ns:GetAllSellerProfilesRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetTrafficReport" method="GET" resource="traffic_report">
+      <wsdl:input message="ns:GetTrafficReportRestRequest"/>
+      <wsdl:output message="ns:GetTrafficReportRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

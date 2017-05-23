@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.ebay.com/marketplace/services" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="FileTransferService" targetNamespace="http://www.ebay.com/marketplace/services">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://www.ebay.com/marketplace/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ebay.com/marketplace/services">
+      <xs:element name="uploadFileRequest" nillable="true" type="tns:UploadFileRequest"/>
+      <xs:element name="uploadFileResponse" nillable="true" type="tns:UploadFileResponse"/>
+      <xs:element name="downloadFileRequest" nillable="true" type="tns:DownloadFileRequest"/>
+      <xs:element name="downloadFileResponse" nillable="true" type="tns:DownloadFileResponse"/>
+      <xs:complexType name="UploadFileRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Transfers a data file to one of eBay's servers. After your
+			application makes this call, it needs to make the Bulk Data Exchange
+			'StartUploadJob' call so the data can be processed.
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Transfers a data file to one of eBay's servers.
+			</Summary>
+            <TempInfo>samples</TempInfo>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="taskReferenceId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+							This is an external identifier used by a service that interacts with the
+							File Transfer Service.
+							&lt;br&gt;&lt;br&gt;
+							For instance, the Bulk Data Exchange Service uses a job ID as a primary 
+							identifier, so, if you're using the Bulk Data Exchange Service, enter the 
+							job ID as the taskReferenceId.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>uploadFile</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="fileReferenceId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+							A unique ID assigned to a file by the Bulk Data Exchange service
+							when createUploadJobRequest is called.
+							&lt;br&gt;
+							&lt;br&gt;
+							Pass the fileReferenceId into a File Transfer service uploadFile call.
+							The File Transfer Service uses this identifier to
+							keep track of the files that are uploaded.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>uploadFile</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="fileFormat" type="xs:token">
+                <xs:annotation>
+                  <xs:documentation>
+							Specifies the format of the file being uploaded.
+							&lt;dl&gt;
+							&lt;dt&gt;
+											gzip
+							&lt;/dt&gt;
+							&lt;dd&gt;
+											It specifies that the file to be uploaded is in gzip format
+							&lt;/dd&gt;
+							&lt;dt&gt;
+											zip
+							&lt;/dt&gt;
+							&lt;dd&gt;
+											It specifies that the file to be uploaded is in zip format.
+							&lt;/dd&gt;
+							&lt;/dl&gt;
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>uploadFile</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="fileAttachment" type="tns:FileAttachment">
+                <xs:annotation>
+                  <xs:documentation>
+							The zipped report file that is encoded in Base64 Binary format and included
+							in the request according to the SOAP MTOM standard.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>uploadFile</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DownloadFileRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Downloads a file (typically a report) from eBay.
+			&lt;/p&gt;
+			&lt;h3&gt;Using downloadFile with the Bulk Data Exchange API&lt;/h3&gt;
+			&lt;p&gt;If you are using Large Merchant Services, the most
+			common uses of this call are to download responses to large-volume
+			requests and to download reports.&lt;/p&gt;
+			&lt;p&gt;After you have uploaded a data file that includes requests
+			(such as multiple AddFixedPriceItem requests),
+			you need to use the BDX getStatus call to determine when a response
+			file is ready to download. After the BDX upload processing is complete,
+			you call downloadFile to retrieve the response.
+			&lt;br&gt;&lt;br&gt;
+			To get a report, you begin by using the Bulk Data Exchange API's
+			startDownloadJob call, and then use startDownloadJob to start the
+			report processing.
+			&lt;br&gt;&lt;br&gt;
+			The Bulk Data Exchange API assigns a jobId for your report and
+			you need to use the BDX getStatus call to determine when the report is ready to download.
+			After the BDX download processing is complete, your application can call
+			downloadFile to download the report.&lt;/p&gt;
+			&lt;h3&gt;Using downloadFile for Custom Item Specifics&lt;/h3&gt;
+			&lt;p&gt;You can also use downloadFile to download recommendations
+			for custom Item Specifics. This is a very large data set that
+			can't be retrieved through a more traditional synchronous call. &lt;br&gt;
+			&lt;br&gt;
+			You do not use the Bulk Data Exchange API at all for this use case.
+			(You also do not use uploadFile.)
+			Instead, you call GetCategorySpecifics in the Trading API to obtain
+		  the necessary file and task reference IDs, and then pass them in
+		  the downloadFile call to retrieve the recommendations file.
+		  See
+		  &lt;a href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategorySpecifics.html#downloadFile"&gt;GetCategorySpecifics&lt;/a&gt;
+		  for details.&lt;/p&gt;
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Transfers the report information from one of eBay's servers.
+			</Summary>
+            <TempInfo>samples</TempInfo>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="taskReferenceId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+							This is ID is determimed by a service (or API) that interacts with the
+							File Transfer API.
+							&lt;br&gt;&lt;br&gt;
+							For instance, the Bulk Data Exchange API uses a job ID as a primary
+							identifier, so, if you're using the Bulk Data Exchange API, enter the
+							job ID as the taskReferenceId.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>downloadFile</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="fileReferenceId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+							A unique Id assigned to a file. For example, the Bulk Data Exchange API
+							assigns this ID to a file when startDownloadJob is called and then it
+							creates the file.
+							&lt;br&gt;lt;br&gt;
+							Pass the fileReferenceId into a File Transfer service downloadFile call.
+							The File Transfer API uses this identifier to
+							keep track of the files that are downloaded.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>downloadFile</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UploadFileResponse">
+        <xs:annotation>
+          <xs:documentation>
+			Indicates the success or failure of transferring the data file to one of eBay's
+			servers.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+			</xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DownloadFileResponse">
+        <xs:annotation>
+          <xs:documentation>
+		Indicates the success or failure of transferring the report information to the seller's application.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="fileAttachment" type="tns:FileAttachment">
+                <xs:annotation>
+                  <xs:documentation>
+							A zipped report file that is encoded in Base64 Binary format and included
+							in the response according to the SOAP MTOM standard.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>downloadFile</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseServiceRequest">
+        <xs:annotation>
+          <xs:documentation>
+		This is the base class for the request container for all service operations.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseServiceResponse">
+        <xs:annotation>
+          <xs:documentation>
+			Base response container for all service operations. Contains error information
+			associated with the request.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="ack" type="tns:AckValue">
+            <xs:annotation>
+              <xs:documentation>
+					Indicates the success or failure of transferring data to eBay's servers.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="errorMessage" type="tns:ErrorMessage">
+            <xs:annotation>
+              <xs:documentation>
+					Information for an error or warning that occurred when eBay processed the
+					request.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="version" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+					The version of the schema that your WSDL is based on.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="timestamp" type="xs:dateTime" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+					The date and time that the response was sent.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AckValue">
+        <xs:annotation>
+          <xs:documentation>
+			Indicates whether the error is a severe error (causing the request to fail)
+			or an informational error (a warning) that should be communicated to the
+			user.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Success">
+            <xs:annotation>
+              <xs:documentation>
+					The request was processed successfully, but something occurred that may
+					affect your application or the user.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Failure">
+            <xs:annotation>
+              <xs:documentation>
+					The request that triggered the error was not processed successfully.
+					When a serious application-level error occurs, the error is returned
+					instead of the business data.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+					The request that triggered the error was processed successfully but with some
+					warnings.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PartialFailure">
+            <xs:annotation>
+              <xs:documentation>
+					The request that triggered the error was processed successfully but there is
+					some error in the application or data.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ErrorMessage">
+        <xs:annotation>
+          <xs:documentation>
+			ErrorMessage to indicate any Error/Warning that occurred as part of the service
+			call. Runtime errors will not be reported here, but will be reported as SOAP errors.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="error" nillable="true" type="tns:ErrorData">
+            <xs:annotation>
+              <xs:documentation>
+					Details about a single error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorData">
+        <xs:annotation>
+          <xs:documentation>
+			Error details.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="errorId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>
+					A unique code that identifies the particular error condition that occurred.
+					Your application can use error codes as identifiers in your customized
+					error-handling algorithms.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="domain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					Name of the domain upon which the error occurred.
+					&lt;dl&gt;
+					&lt;lh&gt;Domains include:&lt;/lh&gt;
+					&lt;dt&gt;
+						Marketplace
+					&lt;/dt&gt;
+					&lt;dd&gt;
+						A business or validation error occurred for the Merchandising Service.
+					&lt;/dd&gt;
+					&lt;dt&gt;
+						SOA
+					&lt;/dt&gt;
+					&lt;dd&gt;
+						An exception occurred in the Service Oriented Architecture (SOA) framework.
+					&lt;/dd&gt;
+					&lt;/dl&gt;
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="severity" type="tns:ErrorSeverity">
+            <xs:annotation>
+              <xs:documentation>
+					Indicates whether the error caused the request to fail (Error) or not
+					(Warning).
+					&lt;br&gt;&lt;br&gt;
+					If the request fails and the source of the problem is within the application
+					(such as a missing required element), please change the application before you
+					retry the request. If the problem is due to end-user input data, please alert
+					the end-user to the problem and provide the means for them to correct the data.
+					Once the problem in the application or data is resolved, you can attempt to re-
+					send the request to eBay.
+					&lt;br&gt;&lt;br&gt;
+					If the source of the problem is on eBay's side, you can retry the request as-is
+					a reasonable number of times (eBay recommends twice). If the error persists,
+					contact Developer Technical Support. Once the problem has been resolved, the
+					request may be resent in its original form.
+					&lt;br&gt;&lt;br&gt;
+					When a warning occurs, the error is returned in addition to the business data.
+					In this case, you do not need to retry the request (as the original request was
+					successful). However, depending on the cause or nature of the warning, you
+					might need to contact either the end user or eBay to effect a long term
+					solution to the problem to prevent it from reoccurring in the future.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="category" type="tns:ErrorCategory">
+            <xs:annotation>
+              <xs:documentation>
+					There are three categories of errors: request errors, application errors, and
+					system errors.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="message" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					A detailed description of the condition that resulted in the error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="subdomain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					Name of the subdomain upon which the error occurred.
+						&lt;dl&gt;
+						&lt;lh&gt;Subdomains include:&lt;/lh&gt;
+						&lt;dt&gt;
+							Merchandising
+						&lt;/dt&gt;
+						&lt;dd&gt;
+							The error is specific to the Merchandising service.
+						&lt;/dd&gt;
+						&lt;dt&gt;
+							MarketplaceCommon
+						&lt;/dt&gt;
+						&lt;dd&gt;
+							The error is common to all Marketplace services.
+						&lt;/dd&gt;
+						&lt;/dl&gt;
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="exceptionId" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+				Unique identifier for an exception associated with an error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="parameter" nillable="true" type="tns:ErrorParameter">
+            <xs:annotation>
+              <xs:documentation>
+					Some warning and error messages return one or more variables that contain
+					contextual information about the error. This is often the field or value that
+					triggered the error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameter">
+        <xs:annotation>
+          <xs:documentation>
+		Contextual information associated with an error.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+						The name of the parameter in the list of parameter types returned
+						within the error type.
+					</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <AllCalls/>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="ErrorSeverity">
+        <xs:annotation>
+          <xs:documentation>
+			Indicates whether the error is a severe error (causing the request to fail)
+			or an informational error (a warning) that should be communicated to the
+			user.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Error">
+            <xs:annotation>
+              <xs:documentation>
+					The request that triggered the error was not processed successfully.
+					When a serious application-level error occurs, the error is returned
+					instead of the business data.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+					The request was processed successfully, but something occurred that may
+					affect your application or the user. For example, eBay may have changed a
+					value the user sent in. In this case, eBay returns a normal, successful
+					response and also returns the warning.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ErrorCategory">
+        <xs:annotation>
+          <xs:documentation>
+			There are three categories of error: request errors, application errors,
+			and system errors. Request and application errors are caused primarily by
+			invalid data passed in the request. System errors are caused by
+			application failures and cannot be corrected by changing request values.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="System">
+            <xs:annotation>
+              <xs:documentation>
+					Indicates that an error has occurred on the eBay system side, such as a
+					database or server outage. An application can retry the request a
+					reasonable number of times (eBay recommends twice). If the error
+					persists, contact Developer Technical Support. Once the problem has been
+					resolved, the request may be resent in its original form.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Application">
+            <xs:annotation>
+              <xs:documentation>
+					An error occurred due to a problem with the request, such as missing or
+					invalid fields. The problem must be corrected before the request can be
+					made again. If the problem is due to something in the application (such
+					as a missing required field), the application must be changed. Once the
+					problem in the application or data is resolved, resend the corrected
+					request to eBay.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Request">
+            <xs:annotation>
+              <xs:documentation>
+					An error occurred due to a problem with the request, such as invalid or
+					missing data. The problem must be corrected before the request can be
+					made again. If the problem is a result of end-user data, the application
+					must alert the end-user to the problem and provide the means for the
+					end-user to correct the data. Once the problem in the data is resolved,
+					resend the request to eBay with the corrected data.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="FileAttachment">
+        <xs:annotation>
+          <xs:documentation>
+			The zipped report file that is encoded in Base64 Binary format and included in the
+			request according to the SOAP MTOM standard.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Size" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>
+					This is the size of the file you are attaching (that contains the Merchant Data API
+					or Trading API requests that you want to upload) or of the file you are receiving
+					as a download.
+					&lt;br&gt;&lt;br&gt;
+					The default maximum size for a
+					data file attachment in the File Transfer uploadJob call is 15MB,
+					If you have a large call limit and you want to send more calls than would fit in
+					a 15MB file, you will have to divide your data into multiple uploads.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>uploadFile</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>downloadFile</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Data" type="xs:base64Binary" xmime:expectedContentTypes="application/any">
+            <xs:annotation>
+              <xs:documentation>
+					The data in the attached file. When this is returned in
+					downloadFile and you are working with Large Merchant Services or
+					GetCategorySpecifics, the attached file is a .zip file.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>uploadFile</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>downloadFile</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="uploadFileResponse">
+    <wsdl:part name="params" element="tns:uploadFileResponse">
+		</wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="downloadFileRequest">
+    <wsdl:part name="params" element="tns:downloadFileRequest">
+		</wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="downloadFileResponse">
+    <wsdl:part name="params" element="tns:downloadFileResponse">
+		</wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadFileRequest">
+    <wsdl:part name="params" element="tns:uploadFileRequest">
+		</wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FileTransferServicePort">
+    <wsdl:operation name="uploadFile">
+      <wsdl:input message="tns:uploadFileRequest">
+		</wsdl:input>
+      <wsdl:output message="tns:uploadFileResponse">
+		</wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <wsdl:input message="tns:downloadFileRequest">
+		</wsdl:input>
+      <wsdl:output message="tns:downloadFileResponse">
+		</wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FileTransferServiceHttpBinding" type="tns:FileTransferServicePort">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="uploadFile">
+      <http:operation location="FileTransferService/uploadFile"/>
+      <wsdl:input>
+        <mime:content part="uploadFile" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="uploadFile" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <http:operation location="FileTransferService/downloadFile"/>
+      <wsdl:input>
+        <mime:content part="downloadFile" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="downloadFile" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FileTransferServiceSOAPBinding" type="tns:FileTransferServicePort">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="uploadFile">
+      <soap12:operation soapAction="urn:uploadFile" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <soap12:operation soapAction="urn:downloadFile" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileTransferService">
+    <wsdl:documentation>
+      <Version>1.1.0</Version>
+    </wsdl:documentation>
+    <wsdl:port name="FileTransferServiceSOAP" binding="tns:FileTransferServiceSOAPBinding">
+      <soap12:address location="https://storage.ebay.com/FileTransferService"/>
+    </wsdl:port>
+    <wsdl:port name="FileTransferServiceHttp" binding="tns:FileTransferServiceHttpBinding">
+      <http:address location="https://storage.ebay.com/FileTransferService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

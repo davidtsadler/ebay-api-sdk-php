@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.ebay.com/marketplace/services" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="FeedbackService" targetNamespace="http://www.ebay.com/marketplace/services">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://www.ebay.com/marketplace/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ebay.com/marketplace/services">
+      <xs:element name="createDSRSummaryByTransactionRequest" type="tns:CreateDSRSummaryByTransactionRequest"/>
+      <xs:element name="createDSRSummaryResponse" type="tns:CreateDSRSummaryResponse"/>
+      <xs:element name="createDSRSummaryByPeriodRequest" type="tns:CreateDSRSummaryByPeriodRequest"/>
+      <xs:element name="createDSRSummaryByCategoryRequest" type="tns:CreateDSRSummaryByCategoryRequest"/>
+      <xs:element name="createDSRSummaryByShippingDetailRequest" type="tns:CreateDSRSummaryByShippingDetailRequest"/>
+      <xs:element name="getDSRSummaryRequest" type="tns:GetDSRSummaryRequest"/>
+      <xs:element name="getDSRSummaryResponse" type="tns:GetDSRSummaryResponse"/>
+      <xs:complexType abstract="true" name="BaseServiceRequest">
+        <xs:annotation>
+          <xs:documentation>
+			This is the base class for all requests.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateDSRSummaryByTransactionRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Creates a Detailed Seller Ratings (DSR) summary report based on a specific list
+			of transactions for the seller for which the call is made (and not for any other
+			seller). A transactions is specified as a combination of tem ID and transaction ID.
+			Sellers can use this call to retrieve DSR data for specific types of inventory,
+			such as items associated with a promotional sale or items from a specific
+			manufacturer or supplier.
+			&lt;br&gt;&lt;br&gt;
+			This call provides flexibility. The seller supplies the list of
+			transactions and can determine the list using whatever criteria he wishes.
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Creates a seller's DSR summary report for sold items specified with transaction
+				information.
+			</Summary>
+            <RelatedCalls>getDSRSummary</RelatedCalls>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="transactionKey" type="tns:TransactionKey">
+                <xs:annotation>
+                  <xs:documentation>
+							The transactionKey consists of a combination of an item ID and a
+							transaction ID. This combination uniquely identifies a given transaction.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>10,000</MaxOccurs>
+                    <MinOccurs>10</MinOccurs>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByTransaction</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateDSRSummaryByPeriodRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Creates a Detailed Seller Ratings (DSR) summary report based on a date range.
+			The date range is based on either transaction end dates or listing dates.
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Creates a seller's DSR summary report for sold items based on a date range.
+			</Summary>
+            <RelatedCalls>getDSRSummary</RelatedCalls>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element name="dateRange" type="tns:DateRange" minOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+							Specifies the time period used for collecting DSR data for purchased
+							items. The time period applies to either the end date of the item
+							transaction or the date the item was listed.
+							&lt;br&gt;&lt;br&gt;
+							Note the following restrictions when specifying a date range:
+							&lt;ul&gt;
+							&lt;li&gt;Date ranges cannot be more than 90 days in duration or the call
+							will fail.&lt;/li&gt;
+							&lt;li&gt;Date ranges cannot be specified to begin more than 16 months
+							before the current date or the call will fail. &lt;/li&gt;
+							&lt;li&gt;When retriiving DSR summary reports for a date range, if there
+							are more than 5,000 transanctions in the time period, only the 5,000 most
+							recent transactions will be processed and a warning will be returned. &lt;
+							/li&gt;
+							&lt;/ul&gt;
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByPeriod</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="dateRangeEventType" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+							Type of item event upon which the date range will be based.
+							&lt;br&gt;&lt;br&gt;
+							Date Range Event Types include:
+							&lt;dl&gt;
+							&lt;dt&gt;
+								TransactionEndDate
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The specified date range relates to the date transactions were ended.
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								ListingDate
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The specified date range relates to the date items were listed.
+							&lt;/dd&gt;
+							&lt;/dl&gt;
+						</xs:documentation>
+                  <xs:appinfo>
+                    <Default>TransactionEndDate</Default>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByPeriod</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateDSRSummaryByCategoryRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Creates a Detailed Seller Ratings (DSR) summary report based on the category
+			or categories items were listed in and a date range. Specified categories can be
+			either leaf categories or parent categories.
+			Date range can be by transaction end date or by listing date
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Creates a seller's DSR summary report for sold items based on the categories
+				they were listed in and a date range.
+			</Summary>
+            <RelatedCalls>getDSRSummary</RelatedCalls>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element name="dateRange" type="tns:DateRange" minOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+							Specifies the time period used for collecting DSR data for purchased
+							items. The time period applies to either the end date of the item
+							transaction or the date the item was listed.
+							&lt;br&gt;&lt;br&gt;
+							The date range must not exceed 90 days and must not start more than 16
+							months before the current date.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByCategory</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="dateRangeEventType" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+							Type of item event upon which the date range will be based.
+							&lt;br&gt;&lt;br&gt;
+							Date Range Event Types include:
+
+							&lt;dl&gt;
+							&lt;dt&gt;
+								TransactionEndDate
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The specified date range relates to the date transactions were ended.
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								ListingDate
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The specified date range relates to the date items were listed.
+							&lt;/dd&gt;
+							&lt;/dl&gt;
+						</xs:documentation>
+                  <xs:appinfo>
+                    <Default>TransactionEndDate</Default>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByCategory</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="categoryId" type="xs:string" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+							DSR summary report will be based on DSRs left for items that
+							were listed in specified categories only.
+							&lt;br&gt;&lt;br&gt;
+							Category IDs are site-specific. If a specified category ID doesn't
+							match an existing category for the site, an invalid-category warning
+							message is returned. To determine valid categories, you can use either
+							the Shopping API or the Trading API. In the Shopping API, use the &lt;a
+							href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindItemsAdvanced.html"&gt;
+							FindItemsAdvanced&lt;/a&gt; call with the CategoryHistogram value in the
+							IncludeSelector field to retrieve matching category information. In the
+							Trading API, use calls like &lt;a
+							href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategories.html"&gt;
+							GetCategories&lt;/a&gt; and &lt;a
+							href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html"&gt;
+							GetCategoryFeatures&lt;/a&gt; to determine valid values for the site.
+							&lt;br&gt;&lt;br&gt;
+							If you specify more than 30 categories, only the first 30 will be used.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>30</MaxOccurs>
+                    <MinOccurs>1</MinOccurs>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByCategory</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateDSRSummaryByShippingDetailRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Creates a Detailed Seller Ratings (DSR) report based on a date range.
+			In the call request, you can include shipping information (e.g. the service used to ship the items)
+			or, for some countries, a buyer-country-of-residence.
+			The date range can be by transaction-end-date or by listing-date.
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Creates a seller's DSR summary report for sold items based on shipping details
+				for the items and a date range.
+			</Summary>
+            <RelatedCalls>getDSRSummary</RelatedCalls>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element name="dateRange" type="tns:DateRange" minOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+							Specifies the time period used for collecting DSR data for purchased
+							items. The time period applies to either the end date of the item
+							transaction or the date the item was listed.
+							&lt;br&gt;&lt;br&gt;
+							The date range must not exceed 90 days and must not start more than 16
+							months before the current date.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="dateRangeEventType" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+							Type of item event upon which the date range will be based.
+							&lt;br&gt;&lt;br&gt;
+							Date Range Event Types include:
+
+							&lt;dl&gt;
+							&lt;dt&gt;
+								TransactionEndDate
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The specified date range relates to the date transactions were ended.
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								ListingDate
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The specified date range relates to the date items were listed.
+							&lt;/dd&gt;
+							&lt;/dl&gt;
+						</xs:documentation>
+                  <xs:appinfo>
+                    <Default>TransactionEndDate</Default>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="shippingCostType" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+							Specifies whether to aggregate DSRs for items for which buyers did not
+							pay any shipping or handling charges or for items for which buyers were
+							charged for shipping and handling.
+							&lt;br&gt;&lt;br&gt;
+							Shipping Cost Types include:
+							&lt;dl&gt;
+							&lt;dt&gt;
+								Free
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								Limits DSRs to items for which shipping was provided free of charge.
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								Paid
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								Limits DSRs to items for which there was a charge for shipping
+								and handling.
+							&lt;/dd&gt;
+							&lt;/dl&gt;
+							&lt;br&gt;&lt;br&gt;
+							If you don't specify this field, DSRs for items for which buyers did or
+							did not pay shipping and handling charges will be aggregated.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="shippingDestinationType" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+							Specifies a limit on DSRs,
+							based on the buyer's country-of-residence
+							(not based on the shipping destination).
+							&lt;br&gt;&lt;br&gt;
+							The choices for the buyer's country-of-residence are
+							the following: Domestic for domestic, International for international,
+							US for United States, UK for the United Kingdom, and DE for Germany.
+							If you don't specify this field, this limitation does not apply.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="shipToCountry" type="xs:token" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+							The buyer's country-of-residence (not necessarily the ship-to country).
+							DSRs will be aggregated for these items only.
+							&lt;br&gt;&lt;br&gt;
+							Use the two-letter ISO 3166 country code to indicate the country.
+							For English names that correspond to each code (e.g.,
+							KY="Cayman Islands"), see the ISO site: &lt;a
+							href="http://www.iso.ch/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"&gt; http://www.iso.ch/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html&lt;/a&gt;.
+							&lt;br&gt;&lt;br&gt;
+							If you don't specify this field, no restriction on this country
+							is applied to the request.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>30</MaxOccurs>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="shippingService" type="xs:token" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+							Shipping service used to ship items. You can specify multiple shipping
+							services. DSRs will be aggregated for items that used the specified
+							shipping services only.
+							&lt;br&gt;&lt;br&gt;
+							Use one of the transaction calls in the Trading API, such as &lt;a
+							href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html"&gt;GetSellerTransactions&lt;/a&gt;
+							to determine what shipping services buyers selected (e.g.,
+							TransactionArray.Transaction.ShippingServiceSelected.ShippingService).
+							Alternatively, use &lt;a href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html"&gt;GeteBayDetails&lt;/a&gt;
+							in the Trading API with DetalName set to ShippingServiceDetails to retrieve
+							the currently supported shipping service names.
+							&lt;br&gt;&lt;br&gt;
+							If you don't specify this field, no shipping service restriction
+							applies to the request.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <MaxOccurs>30</MaxOccurs>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDSRSummaryRequest">
+        <xs:annotation>
+          <xs:documentation>
+			Retrieves a specific type of Detailed Seller Rating (DSR) report which will help a seller to determine
+			what is contributing to lower or higher DSR scores.
+			&lt;br&gt;&lt;br&gt;
+			A seller can request a report filtered by Transaction, Period, Category, or
+			Shipping Details.
+			&lt;br&gt;&lt;br&gt;
+			Input is a Request ID for a particular DSR report.
+			Output consists of a DSR average, the total number of ratings received, and a
+			count for each of the one-to-five star ratings received by a seller for each of
+			the following areas: Item As Described, Communication, Shipping Time, and
+			Shipping Charges.
+			&lt;br&gt;&lt;br&gt;
+			Note the following details for retrieving summary reports:
+			&lt;br&gt;&lt;br&gt;
+			&lt;ul&gt;
+			&lt;li&gt;Reports typically take 1 hour or less to generate and will take no longer
+			than a day to create. If you attempt to retrieve a report before it is ready, the
+			request will fail and the error message will indicate you should try again in an
+			hour. &lt;/li&gt;
+			&lt;li&gt;Reports will be held up to 7 days after being generated. The report can
+			be retrieved multiple times during that period. If you do not download a report
+			within 7 days, you must regenerate the report.&lt;/li&gt;
+			&lt;/ul&gt;
+
+		</xs:documentation>
+          <xs:appinfo>
+            <Summary>
+				Retrieves a specific type of DSR report which can be filtered by Transaction,
+				Period, Category, or Shipping Details.
+			</Summary>
+            <RelatedCalls>
+				createDSRSummaryByCategory, createDSRSummaryByPeriod, createDSRSummaryByShippingDetail, createDSRSummaryByTransaction
+			</RelatedCalls>
+            <SeeLink>
+              <Title>Detailed Seller Ratings</Title>
+              <URL>http://pages.ebay.com/help/feedback/detailed-seller-ratings.html</URL>
+              <For>more information about seller DSRs</For>
+            </SeeLink>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="jobId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+							The Request ID for a particular DSR report.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>20</MaxLength>
+                    <CallInfo>
+                      <CallName>getDSRSummary</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateDSRSummaryResponse">
+        <xs:annotation>
+          <xs:documentation>
+			Output for the create calls returns a job ID, which is used as input for the
+			GetDSRSummary call to retrieve the aggregated DSR values.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="jobId" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+							A unique identifier associated with the create report request. The jobId
+							is used as input for the getDSRSummary call to retrieve the requested
+							report.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <MaxLength>20</MaxLength>
+                    <CallInfo>
+                      <CallName>createDSRSummaryByCategory</CallName>
+                      <CallName>createDSRSummaryByPeriod</CallName>
+                      <CallName>createDSRSummaryByShippingDetail</CallName>
+                      <CallName>createDSRSummaryByTransaction</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDSRSummaryResponse">
+        <xs:annotation>
+          <xs:documentation>
+			Returns a specific type of DSR report requested by a seller.
+			&lt;br&gt;&lt;br&gt;
+			The report will include a list of detailed seller ratings for each of the
+			following areas: Item As Described, Communication, Shipping Time, and
+			Shipping Charges.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+          <xs:extension base="tns:BaseServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="DSRSummary" type="tns:DSRSummary">
+                <xs:annotation>
+                  <xs:documentation>
+							A list of detailed seller ratings for one of the following areas: Item
+							As Described, Communication, Shipping Time, and Shipping Charges. This
+							list includes a DSR average, the total number of ratings received, and a
+							count for each of the one-to-five star ratings received by a seller for a
+							particular DSR area. The detailed seller rating system is based on a one-to-five-star
+							scale. Five stars is the highest rating, and one star is the lowest.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getDSRSummary</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="totalTransactionCount" type="xs:int">
+                <xs:annotation>
+                  <xs:documentation>
+							The total number of transactions for the seller in the applicable date-range period.
+						</xs:documentation>
+                  <xs:appinfo>
+                    <CallInfo>
+                      <CallName>getDSRSummary</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TransactionKey">
+        <xs:annotation>
+          <xs:documentation>
+			Each transaction key is specified as a combination of transaction ID and item ID.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="1" name="itemId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					ID of the listing associated with the transaction for which  the seller is
+					collecting DSRs.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>createDSRSummaryByTransaction</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					Unique identifier for a transaction from the listing indicated by itemId.
+					In the Trading API, you can use &lt;a
+					href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetItemTransactions.html"&gt;
+					GetItemTransactions&lt;/a&gt; or &lt;a
+					href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html"&gt;
+					GetSellerTransactions&lt;/a&gt; to determine the appropriate transaction IDs.
+				</xs:documentation>
+              <xs:appinfo>
+                <MaxLength>
+						19 (Note: The eBay database specifies 38. Currently, transaction IDs are
+						usually 9 to 12 digits.)
+					</MaxLength>
+                <CallInfo>
+                  <CallName>createDSRSummaryByTransaction</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DateRange">
+        <xs:annotation>
+          <xs:documentation>
+			Date range for collecting DSRs. The date range is associated with either
+			transaction end dates or item listing dates.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="dateFrom" type="xs:dateTime" minOccurs="1">
+            <xs:annotation>
+              <xs:documentation>
+					The starting point of the date range. DSRs will be aggregated for
+					items with the specified date range event (transaction end date or
+					listing date) on or after the dateFrom value and before or on the
+					dateTo value.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>createDSRSummaryByCategory</CallName>
+                  <CallName>createDSRSummaryByPeriod</CallName>
+                  <CallName>createDSRSummaryByShippingDetail</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dateTo" type="xs:dateTime" minOccurs="1">
+            <xs:annotation>
+              <xs:documentation>
+					The end point of the date range. DSRs will be aggregated for
+					items with the specified date range event (transaction end date or
+					listing date) on or after the dateFrom value and before or on the
+					dateTo value.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>createDSRSummaryByCategory</CallName>
+                  <CallName>createDSRSummaryByPeriod</CallName>
+                  <CallName>createDSRSummaryByShippingDetail</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DSRSummary">
+        <xs:annotation>
+          <xs:documentation>
+			A list of detailed seller ratings for one of the following areas: Item As
+			Described, Communication, Shipping Time, and Shipping Charges. This list
+			includes a DSR average, the total number of ratings received, and a count
+			for each of the one-to-five star ratings received by a seller for a particular
+			DSR area. The detailed seller rating system is based on a one-to-five-star
+			scale. Five stars is the highest rating, and one star is the lowest.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="1" name="DSRType" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+					One of the areas in which a buyer can provide a seller a detailed seller
+					rating. The detailed seller rating system is based on a one-to-five-star
+					scale. Five stars is the highest rating, and one star is the lowest.
+					&lt;br&gt;&lt;br&gt;
+					Applicable values:
+
+					&lt;dl&gt;
+					&lt;dt&gt;ItemAsDescribed&lt;/dt&gt;
+					&lt;dd&gt;Detailed seller ratings on how well the Item Title and Description
+					actually described the item purchased by the buyer. This includes the
+					condition of the item and whether the selling terms of the item were honored
+					or not.&lt;/dd&gt;
+
+					&lt;dt&gt;Communication&lt;/dt&gt;
+					&lt;dd&gt;Detailed seller ratings on how promptly and clearly the seller
+					communicated with the buyer during the transaction. This includes how well
+					the seller responded to the buyer's emails and proactively provided order
+					status updates when needed. &lt;/dd&gt;
+
+					&lt;dt&gt;ShippingTime&lt;/dt&gt;
+					&lt;dd&gt;Detailed seller ratings on how effectively the seller set clear
+					expectations for shipping time up front in the Item Description. This
+					includes how long it took the seller to mail the item and whether the terms
+					for weekend shipping were clearly specified in the Item Description or not.
+					&lt;/dd&gt;
+
+					&lt;dt&gt;ShippingCharges&lt;/dt&gt;
+					&lt;dd&gt;Detailed seller ratings on how appropriate the shipping charges
+					and fees were in relation to the seller's time and direct costs associated
+					with packaging materials, handling, and shipping.&lt;/dd&gt;
+
+					&lt;/dl&gt;
+
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="DSRAverage" type="xs:double">
+            <xs:annotation>
+              <xs:documentation>
+					Average rating for a particular DSR area. The average rating is computed on a
+					rolling 12-month basis and has a value of 1.00 to 5.00 when at
+					least ten ratings have been received. Otherwise, the value is 0.00.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="totalRatingCount" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+					The total number of ratings a seller has received for a particular DSR area.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="rating1Count" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+					The total number of 1-star ratings received by a seller for a particular
+					DSR area.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="rating2Count" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+					The total number of 2-star ratings received by a seller for a particular
+					DSR area.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="rating3Count" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+					The total number of 3-star ratings received by a seller for a particular
+					DSR area.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="rating4Count" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+					The total number of 4-star ratings received by a seller for a particular
+					DSR area.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="rating5Count" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>
+					The total number of 5-star ratings received by a seller for a particular
+					DSR area.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <CallName>getDSRSummary</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="BaseServiceResponse">
+        <xs:annotation>
+          <xs:documentation>
+			Base response container for all service
+			operations. Contains error information
+			associated with the request.
+	</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="ack" type="tns:AckValue">
+            <xs:annotation>
+              <xs:documentation>
+					Indicates whether there are any errors or warnings associated with the
+					processing of the request.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="errorMessage" type="tns:ErrorMessage">
+            <xs:annotation>
+              <xs:documentation>
+				Information for an error or warning that occurred when eBay processed the
+				request. Not returned when responseStatus is Success.
+			</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="version" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					The version of the response payload schema. Indicates the version of the
+					schema that eBay used to process the request. Developer Technical Support
+					may ask you for the version value when you work with them to troubleshoot
+					issues.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="timestamp" type="xs:dateTime">
+            <xs:annotation>
+              <xs:documentation>
+					This value represents the date and time when eBay processed the
+					request. The time zone of this value is &lt;a
+					href="types/simpleTypes.html#dateTime"&gt;GMT&lt;/a&gt;
+					and the format is the
+					ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
+					See the "dateTime" type for information about this
+					time format and converting to and from the GMT time zone.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AckValue">
+        <xs:annotation>
+          <xs:documentation>
+			Indicates the status of the call.
+	</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Success">
+            <xs:annotation>
+              <xs:documentation>
+					The request was processed successfully without errors or warnings.
+			</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Failure">
+            <xs:annotation>
+              <xs:documentation>
+					Errors occurred that prevented the request from being processed
+					successfully.
+			</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+					The request was processed successfully, but some warnings were returned.
+			</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PartialFailure">
+            <xs:annotation>
+              <xs:documentation>
+					Reserved for future use.
+			</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ErrorMessage">
+        <xs:annotation>
+          <xs:documentation>
+			ErrorMessage to indicate any Error/Warning that occured as part of service
+			call. Any run time error will not be reported here, but will be reported as
+			part of a SOAP fault.
+	</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="error" type="tns:ErrorData">
+            <xs:annotation>
+              <xs:documentation>
+					Details about a single error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorData">
+        <xs:annotation>
+          <xs:documentation>
+			This represents error details.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="errorId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>
+					A unique code that identifies the particular error condition that occurred.
+					Your application can use error codes as identifiers in your customized
+					error-handling algorithms.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="domain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					Name of the domain upon which the error occurred.
+					&lt;br&gt;&lt;br&gt;
+					Domains include:
+
+					&lt;dl&gt;
+					&lt;dt&gt;
+						Marketplace
+					&lt;/dt&gt;
+					&lt;dd&gt;
+						A business or validation error occurred for the Feedback Service.
+					&lt;/dd&gt;
+					&lt;dt&gt;
+						SOA
+					&lt;/dt&gt;
+					&lt;dd&gt;
+						An exception occurred in the Service Oriented Architecture (SOA)
+						framework.
+					&lt;/dd&gt;
+					&lt;/dl&gt;
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="severity" type="tns:ErrorSeverity">
+            <xs:annotation>
+              <xs:documentation>
+					Indicates whether the error caused the request to fail (Error) or not
+					(Warning).
+					&lt;br&gt;&lt;br&gt;
+					If the request fails and the source of the problem is within the application
+					(such as a missing required element), please change the application before you
+					retry the request. If the problem is due to end-user input data, please alert
+					the end-user to the problem and provide the means for them to correct the data.
+					Once the problem in the application or data is resolved, you can attempt to re-
+					send the request to eBay.
+					&lt;br&gt;&lt;br&gt;
+					If the source of the problem is on eBay's side, you can retry the request as-is
+					a reasonable number of times (eBay recommends twice). If the error persists,
+					contact Developer Technical Support. Once the problem has been resolved, the
+					request may be resent in its original form.
+					&lt;br&gt;&lt;br&gt;
+					When a warning occurs, the error is returned in addition to the business data.
+					In this case, you do not need to retry the request (as the original request was
+					successful). However, depending on the cause or nature of the warning, you
+					might need to contact either the end user or eBay to effect a long term
+					solution to the problem to prevent it from reoccurring in the future.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="category" type="tns:ErrorCategory">
+            <xs:annotation>
+              <xs:documentation>
+					There are three categories of errors: request errors, application errors, and
+					system errors.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="message" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					A detailed description of the condition that resulted in the error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="subdomain" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+					Name of the subdomain upon which the error occurred.
+					&lt;br&gt;&lt;br&gt;
+					Subdomains include:
+
+					&lt;dl&gt;
+					&lt;dt&gt;
+						Merchandising
+					&lt;/dt&gt;
+					&lt;dd&gt;
+						The error is specific to the Feedback service.
+					&lt;/dd&gt;
+					&lt;dt&gt;
+						MarketplaceCommon
+					&lt;/dt&gt;
+					&lt;dd&gt;
+						The error is common to all Marketplace services.
+					&lt;/dd&gt;
+					&lt;/dl&gt;
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="exceptionId" type="xs:token">
+            <xs:annotation>
+              <xs:documentation>
+					Unique identifier for an exception associated with an error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="tns:ErrorParameter">
+            <xs:annotation>
+              <xs:documentation>
+					Some warning and error messages return one or more variables that contain
+					contextual information about the error. This is often the field or value that
+					triggered the error.
+				</xs:documentation>
+              <xs:appinfo>
+                <CallInfo>
+                  <AllCalls/>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameter">
+        <xs:annotation>
+          <xs:documentation>
+Contextual information associated with an error.
+</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>
+						The name of the parameter in the list of parameter types returned
+						within the error type.
+					</xs:documentation>
+                <xs:appinfo>
+                  <CallInfo>
+                    <AllCalls/>
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="ErrorSeverity">
+        <xs:annotation>
+          <xs:documentation>
+			Indicates whether the error is a severe error (causing the request to fail)
+			or an informational error (a warning) that should be communicated to the
+			user.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Error">
+            <xs:annotation>
+              <xs:documentation>
+					The request that triggered the error was not processed successfully.
+					When a serious application-level error occurs, the error is returned
+					instead of the business data.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Warning">
+            <xs:annotation>
+              <xs:documentation>
+					The request was processed successfully, but something occurred that may
+					affect your application or the user. For example, eBay may have changed a
+					value the user sent in. In this case, eBay returns a normal, successful
+					response and also returns the warning.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ErrorCategory">
+        <xs:annotation>
+          <xs:documentation>
+			There are three categories of error: request errors, application errors,
+			and system errors. Request and application errors are caused primarily by
+			invalid data passed in the request. System errors are caused primarily by
+			application failures and cannot be corrected by changing request values.
+		</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="System">
+            <xs:annotation>
+              <xs:documentation>
+					Indicates that an error has occurred on the eBay system side, such as a
+					database or server down. An application can retry the request as-is a
+					reasonable number of times (eBay recommends twice). If the error
+					persists, contact Developer Technical Support. Once the problem has been
+					resolved, the request may be resent in its original form.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Application">
+            <xs:annotation>
+              <xs:documentation>
+					An error occurred due to a problem with the request, such as missing or
+					invalid fields. The problem must be corrected before the request can be
+					made again. If the problem is due to something in the application (such
+					as a missing required field), the application must be changed. Once the
+					problem in the application or data is resolved, resend the corrected
+					request to eBay.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Request">
+            <xs:annotation>
+              <xs:documentation>
+					An error occurred due to a problem with the request, such as invalid or
+					missing data. The problem must be corrected before the request can be
+					made again. If the problem is a result of end-user data, the application
+					must alert the end-user to the problem and provide the means for the
+					end-user to correct the data. Once the problem in the data is resolved,
+					resend the request to eBay with the corrected data.
+				</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createDSRSummaryByTransactionRequest">
+    <wsdl:part name="inputParameters" element="tns:createDSRSummaryByTransactionRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createDSRSummaryByPeriodRequest">
+    <wsdl:part name="inputParameters" element="tns:createDSRSummaryByPeriodRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createDSRSummaryByCategoryRequest">
+    <wsdl:part name="inputParameters" element="tns:createDSRSummaryByCategoryRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createDSRSummaryByShippingDetailRequest">
+    <wsdl:part name="inputParameters" element="tns:createDSRSummaryByShippingDetailRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createDSRSummaryResponse">
+    <wsdl:part name="inputParameters" element="tns:createDSRSummaryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDSRSummaryRequest">
+    <wsdl:part name="inputParameters" element="tns:getDSRSummaryRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDSRSummaryResponse">
+    <wsdl:part name="inputParameters" element="tns:getDSRSummaryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FeedbackServicePort">
+    <wsdl:operation name="createDSRSummaryByTransaction">
+      <wsdl:input message="tns:createDSRSummaryByTransactionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createDSRSummaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDSRSummaryByPeriod">
+      <wsdl:input message="tns:createDSRSummaryByPeriodRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createDSRSummaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDSRSummaryByCategory">
+      <wsdl:input message="tns:createDSRSummaryByCategoryRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createDSRSummaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDSRSummaryByShippingDetail">
+      <wsdl:input message="tns:createDSRSummaryByShippingDetailRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createDSRSummaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDSRSummary">
+      <wsdl:input message="tns:getDSRSummaryRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDSRSummaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FeedbackServiceSOAPBinding" type="tns:FeedbackServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createDSRSummaryByTransaction">
+      <soap12:operation soapAction="urn:createDSRSummaryByTransaction" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDSRSummaryByPeriod">
+      <soap12:operation soapAction="urn:createDSRSummaryByPeriod" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDSRSummaryByCategory">
+      <soap12:operation soapAction="urn:createDSRSummaryByCategory" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDSRSummaryByShippingDetail">
+      <soap12:operation soapAction="urn:createDSRSummaryByShippingDetail" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDSRSummary">
+      <soap12:operation soapAction="urn:getDSRSummary" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FeedbackService">
+    <wsdl:documentation>
+      <Version>1.2.2</Version>
+    </wsdl:documentation>
+    <wsdl:port name="FeedbackServiceSOAPPort" binding="tns:FeedbackServiceSOAPBinding">
+      <soap12:address location="https://svcs.ebay.com/FeedbackService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

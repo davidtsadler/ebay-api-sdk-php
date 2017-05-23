@@ -1,0 +1,1467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:complexType name="Address">
+        <xs:sequence>
+          <xs:element name="addressLine1" type="xs:string"/>
+          <xs:element name="addressLine2" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="country" type="ns:CountryCodeEnum"/>
+          <xs:element name="county" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Amount">
+        <xs:sequence>
+          <xs:element name="currency" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Availability">
+        <xs:sequence>
+          <xs:element name="pickupAtLocationAvailability" type="ns:PickupAtLocationAvailability" maxOccurs="unbounded"/>
+          <xs:element name="shipToLocationAvailability" type="ns:ShipToLocationAvailability"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AvailabilityTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="IN_STOCK"/>
+          <xs:enumeration value="OUT_OF_STOCK"/>
+          <xs:enumeration value="SHIP_TO_STORE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="BaseResponse">
+        <xs:sequence>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkPriceQuantity">
+        <xs:sequence>
+          <xs:element name="requests" type="ns:PriceQuantity" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkPriceQuantityResponse">
+        <xs:sequence>
+          <xs:element name="responses" type="ns:PriceQuantityResponse" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CountryCodeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AD"/>
+          <xs:enumeration value="AE"/>
+          <xs:enumeration value="AF"/>
+          <xs:enumeration value="AG"/>
+          <xs:enumeration value="AI"/>
+          <xs:enumeration value="AL"/>
+          <xs:enumeration value="AM"/>
+          <xs:enumeration value="AN"/>
+          <xs:enumeration value="AO"/>
+          <xs:enumeration value="AQ"/>
+          <xs:enumeration value="AR"/>
+          <xs:enumeration value="AS"/>
+          <xs:enumeration value="AT"/>
+          <xs:enumeration value="AU"/>
+          <xs:enumeration value="AW"/>
+          <xs:enumeration value="AX"/>
+          <xs:enumeration value="AZ"/>
+          <xs:enumeration value="BA"/>
+          <xs:enumeration value="BB"/>
+          <xs:enumeration value="BD"/>
+          <xs:enumeration value="BE"/>
+          <xs:enumeration value="BF"/>
+          <xs:enumeration value="BG"/>
+          <xs:enumeration value="BH"/>
+          <xs:enumeration value="BI"/>
+          <xs:enumeration value="BJ"/>
+          <xs:enumeration value="BL"/>
+          <xs:enumeration value="BM"/>
+          <xs:enumeration value="BN"/>
+          <xs:enumeration value="BO"/>
+          <xs:enumeration value="BQ"/>
+          <xs:enumeration value="BR"/>
+          <xs:enumeration value="BS"/>
+          <xs:enumeration value="BT"/>
+          <xs:enumeration value="BV"/>
+          <xs:enumeration value="BW"/>
+          <xs:enumeration value="BY"/>
+          <xs:enumeration value="BZ"/>
+          <xs:enumeration value="CA"/>
+          <xs:enumeration value="CC"/>
+          <xs:enumeration value="CD"/>
+          <xs:enumeration value="CF"/>
+          <xs:enumeration value="CG"/>
+          <xs:enumeration value="CH"/>
+          <xs:enumeration value="CI"/>
+          <xs:enumeration value="CK"/>
+          <xs:enumeration value="CL"/>
+          <xs:enumeration value="CM"/>
+          <xs:enumeration value="CN"/>
+          <xs:enumeration value="CO"/>
+          <xs:enumeration value="CR"/>
+          <xs:enumeration value="CU"/>
+          <xs:enumeration value="CV"/>
+          <xs:enumeration value="CW"/>
+          <xs:enumeration value="CX"/>
+          <xs:enumeration value="CY"/>
+          <xs:enumeration value="CZ"/>
+          <xs:enumeration value="DE"/>
+          <xs:enumeration value="DJ"/>
+          <xs:enumeration value="DK"/>
+          <xs:enumeration value="DM"/>
+          <xs:enumeration value="DO"/>
+          <xs:enumeration value="DZ"/>
+          <xs:enumeration value="EC"/>
+          <xs:enumeration value="EE"/>
+          <xs:enumeration value="EG"/>
+          <xs:enumeration value="EH"/>
+          <xs:enumeration value="ER"/>
+          <xs:enumeration value="ES"/>
+          <xs:enumeration value="ET"/>
+          <xs:enumeration value="FI"/>
+          <xs:enumeration value="FJ"/>
+          <xs:enumeration value="FK"/>
+          <xs:enumeration value="FM"/>
+          <xs:enumeration value="FO"/>
+          <xs:enumeration value="FR"/>
+          <xs:enumeration value="GA"/>
+          <xs:enumeration value="GB"/>
+          <xs:enumeration value="GD"/>
+          <xs:enumeration value="GE"/>
+          <xs:enumeration value="GF"/>
+          <xs:enumeration value="GG"/>
+          <xs:enumeration value="GH"/>
+          <xs:enumeration value="GI"/>
+          <xs:enumeration value="GL"/>
+          <xs:enumeration value="GM"/>
+          <xs:enumeration value="GN"/>
+          <xs:enumeration value="GP"/>
+          <xs:enumeration value="GQ"/>
+          <xs:enumeration value="GR"/>
+          <xs:enumeration value="GS"/>
+          <xs:enumeration value="GT"/>
+          <xs:enumeration value="GU"/>
+          <xs:enumeration value="GW"/>
+          <xs:enumeration value="GY"/>
+          <xs:enumeration value="HK"/>
+          <xs:enumeration value="HM"/>
+          <xs:enumeration value="HN"/>
+          <xs:enumeration value="HR"/>
+          <xs:enumeration value="HT"/>
+          <xs:enumeration value="HU"/>
+          <xs:enumeration value="ID"/>
+          <xs:enumeration value="IE"/>
+          <xs:enumeration value="IL"/>
+          <xs:enumeration value="IM"/>
+          <xs:enumeration value="IN"/>
+          <xs:enumeration value="IO"/>
+          <xs:enumeration value="IQ"/>
+          <xs:enumeration value="IR"/>
+          <xs:enumeration value="IS"/>
+          <xs:enumeration value="IT"/>
+          <xs:enumeration value="JE"/>
+          <xs:enumeration value="JM"/>
+          <xs:enumeration value="JO"/>
+          <xs:enumeration value="JP"/>
+          <xs:enumeration value="KE"/>
+          <xs:enumeration value="KG"/>
+          <xs:enumeration value="KH"/>
+          <xs:enumeration value="KI"/>
+          <xs:enumeration value="KM"/>
+          <xs:enumeration value="KN"/>
+          <xs:enumeration value="KP"/>
+          <xs:enumeration value="KR"/>
+          <xs:enumeration value="KW"/>
+          <xs:enumeration value="KY"/>
+          <xs:enumeration value="KZ"/>
+          <xs:enumeration value="LA"/>
+          <xs:enumeration value="LB"/>
+          <xs:enumeration value="LC"/>
+          <xs:enumeration value="LI"/>
+          <xs:enumeration value="LK"/>
+          <xs:enumeration value="LR"/>
+          <xs:enumeration value="LS"/>
+          <xs:enumeration value="LT"/>
+          <xs:enumeration value="LU"/>
+          <xs:enumeration value="LV"/>
+          <xs:enumeration value="LY"/>
+          <xs:enumeration value="MA"/>
+          <xs:enumeration value="MC"/>
+          <xs:enumeration value="MD"/>
+          <xs:enumeration value="ME"/>
+          <xs:enumeration value="MF"/>
+          <xs:enumeration value="MG"/>
+          <xs:enumeration value="MH"/>
+          <xs:enumeration value="MK"/>
+          <xs:enumeration value="ML"/>
+          <xs:enumeration value="MM"/>
+          <xs:enumeration value="MN"/>
+          <xs:enumeration value="MO"/>
+          <xs:enumeration value="MP"/>
+          <xs:enumeration value="MQ"/>
+          <xs:enumeration value="MR"/>
+          <xs:enumeration value="MS"/>
+          <xs:enumeration value="MT"/>
+          <xs:enumeration value="MU"/>
+          <xs:enumeration value="MV"/>
+          <xs:enumeration value="MW"/>
+          <xs:enumeration value="MX"/>
+          <xs:enumeration value="MY"/>
+          <xs:enumeration value="MZ"/>
+          <xs:enumeration value="NA"/>
+          <xs:enumeration value="NC"/>
+          <xs:enumeration value="NE"/>
+          <xs:enumeration value="NF"/>
+          <xs:enumeration value="NG"/>
+          <xs:enumeration value="NI"/>
+          <xs:enumeration value="NL"/>
+          <xs:enumeration value="NO"/>
+          <xs:enumeration value="NP"/>
+          <xs:enumeration value="NR"/>
+          <xs:enumeration value="NU"/>
+          <xs:enumeration value="NZ"/>
+          <xs:enumeration value="OM"/>
+          <xs:enumeration value="PA"/>
+          <xs:enumeration value="PE"/>
+          <xs:enumeration value="PF"/>
+          <xs:enumeration value="PG"/>
+          <xs:enumeration value="PH"/>
+          <xs:enumeration value="PK"/>
+          <xs:enumeration value="PL"/>
+          <xs:enumeration value="PM"/>
+          <xs:enumeration value="PN"/>
+          <xs:enumeration value="PR"/>
+          <xs:enumeration value="PS"/>
+          <xs:enumeration value="PT"/>
+          <xs:enumeration value="PW"/>
+          <xs:enumeration value="PY"/>
+          <xs:enumeration value="QA"/>
+          <xs:enumeration value="RE"/>
+          <xs:enumeration value="RO"/>
+          <xs:enumeration value="RS"/>
+          <xs:enumeration value="RU"/>
+          <xs:enumeration value="RW"/>
+          <xs:enumeration value="SA"/>
+          <xs:enumeration value="SB"/>
+          <xs:enumeration value="SC"/>
+          <xs:enumeration value="SD"/>
+          <xs:enumeration value="SE"/>
+          <xs:enumeration value="SG"/>
+          <xs:enumeration value="SH"/>
+          <xs:enumeration value="SI"/>
+          <xs:enumeration value="SJ"/>
+          <xs:enumeration value="SK"/>
+          <xs:enumeration value="SL"/>
+          <xs:enumeration value="SM"/>
+          <xs:enumeration value="SN"/>
+          <xs:enumeration value="SO"/>
+          <xs:enumeration value="SR"/>
+          <xs:enumeration value="ST"/>
+          <xs:enumeration value="SV"/>
+          <xs:enumeration value="SX"/>
+          <xs:enumeration value="SY"/>
+          <xs:enumeration value="SZ"/>
+          <xs:enumeration value="TC"/>
+          <xs:enumeration value="TD"/>
+          <xs:enumeration value="TF"/>
+          <xs:enumeration value="TG"/>
+          <xs:enumeration value="TH"/>
+          <xs:enumeration value="TJ"/>
+          <xs:enumeration value="TK"/>
+          <xs:enumeration value="TL"/>
+          <xs:enumeration value="TM"/>
+          <xs:enumeration value="TN"/>
+          <xs:enumeration value="TO"/>
+          <xs:enumeration value="TR"/>
+          <xs:enumeration value="TT"/>
+          <xs:enumeration value="TV"/>
+          <xs:enumeration value="TW"/>
+          <xs:enumeration value="TZ"/>
+          <xs:enumeration value="UA"/>
+          <xs:enumeration value="UG"/>
+          <xs:enumeration value="UM"/>
+          <xs:enumeration value="US"/>
+          <xs:enumeration value="UY"/>
+          <xs:enumeration value="UZ"/>
+          <xs:enumeration value="VA"/>
+          <xs:enumeration value="VC"/>
+          <xs:enumeration value="VE"/>
+          <xs:enumeration value="VG"/>
+          <xs:enumeration value="VI"/>
+          <xs:enumeration value="VN"/>
+          <xs:enumeration value="VU"/>
+          <xs:enumeration value="WF"/>
+          <xs:enumeration value="WS"/>
+          <xs:enumeration value="YE"/>
+          <xs:enumeration value="YT"/>
+          <xs:enumeration value="ZA"/>
+          <xs:enumeration value="ZM"/>
+          <xs:enumeration value="ZW"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Compatibility">
+        <xs:sequence>
+          <xs:element name="compatibleProducts" type="ns:CompatibleProduct" maxOccurs="unbounded"/>
+          <xs:element name="sku" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CompatibleProduct">
+        <xs:sequence>
+          <xs:element name="notes" type="xs:string"/>
+          <xs:element name="productFamilyProperties" type="ns:ProductFamilyProperties"/>
+          <xs:element name="productIdentifier" type="ns:ProductIdentifier"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ConditionEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FOR_PARTS_OR_NOT_WORKING"/>
+          <xs:enumeration value="LIKE_NEW"/>
+          <xs:enumeration value="MANUFACTURER_REFURBISHED"/>
+          <xs:enumeration value="NEW"/>
+          <xs:enumeration value="NEW_OTHER"/>
+          <xs:enumeration value="NEW_WITH_DEFECTS"/>
+          <xs:enumeration value="SELLER_REFURBISHED"/>
+          <xs:enumeration value="USED_ACCEPTABLE"/>
+          <xs:enumeration value="USED_EXCELLENT"/>
+          <xs:enumeration value="USED_GOOD"/>
+          <xs:enumeration value="USED_VERY_GOOD"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DayOfWeekEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FRIDAY"/>
+          <xs:enumeration value="MONDAY"/>
+          <xs:enumeration value="SATURDAY"/>
+          <xs:enumeration value="SUNDAY"/>
+          <xs:enumeration value="THURSDAY"/>
+          <xs:enumeration value="TUESDAY"/>
+          <xs:enumeration value="WEDNESDAY"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Dimension">
+        <xs:sequence>
+          <xs:element name="height" type="xs:double"/>
+          <xs:element name="length" type="xs:double"/>
+          <xs:element name="unit" type="ns:LengthUnitOfMeasureEnum"/>
+          <xs:element name="width" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbayOfferDetailsWithAll">
+        <xs:sequence>
+          <xs:element name="availableQuantity" type="xs:integer"/>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="format" type="ns:FormatTypeEnum"/>
+          <xs:element name="listing" type="ns:ListingDetails"/>
+          <xs:element name="listingDescription" type="xs:string"/>
+          <xs:element name="listingPolicies" type="ns:ListingPolicies"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceEnum"/>
+          <xs:element name="merchantLocationKey" type="xs:string"/>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="quantityLimitPerBuyer" type="xs:integer"/>
+          <xs:element name="sku" type="xs:string"/>
+          <xs:element name="status" type="ns:OfferStatusEnum"/>
+          <xs:element name="storeCategoryNames" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="tax" type="ns:Tax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbayOfferDetailsWithId">
+        <xs:sequence>
+          <xs:element name="availableQuantity" type="xs:integer"/>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="listingDescription" type="xs:string"/>
+          <xs:element name="listingPolicies" type="ns:ListingPolicies"/>
+          <xs:element name="merchantLocationKey" type="xs:string"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="quantityLimitPerBuyer" type="xs:integer"/>
+          <xs:element name="storeCategoryNames" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="tax" type="ns:Tax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbayOfferDetailsWithKeys">
+        <xs:sequence>
+          <xs:element name="availableQuantity" type="xs:integer"/>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="format" type="ns:FormatTypeEnum"/>
+          <xs:element name="listingDescription" type="xs:string"/>
+          <xs:element name="listingPolicies" type="ns:ListingPolicies"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceEnum"/>
+          <xs:element name="merchantLocationKey" type="xs:string"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="quantityLimitPerBuyer" type="xs:integer"/>
+          <xs:element name="sku" type="xs:string"/>
+          <xs:element name="storeCategoryNames" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="tax" type="ns:Tax"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Fee">
+        <xs:sequence>
+          <xs:element name="amount" type="ns:Amount"/>
+          <xs:element name="feeType" type="xs:string"/>
+          <xs:element name="promotionalDiscount" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FeeSummary">
+        <xs:sequence>
+          <xs:element name="fees" type="ns:Fee" maxOccurs="unbounded"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceEnum"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FeesSummaryResponse">
+        <xs:sequence>
+          <xs:element name="feeSummaries" type="ns:FeeSummary" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="FormatTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FIXED_PRICE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="GeoCoordinates">
+        <xs:sequence>
+          <xs:element name="latitude" type="xs:double"/>
+          <xs:element name="longitude" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Interval">
+        <xs:sequence>
+          <xs:element name="close" type="xs:string"/>
+          <xs:element name="open" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryLocation">
+        <xs:sequence>
+          <xs:element name="locationAdditionalInformation" type="xs:string"/>
+          <xs:element name="locationInstructions" type="xs:string"/>
+          <xs:element name="locationWebUrl" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="operatingHours" type="ns:OperatingHours" maxOccurs="unbounded"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="specialHours" type="ns:SpecialHours" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryLocationFull">
+        <xs:sequence>
+          <xs:element name="location" type="ns:LocationDetails"/>
+          <xs:element name="locationAdditionalInformation" type="xs:string"/>
+          <xs:element name="locationInstructions" type="xs:string"/>
+          <xs:element name="locationTypes" type="ns:StoreTypeEnum" maxOccurs="unbounded"/>
+          <xs:element name="locationWebUrl" type="xs:string"/>
+          <xs:element name="merchantLocationStatus" type="ns:StatusEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="operatingHours" type="ns:OperatingHours" maxOccurs="unbounded"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="specialHours" type="ns:SpecialHours" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryLocationResponse">
+        <xs:sequence>
+          <xs:element name="location" type="ns:Location"/>
+          <xs:element name="locationAdditionalInformation" type="xs:string"/>
+          <xs:element name="locationInstructions" type="xs:string"/>
+          <xs:element name="locationTypes" type="ns:StoreTypeEnum" maxOccurs="unbounded"/>
+          <xs:element name="locationWebUrl" type="xs:string"/>
+          <xs:element name="merchantLocationKey" type="xs:string"/>
+          <xs:element name="merchantLocationStatus" type="ns:StatusEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="operatingHours" type="ns:OperatingHours" maxOccurs="unbounded"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="specialHours" type="ns:SpecialHours" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryItem">
+        <xs:sequence>
+          <xs:element name="availability" type="ns:Availability"/>
+          <xs:element name="condition" type="ns:ConditionEnum"/>
+          <xs:element name="conditionDescription" type="xs:string"/>
+          <xs:element name="packageWeightAndSize" type="ns:PackageWeightAndSize"/>
+          <xs:element name="product" type="ns:Product"/>
+          <xs:element name="sku" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryItemGroup">
+        <xs:sequence>
+          <xs:element name="aspects" type="xs:any"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="imageUrls" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="inventoryItemGroupKey" type="xs:string"/>
+          <xs:element name="subtitle" type="xs:string"/>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="variantSKUs" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="variesBy" type="ns:VariesBy"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InventoryItems">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="inventoryItems" type="ns:InventoryItem" maxOccurs="unbounded"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="size" type="xs:integer"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Location">
+        <xs:sequence>
+          <xs:element name="address" type="ns:Address"/>
+          <xs:element name="geoCoordinates" type="ns:GeoCoordinates"/>
+          <xs:element name="locationId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LocationDetails">
+        <xs:sequence>
+          <xs:element name="address" type="ns:Address"/>
+          <xs:element name="geoCoordinates" type="ns:GeoCoordinates"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LocationResponse">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="locations" type="ns:InventoryLocationResponse" maxOccurs="unbounded"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="LengthUnitOfMeasureEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="CENTIMETER"/>
+          <xs:enumeration value="FEET"/>
+          <xs:enumeration value="INCH"/>
+          <xs:enumeration value="METER"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ListingDetails">
+        <xs:sequence>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="listingStatus" type="ns:ListingStatusEnum"/>
+          <xs:element name="soldQuantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListingPolicies">
+        <xs:sequence>
+          <xs:element name="fulfillmentPolicyId" type="xs:string"/>
+          <xs:element name="paymentPolicyId" type="xs:string"/>
+          <xs:element name="returnPolicyId" type="xs:string"/>
+          <xs:element name="shippingCostOverrides" type="ns:ShippingCostOverride" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ListingStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ACTIVE"/>
+          <xs:enumeration value="EBAY_ENDED"/>
+          <xs:enumeration value="ENDED"/>
+          <xs:enumeration value="INACTIVE"/>
+          <xs:enumeration value="NOT_LISTED"/>
+          <xs:enumeration value="OUT_OF_STOCK"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="MarketplaceEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE_FR"/>
+          <xs:enumeration value="EBAY_BE_NL"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CA_FR"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_CN"/>
+          <xs:enumeration value="EBAY_CZ"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_DK"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FI"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_GR"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_HU"/>
+          <xs:enumeration value="EBAY_ID"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IL"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_JP"/>
+          <xs:enumeration value="EBAY_MOTORS"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_NO"/>
+          <xs:enumeration value="EBAY_NZ"/>
+          <xs:enumeration value="EBAY_PE"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_PR"/>
+          <xs:enumeration value="EBAY_PT"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SE"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_TH"/>
+          <xs:enumeration value="EBAY_TW"/>
+          <xs:enumeration value="EBAY_US"/>
+          <xs:enumeration value="EBAY_VN"/>
+          <xs:enumeration value="EBAY_ZA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="MinimumAdvertisedPriceHandlingEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DURING_CHECKOUT"/>
+          <xs:enumeration value="NONE"/>
+          <xs:enumeration value="PRE_CHECKOUT"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="OperatingHours">
+        <xs:sequence>
+          <xs:element name="dayOfWeekEnum" type="ns:DayOfWeekEnum"/>
+          <xs:element name="intervals" type="ns:Interval" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OfferKeyWithId">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OfferKeysWithId">
+        <xs:sequence>
+          <xs:element name="offers" type="ns:OfferKeyWithId" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OfferPriceQuantity">
+        <xs:sequence>
+          <xs:element name="availableQuantity" type="xs:integer"/>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element name="price" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OfferResponse">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="OfferStatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="PUBLISHED"/>
+          <xs:enumeration value="UNPUBLISHED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Offers">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offers" type="ns:EbayOfferDetailsWithAll" maxOccurs="unbounded"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="size" type="xs:integer"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="PackageTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="BULKY_GOODS"/>
+          <xs:enumeration value="CARAVAN"/>
+          <xs:enumeration value="CARS"/>
+          <xs:enumeration value="EUROPALLET"/>
+          <xs:enumeration value="EXPANDABLE_TOUGH_BAGS"/>
+          <xs:enumeration value="EXTRA_LARGE_PACK"/>
+          <xs:enumeration value="FURNITURE"/>
+          <xs:enumeration value="INDUSTRY_VEHICLES"/>
+          <xs:enumeration value="LARGE_CANADA_POST_BUBBLE_MAILER"/>
+          <xs:enumeration value="LARGE_CANADA_POSTBOX"/>
+          <xs:enumeration value="LARGE_ENVELOPE"/>
+          <xs:enumeration value="LETTER"/>
+          <xs:enumeration value="MAILING_BOX"/>
+          <xs:enumeration value="MEDIUM_CANADA_POST_BOX"/>
+          <xs:enumeration value="MEDIUM_CANADA_POST_BUBBLE_MAILER"/>
+          <xs:enumeration value="MOTORBIKES"/>
+          <xs:enumeration value="ONE_WAY_PALLET"/>
+          <xs:enumeration value="PACKAGE_THICK_ENVELOPE"/>
+          <xs:enumeration value="PADDED_BAGS"/>
+          <xs:enumeration value="PARCEL_OR_PADDED_ENVELOPE"/>
+          <xs:enumeration value="ROLL"/>
+          <xs:enumeration value="SMALL_CANADA_POST_BOX"/>
+          <xs:enumeration value="SMALL_CANADA_POST_BUBBLE_MAILER"/>
+          <xs:enumeration value="TOUGH_BAGS"/>
+          <xs:enumeration value="UPS_LETTER"/>
+          <xs:enumeration value="USPS_FLAT_RATE_ENVELOPE"/>
+          <xs:enumeration value="USPS_LARGE_PACK"/>
+          <xs:enumeration value="VERY_LARGE_PACK"/>
+          <xs:enumeration value="WINE_PAK"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="PackageWeightAndSize">
+        <xs:sequence>
+          <xs:element name="dimensions" type="ns:Dimension"/>
+          <xs:element name="packageType" type="ns:PackageTypeEnum"/>
+          <xs:element name="weight" type="ns:Weight"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PickupAtLocationAvailability">
+        <xs:sequence>
+          <xs:element name="availabilityType" type="ns:AvailabilityTypeEnum"/>
+          <xs:element name="fulfillmentTime" type="ns:TimeDuration"/>
+          <xs:element name="merchantLocationKey" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PriceQuantity">
+        <xs:sequence>
+          <xs:element name="offers" type="ns:OfferPriceQuantity" maxOccurs="unbounded"/>
+          <xs:element name="shipToLocationAvailability" type="ns:ShipToLocationAvailability"/>
+          <xs:element name="sku" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PriceQuantityResponse">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element name="sku" type="xs:string"/>
+          <xs:element name="statusCode" type="xs:integer"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PricingSummary">
+        <xs:sequence>
+          <xs:element name="minimumAdvertisedPrice" type="ns:Amount"/>
+          <xs:element name="originallySoldForRetailPriceOn" type="ns:SoldOnEnum"/>
+          <xs:element name="originalRetailPrice" type="ns:Amount"/>
+          <xs:element name="price" type="ns:Amount"/>
+          <xs:element name="pricingVisibility" type="ns:MinimumAdvertisedPriceHandlingEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Product">
+        <xs:sequence>
+          <xs:element name="aspects" type="xs:any"/>
+          <xs:element name="brand" type="xs:string"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="ean" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="imageUrls" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="isbn" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="mpn" type="xs:string"/>
+          <xs:element name="subtitle" type="xs:string"/>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="upc" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductFamilyProperties">
+        <xs:sequence>
+          <xs:element name="engine" type="xs:string"/>
+          <xs:element name="make" type="xs:string"/>
+          <xs:element name="model" type="xs:string"/>
+          <xs:element name="trim" type="xs:string"/>
+          <xs:element name="year" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductIdentifier">
+        <xs:sequence>
+          <xs:element name="epid" type="xs:string"/>
+          <xs:element name="gtin" type="xs:string"/>
+          <xs:element name="ktype" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PublishResponse">
+        <xs:sequence>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SpecialHours">
+        <xs:sequence>
+          <xs:element name="date" type="xs:string"/>
+          <xs:element name="intervals" type="ns:Interval" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="StatusEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DISABLED"/>
+          <xs:enumeration value="ENABLED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="StoreTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="STORE"/>
+          <xs:enumeration value="WAREHOUSE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ShipToLocationAvailability">
+        <xs:sequence>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShippingCostOverride">
+        <xs:sequence>
+          <xs:element name="additionalShippingCost" type="ns:Amount"/>
+          <xs:element name="priority" type="xs:integer"/>
+          <xs:element name="shippingCost" type="ns:Amount"/>
+          <xs:element name="shippingServiceType" type="ns:ShippingServiceTypeEnum"/>
+          <xs:element name="surcharge" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ShippingServiceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DOMESTIC"/>
+          <xs:enumeration value="INTERNATIONAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="SoldOnEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="OFF_EBAY"/>
+          <xs:enumeration value="ON_AND_OFF_EBAY"/>
+          <xs:enumeration value="ON_EBAY"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="Specification">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Tax">
+        <xs:sequence>
+          <xs:element name="applyTax" type="xs:boolean"/>
+          <xs:element name="thirdPartyTaxCategory" type="xs:string"/>
+          <xs:element name="vatPercentage" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TimeDuration">
+        <xs:sequence>
+          <xs:element name="unit" type="ns:TimeDurationUnitEnum"/>
+          <xs:element name="value" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="TimeDurationUnitEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="BUSINESS_DAY"/>
+          <xs:enumeration value="CALENDAR_DAY"/>
+          <xs:enumeration value="DAY"/>
+          <xs:enumeration value="HOUR"/>
+          <xs:enumeration value="MILLISECOND"/>
+          <xs:enumeration value="MINUTE"/>
+          <xs:enumeration value="MONTH"/>
+          <xs:enumeration value="SECOND"/>
+          <xs:enumeration value="YEAR"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="VariesBy">
+        <xs:sequence>
+          <xs:element name="aspectsImageVariesBy" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="specifications" type="ns:Specification" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Weight">
+        <xs:sequence>
+          <xs:element name="unit" type="ns:WeightUnitOfMeasureEnum"/>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="WeightUnitOfMeasureEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="GRAM"/>
+          <xs:enumeration value="KILOGRAM"/>
+          <xs:enumeration value="OUNCE"/>
+          <xs:enumeration value="POUND"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <!--
+<xs:complexType name="ErrorParameterV3">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+-->
+      <xs:element name="BulkUpdatePriceAndQuantityRestRequest" type="ns:BulkUpdatePriceAndQuantityRestRequest"/>
+      <xs:element name="BulkUpdatePriceAndQuantityRestResponse" type="ns:BulkUpdatePriceAndQuantityRestResponse"/>
+      <xs:complexType name="BulkUpdatePriceAndQuantityRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkPriceQuantity">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkUpdatePriceAndQuantityRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkPriceQuantityResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateOrReplaceInventoryItemRestRequest" type="ns:CreateOrReplaceInventoryItemRestRequest"/>
+      <xs:element name="CreateOrReplaceInventoryItemRestResponse" type="ns:CreateOrReplaceInventoryItemRestResponse"/>
+      <xs:complexType name="CreateOrReplaceInventoryItemRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryItem">
+            <xs:sequence>
+              <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateOrReplaceInventoryItemRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BaseResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteInventoryItemRestRequest" type="ns:DeleteInventoryItemRestRequest"/>
+      <xs:element name="DeleteInventoryItemRestResponse" type="ns:DeleteInventoryItemRestResponse"/>
+      <xs:complexType name="DeleteInventoryItemRestRequest">
+        <xs:sequence>
+          <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteInventoryItemRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetInventoryItemRestRequest" type="ns:GetInventoryItemRestRequest"/>
+      <xs:element name="GetInventoryItemRestResponse" type="ns:GetInventoryItemRestResponse"/>
+      <xs:complexType name="GetInventoryItemRestRequest">
+        <xs:sequence>
+          <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetInventoryItemRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryItem">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetInventoryItemsRestRequest" type="ns:GetInventoryItemsRestRequest"/>
+      <xs:element name="GetInventoryItemsRestResponse" type="ns:GetInventoryItemsRestResponse"/>
+      <xs:complexType name="GetInventoryItemsRestRequest">
+        <xs:sequence>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetInventoryItemsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryItems">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateOrReplaceInventoryItemGroupRestRequest" type="ns:CreateOrReplaceInventoryItemGroupRestRequest"/>
+      <xs:element name="CreateOrReplaceInventoryItemGroupRestResponse" type="ns:CreateOrReplaceInventoryItemGroupRestResponse"/>
+      <xs:complexType name="CreateOrReplaceInventoryItemGroupRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryItemGroup">
+            <xs:sequence>
+              <xs:element name="inventoryItemGroupKey" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateOrReplaceInventoryItemGroupRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BaseResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteInventoryItemGroupRestRequest" type="ns:DeleteInventoryItemGroupRestRequest"/>
+      <xs:element name="DeleteInventoryItemGroupRestResponse" type="ns:DeleteInventoryItemGroupRestResponse"/>
+      <xs:complexType name="DeleteInventoryItemGroupRestRequest">
+        <xs:sequence>
+          <xs:element name="inventoryItemGroupKey" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteInventoryItemGroupRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetInventoryItemGroupRestRequest" type="ns:GetInventoryItemGroupRestRequest"/>
+      <xs:element name="GetInventoryItemGroupRestResponse" type="ns:GetInventoryItemGroupRestResponse"/>
+      <xs:complexType name="GetInventoryItemGroupRestRequest">
+        <xs:sequence>
+          <xs:element name="inventoryItemGroupKey" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetInventoryItemGroupRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryItemGroup">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateInventoryLocationRestRequest" type="ns:CreateInventoryLocationRestRequest"/>
+      <xs:element name="CreateInventoryLocationRestResponse" type="ns:CreateInventoryLocationRestResponse"/>
+      <xs:complexType name="CreateInventoryLocationRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryLocationFull">
+            <xs:sequence>
+              <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateInventoryLocationRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteInventoryLocationRestRequest" type="ns:DeleteInventoryLocationRestRequest"/>
+      <xs:element name="DeleteInventoryLocationRestResponse" type="ns:DeleteInventoryLocationRestResponse"/>
+      <xs:complexType name="DeleteInventoryLocationRestRequest">
+        <xs:sequence>
+          <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteInventoryLocationRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DisableInventoryLocationRestRequest" type="ns:DisableInventoryLocationRestRequest"/>
+      <xs:element name="DisableInventoryLocationRestResponse" type="ns:DisableInventoryLocationRestResponse"/>
+      <xs:complexType name="DisableInventoryLocationRestRequest">
+        <xs:sequence>
+          <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DisableInventoryLocationRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EnableInventoryLocationRestRequest" type="ns:EnableInventoryLocationRestRequest"/>
+      <xs:element name="EnableInventoryLocationRestResponse" type="ns:EnableInventoryLocationRestResponse"/>
+      <xs:complexType name="EnableInventoryLocationRestRequest">
+        <xs:sequence>
+          <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EnableInventoryLocationRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetInventoryLocationRestRequest" type="ns:GetInventoryLocationRestRequest"/>
+      <xs:element name="GetInventoryLocationRestResponse" type="ns:GetInventoryLocationRestResponse"/>
+      <xs:complexType name="GetInventoryLocationRestRequest">
+        <xs:sequence>
+          <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetInventoryLocationRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryLocationResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetInventoryLocationsRestRequest" type="ns:GetInventoryLocationsRestRequest"/>
+      <xs:element name="GetInventoryLocationsRestResponse" type="ns:GetInventoryLocationsRestResponse"/>
+      <xs:complexType name="GetInventoryLocationsRestRequest">
+        <xs:sequence>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetInventoryLocationsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:LocationResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateInventoryLocationRestRequest" type="ns:UpdateInventoryLocationRestRequest"/>
+      <xs:element name="UpdateInventoryLocationRestResponse" type="ns:UpdateInventoryLocationRestResponse"/>
+      <xs:complexType name="UpdateInventoryLocationRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:InventoryLocation">
+            <xs:sequence>
+              <xs:element name="merchantLocationKey" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateInventoryLocationRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateOfferRestRequest" type="ns:CreateOfferRestRequest"/>
+      <xs:element name="CreateOfferRestResponse" type="ns:CreateOfferRestResponse"/>
+      <xs:complexType name="CreateOfferRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:EbayOfferDetailsWithKeys">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateOfferRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:OfferResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteOfferRestRequest" type="ns:DeleteOfferRestRequest"/>
+      <xs:element name="DeleteOfferRestResponse" type="ns:DeleteOfferRestResponse"/>
+      <xs:complexType name="DeleteOfferRestRequest">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteOfferRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetListingFeesRestRequest" type="ns:GetListingFeesRestRequest"/>
+      <xs:element name="GetListingFeesRestResponse" type="ns:GetListingFeesRestResponse"/>
+      <xs:complexType name="GetListingFeesRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:OfferKeysWithId">
+    </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetListingFeesRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:FeesSummaryResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetOfferRestRequest" type="ns:GetOfferRestRequest"/>
+      <xs:element name="GetOfferRestResponse" type="ns:GetOfferRestResponse"/>
+      <xs:complexType name="GetOfferRestRequest">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOfferRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:EbayOfferDetailsWithAll">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetOffersRestRequest" type="ns:GetOffersRestRequest"/>
+      <xs:element name="GetOffersRestResponse" type="ns:GetOffersRestResponse"/>
+      <xs:complexType name="GetOffersRestRequest">
+        <xs:sequence>
+          <xs:element name="format" type="xs:string" valid="string"/>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+          <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOffersRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Offers">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PublishOfferRestRequest" type="ns:PublishOfferRestRequest"/>
+      <xs:element name="PublishOfferRestResponse" type="ns:PublishOfferRestResponse"/>
+      <xs:complexType name="PublishOfferRestRequest">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PublishOfferRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PublishResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateOfferRestRequest" type="ns:UpdateOfferRestRequest"/>
+      <xs:element name="UpdateOfferRestResponse" type="ns:UpdateOfferRestResponse"/>
+      <xs:complexType name="UpdateOfferRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:EbayOfferDetailsWithId">
+            <xs:sequence>
+              <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateOfferRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:OfferResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateOrReplaceProductCompatibilityRestRequest" type="ns:CreateOrReplaceProductCompatibilityRestRequest"/>
+      <xs:element name="CreateOrReplaceProductCompatibilityRestResponse" type="ns:CreateOrReplaceProductCompatibilityRestResponse"/>
+      <xs:complexType name="CreateOrReplaceProductCompatibilityRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:Compatibility">
+            <xs:sequence>
+              <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateOrReplaceProductCompatibilityRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BaseResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteProductCompatibilityRestRequest" type="ns:DeleteProductCompatibilityRestRequest"/>
+      <xs:element name="DeleteProductCompatibilityRestResponse" type="ns:DeleteProductCompatibilityRestResponse"/>
+      <xs:complexType name="DeleteProductCompatibilityRestRequest">
+        <xs:sequence>
+          <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteProductCompatibilityRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetProductCompatibilityRestRequest" type="ns:GetProductCompatibilityRestRequest"/>
+      <xs:element name="GetProductCompatibilityRestResponse" type="ns:GetProductCompatibilityRestResponse"/>
+      <xs:complexType name="GetProductCompatibilityRestRequest">
+        <xs:sequence>
+          <xs:element name="sku" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetProductCompatibilityRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:Compatibility">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="BulkUpdatePriceAndQuantity" method="POST" resource="bulk_update_price_quantity">
+      <wsdl:input message="ns:BulkUpdatePriceAndQuantityRestRequest"/>
+      <wsdl:output message="ns:BulkUpdatePriceAndQuantityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateOrReplaceInventoryItem" method="PUT" resource="inventory_item/{sku}">
+      <wsdl:input message="ns:CreateOrReplaceInventoryItemRestRequest"/>
+      <wsdl:output message="ns:CreateOrReplaceInventoryItemRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteInventoryItem" method="DELETE" resource="inventory_item/{sku}">
+      <wsdl:input message="ns:DeleteInventoryItemRestRequest"/>
+      <wsdl:output message="ns:DeleteInventoryItemRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetInventoryItem" method="GET" resource="inventory_item/{sku}">
+      <wsdl:input message="ns:GetInventoryItemRestRequest"/>
+      <wsdl:output message="ns:GetInventoryItemRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetInventoryItems" method="GET" resource="inventory_item">
+      <wsdl:input message="ns:GetInventoryItemsRestRequest"/>
+      <wsdl:output message="ns:GetInventoryItemsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateOrReplaceInventoryItemGroup" method="PUT" resource="inventory_item_group/{inventoryItemGroupKey}">
+      <wsdl:input message="ns:CreateOrReplaceInventoryItemGroupRestRequest"/>
+      <wsdl:output message="ns:CreateOrReplaceInventoryItemGroupRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteInventoryItemGroup" method="DELETE" resource="inventory_item_group/{inventoryItemGroupKey}">
+      <wsdl:input message="ns:DeleteInventoryItemGroupRestRequest"/>
+      <wsdl:output message="ns:DeleteInventoryItemGroupRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetInventoryItemGroup" method="GET" resource="inventory_item_group/{inventoryItemGroupKey}">
+      <wsdl:input message="ns:GetInventoryItemGroupRestRequest"/>
+      <wsdl:output message="ns:GetInventoryItemGroupRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateInventoryLocation" method="POST" resource="location/{merchantLocationKey}">
+      <wsdl:input message="ns:CreateInventoryLocationRestRequest"/>
+      <wsdl:output message="ns:CreateInventoryLocationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteInventoryLocation" method="DELETE" resource="location/{merchantLocationKey}">
+      <wsdl:input message="ns:DeleteInventoryLocationRestRequest"/>
+      <wsdl:output message="ns:DeleteInventoryLocationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DisableInventoryLocation" method="POST" resource="location/{merchantLocationKey}/disable">
+      <wsdl:input message="ns:DisableInventoryLocationRestRequest"/>
+      <wsdl:output message="ns:DisableInventoryLocationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="EnableInventoryLocation" method="POST" resource="location/{merchantLocationKey}/enable">
+      <wsdl:input message="ns:EnableInventoryLocationRestRequest"/>
+      <wsdl:output message="ns:EnableInventoryLocationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetInventoryLocation" method="GET" resource="location/{merchantLocationKey}">
+      <wsdl:input message="ns:GetInventoryLocationRestRequest"/>
+      <wsdl:output message="ns:GetInventoryLocationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetInventoryLocations" method="GET" resource="location">
+      <wsdl:input message="ns:GetInventoryLocationsRestRequest"/>
+      <wsdl:output message="ns:GetInventoryLocationsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateInventoryLocation" method="POST" resource="location/{merchantLocationKey}/update_location_details">
+      <wsdl:input message="ns:UpdateInventoryLocationRestRequest"/>
+      <wsdl:output message="ns:UpdateInventoryLocationRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateOffer" method="POST" resource="offer">
+      <wsdl:input message="ns:CreateOfferRestRequest"/>
+      <wsdl:output message="ns:CreateOfferRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteOffer" method="DELETE" resource="offer/{offerId}">
+      <wsdl:input message="ns:DeleteOfferRestRequest"/>
+      <wsdl:output message="ns:DeleteOfferRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetListingFees" method="POST" resource="offer/get_listing_fees">
+      <wsdl:input message="ns:GetListingFeesRestRequest"/>
+      <wsdl:output message="ns:GetListingFeesRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetOffer" method="GET" resource="offer/{offerId}">
+      <wsdl:input message="ns:GetOfferRestRequest"/>
+      <wsdl:output message="ns:GetOfferRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetOffers" method="GET" resource="offer">
+      <wsdl:input message="ns:GetOffersRestRequest"/>
+      <wsdl:output message="ns:GetOffersRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="PublishOffer" method="POST" resource="offer/{offerId}/publish">
+      <wsdl:input message="ns:PublishOfferRestRequest"/>
+      <wsdl:output message="ns:PublishOfferRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="UpdateOffer" method="PUT" resource="offer/{offerId}">
+      <wsdl:input message="ns:UpdateOfferRestRequest"/>
+      <wsdl:output message="ns:UpdateOfferRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateOrReplaceProductCompatibility" method="PUT" resource="inventory_item/{sku}/product_compatibility">
+      <wsdl:input message="ns:CreateOrReplaceProductCompatibilityRestRequest"/>
+      <wsdl:output message="ns:CreateOrReplaceProductCompatibilityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteProductCompatibility" method="DELETE" resource="inventory_item/{sku}/product_compatibility">
+      <wsdl:input message="ns:DeleteProductCompatibilityRestRequest"/>
+      <wsdl:output message="ns:DeleteProductCompatibilityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetProductCompatibility" method="GET" resource="inventory_item/{sku}/product_compatibility">
+      <wsdl:input message="ns:GetProductCompatibilityRestRequest"/>
+      <wsdl:output message="ns:GetProductCompatibilityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
