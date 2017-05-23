@@ -123,8 +123,8 @@ const createWsdl = (serviceUrl, filename) => {
   };
 
   const types = getTypeEnumLinks().map(processTypeEnum);
-  const extraTypes = fs.readFileSync(`wsdls/${filename}Types`, 'utf8');
-  const operations = fs.readFileSync(`wsdls/${filename}Operations`, 'utf8');
+  const extraTypes = fs.readFileSync(`wsdls_meta/${filename}Types`, 'utf8');
+  const operations = fs.readFileSync(`wsdls_meta/${filename}Operations`, 'utf8');
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -140,7 +140,7 @@ const createWsdl = (serviceUrl, filename) => {
     '</wsdl:definitions>'
   ].join('');
 
-  fs.writeFile(`.tmp/downloads/${filename}.wsdl`, xml);
+  fs.writeFile(`wsdls/${filename}.wsdl`, xml);
 };
 
 createWsdl(

@@ -2,7 +2,7 @@ NODE-BIN	= ./node_modules/.bin
 TMP		= ./.tmp
 DIST		= ./dist
 TEST		= ./test
-DOWNLOADS	= $(TMP)/downloads
+WSDLS	= ./wsdls
 TRANSFORMED	= $(TMP)/transformed
 XSL		= ./xsl
 SCRIPTS		= ./scripts
@@ -35,185 +35,185 @@ test:	lint clean
 		destDirectory=$(TRANSFORMED)/RestAPI/
 	@$(NODE-BIN)/nodeunit $(TEST)/*_test.js
 
-wsdls:
+create_wsdls:
 	@node $(SCRIPTS)/create_rest_wsdls.js
 
-download:
-	@wget -q -i services -P $(DOWNLOADS)
-	@sed -i -e "s/<tns:version>.*<\/tns:version>//" $(DOWNLOADS)/ProductService.wsdl
-	@sed -i -e "s/<version>.*<\/version>/<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/\t\t\t\t<Version>.*<\/Version>/\t\t\t\t<ver\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchNamesResponse\" type=\"tns:GetProductSearchNamesResponse\"\/>/<xs:element name=\"getCompatibilitySearchNamesResponse\" type=\"tns:GetCompatibilitySearchNamesResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesRequest\" type=\"tns:GetProductSearchValuesRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesRequest\" type=\"tns:GetCompatibilitySearchValuesRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesResponse\" type=\"tns:GetProductSearchValuesResponse\"\/>/<xs:element name=\"getCompatibilitySearchValuesResponse\" type=\"tns:GetCompatibilitySearchValuesResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetProductSearchValuesBulkRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetCompatibilitySearchValuesBulkRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetProductSearchDataVersionRequest\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetCompatibilitySearchDataVersionRequest\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetProductSearchDataVersionResponse\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetCompatibilitySearchDataVersionResponse\"\/>/" $(DOWNLOADS)/ProductMetadataService.wsdl
-	@sed -i -e "5036,5051 s/.*//" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
-	@sed -i -e "5067,5083 s/.*//" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
-	@sed -i -e "s/<\/xs:schema>/<xs:complexType name=\"appealRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><xs:complexType name=\"moneyMovementRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><\/xs:schema>/" $(DOWNLOADS)/ResolutionCaseManagementService.wsdl
-	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/BulkDataExchangeService.wsdl`"
-	@echo "BusinessPoliciesManagement : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/SellerProfilesManagementService.wsdl`"
-	@echo "Feedback                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FeedbackService.wsdl`"
-	@echo "FileTransfer               : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FileTransferService.wsdl`"
-	@echo "Finding                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/FindingService.wsdl`"
-	@echo "HalfFinding                : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/HalfFindingService.wsdl`"
-	@echo "Merchandising              : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/MerchandisingService.wsdl`"
-	@echo "MerchantData               : `sed -rn 's/<!-- Version ([[:digit:]]{3}).*/\1/p' $(DOWNLOADS)/merchantdataservice.xsd`"
-	@echo "Product                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ProductService.wsdl`"
-	@echo "ProductMetadata            : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ProductMetadataService.wsdl`"
-	@echo "Related Items Management   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/BundleManagementService.wsdl`"
-	@echo "Resolution Case Management : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ResolutionCaseManagementService.wsdl`"
-	@echo "Return Management          : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(DOWNLOADS)/ReturnManagementService.wsdl`"
-	@echo "Shopping                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ShoppingService.wsdl`"
-	@echo "Trading                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(DOWNLOADS)/ebaySvc.wsdl`"
+download_wsdls:
+	@cd $(WSDLS) && cat ../services | xargs -n 1 curl -sO
+	@sed -i -e "s/<tns:version>.*<\/tns:version>//" $(WSDLS)/ProductService.wsdl
+	@sed -i -e "s/<version>.*<\/version>/<ver\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/\t\t\t\t<Version>.*<\/Version>/\t\t\t\t<ver\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchNamesResponse\" type=\"tns:GetProductSearchNamesResponse\"\/>/<xs:element name=\"getCompatibilitySearchNamesResponse\" type=\"tns:GetCompatibilitySearchNamesResponse\"\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesRequest\" type=\"tns:GetProductSearchValuesRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesRequest\" type=\"tns:GetCompatibilitySearchValuesRequest\"\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesResponse\" type=\"tns:GetProductSearchValuesResponse\"\/>/<xs:element name=\"getCompatibilitySearchValuesResponse\" type=\"tns:GetCompatibilitySearchValuesResponse\"\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetProductSearchValuesBulkRequest\"\/>/<xs:element name=\"getCompatibilitySearchValuesBulkRequest\" type=\"tns:GetCompatibilitySearchValuesBulkRequest\"\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetProductSearchDataVersionRequest\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionRequest\" type=\"tns:GetCompatibilitySearchDataVersionRequest\"\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "s/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetProductSearchDataVersionResponse\"\/>/<xs:element name=\"getCompatibilitySearchDataVersionResponse\" type=\"tns:GetCompatibilitySearchDataVersionResponse\"\/>/" $(WSDLS)/ProductMetadataService.wsdl
+	@sed -i -e "5036,5051 s/.*//" $(WSDLS)/ResolutionCaseManagementService.wsdl
+	@sed -i -e "5067,5083 s/.*//" $(WSDLS)/ResolutionCaseManagementService.wsdl
+	@sed -i -e "s/<\/xs:schema>/<xs:complexType name=\"appealRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><xs:complexType name=\"moneyMovementRef\"><xs:attribute name=\"idref\" type=\"xs:string\"\/><\/xs:complexType><\/xs:schema>/" $(WSDLS)/ResolutionCaseManagementService.wsdl
+	@echo "BulkDataExchange           : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(WSDLS)/BulkDataExchangeService.wsdl`"
+	@echo "BusinessPoliciesManagement : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(WSDLS)/SellerProfilesManagementService.wsdl`"
+	@echo "Feedback                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/FeedbackService.wsdl`"
+	@echo "FileTransfer               : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/FileTransferService.wsdl`"
+	@echo "Finding                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/FindingService.wsdl`"
+	@echo "HalfFinding                : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/HalfFindingService.wsdl`"
+	@echo "Merchandising              : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/MerchandisingService.wsdl`"
+	@echo "MerchantData               : `sed -rn 's/<!-- Version ([[:digit:]]{3}).*/\1/p' $(WSDLS)/merchantdataservice.xsd`"
+	@echo "Product                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/ProductService.wsdl`"
+	@echo "ProductMetadata            : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/ProductMetadataService.wsdl`"
+	@echo "Related Items Management   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/BundleManagementService.wsdl`"
+	@echo "Resolution Case Management : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(WSDLS)/ResolutionCaseManagementService.wsdl`"
+	@echo "Return Management          : `sed -rn 's/.*<version>(.*)<\/version>/\1/p' $(WSDLS)/ReturnManagementService.wsdl`"
+	@echo "Shopping                   : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/ShoppingService.wsdl`"
+	@echo "Trading                    : `sed -rn 's/.*<Version>(.*)<\/Version>/\1/p' $(WSDLS)/ebaySvc.wsdl`"
 
-patch:
-	@sed -i -e 's/<xs:element name="aspects" type="xs:string" maxOccurs="unbounded"\/>/<xs:element name="aspects" type="xs:any"\/>/g' $(DOWNLOADS)/Inventory.wsdl
-	@sed -i -e 's/standardslevel/standardsLevel/g' $(DOWNLOADS)/Analytics.wsdl
+patch_wsdls:
+	@sed -i -e 's/<xs:element name="aspects" type="xs:string" maxOccurs="unbounded"\/>/<xs:element name="aspects" type="xs:any"\/>/g' $(WSDLS)/Inventory.wsdl
+	@sed -i -e 's/standardslevel/standardsLevel/g' $(WSDLS)/Analytics.wsdl
 
 transform:
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Account.wsdl					\
+		-s:$(WSDLS)/Account.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Account							\
 		destDirectory=$(TRANSFORMED)/Account/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Analytics.wsdl					\
+		-s:$(WSDLS)/Analytics.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Analytics						\
 		destDirectory=$(TRANSFORMED)/Analytics/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/BulkDataExchangeService.wsdl			\
+		-s:$(WSDLS)/BulkDataExchangeService.wsdl			\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=BulkDataExchange					\
 		destDirectory=$(TRANSFORMED)/BulkDataExchange/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Browse.wsdl					\
+		-s:$(WSDLS)/Browse.wsdl						\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Browse    						\
 		destDirectory=$(TRANSFORMED)/Browse/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/SellerProfilesManagementService.wsdl		\
+		-s:$(WSDLS)/SellerProfilesManagementService.wsdl		\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=BusinessPoliciesManagement				\
 		destDirectory=$(TRANSFORMED)/BusinessPoliciesManagement/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/FeedbackService.wsdl				\
+		-s:$(WSDLS)/FeedbackService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl	 					\
 		service=Feedback						\
 		destDirectory=$(TRANSFORMED)/Feedback/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/FileTransferService.wsdl			\
+		-s:$(WSDLS)/FileTransferService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=FileTransfer						\
 		destDirectory=$(TRANSFORMED)/FileTransfer/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/FindingService.wsdl				\
+		-s:$(WSDLS)/FindingService.wsdl					\
 		-xsl:$(XSL)/sdk.xsl	 					\
 		service=Finding							\
 		destDirectory=$(TRANSFORMED)/Finding/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Fulfillment.wsdl				\
+		-s:$(WSDLS)/Fulfillment.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Fulfillment    						\
 		destDirectory=$(TRANSFORMED)/Fulfillment/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/HalfFindingService.wsdl				\
+		-s:$(WSDLS)/HalfFindingService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=HalfFinding						\
 		destDirectory=$(TRANSFORMED)/HalfFinding/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Inventory.wsdl					\
+		-s:$(WSDLS)/Inventory.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Inventory    						\
 		destDirectory=$(TRANSFORMED)/Inventory/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Marketing.wsdl					\
+		-s:$(WSDLS)/Marketing.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Marketing    						\
 		destDirectory=$(TRANSFORMED)/Marketing/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/MerchandisingService.wsdl			\
+		-s:$(WSDLS)/MerchandisingService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=Merchandising    					\
 		destDirectory=$(TRANSFORMED)/Merchandising/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/merchantdataservice.xsd				\
+		-s:$(WSDLS)/merchantdataservice.xsd				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=MerchantData						\
 		destDirectory=$(TRANSFORMED)/MerchantData/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Metadata.wsdl					\
+		-s:$(WSDLS)/Metadata.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Metadata						\
 		destDirectory=$(TRANSFORMED)/Metadata/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/Order.wsdl					\
+		-s:$(WSDLS)/Order.wsdl						\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=Order    						\
 		destDirectory=$(TRANSFORMED)/Order/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/PostOrder.wsdl					\
+		-s:$(WSDLS)/PostOrder.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=PostOrder    						\
 		destDirectory=$(TRANSFORMED)/PostOrder/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/ProductService.wsdl				\
+		-s:$(WSDLS)/ProductService.wsdl					\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=Product    						\
 		destDirectory=$(TRANSFORMED)/Product/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/ProductMetadataService.wsdl			\
+		-s:$(WSDLS)/ProductMetadataService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=ProductMetadata    					\
 		destDirectory=$(TRANSFORMED)/ProductMetadata/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/BundleManagementService.wsdl			\
+		-s:$(WSDLS)/BundleManagementService.wsdl			\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=RelatedItemsManagement					\
 		destDirectory=$(TRANSFORMED)/RelatedItemsManagement/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/ResolutionCaseManagementService.wsdl		\
+		-s:$(WSDLS)/ResolutionCaseManagementService.wsdl		\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=ResolutionCaseManagement				\
 		destDirectory=$(TRANSFORMED)/ResolutionCaseManagement/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/ReturnManagementService.wsdl			\
+		-s:$(WSDLS)/ReturnManagementService.wsdl			\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=ReturnManagement					\
 		destDirectory=$(TRANSFORMED)/ReturnManagement/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/ShoppingService.wsdl				\
+		-s:$(WSDLS)/ShoppingService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=Shopping						\
 		destDirectory=$(TRANSFORMED)/Shopping/
 	@saxonb-xslt								\
 		-ext:on								\
-		-s:$(DOWNLOADS)/ebaySvc.wsdl					\
+		-s:$(WSDLS)/ebaySvc.wsdl					\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=Trading							\
 		destDirectory=$(TRANSFORMED)/Trading/
@@ -242,10 +242,13 @@ transform:
 	@cp $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetProductSearchDataVersionResponseTest.php $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchDataVersionResponseTest.php
 	@sed -i -e "s/ProductSearchDataVersionResponse/CompatibilitySearchDataVersionResponse/" $(TRANSFORMED)/ProductMetadata/test/ProductMetadata/Types/GetCompatibilitySearchDataVersionResponseTest.php
 
+wsdls:	clean		\
+	download_wsdls	\
+	create_wsdls	\
+	patch_wsdls
+	@find $(WSDLS) -type f -exec xmllint --format {} --output {} \;
+
 build:	clean		\
-	download	\
-	wsdls		\
-	patch		\
 	transform
 	@cp -r $(TRANSFORMED) $(DIST)
 
