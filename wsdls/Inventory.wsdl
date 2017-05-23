@@ -879,14 +879,12 @@
           <xs:enumeration value="POUND"/>
         </xs:restriction>
       </xs:simpleType>
-      <!--
-<xs:complexType name="ErrorParameterV3">
-  <xs:sequence>
-    <xs:element name="name" type="xs:string"/>
-    <xs:element name="value" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
--->
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:element name="BulkUpdatePriceAndQuantityRestRequest" type="ns:BulkUpdatePriceAndQuantityRestRequest"/>
       <xs:element name="BulkUpdatePriceAndQuantityRestResponse" type="ns:BulkUpdatePriceAndQuantityRestResponse"/>
       <xs:complexType name="BulkUpdatePriceAndQuantityRestRequest">

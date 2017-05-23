@@ -1,17 +1,3 @@
-<xs:simpleType name="AppealStatusEnum">
-  <xs:restriction base="xs:token">
-    <xs:enumeration value="BUYER_APPEALED"/>
-    <xs:enumeration value="BUYER_SELLER_APPEALED"/>
-    <xs:enumeration value="OTHER"/>
-    <xs:enumeration value="SELLER_APPEALED"/>
-    <xs:enumeration value="SELLER_INVOICED_BUYER_APPEALED"/>
-    <xs:enumeration value="SELLER_RECOUP_APPEALED"/>
-    <xs:enumeration value="SELLER_RECOUP_NEEDED_BUYER_APPEALED"/>
-    <xs:enumeration value="SELLER_RECOUP_NEEDED_BUYER_APPEALED_CLOSED_CASE"/>
-    <xs:enumeration value="SELLER_RECOUPED_BUYER_APPEALED"/>
-    <xs:enumeration value="SELLER_RECOUPED_BUYER_APPEALED_CLOSED_CASE"/>
-  </xs:restriction>
-</xs:simpleType>
 <xs:complexType name="ErrorMessage">
   <xs:sequence>
     <xs:element name="error" type="ns:Error" maxOccurs="unbounded"/>
