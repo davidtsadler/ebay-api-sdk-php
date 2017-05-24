@@ -10,10 +10,14 @@
   </xs:complexContent>
 </xs:complexType>
 <xs:complexType name="BulkCreateAdsByInventoryReferenceRestResponse" restResponse="true">
-    <xs:sequence>
-      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-    </xs:sequence>
+  <xs:complexContent>
+    <xs:extension base="ns:BulkCreateAdsByInventoryReferenceResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
 </xs:complexType>
 
 <xs:element name="BulkCreateAdsByListingIDRestRequest" type="ns:BulkCreateAdsByListingIDRestRequest"/>
@@ -50,10 +54,14 @@
   </xs:complexContent>
 </xs:complexType>
 <xs:complexType name="BulkDeleteAdsByInventoryReferenceRestResponse" restResponse="true">
-  <xs:sequence>
-    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-  </xs:sequence>
+  <xs:complexContent>
+    <xs:extension base="ns:BulkDeleteAdsByInventoryReferenceResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
 </xs:complexType>
 
 <xs:element name="BulkDeleteAdsByListingIDRestRequest" type="ns:BulkDeleteAdsByListingIDRestRequest"/>
