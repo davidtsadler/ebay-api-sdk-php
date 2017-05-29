@@ -341,8 +341,8 @@
           <xs:element name="requestRefundAmount" type="ns:Amount"/>
           <xs:element name="sellerResponseDueDate" type="ns:DateTime"/>
           <xs:element name="shipmentDate" type="ns:DateTime"/>
-          <xs:element name="state" type="xs:token"/>
-          <xs:element name="status" type="xs:token"/>
+          <xs:element name="cancelState" type="xs:token"/>
+          <xs:element name="cancelStatus" type="xs:token"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CarrierShippingCostInfoType">
@@ -1594,8 +1594,8 @@
         <xs:sequence>
           <xs:element name="eligible" type="xs:boolean"/>
           <xs:element name="failureReason" type="ns:EligibilityFailureReasonEnum" maxOccurs="unbounded"/>
-          <xs:element name="itemId" type="xs:integer"/>
-          <xs:element name="transactionId" type="xs:integer"/>
+          <xs:element name="itemId" type="xs:string"/>
+          <xs:element name="transactionId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ItemizedRefundDetailType">
@@ -2692,6 +2692,7 @@
         <xs:sequence>
           <xs:element name="errorId" type="xs:integer"/>
           <xs:element name="domain" type="xs:string"/>
+          <xs:element name="subdomain" type="xs:string"/>
           <xs:element name="severity" type="xs:string"/>
           <xs:element name="category" type="xs:string"/>
           <xs:element name="message" type="xs:string"/>
