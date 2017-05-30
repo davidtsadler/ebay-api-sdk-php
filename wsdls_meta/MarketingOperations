@@ -205,3 +205,45 @@
     <wsdl:output message="ns:GetPromotionSummaryReportRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetSpecificReport" method="GET" resource="ad_report/{report_id}">
+    <wsdl:input message="ns:GetSpecificReportRestRequest"/>
+    <wsdl:output message="ns:GetSpecificReportRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetMetadataForAllReports" method="GET" resource="ad_report_metadata">
+    <wsdl:input message="ns:GetMetadataForAllReportsRestRequest"/>
+    <wsdl:output message="ns:GetMetadataForAllReportsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetMetadataForAReportType" method="GET" resource="ad_report_metadata/{report_type}">
+    <wsdl:input message="ns:GetMetadataForAReportTypeRestRequest"/>
+    <wsdl:output message="ns:GetMetadataForAReportTypeRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="CreateReportTask" method="GET" resource="ad_report_task">
+    <wsdl:input message="ns:CreateReportTaskRestRequest"/>
+    <wsdl:output message="ns:CreateReportTaskRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="DeleteSpecificReportTask" method="GET" resource="ad_report_task/{report_task_id}">
+    <wsdl:input message="ns:DeleteSpecificReportTaskRestRequest"/>
+    <wsdl:output message="ns:DeleteSpecificReportTaskRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetReportTasks" method="GET" resource="ad_report_task">
+    <wsdl:input message="ns:GetReportTasksRestRequest"/>
+    <wsdl:output message="ns:GetReportTasksRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetSpecificReportTask" method="GET" resource="ad_report_task/{report_task_id}">
+    <wsdl:input message="ns:GetSpecificReportTaskRestRequest"/>
+    <wsdl:output message="ns:GetSpecificReportTaskRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

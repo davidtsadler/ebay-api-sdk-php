@@ -1366,6 +1366,111 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <xs:element name="GetSpecificReportRestRequest" type="ns:GetSpecificReportRestRequest"/>
+      <xs:element name="GetSpecificReportRestResponse" type="ns:GetSpecificReportRestResponse"/>
+      <xs:complexType name="GetSpecificReportRestRequest">
+        <xs:sequence>
+          <xs:element name="report_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSpecificReportRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetMetadataForAllReportsRestRequest" type="ns:GetMetadataForAllReportsRestRequest"/>
+      <xs:element name="GetMetadataForAllReportsRestResponse" type="ns:GetMetadataForAllReportsRestResponse"/>
+      <xs:complexType name="GetMetadataForAllReportsRestRequest"/>
+      <xs:complexType name="GetMetadataForAllReportsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReportMetadatas">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetMetadataForAReportTypeRestRequest" type="ns:GetMetadataForAReportTypeRestRequest"/>
+      <xs:element name="GetMetadataForAReportTypeRestResponse" type="ns:GetMetadataForAReportTypeRestResponse"/>
+      <xs:complexType name="GetMetadataForAReportTypeRestRequest">
+        <xs:sequence>
+          <xs:element name="report_type" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMetadataForAReportTypeRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReportMetadata">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateReportTaskRestRequest" type="ns:CreateReportTaskRestRequest"/>
+      <xs:element name="CreateReportTaskRestResponse" type="ns:CreateReportTasktRestResponse"/>
+      <xs:complexType name="CreateReportTaskRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:CreateReportTask"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateReportTaskRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteSpecificReportTaskRestRequest" type="ns:DeleteSpecificReportTaskRestRequest"/>
+      <xs:element name="DeleteSpecificReportTaskRestResponse" type="ns:DeleteSpecificReportTaskRestResponse"/>
+      <xs:complexType name="DeleteSpecificReportTaskRestRequest">
+        <xs:sequence>
+          <xs:element name="report_task_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteSpecificReportTaskRestResponse" restResponse="true">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetReportTasksRestRequest" type="ns:GetReportTasksRestRequest"/>
+      <xs:element name="GetReportTasksRestResponse" type="ns:GetReportTasksRestResponse"/>
+      <xs:complexType name="GetReportTasksRestRequest">
+        <xs:sequence>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+          <xs:element name="report_task_statuses" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetReportTasksRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReportTaskPagedCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSpecificReportTaskRestRequest" type="ns:GetSpecificReportTaskRestRequest"/>
+      <xs:element name="GetSpecificReportTaskRestResponse" type="ns:GetSpecificReportTaskRestResponse"/>
+      <xs:complexType name="GetSpecificReportTaskRestRequest">
+        <xs:sequence>
+          <xs:element name="report_task_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSpecificReportTaskRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReportTask">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
     </xs:schema>
   </wsdl:types>
   <wsdl:documentation>
@@ -1573,6 +1678,48 @@
     <wsdl:operation name="GetPromotionSummaryReport" method="GET" resource="promotion_summary_report">
       <wsdl:input message="ns:GetPromotionSummaryReportRestRequest"/>
       <wsdl:output message="ns:GetPromotionSummaryReportRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetSpecificReport" method="GET" resource="ad_report/{report_id}">
+      <wsdl:input message="ns:GetSpecificReportRestRequest"/>
+      <wsdl:output message="ns:GetSpecificReportRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetMetadataForAllReports" method="GET" resource="ad_report_metadata">
+      <wsdl:input message="ns:GetMetadataForAllReportsRestRequest"/>
+      <wsdl:output message="ns:GetMetadataForAllReportsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetMetadataForAReportType" method="GET" resource="ad_report_metadata/{report_type}">
+      <wsdl:input message="ns:GetMetadataForAReportTypeRestRequest"/>
+      <wsdl:output message="ns:GetMetadataForAReportTypeRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="CreateReportTask" method="GET" resource="ad_report_task">
+      <wsdl:input message="ns:CreateReportTaskRestRequest"/>
+      <wsdl:output message="ns:CreateReportTaskRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="DeleteSpecificReportTask" method="GET" resource="ad_report_task/{report_task_id}">
+      <wsdl:input message="ns:DeleteSpecificReportTaskRestRequest"/>
+      <wsdl:output message="ns:DeleteSpecificReportTaskRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetReportTasks" method="GET" resource="ad_report_task">
+      <wsdl:input message="ns:GetReportTasksRestRequest"/>
+      <wsdl:output message="ns:GetReportTasksRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetSpecificReportTask" method="GET" resource="ad_report_task/{report_task_id}">
+      <wsdl:input message="ns:GetSpecificReportTaskRestRequest"/>
+      <wsdl:output message="ns:GetSpecificReportTaskRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
