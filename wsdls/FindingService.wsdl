@@ -127,7 +127,7 @@
       <xs:complexType name="FindCompletedItemsRequest">
         <xs:annotation>
           <xs:documentation>
-						Returns items based on keyword and/or category and doesn't allow searching
+						Returns items whose listings are completed and are no longer available for sale based on keyword and/or category and doesn't allow searching
 							within item descriptions.
 						&lt;br&gt;&lt;br&gt;
 						You can expect response times for this call to be longer than other types of Finding Service
@@ -725,7 +725,7 @@
                   <xs:documentation>
 										Response container for condition histograms.&lt;br&gt;
 										&lt;br&gt;
-										Not returned when Condition is specified in itemFilter.
+										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
@@ -957,12 +957,11 @@
 										Condition histograms are returned for any category
 										(leaf or parent).&lt;br&gt;
 										&lt;br&gt;
-										Not returned when Condition is specified in itemFilter.
+										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt; .
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
-										Only returned when you search the eBay US site (as of
-										February 2011). International items in US search results
+										Only returned when you search the eBay US site. International items in US search results
 										are included in the histogram counts.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1252,12 +1251,11 @@
 										Response container for condition histograms.
 										&lt;br&gt;
 										&lt;br&gt;
-										Not returned when Condition is specified in itemFilter.
+										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
-										Only returned when you search the eBay US site (as of
-										February 2011). International items in US search results
+										Only returned when you search the eBay US site. International items in US search results
 										are included in the histogram counts.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1397,12 +1395,11 @@
                   <xs:documentation>
 										Response container for condition histograms.&lt;br&gt;
 										&lt;br&gt;
-										Not returned when Condition is specified in itemFilter.
+										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
-										Only returned when you search the eBay US site (as of
-										February 2011). International items in US search results
+										Only returned when you search the eBay US site. International items in US search results
 										are included in the histogram counts.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1693,12 +1690,11 @@
 										These can be returned for any category (parent or leaf).
 										&lt;br&gt;
 										&lt;br&gt;
-										Not returned when Condition is specified in itemFilter.
+										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
-										Only returned when you search the eBay US site (as of
-										February 2011). International items in US search results
+										Only returned when you search the eBay US site. International items in US search results
 										are included in the histogram counts.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1719,14 +1715,8 @@
       <xs:complexType name="FindItemsByImageRequest">
         <xs:annotation>
           <xs:documentation>
-						Returns items based on the image similarity to the specified item.
+						&lt;b&gt;This call is deprecated.&lt;/b&gt;
 					</xs:documentation>
-          <xs:appinfo>
-            <Summary>
-							Returns items based on their image similarity to the specified item.
-						</Summary>
-            <RelatedCalls>findItemsByProduct</RelatedCalls>
-          </xs:appinfo>
         </xs:annotation>
         <xs:complexContent>
           <xs:extension base="tns:BestMatchFindingServiceRequest">
@@ -1741,11 +1731,7 @@
 										specify must exist on either the US, UK, or DE the sites.
 									</xs:documentation>
                   <xs:appinfo>
-                    <MaxLength>19 (normally, item IDs are 9 to 12 digits in length)</MaxLength>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <RequiredInput>Yes</RequiredInput>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1767,11 +1753,7 @@
 										class="con"&gt;GetCategoryInfo&lt;/b&gt; call.
 									</xs:documentation>
                   <xs:appinfo>
-                    <MaxLength>10</MaxLength>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1784,10 +1766,7 @@
 										request.
 									</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1812,23 +1791,7 @@
 										your new query.
 									</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <RequiredInput>No</RequiredInput>
-                      <SeeLink>
-                        <URL>#Response.aspectHistogramContainer</URL>
-                        <Title>aspectHistogramContainer</Title>
-                        <For>more information on aspects, aspect values, and categories.</For>
-                      </SeeLink>
-                      <SeeLink>
-                        <URL>findItemsByCategory.html#sampleaspectHist</URL>
-                        <Title>findItemsByCategory Call Sample: Returning Aspect Histogram Information</Title>
-                      </SeeLink>
-                      <SeeLink>
-                        <URL>findItemsByCategory.html#sampleaspectFilter </URL>
-                        <Title>findItemsByCategory Call Sample: Refining Results Using Aspect Filters</Title>
-                      </SeeLink>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1863,15 +1826,7 @@
 										feedback data.
 									</xs:documentation>
                   <xs:appinfo>
-                    <PresentDetails>Yes</PresentDetails>
-                    <SeeLink>
-                      <Title>Detail Controls</Title>
-                      <URL>#detailControls</URL>
-                    </SeeLink>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1882,7 +1837,7 @@
       <xs:complexType name="FindItemsByImageResponse">
         <xs:annotation>
           <xs:documentation>
-						Response container for the findItemsByImage call.
+						&lt;b&gt;This call is deprecated.&lt;/b&gt;
 					</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -1911,11 +1866,7 @@
 										&lt;/span&gt;
 									</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <Details>outputSelector: CategoryHistogram</Details>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1925,11 +1876,7 @@
 										Response container for aspect histograms.
 									</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <Details>outputSelector: AspectHistogram</Details>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1940,20 +1887,12 @@
 										These can be returned for any category (parent or leaf).
 										&lt;br&gt;
 										&lt;br&gt;
-										Not returned when Condition is specified in itemFilter.
+										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
-										&lt;br&gt;
-										Only returned when you search the eBay US site (as of
-										February 2011). International items in US search results
-										are included in the histogram counts.
 									</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>findItemsByImage</CallName>
-                      <Details>outputSelector: ConditionHistogram</Details>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <noCalls/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -1966,7 +1905,7 @@
       <xs:complexType name="GetHistogramsRequest">
         <xs:annotation>
           <xs:documentation>
-						Returns a histogram for the supplied category or aspect.
+						Returns a a histogram for the supplied category or aspect.
 					</xs:documentation>
           <xs:appinfo>
             <Summary>
@@ -2110,7 +2049,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2138,7 +2076,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2167,7 +2104,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2242,7 +2178,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2265,7 +2200,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2296,7 +2230,6 @@
                     <CallInfo>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2500,7 +2433,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2529,7 +2461,6 @@
                       <CallName>findCompletedItems</CallName>
                       <CallName>findItemsAdvanced</CallName>
                       <CallName>findItemsByCategory</CallName>
-                      <CallName>findItemsByImage</CallName>
                       <CallName>findItemsByKeywords</CallName>
                       <CallName>findItemsByProduct</CallName>
                       <CallName>findItemsIneBayStores</CallName>
@@ -2585,7 +2516,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2625,7 +2555,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2654,7 +2583,6 @@
                 <CallName>findCompletedItems</CallName>
                 <CallName>findItemsAdvanced</CallName>
                 <CallName>findItemsByCategory</CallName>
-                <CallName>findItemsByImage</CallName>
                 <CallName>findItemsByKeywords</CallName>
                 <CallName>findItemsByProduct</CallName>
                 <CallName>findItemsIneBayStores</CallName>
@@ -2731,7 +2659,7 @@
 								each aspect value.
 								&lt;br&gt;&lt;br&gt;
 								&lt;img
-								src="http://developer.ebay.com/DevZone/finding/Concepts/images/refinesearch.jpg" width="142" height="468"
+								src="http://developer.ebay.com/DevZone/finding/Concepts/images/refinesearch.jpg" width="142" height="468" 
 								alt="eBay Aspects" /&gt;
 							</xs:documentation>
               <xs:appinfo>
@@ -2739,7 +2667,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2784,7 +2711,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2819,7 +2745,6 @@
                 <CallName>findCompletedItems</CallName>
                 <CallName>findItemsAdvanced</CallName>
                 <CallName>findItemsByCategory</CallName>
-                <CallName>findItemsByImage</CallName>
                 <CallName>findItemsByKeywords</CallName>
                 <CallName>findItemsByProduct</CallName>
                 <CallName>findItemsIneBayStores</CallName>
@@ -2859,7 +2784,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2879,7 +2803,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2912,7 +2835,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -2944,7 +2866,6 @@
                 <CallName>findCompletedItems</CallName>
                 <CallName>findItemsAdvanced</CallName>
                 <CallName>findItemsByCategory</CallName>
-                <CallName>findItemsByImage</CallName>
                 <CallName>findItemsByKeywords</CallName>
                 <CallName>findItemsByProduct</CallName>
                 <CallName>findItemsIneBayStores</CallName>
@@ -3434,7 +3355,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -3460,7 +3380,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -3486,7 +3405,6 @@
                   <AllValuesExcept>SoldItemsOnly</AllValuesExcept>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -3537,7 +3455,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -3596,7 +3513,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsIneBayStores</CallName>
                   <CallName>findItemsByProduct</CallName>
@@ -3636,7 +3552,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -3663,7 +3578,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsIneBayStores</CallName>
                   <CallName>findItemsByProduct</CallName>
@@ -4199,7 +4113,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -4227,7 +4140,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -4285,7 +4197,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -4317,7 +4228,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -4344,7 +4254,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -4371,7 +4280,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -4768,8 +4676,9 @@
             <xs:annotation>
               <xs:documentation>
 								&lt;a name="AvailableTo"&gt;&lt;/a&gt;
-								Limits items to those available to the specified country only. Item
-								filter LocatedIn cannot be used together with item filter AvailableTo.
+								Limits items to those available to the specified country only. The item
+								filter &lt;b&gt;AvailableTo&lt;/b&gt; cannot be used with either the  
+								&lt;b&gt;LocatedIn&lt;/b&gt; nor the &lt;b&gt;MaxDistance&lt;/b&gt; item filter.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
@@ -4791,8 +4700,8 @@
               <xs:documentation>
 								&lt;a name="LocatedIn"&gt;&lt;/a&gt;
 								Limits the result set to just those items located in the specified
-								country. Item filter AvailableTo cannot be used together with item filter
-								LocatedIn.
+								country. The item filter &lt;b&gt;LocatedIn&lt;/b&gt; cannot be used with either the  
+								&lt;b&gt;AvailableTo&lt;/b&gt; nor the &lt;b&gt;MaxDistance&lt;/b&gt; item filter.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
@@ -5165,6 +5074,9 @@
 								Values are rounded up to the nearest 5 (mi) or 10 (km) increment. For
 								example, a value of 21 will be rounded up to 25 (mi) on the eBay US site
 								and to 30 (km) on the eBay Germany site.
+								&lt;br&gt;&lt;br&gt;
+								&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;MaxDistance&lt;/b&gt; item filter cannot be used with 
+								either the &lt;b&gt;LocatedIn&lt;/b&gt; nor the &lt;b&gt;AvailableTo&lt;/b&gt; item filter.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
 								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
@@ -5667,7 +5579,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -5679,7 +5590,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -5691,7 +5601,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsIneBayStores</CallName>
                   <Context>categoryHistogramContainer.categoryHistogram</Context>
@@ -5717,7 +5626,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -5729,7 +5637,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -5741,7 +5648,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsIneBayStores</CallName>
                   <Context>categoryHistogramContainer.categoryHistogram</Context>
@@ -5794,7 +5700,6 @@
                   <CallName>findItemsByCategory</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByKeywords</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsIneBayStores</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findCompletedItems</CallName>
@@ -5865,7 +5770,6 @@
                   <maxLength>50</maxLength>
                   <CallName>findItemsByCategory</CallName>
                   <CallName>findItemsAdvanced</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsIneBayStores</CallName>
                   <CallName>findItemsByProduct</CallName>
@@ -5914,7 +5818,6 @@
                     <CallName>findCompletedItems</CallName>
                     <CallName>findItemsAdvanced</CallName>
                     <CallName>findItemsByCategory</CallName>
-                    <CallName>findItemsByImage</CallName>
                     <CallName>findItemsByKeywords</CallName>
                     <CallName>findItemsByProduct</CallName>
                     <CallName>findItemsIneBayStores</CallName>
@@ -5947,7 +5850,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6016,7 +5918,6 @@
                     <CallName>findCompletedItems</CallName>
                     <CallName>findItemsAdvanced</CallName>
                     <CallName>findItemsByCategory</CallName>
-                    <CallName>findItemsByImage</CallName>
                     <CallName>findItemsByKeywords</CallName>
                     <CallName>findItemsByProduct</CallName>
                     <CallName>findItemsIneBayStores</CallName>
@@ -6053,7 +5954,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6081,7 +5981,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6109,7 +6008,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6138,7 +6036,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6163,7 +6060,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6194,7 +6090,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6271,7 +6166,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6292,7 +6186,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6331,7 +6224,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6352,7 +6244,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6376,7 +6267,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6403,7 +6293,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6424,7 +6313,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6446,7 +6334,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6468,7 +6355,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6492,7 +6378,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6529,7 +6414,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6555,7 +6439,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6595,7 +6478,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6624,7 +6506,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6668,7 +6549,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6691,7 +6571,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6712,7 +6591,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6735,7 +6613,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6762,7 +6639,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6783,7 +6659,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6803,7 +6678,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6824,7 +6698,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6845,7 +6718,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6864,7 +6736,6 @@
                 <CallInfo>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6889,7 +6760,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6957,7 +6827,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -6995,7 +6864,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7015,7 +6883,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7036,7 +6903,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7224,7 +7090,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7247,7 +7112,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7268,7 +7132,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7372,7 +7235,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7399,7 +7261,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7455,7 +7316,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7476,7 +7336,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7499,7 +7358,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7562,7 +7420,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7585,7 +7442,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7625,7 +7481,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7725,7 +7580,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7748,7 +7602,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7774,7 +7627,6 @@
                 <CallInfo>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7795,7 +7647,6 @@
                 <CallInfo>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7816,7 +7667,6 @@
                 <CallInfo>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7860,7 +7710,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
@@ -7880,7 +7729,6 @@
                   <CallName>findCompletedItems</CallName>
                   <CallName>findItemsAdvanced</CallName>
                   <CallName>findItemsByCategory</CallName>
-                  <CallName>findItemsByImage</CallName>
                   <CallName>findItemsByKeywords</CallName>
                   <CallName>findItemsByProduct</CallName>
                   <CallName>findItemsIneBayStores</CallName>
