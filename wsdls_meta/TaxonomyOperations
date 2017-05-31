@@ -3,25 +3,25 @@
 </wsdl:documentation>
 <wsdl:portType>
   <wsdl:operation name="GetADefaultCategoryTreeId" method="GET" resource="get_default_category_tree_id">
-    <wsdl:input message="ns:GetADefaultCategoryTreeIdRequestRestRequest"/>
-    <wsdl:output message="ns:GetADefaultCategoryTreeIdRequestRestResponse"/>
+    <wsdl:input message="ns:GetADefaultCategoryTreeIdRestRequest"/>
+    <wsdl:output message="ns:GetADefaultCategoryTreeIdRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
   <wsdl:operation name="GetACategoryTree" method="GET" resource="category_tree/{category_tree_id}">
-    <wsdl:input message="ns:GetACategoryTreeRequestRestRequest"/>
-    <wsdl:output message="ns:GetACategoryTreeRequestRestResponse"/>
+    <wsdl:input message="ns:GetACategoryTreeRestRequest"/>
+    <wsdl:output message="ns:GetACategoryTreeRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
   <wsdl:operation name="GetACategorySubtree" method="GET" resource="category_tree/{category_tree_id}/get_category_subtree">
-    <wsdl:input message="ns:GetACategorySubtreeRequestRestRequest"/>
-    <wsdl:output message="ns:GetACategorySubtreeRequestRestResponse"/>
+    <wsdl:input message="ns:GetACategorySubtreeRestRequest"/>
+    <wsdl:output message="ns:GetACategorySubtreeRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
   <wsdl:operation name="GetSuggestedCategories" method="GET" resource="category_tree/{category_tree_id}/get_category_suggestions">
-    <wsdl:input message="ns:GetSuggestedCategoriesRequestRestRequest"/>
-    <wsdl:output message="ns:GetSuggestedCategoriesRequestRestResponse"/>
+    <wsdl:input message="ns:GetSuggestedCategoriesRestRequest"/>
+    <wsdl:output message="ns:GetSuggestedCategoriesRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
