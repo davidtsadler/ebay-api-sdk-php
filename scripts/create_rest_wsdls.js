@@ -184,6 +184,11 @@ createWsdl(
 );
 
 createWsdl(
+  'https://developer.ebay.com/devzone/rest/api-ref/taxonomy',
+  'Taxonomy'
+);
+
+createWsdl(
   'https://developer.ebay.com/Devzone/post-order',
   'PostOrder'
 );

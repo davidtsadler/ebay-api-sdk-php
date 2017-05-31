@@ -171,6 +171,12 @@ transform:
 		destDirectory=$(TRANSFORMED)/Order/
 	@saxonb-xslt								\
 		-ext:on								\
+		-s:$(WSDLS)/Taxonomy.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Taxonomy    						\
+		destDirectory=$(TRANSFORMED)/Taxonomy/
+	@saxonb-xslt								\
+		-ext:on								\
 		-s:$(WSDLS)/PostOrder.wsdl					\
 		-xsl:$(XSL)/restSdk.xsl						\
 		service=PostOrder    						\

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:complexType name="AncestorReference">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryName" type="xs:string"/>
+          <xs:element name="categorySubtreeNodeHref" type="xs:string"/>
+          <xs:element name="categoryTreeNodeLevel" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BaseCategoryTree">
+        <xs:sequence>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="categoryTreeVersion" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Category">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CategorySubtree">
+        <xs:sequence>
+          <xs:element name="categorySubtreeNode" type="ns:CategoryTreeNode"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="categoryTreeVersion" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CategorySuggestion">
+        <xs:sequence>
+          <xs:element name="category" type="ns:Category"/>
+          <xs:element name="categoryTreeNodeAncestors" type="ns:AncestorReference" maxOccurs="unbounded"/>
+          <xs:element name="categoryTreeNodeLevel" type="xs:integer"/>
+          <xs:element name="relevancy" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CategorySuggestionResponse">
+        <xs:sequence>
+          <xs:element name="categorySuggestions" type="ns:CategorySuggestion" maxOccurs="unbounded"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="categoryTreeVersion" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CategoryTree">
+        <xs:sequence>
+          <xs:element name="applicableMarketplaceIds" type="ns:MarketplaceIdEnum" maxOccurs="unbounded"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="categoryTreeVersion" type="xs:string"/>
+          <xs:element name="rootCategoryNode" type="ns:CategoryTreeNode"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CategoryTreeNode">
+        <xs:sequence>
+          <xs:element name="category" type="ns:Category"/>
+          <xs:element name="categoryTreeNodeLevel" type="xs:integer"/>
+          <xs:element name="childCategoryTreeNodes" type="ns:CategoryTreeNode" maxOccurs="unbounded"/>
+          <xs:element name="leafCategoryTreeNode" type="xs:boolean"/>
+          <xs:element name="parentCategoryTreeNodeHref" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="MarketplaceIdEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_MOTORS_US"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_US"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetADefaultCategoryTreeIdRestRequest" type="ns:GetADefaultCategoryTreeIdRestRequest"/>
+      <xs:element name="GetADefaultCategoryTreeIdRestResponse" type="ns:GetADefaultCategoryTreeIdRestResponse"/>
+      <xs:complexType name="GetADefaultCategoryTreeIdRestRequest">
+        <xs:sequence>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetADefaultCategoryTreeIdRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BaseCategoryTree">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetACategoryTreeRestRequest" type="ns:GetACategoryTreeRestRequest"/>
+      <xs:element name="GetACategoryTreeRestResponse" type="ns:GetACategoryTreeRestResponse"/>
+      <xs:complexType name="GetACategoryTreeRestRequest">
+        <xs:sequence>
+          <xs:element name="category_tree_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetACategoryTreeRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CategoryTree">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetACategorySubtreeRestRequest" type="ns:GetACategorySubtreeRestRequest"/>
+      <xs:element name="GetACategorySubtreeRestResponse" type="ns:GetACategorySubtreeRestResponse"/>
+      <xs:complexType name="GetACategorySubtreeRestRequest">
+        <xs:sequence>
+          <xs:element name="category_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="category_tree_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetACategorySubtreeRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CategorySubtree">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSuggestedCategoriesRestRequest" type="ns:GetSuggestedCategoriesRestRequest"/>
+      <xs:element name="GetSuggestedCategoriesRestResponse" type="ns:GetSuggestedCategoriesRestResponse"/>
+      <xs:complexType name="GetSuggestedCategoriesRestRequest">
+        <xs:sequence>
+          <xs:element name="category_tree_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="q" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSuggestedCategoriesRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:CategorySuggestionResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1_beta</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="GetADefaultCategoryTreeId" method="GET" resource="get_default_category_tree_id">
+      <wsdl:input message="ns:GetADefaultCategoryTreeIdRequestRestRequest"/>
+      <wsdl:output message="ns:GetADefaultCategoryTreeIdRequestRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetACategoryTree" method="GET" resource="category_tree/{category_tree_id}">
+      <wsdl:input message="ns:GetACategoryTreeRequestRestRequest"/>
+      <wsdl:output message="ns:GetACategoryTreeRequestRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetACategorySubtree" method="GET" resource="category_tree/{category_tree_id}/get_category_subtree">
+      <wsdl:input message="ns:GetACategorySubtreeRequestRestRequest"/>
+      <wsdl:output message="ns:GetACategorySubtreeRequestRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetSuggestedCategories" method="GET" resource="category_tree/{category_tree_id}/get_category_suggestions">
+      <wsdl:input message="ns:GetSuggestedCategoriesRequestRestRequest"/>
+      <wsdl:output message="ns:GetSuggestedCategoriesRequestRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
