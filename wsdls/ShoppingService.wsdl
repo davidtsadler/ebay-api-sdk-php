@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="urn:ebay:apis:eBLBaseComponents" xmlns="urn:ebay:apis:eBLBaseComponents" targetNamespace="urn:ebay:apis:eBLBaseComponents">
   <wsdl:types>
-    <!-- Version 1005 -->
+    <!-- Version 1007 -->
     <!-- (c) 2017 eBay, Inc. All rights reserved -->
     <xs:schema xmlns:ns="urn:ebay:apis:eBLBaseComponents" xmlns="urn:ebay:apis:eBLBaseComponents" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ebay:apis:eBLBaseComponents" elementFormDefault="qualified" attributeFormDefault="unqualified">
       <!-- ##### SHARED_TYPES ##### -->
@@ -9182,22 +9182,14 @@ which a user is registered and on which items can be listed.
               <xs:element name="ItemArray" type="ns:SimpleItemArrayType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-								A list of active items that were listed with the requested
-								product.
-								&lt;br /&gt;
-								&lt;br /&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-									ItemArray is returned only when you use ProductID in the search request
-									(not QueryKeywords) and you set IncludeSelector to Details or Items.
-									Returned only if eBay has currently matching items.
-								&lt;/span&gt;
-								&lt;br /&gt;
+								This container has been deprecated from the &lt;b&gt;FindProducts&lt;/b&gt; call. To retrieve active items associated with a product, you can use the &lt;b&gt;findItemsByProduct&lt;/b&gt; call of the Trading API instead.
 							</xs:documentation>
                   <xs:appinfo>
+                    <DeprecationVersion>1007</DeprecationVersion>
+                    <EndOfLifeVersion>1085</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                     <CallInfo>
-                      <CallName>FindProducts</CallName>
-                      <Returned>Conditionally</Returned>
-                      <Details>IncludeSelector: Items, Details</Details>
+                      <NoCalls/>
                     </CallInfo>
                   </xs:appinfo>
                 </xs:annotation>
@@ -13861,11 +13853,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Items</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -13908,11 +13895,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
-                  <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Details</Details>
                 </CallInfo>
               </xs:appinfo>
@@ -13973,7 +13955,6 @@ which a user is registered and on which items can be listed.
                   <URL>http://pages.ebay.de/help/buy/how-buy-bin.html</URL>
                 </SeeLink>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Details</Details>
@@ -14032,11 +14013,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Items</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14060,11 +14036,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14128,11 +14099,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14158,11 +14124,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14176,7 +14137,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
@@ -14212,11 +14172,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Items</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14232,12 +14187,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
-                  <AllValuesExcept>StoresFixedPrice, Auction, Half</AllValuesExcept>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                   <AllValuesExcept>StoresFixedPrice, Auction, Half</AllValuesExcept>
                 </CallInfo>
               </xs:appinfo>
@@ -14288,7 +14237,6 @@ which a user is registered and on which items can be listed.
                 </CallInfo>
                 <CallInfo>
                   <CallName>GetSingleItem</CallName>
-                  <CallName>FindProducts</CallName>
                   <Returned>Conditionally</Returned>
                   <AllValuesExcept>Escrow, PrePayDelivery, CODPrePayDelivery, PostalTransfer</AllValuesExcept>
                   <Details>IncludeSelector: Details</Details>
@@ -14309,11 +14257,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14362,11 +14305,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: Details</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14382,11 +14320,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14404,11 +14337,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14503,11 +14431,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14576,11 +14499,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                 </CallInfo>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
-                <CallInfo>
                   <CallName>GetItemStatus</CallName>
                   <Returned>Always</Returned>
                 </CallInfo>
@@ -14601,11 +14519,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Always</Returned>
-                  <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Details</Details>
                 </CallInfo>
                 <CallInfo>
@@ -14660,11 +14573,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14752,7 +14660,6 @@ which a user is registered and on which items can be listed.
                   <URL>types/CountryCodeType.html</URL>
                 </SeeLink>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
@@ -14778,7 +14685,6 @@ which a user is registered and on which items can be listed.
                 <CallInfo>
                   <CallName>GetSingleItem</CallName>
                   <CallName>GetMultipleItems</CallName>
-                  <CallName>FindProducts</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: Details</Details>
                 </CallInfo>
@@ -14806,11 +14712,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14851,11 +14752,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14876,11 +14772,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: ShippingCosts</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items, Details</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14957,7 +14848,6 @@ which a user is registered and on which items can be listed.
               <xs:appinfo>
                 <MaxLength>55</MaxLength>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
@@ -14991,7 +14881,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
@@ -15008,7 +14897,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
@@ -15165,11 +15053,6 @@ which a user is registered and on which items can be listed.
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
                   <CallName>FindHalfProducts</CallName>
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Items</Details>
@@ -15274,16 +15157,10 @@ which a user is registered and on which items can be listed.
               <xs:appinfo>
                 <MaxLength>4000</MaxLength>
                 <CallInfo>
-                  <CallName>FindProducts</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -15375,11 +15252,6 @@ which a user is registered and on which items can be listed.
                 <CallInfo>
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Always</Returned>
-                  <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindProducts</CallName>
-                  <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Details</Details>
                 </CallInfo>
               </xs:appinfo>
@@ -16908,7 +16780,7 @@ which a user is registered and on which items can be listed.
   </wsdl:binding>
   <wsdl:service name="Shopping">
     <wsdl:documentation>
-      <Version>1005</Version>
+      <Version>1007</Version>
     </wsdl:documentation>
     <wsdl:port binding="ns:ShoppingBinding" name="Shopping">
       <wsdlsoap:address location="http://open.api.ebay.com/shopping"/>
