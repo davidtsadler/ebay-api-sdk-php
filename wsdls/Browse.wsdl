@@ -2,12 +2,6 @@
 <wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xs:schema>
-      <xs:complexType name="Amount">
-        <xs:sequence>
-          <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
-          <xs:element name="value" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:complexType name="Address">
         <xs:sequence>
           <xs:element name="addressLine1" type="xs:string"/>
@@ -17,6 +11,25 @@
           <xs:element name="county" type="xs:string"/>
           <xs:element name="postalCode" type="xs:string"/>
           <xs:element name="stateOrProvince" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AspectDistribution">
+        <xs:sequence>
+          <xs:element name="aspectValueDistributions" type="ns:AspectValueDistribution" maxOccurs="unbounded"/>
+          <xs:element name="localizedAspectName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AspectFilter">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="filters" type="ns:FilterField" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AspectValueDistribution">
+        <xs:sequence>
+          <xs:element name="localizedAspectValue" type="xs:string"/>
+          <xs:element name="matchCount" type="xs:integer"/>
+          <xs:element name="refinementHref" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="AvailabilityStatusEnum">
@@ -31,6 +44,13 @@
           <xs:enumeration value="MORE_THAN"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="BuyingOptionDistribution">
+        <xs:sequence>
+          <xs:element name="buyingOption" type="xs:string"/>
+          <xs:element name="matchCount" type="xs:integer"/>
+          <xs:element name="refinementHref" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:simpleType name="CountryCodeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="AD"/>
@@ -448,10 +468,26 @@
           <xs:element name="categoryId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="CategoryDistribution">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryName" type="xs:string"/>
+          <xs:element name="matchCount" type="xs:integer"/>
+          <xs:element name="refinementHref" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="CommonDescriptions">
         <xs:sequence>
           <xs:element name="description" type="xs:string"/>
           <xs:element name="itemIds" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConditionDistribution">
+        <xs:sequence>
+          <xs:element name="condition" type="xs:string"/>
+          <xs:element name="conditionId" type="xs:string"/>
+          <xs:element name="matchCount" type="xs:integer"/>
+          <xs:element name="refinementHref" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ConvertedAmount">
@@ -509,41 +545,6 @@
           <xs:element name="value" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="ItemFeed">
-        <xs:sequence>
-          <xs:element name="additionalImageUrls" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="ageGroup" type="xs:string"/>
-          <xs:element name="brand" type="xs:string"/>
-          <xs:element name="category" type="xs:string"/>
-          <xs:element name="categoryId" type="xs:string"/>
-          <xs:element name="color" type="xs:string"/>
-          <xs:element name="condition" type="xs:string"/>
-          <xs:element name="conditionId" type="xs:string"/>
-          <xs:element name="description" type="xs:string"/>
-          <xs:element name="gender" type="xs:string"/>
-          <xs:element name="gtin" type="xs:string"/>
-          <xs:element name="imageUrl" type="xs:string"/>
-          <xs:element name="itemEndDate" type="xs:dateTime"/>
-          <xs:element name="itemId" type="xs:string"/>
-          <xs:element name="material" type="xs:string"/>
-          <xs:element name="mpn" type="xs:string"/>
-          <xs:element name="priceCurrency" type="ns:CurrencyCodeEnum"/>
-          <xs:element name="priceValue" type="xs:string"/>
-          <xs:element name="quantity" type="xs:integer"/>
-          <xs:element name="sellerFeedbackPercentage" type="xs:string"/>
-          <xs:element name="sellerFeedbackScore" type="xs:integer"/>
-          <xs:element name="sellerUsername" type="xs:string"/>
-          <xs:element name="shipsTo" type="xs:string"/>
-          <xs:element name="size" type="xs:string"/>
-          <xs:element name="sizeType" type="xs:string"/>
-          <xs:element name="title" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="ItemFeedResponse">
-        <xs:sequence>
-          <xs:element name="itemFeed" type="ns:ItemFeed" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:complexType name="Image">
         <xs:sequence>
           <xs:element name="height" type="xs:integer"/>
@@ -561,9 +562,11 @@
           <xs:element name="categoryPath" type="xs:string"/>
           <xs:element name="color" type="xs:string"/>
           <xs:element name="condition" type="xs:string"/>
+          <xs:element name="conditionId" type="xs:string"/>
           <xs:element name="currentBidPrice" type="ns:ConvertedAmount"/>
           <xs:element name="description" type="xs:string"/>
           <xs:element name="energyEfficiencyClass" type="xs:string"/>
+          <xs:element name="epid" type="xs:string"/>
           <xs:element name="estimatedAvailabilities" type="ns:EstimatedAvailability" maxOccurs="unbounded"/>
           <xs:element name="gender" type="xs:string"/>
           <xs:element name="gtin" type="xs:string"/>
@@ -582,6 +585,7 @@
           <xs:element name="priceDisplayCondition" type="ns:PriceDisplayConditionEnum"/>
           <xs:element name="primaryItemGroup" type="ns:ItemGroupSummary"/>
           <xs:element name="primaryProductReviewRating" type="ns:ReviewRating"/>
+          <xs:element name="productFicheWebUrl" type="xs:string"/>
           <xs:element name="quantityLimitPerBuyer" type="xs:integer"/>
           <xs:element name="returnTerms" type="ns:ItemReturnTerms"/>
           <xs:element name="seller" type="ns:Seller"/>
@@ -592,6 +596,7 @@
           <xs:element name="sizeSystem" type="xs:string"/>
           <xs:element name="sizeType" type="xs:string"/>
           <xs:element name="subtitle" type="xs:string"/>
+          <xs:element name="taxes" type="ns:Taxes" maxOccurs="unbounded"/>
           <xs:element name="title" type="xs:string"/>
           <xs:element name="topRatedBuyingExperience" type="xs:boolean"/>
           <xs:element name="uniqueBidderCount" type="xs:integer"/>
@@ -643,9 +648,11 @@
           <xs:element name="buyingOptions" type="xs:string" maxOccurs="unbounded"/>
           <xs:element name="categories" type="ns:Category" maxOccurs="unbounded"/>
           <xs:element name="condition" type="xs:string"/>
+          <xs:element name="conditionId" type="xs:string"/>
           <xs:element name="currentBidPrice" type="ns:ConvertedAmount"/>
           <xs:element name="distanceFromPickupLocation" type="ns:TargetLocation"/>
           <xs:element name="energyEfficiencyClass" type="xs:string"/>
+          <xs:element name="epid" type="xs:string"/>
           <xs:element name="image" type="ns:Image"/>
           <xs:element name="itemAffiliateWebUrl" type="xs:string"/>
           <xs:element name="itemGroupHref" type="xs:string"/>
@@ -667,6 +674,18 @@
         <xs:sequence>
           <xs:element name="commonDescriptions" type="ns:CommonDescriptions" maxOccurs="unbounded"/>
           <xs:element name="items" type="ns:Item" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LegalAddress">
+        <xs:sequence>
+          <xs:element name="addressLine1" type="xs:string"/>
+          <xs:element name="addressLine2" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="country" type="ns:CountryCodeEnum"/>
+          <xs:element name="countryName" type="xs:string"/>
+          <xs:element name="county" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="MarketingPrice">
@@ -709,6 +728,15 @@
         <xs:sequence>
           <xs:element name="count" type="xs:integer"/>
           <xs:element name="rating" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Refinement">
+        <xs:sequence>
+          <xs:element name="aspectDistributions" type="ns:AspectDistribution" maxOccurs="unbounded"/>
+          <xs:element name="buyingOptionDistributions" type="ns:BuyingOptionDistribution" maxOccurs="unbounded"/>
+          <xs:element name="categoryDistributions" type="ns:CategoryDistribution" maxOccurs="unbounded"/>
+          <xs:element name="conditionDistributions" type="ns:ConditionDistribution" maxOccurs="unbounded"/>
+          <xs:element name="dominantCategoryId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="RefundMethodEnum">
@@ -756,6 +784,7 @@
           <xs:element name="next" type="xs:string"/>
           <xs:element name="offset" type="xs:integer"/>
           <xs:element name="prev" type="xs:string"/>
+          <xs:element name="refinement" type="ns:Refinement"/>
           <xs:element name="total" type="xs:integer"/>
           <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -765,7 +794,23 @@
           <xs:element name="feedbackPercentage" type="xs:string"/>
           <xs:element name="feedbackScore" type="xs:integer"/>
           <xs:element name="sellerAccountType" type="xs:string"/>
+          <xs:element name="sellerLegalInfo" type="ns:SellerLegalInfo"/>
           <xs:element name="username" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SellerLegalInfo">
+        <xs:sequence>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="fax" type="xs:string"/>
+          <xs:element name="imprint" type="xs:string"/>
+          <xs:element name="legalContactFirstName" type="xs:string"/>
+          <xs:element name="legalContactLastName" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="registrationNumber" type="xs:string"/>
+          <xs:element name="sellerProvidedLegalAddress" type="ns:LegalAddress"/>
+          <xs:element name="termsOfService" type="xs:string"/>
+          <xs:element name="vatDetails" type="ns:VatDetail" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ShipToLocation">
@@ -829,6 +874,24 @@
           <xs:element name="value" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="TaxJurisdiction">
+        <xs:sequence>
+          <xs:element name="region" type="ns:Region"/>
+          <xs:element name="taxJurisdictionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TaxType">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="Taxes">
+        <xs:sequence>
+          <xs:element name="includedInPrice" type="xs:boolean"/>
+          <xs:element name="shippingAndHandlingTaxed" type="xs:boolean"/>
+          <xs:element name="taxJurisdiction" type="ns:TaxJurisdiction"/>
+          <xs:element name="taxPercentage" type="xs:string"/>
+          <xs:element name="taxType" type="ns:TaxType"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="TypedNameValue">
         <xs:sequence>
           <xs:element name="name" type="xs:string"/>
@@ -842,6 +905,12 @@
           <xs:enumeration value="STRING_ARRAY"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="VatDetail">
+        <xs:sequence>
+          <xs:element name="issuingCountry" type="ns:CountryCodeEnum"/>
+          <xs:element name="vatId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:element name="GetItemRestRequest" type="ns:GetItemRestRequest"/>
       <xs:element name="GetItemRestResponse" type="ns:GetItemRestResponse"/>
       <xs:complexType name="GetItemRestRequest">
@@ -859,18 +928,18 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="GetItemFeedRestRequest" type="ns:GetItemFeedRestRequest"/>
-      <xs:element name="GetItemFeedRestResponse" type="ns:GetItemFeedRestResponse"/>
-      <xs:complexType name="GetItemFeedRestRequest">
+      <xs:element name="GetItemByLegacyIdRestRequest" type="ns:GetItemByLegacyIdRestRequest"/>
+      <xs:element name="GetItemByLegacyIdRestResponse" type="ns:GetItemByLegacyIdRestResponse"/>
+      <xs:complexType name="GetItemByLegacyIdRestRequest">
         <xs:sequence>
-          <xs:element name="category_id" type="xs:string" valid="string" required="true"/>
-          <xs:element name="date" type="xs:string" valid="string" required="true"/>
-          <xs:element name="feed_type" type="xs:string" valid="string" required="true"/>
+          <xs:element name="legacy_item_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="legacy_variation_id" type="xs:string" valid="string"/>
+          <xs:element name="legacy_variation_sku" type="xs:string" valid="string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="GetItemFeedRestResponse" restResponse="true">
+      <xs:complexType name="GetItemByLegacyIdRestResponse" restResponse="true">
         <xs:complexContent>
-          <xs:extension base="ns:ItemFeedResponse">
+          <xs:extension base="ns:Item">
             <xs:sequence>
               <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
               <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
@@ -878,16 +947,16 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="GetItemGroupRestRequest" type="ns:GetItemGroupRestRequest"/>
-      <xs:element name="GetItemGroupRestResponse" type="ns:GetItemGroupRestResponse"/>
-      <xs:complexType name="GetItemGroupRestRequest">
+      <xs:element name="GetItemsByItemGroupRestRequest" type="ns:GetItemsByItemGroupRestRequest"/>
+      <xs:element name="GetItemsByItemGroupRestResponse" type="ns:GetItemsByItemGroupRestResponse"/>
+      <xs:complexType name="GetItemsByItemGroupRestRequest">
         <xs:sequence>
           <xs:element name="item_group_id" type="xs:string" valid="string" required="true"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="GetItemGroupRestResponse" restResponse="true">
+      <xs:complexType name="GetItemsByItemGroupRestResponse" restResponse="true">
         <xs:complexContent>
-          <xs:extension base="ns:ItemGroup">
+          <xs:extension base="ns:Items">
             <xs:sequence>
               <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
               <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
@@ -899,6 +968,10 @@
       <xs:element name="SearchForItemsRestRequest" type="ns:SearchForItemsRestRequest"/>
       <xs:complexType name="SearchForItemsRestRequest">
         <xs:sequence>
+          <xs:element name="aspect_filter" type="xs:string" valid="string"/>
+          <xs:element name="category_ids" type="xs:string" valid="string"/>
+          <xs:element name="epid" type="xs:string" valid="string"/>
+          <xs:element name="fieldgroups" type="xs:string" valid="string"/>
           <xs:element name="filter" type="xs:string" valid="string"/>
           <xs:element name="limit" type="xs:string" valid="string"/>
           <xs:element name="offset" type="xs:string" valid="string"/>
@@ -922,25 +995,25 @@
     <Version>v1</Version>
   </wsdl:documentation>
   <wsdl:portType>
-    <wsdl:operation name="getItem" method="GET" resource="item/{item_id}">
+    <wsdl:operation name="GetItem" method="GET" resource="item/{item_id}">
       <wsdl:input message="ns:GetItemRestRequest"/>
       <wsdl:output message="ns:GetItemRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
-    <wsdl:operation name="getItemFeed" method="GET" resource="item_feed">
-      <wsdl:input message="ns:GetItemFeedRestRequest"/>
-      <wsdl:output message="ns:GetItemFeedRestResponse"/>
+    <wsdl:operation name="GetItemByLegacyId" method="GET" resource="item/get_item_by_legacy_id">
+      <wsdl:input message="ns:GetItemByLegacyIdRestRequest"/>
+      <wsdl:output message="ns:GetItemByLegacyIdRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
-    <wsdl:operation name="getItemGroup" method="GET" resource="item_group/{item_group_id}">
-      <wsdl:input message="ns:GetItemGroupRestRequest"/>
-      <wsdl:output message="ns:GetItemGroupRestResponse"/>
+    <wsdl:operation name="GetItemsByItemGroup" method="GET" resource="item/get_items_by_item_group">
+      <wsdl:input message="ns:GetItemsByItemGroupRestRequest"/>
+      <wsdl:output message="ns:GetItemsByItemGroupRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
-    <wsdl:operation name="searchForItems" method="GET" resource="item_summary/search">
+    <wsdl:operation name="SearchForItems" method="GET" resource="item_summary/search">
       <wsdl:input message="ns:SearchForItemsRestRequest"/>
       <wsdl:output message="ns:SearchForItemsRestResponse"/>
     </wsdl:operation>

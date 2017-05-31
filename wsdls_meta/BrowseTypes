@@ -16,18 +16,18 @@
   </xs:complexContent>
 </xs:complexType>
 
-<xs:element name="GetItemFeedRestRequest" type="ns:GetItemFeedRestRequest"/>
-<xs:element name="GetItemFeedRestResponse" type="ns:GetItemFeedRestResponse"/>
-<xs:complexType name="GetItemFeedRestRequest">
+<xs:element name="GetItemByLegacyIdRestRequest" type="ns:GetItemByLegacyIdRestRequest"/>
+<xs:element name="GetItemByLegacyIdRestResponse" type="ns:GetItemByLegacyIdRestResponse"/>
+<xs:complexType name="GetItemByLegacyIdRestRequest">
   <xs:sequence>
-    <xs:element name="category_id" type="xs:string" valid="string" required="true"/>
-    <xs:element name="date" type="xs:string" valid="string" required="true"/>
-    <xs:element name="feed_type" type="xs:string" valid="string" required="true"/>
+    <xs:element name="legacy_item_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="legacy_variation_id" type="xs:string" valid="string"/>
+    <xs:element name="legacy_variation_sku" type="xs:string" valid="string"/>
   </xs:sequence>
 </xs:complexType>
-<xs:complexType name="GetItemFeedRestResponse" restResponse="true">
+<xs:complexType name="GetItemByLegacyIdRestResponse" restResponse="true">
   <xs:complexContent>
-    <xs:extension base="ns:ItemFeedResponse">
+    <xs:extension base="ns:Item">
       <xs:sequence>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
@@ -36,16 +36,16 @@
   </xs:complexContent>
 </xs:complexType>
 
-<xs:element name="GetItemGroupRestRequest" type="ns:GetItemGroupRestRequest"/>
-<xs:element name="GetItemGroupRestResponse" type="ns:GetItemGroupRestResponse"/>
-<xs:complexType name="GetItemGroupRestRequest">
+<xs:element name="GetItemsByItemGroupRestRequest" type="ns:GetItemsByItemGroupRestRequest"/>
+<xs:element name="GetItemsByItemGroupRestResponse" type="ns:GetItemsByItemGroupRestResponse"/>
+<xs:complexType name="GetItemsByItemGroupRestRequest">
   <xs:sequence>
     <xs:element name="item_group_id" type="xs:string" valid="string" required="true"/>
   </xs:sequence>
 </xs:complexType>
-<xs:complexType name="GetItemGroupRestResponse" restResponse="true">
+<xs:complexType name="GetItemsByItemGroupRestResponse" restResponse="true">
   <xs:complexContent>
-    <xs:extension base="ns:ItemGroup">
+    <xs:extension base="ns:Items">
       <xs:sequence>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
@@ -58,6 +58,10 @@
 <xs:element name="SearchForItemsRestRequest" type="ns:SearchForItemsRestRequest"/>
 <xs:complexType name="SearchForItemsRestRequest">
   <xs:sequence>
+    <xs:element name="aspect_filter" type="xs:string" valid="string"/>
+    <xs:element name="category_ids" type="xs:string" valid="string"/>
+    <xs:element name="epid" type="xs:string" valid="string"/>
+    <xs:element name="fieldgroups" type="xs:string" valid="string"/>
     <xs:element name="filter" type="xs:string" valid="string"/>
     <xs:element name="limit" type="xs:string" valid="string"/>
     <xs:element name="offset" type="xs:string" valid="string"/>
