@@ -1699,13 +1699,13 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
-    <wsdl:operation name="CreateReportTask" method="GET" resource="ad_report_task">
+    <wsdl:operation name="CreateReportTask" method="POST" resource="ad_report_task">
       <wsdl:input message="ns:CreateReportTaskRestRequest"/>
       <wsdl:output message="ns:CreateReportTaskRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
-    <wsdl:operation name="DeleteSpecificReportTask" method="GET" resource="ad_report_task/{report_task_id}">
+    <wsdl:operation name="DeleteSpecificReportTask" method="DELETE" resource="ad_report_task/{report_task_id}">
       <wsdl:input message="ns:DeleteSpecificReportTaskRestRequest"/>
       <wsdl:output message="ns:DeleteSpecificReportTaskRestResponse"/>
     </wsdl:operation>
