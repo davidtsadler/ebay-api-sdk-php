@@ -2699,6 +2699,10 @@
           <xs:element name="parameter" type="ns:ErrorParameter" maxOccurs="unbounded"/>
           <xs:element name="longMessage" type="xs:string"/>
           <xs:element name="httpStatusCode" type="xs:integer"/>
+          <xs:element name="errorName" type="xs:string"/>
+          <xs:element name="resolution" type="xs:string"/>
+          <xs:element name="organization" type="xs:string"/>
+          <xs:element name="errorGroups" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ErrorParameter">

@@ -7,12 +7,17 @@
   <xs:sequence>
     <xs:element name="errorId" type="xs:integer"/>
     <xs:element name="domain" type="xs:string"/>
+    <xs:element name="subdomain" type="xs:string"/>
     <xs:element name="severity" type="xs:string"/>
     <xs:element name="category" type="xs:string"/>
     <xs:element name="message" type="xs:string"/>
     <xs:element name="parameter" type="ns:ErrorParameter" maxOccurs="unbounded"/>
     <xs:element name="longMessage" type="xs:string"/>
     <xs:element name="httpStatusCode" type="xs:integer"/>
+    <xs:element name="errorName" type="xs:string"/>
+    <xs:element name="resolution" type="xs:string"/>
+    <xs:element name="organization" type="xs:string"/>
+    <xs:element name="errorGroups" type="xs:string"/>
   </xs:sequence>
 </xs:complexType>
 <xs:complexType name="ErrorParameter">
