@@ -247,3 +247,9 @@
     <wsdl:output message="ns:GetSpecificReportTaskRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetAPromotionReport" method="GET" resource="promotion_report">
+    <wsdl:input message="ns:GetAPromotionReportRestRequest"/>
+    <wsdl:output message="ns:GetAPromotionReportRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

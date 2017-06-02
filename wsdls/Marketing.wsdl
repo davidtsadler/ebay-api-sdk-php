@@ -58,6 +58,11 @@
           <xs:element name="value" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="BaseResponse">
+        <xs:sequence>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="BulkAdResponse">
         <xs:sequence>
           <xs:element name="responses" type="ns:AdResponse" maxOccurs="unbounded"/>
@@ -630,6 +635,25 @@
           <xs:element name="startDate" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="PromotionReportDetail">
+        <xs:sequence>
+          <xs:element name="averageItemDiscount" type="ns:Amount"/>
+          <xs:element name="averageItemRevenue" type="ns:Amount"/>
+          <xs:element name="averageOrderDiscount" type="ns:Amount"/>
+          <xs:element name="averageOrderRevenue" type="ns:Amount"/>
+          <xs:element name="averageOrderSize" type="xs:string"/>
+          <xs:element name="baseSale" type="ns:Amount"/>
+          <xs:element name="itemsSoldQuantity" type="xs:integer"/>
+          <xs:element name="numberOfOrdersSold" type="xs:integer"/>
+          <xs:element name="percentageSalesLift" type="xs:string"/>
+          <xs:element name="promotionHref" type="xs:string"/>
+          <xs:element name="promotionId" type="xs:string"/>
+          <xs:element name="promotionReportId" type="xs:string"/>
+          <xs:element name="promotionSale" type="ns:Amount"/>
+          <xs:element name="totalDiscount" type="ns:Amount"/>
+          <xs:element name="totalSale" type="ns:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="PromotionsPagedCollection">
         <xs:sequence>
           <xs:element name="href" type="xs:string"/>
@@ -638,6 +662,17 @@
           <xs:element name="offset" type="xs:integer"/>
           <xs:element name="prev" type="xs:string"/>
           <xs:element name="promotions" type="ns:PromotionDetail" maxOccurs="unbounded"/>
+          <xs:element name="total" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PromotionsReportPagedCollection">
+        <xs:sequence>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="promotionReports" type="ns:PromotionReportDetail" maxOccurs="unbounded"/>
           <xs:element name="total" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
@@ -1471,6 +1506,27 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <xs:element name="GetAPromotionReportRestRequest" type="ns:GetAPromotionReportRestRequest"/>
+      <xs:element name="GetAPromotionReportRestResponse" type="ns:GetAPromotionReportRestResponse"/>
+      <xs:complexType name="GetAPromotionReportRestRequest">
+        <xs:sequence>
+          <xs:element name="limit" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="offset" type="xs:string" valid="string"/>
+          <xs:element name="promotion_status" type="xs:string" valid="string"/>
+          <xs:element name="q" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAPromotionReportRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PromotionsReportPagedCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
     </xs:schema>
   </wsdl:types>
   <wsdl:documentation>
@@ -1720,6 +1776,12 @@
     <wsdl:operation name="GetSpecificReportTask" method="GET" resource="ad_report_task/{report_task_id}">
       <wsdl:input message="ns:GetSpecificReportTaskRestRequest"/>
       <wsdl:output message="ns:GetSpecificReportTaskRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetAPromotionReport" method="GET" resource="promotion_report">
+      <wsdl:input message="ns:GetAPromotionReportRestRequest"/>
+      <wsdl:output message="ns:GetAPromotionReportRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

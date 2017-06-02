@@ -735,3 +735,25 @@
     </xs:extension>
   </xs:complexContent>
 </xs:complexType>
+
+<xs:element name="GetAPromotionReportRestRequest" type="ns:GetAPromotionReportRestRequest"/>
+<xs:element name="GetAPromotionReportRestResponse" type="ns:GetAPromotionReportRestResponse"/>
+<xs:complexType name="GetAPromotionReportRestRequest">
+  <xs:sequence>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="promotion_status" type="xs:string" valid="string"/>
+    <xs:element name="q" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetAPromotionReportRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PromotionsReportPagedCollection">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
