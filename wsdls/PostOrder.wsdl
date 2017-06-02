@@ -217,8 +217,8 @@
           <xs:element name="actionDate" type="ns:DateTime"/>
           <xs:element name="activityParty" type="xs:token"/>
           <xs:element name="activityType" type="ns:CancelActivityTypeEnum"/>
-          <xs:element name="stateFrom" type="xs:token"/>
-          <xs:element name="stateTo" type="xs:token"/>
+          <xs:element name="cancelStateFrom" type="xs:token"/>
+          <xs:element name="cancelStateTo" type="xs:token"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="CancelActivityTypeEnum">
@@ -272,8 +272,8 @@
           <xs:element name="requestRefundAmount" type="ns:Amount"/>
           <xs:element name="sellerResponseDueDate" type="ns:DateTime"/>
           <xs:element name="shipmentDate" type="ns:DateTime"/>
-          <xs:element name="state" type="xs:token"/>
-          <xs:element name="status" type="xs:token"/>
+          <xs:element name="cancelState" type="xs:token"/>
+          <xs:element name="cancelStatus" type="xs:token"/>
           <xs:element name="transactionId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
