@@ -1263,10 +1263,14 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:complexType name="CreateItemPromotionRestResponse" restResponse="true">
-        <xs:sequence>
-          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-        </xs:sequence>
+        <xs:complexContent>
+          <xs:extension base="ns:BaseResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
       <xs:element name="DeleteItemPromotionRestRequest" type="ns:DeleteItemPromotionRestRequest"/>
       <xs:element name="DeleteItemPromotionRestResponse" type="ns:DeleteItemPromotionRestResponse"/>
@@ -1310,10 +1314,14 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:complexType name="UpdateItemPromotionRestResponse" restResponse="true">
-        <xs:sequence>
-          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-        </xs:sequence>
+        <xs:complexContent>
+          <xs:extension base="ns:BaseResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetListingsInSpecificPromotionRestRequest" type="ns:GetListingsInSpecificPromotionRestRequest"/>
       <xs:element name="GetListingsInSpecificPromotionRestResponse" type="ns:GetListingsInSpecificPromotionRestResponse"/>
