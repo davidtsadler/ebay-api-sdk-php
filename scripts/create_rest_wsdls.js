@@ -154,6 +154,11 @@ createWsdl(
 );
 
 createWsdl(
+  'https://developer.ebay.com/devzone/rest/api-ref/buy-feed',
+  'Feed'
+);
+
+createWsdl(
   'https://developer.ebay.com/devzone/rest/api-ref/fulfillment',
   'Fulfillment'
 );

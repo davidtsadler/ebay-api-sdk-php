@@ -1,0 +1,9 @@
+<wsdl:documentation>
+  <Version>v1_beta</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="GetItemFeed" method="GET" resource="item_summary">
+    <wsdl:input message="ns:GetItemFeedRestRequest"/>
+    <wsdl:output message="ns:GetItemFeedRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

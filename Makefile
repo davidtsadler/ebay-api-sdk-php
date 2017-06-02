@@ -105,6 +105,12 @@ transform:
 		destDirectory=$(TRANSFORMED)/BusinessPoliciesManagement/
 	@saxonb-xslt								\
 		-ext:on								\
+		-s:$(WSDLS)/Feed.wsdl						\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Feed    						\
+		destDirectory=$(TRANSFORMED)/Feed/
+	@saxonb-xslt								\
+		-ext:on								\
 		-s:$(WSDLS)/FeedbackService.wsdl				\
 		-xsl:$(XSL)/sdk.xsl	 					\
 		service=Feedback						\
