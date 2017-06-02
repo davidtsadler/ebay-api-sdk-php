@@ -219,6 +219,7 @@
           <xs:element name="activityType" type="ns:CancelActivityTypeEnum"/>
           <xs:element name="cancelStateFrom" type="xs:token"/>
           <xs:element name="cancelStateTo" type="xs:token"/>
+          <xs:element name="cancelStatetateTo" type="xs:token"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="CancelActivityTypeEnum">
