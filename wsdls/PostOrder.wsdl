@@ -475,7 +475,7 @@
         <xs:sequence>
           <xs:element name="buyer" type="xs:string"/>
           <xs:element name="caseId" type="xs:integer"/>
-          <xs:element name="caseStatusEnum" type="ns:rsp:CaseStatusEnum"/>
+          <xs:element name="caseStatusEnum" type="ns:CaseStatusEnum"/>
           <xs:element name="claimAmount" type="ns:Amount"/>
           <xs:element name="creationDate" type="ns:DateTime"/>
           <xs:element name="itemId" type="xs:integer"/>
