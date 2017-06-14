@@ -973,6 +973,7 @@
           <xs:element name="epid" type="xs:string" valid="string"/>
           <xs:element name="fieldgroups" type="xs:string" valid="string"/>
           <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="gtin" type="xs:string" valid="string"/>
           <xs:element name="limit" type="xs:string" valid="string"/>
           <xs:element name="offset" type="xs:string" valid="string"/>
           <xs:element name="q" type="xs:string" valid="string"/>
