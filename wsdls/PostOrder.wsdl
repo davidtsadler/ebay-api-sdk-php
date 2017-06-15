@@ -336,6 +336,7 @@
           <xs:element name="cancelReason" type="xs:token"/>
           <xs:element name="cancelRequestDate" type="ns:DateTime"/>
           <xs:element name="legacyOrderId" type="xs:string"/>
+          <xs:element name="lineItems" type="ns:OrderCancelLineItem" maxOccurs="unbounded"/>
           <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
           <xs:element name="paymentStatus" type="xs:token"/>
           <xs:element name="requestorType" type="xs:token"/>
@@ -1834,6 +1835,8 @@
         <xs:sequence>
           <xs:element name="itemId" type="xs:string"/>
           <xs:element name="transactionId" type="xs:string"/>
+          <xs:element name="itemTitle" type="xs:string"/>
+          <xs:element name="cancelQuantity" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OrderEligibilityCheckInfo">
