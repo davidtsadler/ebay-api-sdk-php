@@ -27,6 +27,46 @@
           <xs:element name="stateOrProvince" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="CheckoutSessionResponse">
+        <xs:sequence>
+          <xs:element name="acceptedPaymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
+          <xs:element name="checkoutSessionId" type="xs:string"/>
+          <xs:element name="expirationDate" type="xs:string"/>
+          <xs:element name="lineItems" type="ns:LineItem" maxOccurs="unbounded"/>
+          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
+          <xs:element name="providedPaymentInstrument" type="ns:ProvidedPaymentInstrument"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateGuestCheckoutSessionRequest">
+        <xs:sequence>
+          <xs:element name="contactEmail" type="xs:string"/>
+          <xs:element name="contactFirstName" type="xs:string"/>
+          <xs:element name="contactLastName" type="xs:string"/>
+          <xs:element name="creditCard" type="ns:CreditCard"/>
+          <xs:element name="lineItemInputs" type="ns:LineItemInput" maxOccurs="unbounded"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateSignInCheckoutSessionRequest">
+        <xs:sequence>
+          <xs:element name="creditCard" type="ns:CreditCard"/>
+          <xs:element name="lineItemInputs" type="ns:LineItemInput" maxOccurs="unbounded"/>
+          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreditCard">
+        <xs:sequence>
+          <xs:element name="accountHolderName" type="xs:string"/>
+          <xs:element name="billingAddress" type="ns:BillingAddress"/>
+          <xs:element name="brand" type="xs:string"/>
+          <xs:element name="cardNumber" type="xs:string"/>
+          <xs:element name="cvvNumber" type="xs:string"/>
+          <xs:element name="expireMonth" type="xs:integer"/>
+          <xs:element name="expireYear" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:simpleType name="CountryCodeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="AD"/>
@@ -439,46 +479,6 @@
           <xs:enumeration value="ZWL"/>
         </xs:restriction>
       </xs:simpleType>
-      <xs:complexType name="CheckoutSessionResponse">
-        <xs:sequence>
-          <xs:element name="acceptedPaymentMethods" type="ns:PaymentMethod" maxOccurs="unbounded"/>
-          <xs:element name="checkoutSessionId" type="xs:string"/>
-          <xs:element name="expirationDate" type="xs:string"/>
-          <xs:element name="lineItems" type="ns:LineItem" maxOccurs="unbounded"/>
-          <xs:element name="pricingSummary" type="ns:PricingSummary"/>
-          <xs:element name="providedPaymentInstrument" type="ns:ProvidedPaymentInstrument"/>
-          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
-          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="CreateGuestCheckoutSessionRequest">
-        <xs:sequence>
-          <xs:element name="contactEmail" type="xs:string"/>
-          <xs:element name="contactFirstName" type="xs:string"/>
-          <xs:element name="contactLastName" type="xs:string"/>
-          <xs:element name="creditCard" type="ns:CreditCard"/>
-          <xs:element name="lineItemInputs" type="ns:LineItemInput" maxOccurs="unbounded"/>
-          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="CreateSignInCheckoutSessionRequest">
-        <xs:sequence>
-          <xs:element name="creditCard" type="ns:CreditCard"/>
-          <xs:element name="lineItemInputs" type="ns:LineItemInput" maxOccurs="unbounded"/>
-          <xs:element name="shippingAddress" type="ns:ShippingAddress"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="CreditCard">
-        <xs:sequence>
-          <xs:element name="accountHolderName" type="xs:string"/>
-          <xs:element name="billingAddress" type="ns:BillingAddress"/>
-          <xs:element name="brand" type="xs:string"/>
-          <xs:element name="cardNumber" type="xs:string"/>
-          <xs:element name="cvvNumber" type="xs:string"/>
-          <xs:element name="expireMonth" type="xs:integer"/>
-          <xs:element name="expireYear" type="xs:integer"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:complexType name="ErrorDetailV3">
         <xs:sequence>
           <xs:element name="category" type="xs:string"/>
@@ -517,12 +517,6 @@
           <xs:element name="width" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="LineItemReference">
-        <xs:sequence>
-          <xs:element name="lineItemId" type="xs:string"/>
-          <xs:element name="quantity" type="xs:integer"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:complexType name="LineItem">
         <xs:sequence>
           <xs:element name="image" type="ns:Image"/>
@@ -546,10 +540,17 @@
       <xs:simpleType name="LineItemPaymentStatusEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="FAILED"/>
+          <xs:enumeration value="NOT_PAID"/>
           <xs:enumeration value="PAID"/>
           <xs:enumeration value="PENDING"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="LineItemReference">
+        <xs:sequence>
+          <xs:element name="lineItemId" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:simpleType name="LineItemStatusEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="CANCELLED"/>
