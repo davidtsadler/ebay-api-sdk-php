@@ -50,6 +50,12 @@
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
+  <wsdl:operation name="BulkMigrateListings" method="POST" resource="bulk_migrate_listing">
+    <wsdl:input message="ns:BulkMigrateListingsRestRequest"/>
+    <wsdl:output message="ns:BulkMigrateListingsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
   <wsdl:operation name="CreateInventoryLocation" method="POST" resource="location/{merchantLocationKey}">
     <wsdl:input message="ns:CreateInventoryLocationRestRequest"/>
     <wsdl:output message="ns:CreateInventoryLocationRestResponse"/>

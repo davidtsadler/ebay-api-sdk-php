@@ -151,6 +151,24 @@
   </xs:complexContent>
 </xs:complexType>
 
+<xs:element name="BulkMigrateListingsRestRequest" type="ns:BulkMigrateListingsRestRequest"/>
+<xs:element name="BulkMigrateListingsRestResponse" type="ns:BulkMigrateListingsRestResponse"/>
+<xs:complexType name="BulkMigrateListingsRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkMigrateListing"/>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BulkMigrateListingsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:BulkMigrateListingResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
 <xs:element name="CreateInventoryLocationRestRequest" type="ns:CreateInventoryLocationRestRequest"/>
 <xs:element name="CreateInventoryLocationRestResponse" type="ns:CreateInventoryLocationRestResponse"/>
 <xs:complexType name="CreateInventoryLocationRestRequest">

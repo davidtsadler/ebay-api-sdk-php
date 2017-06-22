@@ -37,6 +37,16 @@
           <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="BulkMigrateListing">
+        <xs:sequence>
+          <xs:element name="requests" type="ns:MigrateListing" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BulkMigrateListingResponse">
+        <xs:sequence>
+          <xs:element name="responses" type="ns:MigrateListingResponse" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="BulkPriceQuantity">
         <xs:sequence>
           <xs:element name="requests" type="ns:PriceQuantity" maxOccurs="unbounded"/>
@@ -506,6 +516,12 @@
           <xs:element name="variesBy" type="ns:VariesBy"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="InventoryItemListing">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element name="sku" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="InventoryItems">
         <xs:sequence>
           <xs:element name="href" type="xs:string"/>
@@ -620,6 +636,22 @@
           <xs:enumeration value="EBAY_ZA"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="MigrateListing">
+        <xs:sequence>
+          <xs:element name="listingId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MigrateListingResponse">
+        <xs:sequence>
+          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="inventoryItemGroupKey" type="xs:string"/>
+          <xs:element name="inventoryItems" type="ns:InventoryItemListing" maxOccurs="unbounded"/>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceEnum"/>
+          <xs:element name="statusCode" type="xs:integer"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:simpleType name="MinimumAdvertisedPriceHandlingEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="DURING_CHECKOUT"/>
@@ -1023,6 +1055,23 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <xs:element name="BulkMigrateListingsRestRequest" type="ns:BulkMigrateListingsRestRequest"/>
+      <xs:element name="BulkMigrateListingsRestResponse" type="ns:BulkMigrateListingsRestResponse"/>
+      <xs:complexType name="BulkMigrateListingsRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkMigrateListing"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BulkMigrateListingsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:BulkMigrateListingResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
       <xs:element name="CreateInventoryLocationRestRequest" type="ns:CreateInventoryLocationRestRequest"/>
       <xs:element name="CreateInventoryLocationRestResponse" type="ns:CreateInventoryLocationRestResponse"/>
       <xs:complexType name="CreateInventoryLocationRestRequest">
@@ -1358,6 +1407,12 @@
     <wsdl:operation name="GetInventoryItemGroup" method="GET" resource="inventory_item_group/{inventoryItemGroupKey}">
       <wsdl:input message="ns:GetInventoryItemGroupRestRequest"/>
       <wsdl:output message="ns:GetInventoryItemGroupRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="BulkMigrateListings" method="POST" resource="bulk_migrate_listing">
+      <wsdl:input message="ns:BulkMigrateListingsRestRequest"/>
+      <wsdl:output message="ns:BulkMigrateListingsRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
