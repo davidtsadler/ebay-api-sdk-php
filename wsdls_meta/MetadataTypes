@@ -1,23 +1,3 @@
-<xs:complexType name="ErrorDetailV3">
-  <xs:sequence>
-    <xs:element name="category" type="xs:string"/>
-    <xs:element name="domain" type="xs:string"/>
-    <xs:element name="errorId" type="xs:integer"/>
-    <xs:element name="inputRefIds" type="xs:string"/>
-    <xs:element name="longMessage" type="xs:string"/>
-    <xs:element name="message" type="xs:string"/>
-    <xs:element name="outputRefIds" type="xs:string"/>
-    <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
-    <xs:element name="subDomain" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
-<xs:complexType name="ErrorParameterV3">
-  <xs:sequence>
-    <xs:element name="name" type="xs:string"/>
-    <xs:element name="value" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
-
 <xs:element name="GetSalesTaxJurisdictionsRestRequest" type="ns:GetSalesTaxJurisdictionsRestRequest"/>
 <xs:element name="GetSalesTaxJurisdictionsRestResponse" type="ns:GetSalesTaxJurisdictionsRestResponse"/>
 <xs:complexType name="GetSalesTaxJurisdictionsRestRequest">
@@ -28,6 +8,96 @@
 <xs:complexType name="GetSalesTaxJurisdictionsRestResponse" restResponse="true">
   <xs:complexContent>
     <xs:extension base="ns:SalesTaxJurisdictions">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:element name="GetPoliciesForAutoPartsCompatibilityRestRequest" type="ns:GetPoliciesForAutoPartsCompatibilityRestRequest"/>
+<xs:element name="GetPoliciesForAutoPartsCompatibilityRestResponse" type="ns:GetPoliciesForAutoPartsCompatibilityRestResponse"/>
+<xs:complexType name="GetPoliciesForAutoPartsCompatibilityRestRequest">
+  <xs:sequence>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPoliciesForAutoPartsCompatibilityRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:AutomotivePartsCompatibilityPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:element name="GetPoliciesForItemConditionRestRequest" type="ns:GetPoliciesForItemConditionRestRequest"/>
+<xs:element name="GetPoliciesForItemConditionRestResponse" type="ns:GetPoliciesForItemConditionRestResponse"/>
+<xs:complexType name="GetPoliciesForItemConditionRestRequest">
+  <xs:sequence>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPoliciesForItemConditionRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ItemConditionPolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:element name="GetPoliciesForListingStructuresRestRequest" type="ns:GetPoliciesForListingStructuresRestRequest"/>
+<xs:element name="GetPoliciesForListingStructuresRestResponse" type="ns:GetPoliciesForListingStructuresRestResponse"/>
+<xs:complexType name="GetPoliciesForListingStructuresRestRequest">
+  <xs:sequence>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPoliciesForListingStructuresRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ListingStructurePolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:element name="GetPoliciesForNegotiatedPriceRestRequest" type="ns:GetPoliciesForNegotiatedPriceRestRequest"/>
+<xs:element name="GetPoliciesForNegotiatedPriceRestResponse" type="ns:GetPoliciesForNegotiatedPriceRestResponse"/>
+<xs:complexType name="GetPoliciesForNegotiatedPriceRestRequest">
+  <xs:sequence>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPoliciesForNegotiatedPriceRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:NegotiatedPricePolicyResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:element name="GetPoliciesForReturnsRestRequest" type="ns:GetPoliciesForReturnsRestRequest"/>
+<xs:element name="GetPoliciesForReturnsRestResponse" type="ns:GetPoliciesForReturnsRestResponse"/>
+<xs:complexType name="GetPoliciesForReturnsRestRequest">
+  <xs:sequence>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+    <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetPoliciesForReturnsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ReturnPolicyResponse">
       <xs:sequence>
         <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>

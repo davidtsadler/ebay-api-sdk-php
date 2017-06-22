@@ -7,3 +7,33 @@
     <wsdl:output message="ns:GetSalesTaxJurisdictionsRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPoliciesForAutoPartsCompatibility" method="GET" resource="marketplace/{marketplace_id}/get_automotive_parts_compatibility_policies">
+    <wsdl:input message="ns:GetPoliciesForAutoPartsCompatibilityRestRequest"/>
+    <wsdl:output message="ns:GetPoliciesForAutoPartsCompatibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPoliciesForItemCondition" method="GET" resource="marketplace/{marketplace_id}/get_item_condition_policies">
+    <wsdl:input message="ns:GetPoliciesForItemConditionRestRequest"/>
+    <wsdl:output message="ns:GetPoliciesForItemConditionRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPoliciesForListingStructures" method="GET" resource="marketplace/{marketplace_id}/get_listing_structure_policies">
+    <wsdl:input message="ns:GetPoliciesForListingStructuresRestRequest"/>
+    <wsdl:output message="ns:GetPoliciesForListingStructuresRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPoliciesForNegotiatedPrice" method="GET" resource="marketplace/{marketplace_id}/get_negotiated_price_policies">
+    <wsdl:input message="ns:GetPoliciesForNegotiatedPriceRestRequest"/>
+    <wsdl:output message="ns:GetPoliciesForNegotiatedPriceRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetPoliciesForReturns" method="GET" resource="marketplace/{marketplace_id}/get_return_policies">
+    <wsdl:input message="ns:GetPoliciesForReturnsRestRequest"/>
+    <wsdl:output message="ns:GetPoliciesForReturnsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

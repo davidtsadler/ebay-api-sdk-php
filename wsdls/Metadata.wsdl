@@ -2,6 +2,21 @@
 <wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xs:schema>
+      <xs:complexType name="AutomotivePartsCompatibilityPolicy">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="compatibilityBasedOn" type="ns:CompatibilityTypeEnum"/>
+          <xs:element name="compatibleVehicleTypes" type="ns:CompatibleVehicleTypeEnum" maxOccurs="unbounded"/>
+          <xs:element name="maxNumberOfCompatibleVehicles" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AutomotivePartsCompatibilityPolicyResponse">
+        <xs:sequence>
+          <xs:element name="automotivePartsCompatibilityPolicies" type="ns:AutomotivePartsCompatibilityPolicy" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:simpleType name="CountryCodeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="AD"/>
@@ -255,6 +270,118 @@
           <xs:enumeration value="ZW"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:simpleType name="CompatibilityTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ASSEMBLY"/>
+          <xs:enumeration value="SPECIFICATIONS"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CompatibleVehicleTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="AU_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="CA_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="DE_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="DE_MOTORCYCLES"/>
+          <xs:enumeration value="DE_SCOOTERS"/>
+          <xs:enumeration value="DEFAULT_VALUE"/>
+          <xs:enumeration value="ES_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="FR_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="IT_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="UK_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="UK_MOTORCYCLES"/>
+          <xs:enumeration value="UK_SCOOTERS"/>
+          <xs:enumeration value="US_ATV"/>
+          <xs:enumeration value="US_ATV_UTV"/>
+          <xs:enumeration value="US_BOATS"/>
+          <xs:enumeration value="US_CARS_AND_TRUCKS"/>
+          <xs:enumeration value="US_GOLF_CARTS"/>
+          <xs:enumeration value="US_MOTORCYCLES"/>
+          <xs:enumeration value="US_POWERSPORTS"/>
+          <xs:enumeration value="US_SCOOTERS"/>
+          <xs:enumeration value="US_SNOWMOBILES"/>
+          <xs:enumeration value="US_WATERCRAFTS"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemCondition">
+        <xs:sequence>
+          <xs:element name="conditionDescription" type="xs:string"/>
+          <xs:element name="conditionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemConditionPolicy">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="itemConditionRequired" type="xs:boolean"/>
+          <xs:element name="itemConditions" type="ns:ItemCondition" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ItemConditionPolicyResponse">
+        <xs:sequence>
+          <xs:element name="itemConditionPolicies" type="ns:ItemConditionPolicy" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListingStructurePolicy">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="variationsSupported" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ListingStructurePolicyResponse">
+        <xs:sequence>
+          <xs:element name="listingStructurePolicies" type="ns:ListingStructurePolicy" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NegotiatedPricePolicy">
+        <xs:sequence>
+          <xs:element name="bestOfferAutoAcceptEnabled" type="xs:boolean"/>
+          <xs:element name="bestOfferAutoDeclineEnabled" type="xs:boolean"/>
+          <xs:element name="bestOfferCounterEnabled" type="xs:boolean"/>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NegotiatedPricePolicyResponse">
+        <xs:sequence>
+          <xs:element name="negotiatedPricePolicies" type="ns:NegotiatedPricePolicy" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReturnPolicy">
+        <xs:sequence>
+          <xs:element name="categoryId" type="xs:string"/>
+          <xs:element name="categoryTreeId" type="xs:string"/>
+          <xs:element name="required" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReturnPolicyResponse">
+        <xs:sequence>
+          <xs:element name="returnPolicies" type="ns:sel:ReturnsPolicy" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="SalesTaxJurisdiction">
         <xs:sequence>
           <xs:element name="salesTaxJurisdictionId" type="xs:string"/>
@@ -263,25 +390,6 @@
       <xs:complexType name="SalesTaxJurisdictions">
         <xs:sequence>
           <xs:element name="salesTaxJurisdictions" type="ns:SalesTaxJurisdiction" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="ErrorDetailV3">
-        <xs:sequence>
-          <xs:element name="category" type="xs:string"/>
-          <xs:element name="domain" type="xs:string"/>
-          <xs:element name="errorId" type="xs:integer"/>
-          <xs:element name="inputRefIds" type="xs:string"/>
-          <xs:element name="longMessage" type="xs:string"/>
-          <xs:element name="message" type="xs:string"/>
-          <xs:element name="outputRefIds" type="xs:string"/>
-          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
-          <xs:element name="subDomain" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="ErrorParameterV3">
-        <xs:sequence>
-          <xs:element name="name" type="xs:string"/>
-          <xs:element name="value" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="GetSalesTaxJurisdictionsRestRequest" type="ns:GetSalesTaxJurisdictionsRestRequest"/>
@@ -301,6 +409,96 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <xs:element name="GetPoliciesForAutoPartsCompatibilityRestRequest" type="ns:GetPoliciesForAutoPartsCompatibilityRestRequest"/>
+      <xs:element name="GetPoliciesForAutoPartsCompatibilityRestResponse" type="ns:GetPoliciesForAutoPartsCompatibilityRestResponse"/>
+      <xs:complexType name="GetPoliciesForAutoPartsCompatibilityRestRequest">
+        <xs:sequence>
+          <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPoliciesForAutoPartsCompatibilityRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:AutomotivePartsCompatibilityPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPoliciesForItemConditionRestRequest" type="ns:GetPoliciesForItemConditionRestRequest"/>
+      <xs:element name="GetPoliciesForItemConditionRestResponse" type="ns:GetPoliciesForItemConditionRestResponse"/>
+      <xs:complexType name="GetPoliciesForItemConditionRestRequest">
+        <xs:sequence>
+          <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPoliciesForItemConditionRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ItemConditionPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPoliciesForListingStructuresRestRequest" type="ns:GetPoliciesForListingStructuresRestRequest"/>
+      <xs:element name="GetPoliciesForListingStructuresRestResponse" type="ns:GetPoliciesForListingStructuresRestResponse"/>
+      <xs:complexType name="GetPoliciesForListingStructuresRestRequest">
+        <xs:sequence>
+          <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPoliciesForListingStructuresRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ListingStructurePolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPoliciesForNegotiatedPriceRestRequest" type="ns:GetPoliciesForNegotiatedPriceRestRequest"/>
+      <xs:element name="GetPoliciesForNegotiatedPriceRestResponse" type="ns:GetPoliciesForNegotiatedPriceRestResponse"/>
+      <xs:complexType name="GetPoliciesForNegotiatedPriceRestRequest">
+        <xs:sequence>
+          <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPoliciesForNegotiatedPriceRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:NegotiatedPricePolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPoliciesForReturnsRestRequest" type="ns:GetPoliciesForReturnsRestRequest"/>
+      <xs:element name="GetPoliciesForReturnsRestResponse" type="ns:GetPoliciesForReturnsRestResponse"/>
+      <xs:complexType name="GetPoliciesForReturnsRestRequest">
+        <xs:sequence>
+          <xs:element name="filter" type="xs:string" valid="string"/>
+          <xs:element name="marketplace_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPoliciesForReturnsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ReturnPolicyResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
     </xs:schema>
   </wsdl:types>
   <wsdl:documentation>
@@ -310,6 +508,36 @@
     <wsdl:operation name="GetSalesTaxJurisdictions" method="GET" resource="country/{countryCode}/sales_tax_jurisdiction">
       <wsdl:input message="ns:GetSalesTaxJurisdictionsRestRequest"/>
       <wsdl:output message="ns:GetSalesTaxJurisdictionsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPoliciesForAutoPartsCompatibility" method="GET" resource="marketplace/{marketplace_id}/get_automotive_parts_compatibility_policies">
+      <wsdl:input message="ns:GetPoliciesForAutoPartsCompatibilityRestRequest"/>
+      <wsdl:output message="ns:GetPoliciesForAutoPartsCompatibilityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPoliciesForItemCondition" method="GET" resource="marketplace/{marketplace_id}/get_item_condition_policies">
+      <wsdl:input message="ns:GetPoliciesForItemConditionRestRequest"/>
+      <wsdl:output message="ns:GetPoliciesForItemConditionRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPoliciesForListingStructures" method="GET" resource="marketplace/{marketplace_id}/get_listing_structure_policies">
+      <wsdl:input message="ns:GetPoliciesForListingStructuresRestRequest"/>
+      <wsdl:output message="ns:GetPoliciesForListingStructuresRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPoliciesForNegotiatedPrice" method="GET" resource="marketplace/{marketplace_id}/get_negotiated_price_policies">
+      <wsdl:input message="ns:GetPoliciesForNegotiatedPriceRestRequest"/>
+      <wsdl:output message="ns:GetPoliciesForNegotiatedPriceRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetPoliciesForReturns" method="GET" resource="marketplace/{marketplace_id}/get_return_policies">
+      <wsdl:input message="ns:GetPoliciesForReturnsRestRequest"/>
+      <wsdl:output message="ns:GetPoliciesForReturnsRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
