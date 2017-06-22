@@ -8,18 +8,6 @@
           <xs:element name="value" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="CategoryType">
-        <xs:sequence>
-          <xs:element name="default" type="xs:boolean"/>
-          <xs:element name="name" type="ns:CategoryTypeEnum"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:simpleType name="CategoryTypeEnum">
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="ALL_EXCLUDING_MOTORS_VEHICLES"/>
-          <xs:enumeration value="MOTORS_VEHICLES"/>
-        </xs:restriction>
-      </xs:simpleType>
       <xs:simpleType name="CountryCodeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="AD"/>
@@ -432,6 +420,18 @@
           <xs:enumeration value="ZWL"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="CategoryType">
+        <xs:sequence>
+          <xs:element name="default" type="xs:boolean"/>
+          <xs:element name="name" type="ns:CategoryTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="CategoryTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ALL_EXCLUDING_MOTORS_VEHICLES"/>
+          <xs:enumeration value="MOTORS_VEHICLES"/>
+        </xs:restriction>
+      </xs:simpleType>
       <xs:complexType name="Deposit">
         <xs:sequence>
           <xs:element name="amount" type="ns:Amount"/>
@@ -679,17 +679,39 @@
           <xs:element name="programType" type="ns:ProgramTypeEnum"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="Programs">
-        <xs:sequence>
-          <xs:element name="programs" type="ns:Program" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:simpleType name="ProgramTypeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="OUT_OF_STOCK_CONTROL"/>
           <xs:enumeration value="SELLING_POLICY_MANAGEMENT"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="Programs">
+        <xs:sequence>
+          <xs:element name="programs" type="ns:Program" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="RegionTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="COUNTRY"/>
+          <xs:enumeration value="COUNTRY_REGION"/>
+          <xs:enumeration value="STATE_OR_PROVINCE"/>
+          <xs:enumeration value="WORLD_REGION"/>
+          <xs:enumeration value="WORLDWIDE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="RateTable">
+        <xs:sequence>
+          <xs:element name="countryCode" type="ns:CountryCodeEnum"/>
+          <xs:element name="locality" type="ns:ShippingOptionTypeEnum"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="rateTableId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RateTableResponse">
+        <xs:sequence>
+          <xs:element name="rateTables" type="ns:RateTable" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="RecipientAccountReference">
         <xs:sequence>
           <xs:element name="referenceId" type="xs:string"/>
@@ -719,15 +741,6 @@
           <xs:element name="regionIncluded" type="ns:Region" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:simpleType name="RegionTypeEnum">
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="COUNTRY"/>
-          <xs:enumeration value="COUNTRY_REGION"/>
-          <xs:enumeration value="STATE_OR_PROVINCE"/>
-          <xs:enumeration value="WORLD_REGION"/>
-          <xs:enumeration value="WORLDWIDE"/>
-        </xs:restriction>
-      </xs:simpleType>
       <xs:simpleType name="ReturnMethodEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="EXCHANGE"/>
@@ -886,6 +899,7 @@
           <xs:element name="insuranceOffered" type="xs:boolean"/>
           <xs:element name="optionType" type="ns:ShippingOptionTypeEnum"/>
           <xs:element name="packageHandlingCost" type="ns:Amount"/>
+          <xs:element name="rateTableId" type="xs:string"/>
           <xs:element name="shippingServices" type="ns:ShippingService" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
@@ -1211,6 +1225,23 @@
           <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:element name="GetShippingRateTablesRestRequest" type="ns:GetShippingRateTablesRestRequest"/>
+      <xs:element name="GetShippingRateTablesRestResponse" type="ns:GetShippingRateTablesRestResponse"/>
+      <xs:complexType name="GetShippingRateTablesRestRequest">
+        <xs:sequence>
+          <xs:element name="country_code" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetShippingRateTablesRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:RateTableResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
       <xs:element name="CreateAReturnPolicyRestRequest" type="ns:CreateAReturnPolicyRestRequest"/>
       <xs:element name="CreateAReturnPolicyRestResponse" type="ns:CreateAReturnPolicyRestResponse"/>
       <xs:complexType name="CreateAReturnPolicyRestRequest">
@@ -1479,6 +1510,12 @@
     <wsdl:operation name="OptOutOfProgram" method="POST" resource="program/opt_out">
       <wsdl:input message="ns:OptOutOfProgramRestRequest"/>
       <wsdl:output message="ns:OptOutOfProgramRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetShippingRateTables" method="POST" resource="rate_table">
+      <wsdl:input message="ns:GetShippingRateTablesRestRequest"/>
+      <wsdl:output message="ns:GetShippingRateTablesRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>

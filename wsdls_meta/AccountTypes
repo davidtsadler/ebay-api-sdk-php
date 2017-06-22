@@ -272,6 +272,24 @@
   </xs:sequence>
 </xs:complexType>
 
+<xs:element name="GetShippingRateTablesRestRequest" type="ns:GetShippingRateTablesRestRequest"/>
+<xs:element name="GetShippingRateTablesRestResponse" type="ns:GetShippingRateTablesRestResponse"/>
+<xs:complexType name="GetShippingRateTablesRestRequest">
+  <xs:sequence>
+    <xs:element name="country_code" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetShippingRateTablesRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:RateTableResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
 <xs:element name="CreateAReturnPolicyRestRequest" type="ns:CreateAReturnPolicyRestRequest"/>
 <xs:element name="CreateAReturnPolicyRestResponse" type="ns:CreateAReturnPolicyRestResponse"/>
 <xs:complexType name="CreateAReturnPolicyRestRequest">

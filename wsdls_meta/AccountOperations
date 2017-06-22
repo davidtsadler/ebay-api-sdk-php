@@ -96,6 +96,12 @@
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
+  <wsdl:operation name="GetShippingRateTables" method="POST" resource="rate_table">
+    <wsdl:input message="ns:GetShippingRateTablesRestRequest"/>
+    <wsdl:output message="ns:GetShippingRateTablesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
   <wsdl:operation name="CreateAReturnPolicy" method="POST" resource="return_policy">
     <wsdl:input message="ns:CreateAReturnPolicyRestRequest"/>
     <wsdl:output message="ns:CreateAReturnPolicyRestResponse"/>
