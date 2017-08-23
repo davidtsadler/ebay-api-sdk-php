@@ -4353,7 +4353,7 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
-    <wsdl:operation name="ProcessReturnRequest" method="MET" resource="RES">
+    <wsdl:operation name="ProcessReturnRequest" method="POST" resource="RES">
       <wsdl:input message="ns:ProcessReturnRequestRestRequest"/>
       <wsdl:output message="ns:ProcessReturnRequestRestResponse"/>
     </wsdl:operation>
