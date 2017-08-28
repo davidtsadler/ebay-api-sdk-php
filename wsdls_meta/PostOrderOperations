@@ -295,7 +295,7 @@
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
-  <wsdl:operation name="ProcessReturnRequest" method="POST" resource="RES">
+  <wsdl:operation name="ProcessReturnRequest" method="POST" resource="return/{returnId}/decide">
     <wsdl:input message="ns:ProcessReturnRequestRestRequest"/>
     <wsdl:output message="ns:ProcessReturnRequestRestResponse"/>
   </wsdl:operation>
