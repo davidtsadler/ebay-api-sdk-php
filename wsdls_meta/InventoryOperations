@@ -134,6 +134,12 @@
   </wsdl:operation>
 </wsdl:portType>
 <wsdl:portType>
+  <wsdl:operation name="WithdrawOffer" method="POST" resource="offer/{offerId}/withdraw">
+    <wsdl:input message="ns:WithdrawOfferRestRequest"/>
+    <wsdl:output message="ns:WithdrawOfferRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
   <wsdl:operation name="UpdateOffer" method="PUT" resource="offer/{offerId}">
     <wsdl:input message="ns:UpdateOfferRestRequest"/>
     <wsdl:output message="ns:UpdateOfferRestResponse"/>
@@ -155,5 +161,11 @@
   <wsdl:operation name="GetProductCompatibility" method="GET" resource="inventory_item/{sku}/product_compatibility">
     <wsdl:input message="ns:GetProductCompatibilityRestRequest"/>
     <wsdl:output message="ns:GetProductCompatibilityRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="PublishOfferByInventoryItemGroup" method="POST" resource="offer/publish_by_inventory_item_group">
+    <wsdl:input message="ns:PublishOfferByInventoryItemGroupRestRequest"/>
+    <wsdl:output message="ns:PublishOfferByInventoryItemGroupRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>

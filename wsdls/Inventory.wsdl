@@ -502,6 +502,7 @@
           <xs:element name="packageWeightAndSize" type="ns:PackageWeightAndSize"/>
           <xs:element name="product" type="ns:Product"/>
           <xs:element name="sku" type="xs:string"/>
+          <xs:element name="groupIds" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="InventoryItemGroup">
@@ -790,6 +791,7 @@
           <xs:element name="subtitle" type="xs:string"/>
           <xs:element name="title" type="xs:string"/>
           <xs:element name="upc" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="epid" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ProductFamilyProperties">
@@ -806,6 +808,12 @@
           <xs:element name="epid" type="xs:string"/>
           <xs:element name="gtin" type="xs:string"/>
           <xs:element name="ktype" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PublishByInventoryItemGroupRequest">
+        <xs:sequence>
+          <xs:element name="inventoryItemGroupKey" type="xs:string"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceEnum"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="PublishResponse">
@@ -911,6 +919,12 @@
           <xs:enumeration value="POUND"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="WithdrawResponse">
+        <xs:sequence>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="ErrorParameterV3">
         <xs:sequence>
           <xs:element name="name" type="xs:string"/>
@@ -1356,6 +1370,40 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <xs:element name="PublishOfferByInventoryItemGroupRestRequest" type="ns:PublishOfferByInventoryItemGroupRestRequest"/>
+      <xs:element name="PublishOfferByInventoryItemGroupRestResponse" type="ns:PublishOfferByInventoryItemGroupRestResponse"/>
+      <xs:complexType name="PublishOfferByInventoryItemGroupRestRequest">
+        <xs:complexContent>
+          <xs:extension base="ns:PublishByInventoryItemGroupRequest"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PublishOfferByInventoryItemGroupRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PublishResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="WithdrawOfferRestRequest" type="ns:WithdrawOfferRestRequest"/>
+      <xs:element name="WithdrawOfferRestResponse" type="ns:WithdrawOfferRestResponse"/>
+      <xs:complexType name="WithdrawOfferRestRequest">
+        <xs:sequence>
+          <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="WithdrawOfferRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:WithdrawResponse">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
     </xs:schema>
   </wsdl:types>
   <wsdl:documentation>
@@ -1494,6 +1542,12 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType>
+    <wsdl:operation name="WithdrawOffer" method="POST" resource="offer/{offerId}/withdraw">
+      <wsdl:input message="ns:WithdrawOfferRestRequest"/>
+      <wsdl:output message="ns:WithdrawOfferRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
     <wsdl:operation name="UpdateOffer" method="PUT" resource="offer/{offerId}">
       <wsdl:input message="ns:UpdateOfferRestRequest"/>
       <wsdl:output message="ns:UpdateOfferRestResponse"/>
@@ -1515,6 +1569,12 @@
     <wsdl:operation name="GetProductCompatibility" method="GET" resource="inventory_item/{sku}/product_compatibility">
       <wsdl:input message="ns:GetProductCompatibilityRestRequest"/>
       <wsdl:output message="ns:GetProductCompatibilityRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="PublishOfferByInventoryItemGroup" method="POST" resource="offer/publish_by_inventory_item_group">
+      <wsdl:input message="ns:PublishOfferByInventoryItemGroupRestRequest"/>
+      <wsdl:output message="ns:PublishOfferByInventoryItemGroupRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

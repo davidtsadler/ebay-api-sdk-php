@@ -469,3 +469,39 @@
     </xs:extension>
   </xs:complexContent>
 </xs:complexType>
+
+<xs:element name="PublishOfferByInventoryItemGroupRestRequest" type="ns:PublishOfferByInventoryItemGroupRestRequest"/>
+<xs:element name="PublishOfferByInventoryItemGroupRestResponse" type="ns:PublishOfferByInventoryItemGroupRestResponse"/>
+<xs:complexType name="PublishOfferByInventoryItemGroupRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:PublishByInventoryItemGroupRequest"/>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PublishOfferByInventoryItemGroupRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:PublishResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="WithdrawOfferRestRequest" type="ns:WithdrawOfferRestRequest"/>
+<xs:element name="WithdrawOfferRestResponse" type="ns:WithdrawOfferRestResponse"/>
+<xs:complexType name="WithdrawOfferRestRequest">
+<xs:sequence>
+    <xs:element name="offerId" type="xs:string" valid="string" required="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="WithdrawOfferRestResponse" restResponse="true">
+<xs:complexContent>
+    <xs:extension base="ns:WithdrawResponse">
+        <xs:sequence>
+            <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:extension>
+</xs:complexContent>
+</xs:complexType>
