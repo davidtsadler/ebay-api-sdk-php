@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="urn:ebay:apis:eBLBaseComponents" xmlns="urn:ebay:apis:eBLBaseComponents" targetNamespace="urn:ebay:apis:eBLBaseComponents">
   <wsdl:types>
-    <!-- Version 1007 -->
+    <!-- Version 1027 -->
     <!-- (c) 2017 eBay, Inc. All rights reserved -->
     <xs:schema xmlns:ns="urn:ebay:apis:eBLBaseComponents" xmlns="urn:ebay:apis:eBLBaseComponents" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ebay:apis:eBLBaseComponents" elementFormDefault="qualified" attributeFormDefault="unqualified">
       <!-- ##### SHARED_TYPES ##### -->
@@ -2147,10 +2147,10 @@
           <xs:documentation>
 				Indicates the user's eBay PowerSeller tier. PowerSellers are distinguished in 5 tiers based on average monthly sales. Benefits and services vary for each tier. eBay calculates eligibility for each tier monthly.
 			</xs:documentation>
+          <xs:appinfo>
+            <allValuesExcept>Diamond</allValuesExcept>
+          </xs:appinfo>
         </xs:annotation>
-        <xs:appinfo>
-          <allValuesExcept>Diamong</allValuesExcept>
-        </xs:appinfo>
         <xs:restriction base="xs:token">
           <xs:enumeration value="Bronze">
             <xs:annotation>
@@ -2679,8 +2679,8 @@
           <xs:element name="SellerLevel" type="ns:SellerLevelCodeType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						The user's eBay PowerSeller tier. No longer returned for the US, DE/AT/CH, and 
-						UK/IE sites. Note that SellerLevel may be suppressed for other sites, as well. 
+						The user's eBay PowerSeller tier. No longer returned for the US, DE/AT/CH, and
+						UK/IE sites. Note that SellerLevel may be suppressed for other sites, as well.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -4078,7 +4078,7 @@ which a user is registered and on which items can be listed.
         <xs:annotation>
           <xs:documentation>
 					Applicable to sites that support the Detailed Seller Ratings feature.
-					The AverageRatingDetailsType contains the average detailed seller ratings in an area. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling. Users retrieve detailed ratings as averages of the ratings left by buyers. 
+					The AverageRatingDetailsType contains the average detailed seller ratings in an area. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling. Users retrieve detailed ratings as averages of the ratings left by buyers.
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -4089,7 +4089,7 @@ which a user is registered and on which items can be listed.
 						Users retrieve detailed ratings as averages of the ratings left by buyers.
 						When buyers leave an overall Feedback rating (positive, neutral, or negative)
 						for a seller, they also can leave ratings in four areas:
-						item as described, communication, shipping time, and charges for shipping and handling. 
+						item as described, communication, shipping time, and charges for shipping and handling.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -4103,7 +4103,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="Rating" type="xs:double" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						An average detailed seller rating applying to the area in the corresponding RatingDetail field. 
+						An average detailed seller rating applying to the area in the corresponding RatingDetail field.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -4118,7 +4118,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						The number of detailed seller ratings in the area
-						in the corresponding RatingDetail field. 
+						in the corresponding RatingDetail field.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -4140,10 +4140,10 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="BusinessSellerDetailsType">
         <xs:annotation>
           <xs:documentation>
-			  Displays the seller's information (in a business card format) 
-			  as part of the data returned in the GetSingleItem call if the 
-			  seller's SellerBusinessCodeType is set to 'Commercial'. Note 
-			  that this option is only available for sites that have 
+			  Displays the seller's information (in a business card format)
+			  as part of the data returned in the GetSingleItem call if the
+			  seller's SellerBusinessCodeType is set to 'Commercial'. Note
+			  that this option is only available for sites that have
 			  Business Seller options enabled.
 			</xs:documentation>
         </xs:annotation>
@@ -4151,10 +4151,10 @@ which a user is registered and on which items can be listed.
           <xs:element name="Address" type="ns:AddressType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the Address of the seller (in a business card 
-						format) as part of the data returned in the  
+						Displays the Address of the seller (in a business card
+						format) as part of the data returned in the
 						GetSingleItem call if the seller's SellerBusinessCodeType
-						is set to 'Commercial'. 
+						is set to 'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -4169,9 +4169,9 @@ which a user is registered and on which items can be listed.
           <xs:element name="Fax" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the fax number of the seller (in a business card 
-						format) as part of the data returned in the  
-						GetSingleItem call if the seller's SellerBusinessCodeType 
+						Displays the fax number of the seller (in a business card
+						format) as part of the data returned in the
+						GetSingleItem call if the seller's SellerBusinessCodeType
 						is set to 'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
@@ -4187,9 +4187,9 @@ which a user is registered and on which items can be listed.
           <xs:element name="Email" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the email address of the seller (in a business 
-						card format) as part of the data returned in the  
-						GetSingleItem call if the seller's 
+						Displays the email address of the seller (in a business
+						card format) as part of the data returned in the
+						GetSingleItem call if the seller's
 						SellerBusinessCodeType is set to 'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
@@ -4205,10 +4205,10 @@ which a user is registered and on which items can be listed.
           <xs:element name="AdditionalContactInformation" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the AdditionalContactInformation of the seller 
-						(in a business card format) as part of the data returned 
-						in the GetSingleItem call if the seller's 
-						SellerBusinessCodeType is set to 'Commercial'. 
+						Displays the AdditionalContactInformation of the seller
+						(in a business card format) as part of the data returned
+						in the GetSingleItem call if the seller's
+						SellerBusinessCodeType is set to 'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -4223,9 +4223,9 @@ which a user is registered and on which items can be listed.
           <xs:element name="TradeRegistrationNumber" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the TradeRegistrationNumber of the seller (in a 
-						business card format) as part of the data returned in the 
-						GetSingleItem call if the seller's SellerBusinessCodeType 
+						Displays the TradeRegistrationNumber of the seller (in a
+						business card format) as part of the data returned in the
+						GetSingleItem call if the seller's SellerBusinessCodeType
 						is set to 'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
@@ -4241,9 +4241,9 @@ which a user is registered and on which items can be listed.
           <xs:element name="LegalInvoice" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the LegalInvoice of the seller (in a business card 
-						format) as part of the data returned in the GetSingleItem 
-						call if the seller's SellerBusinessCodeType is set to 
+						Displays the LegalInvoice of the seller (in a business card
+						format) as part of the data returned in the GetSingleItem
+						call if the seller's SellerBusinessCodeType is set to
 						'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
@@ -4259,8 +4259,8 @@ which a user is registered and on which items can be listed.
           <xs:element name="TermsAndConditions" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Displays the TermsAndConditions of the seller (in a business card 
-						format) as part of the data returned in the GetSingleItem call 
+						Displays the TermsAndConditions of the seller (in a business card
+						format) as part of the data returned in the GetSingleItem call
 						if the seller's SellerBusinessCodeType is set to 'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
@@ -4277,8 +4277,8 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Displays the VATDetails of the seller (in a business card
-						format) as part of the data returned in the GetSingleItem 
-						call if the seller's SellerBusinessCodeType is set to 
+						format) as part of the data returned in the GetSingleItem
+						call if the seller's SellerBusinessCodeType is set to
 						'Commercial'.
 					</xs:documentation>
               <xs:appinfo>
@@ -4596,7 +4596,7 @@ which a user is registered and on which items can be listed.
 				to help buyers decide which type of item to purchase based on their particular interests.
 				Multiple buying guides can be returned. See the eBay Features Guide for additional information.
 				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
 				&lt;/span&gt;
 			</xs:documentation>
         </xs:annotation>
@@ -4604,6 +4604,8 @@ which a user is registered and on which items can be listed.
           <xs:element name="BuyingGuide" type="ns:BuyingGuideType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						Information that identifies a buying guide. A buying guide contains content about particular
 						product areas, categories, or subjects to help buyers decide which type of item
 						to purchase based on their particular interests.
@@ -4612,32 +4614,30 @@ which a user is registered and on which items can be listed.
 						digital camera is right for them.
 					</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="BuyingGuideHub" type="xs:anyURI" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						URL of the buying guide home page for the site being searched.
 						Your application can present this URL as a link. Optionally,
 						you can use a value like "See all buying guides" as the link's
 						display name.
 					</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -4659,7 +4659,7 @@ which a user is registered and on which items can be listed.
 				For example, a digital camera buying guide could help a buyer determine what kind of
 				digital camera is right for them.
 				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
 				&lt;/span&gt;
 			</xs:documentation>
         </xs:annotation>
@@ -4667,6 +4667,8 @@ which a user is registered and on which items can be listed.
           <xs:element name="Name" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+					&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+					&lt;/span&gt;
 					Display name of the buying guide. &lt;br&gt;
 					&lt;br&gt;
 					FindReviewsAndGuides only returns 20 characters, followed by "..." if the name is
@@ -4674,36 +4676,36 @@ which a user is registered and on which items can be listed.
 					instead.
 				</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="URL" type="xs:anyURI" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+					&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+					&lt;/span&gt;
 					URL for the buying guide. Your application can
 					present this as a link. Use the value of Name or Title as the link's display name.
 				</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="CategoryID" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+					&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+					&lt;/span&gt;
 					Identifies the category (if any) that is associated
 					with the buying guide. For FindReviewsAndGuides, this can be a category that is higher or lower in the hierarchy
 					than the category specified in the request. For a matching categories search,
@@ -4713,82 +4715,77 @@ which a user is registered and on which items can be listed.
 					the buying guide link in your application.
 				</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <MaxLength>10</MaxLength>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="Title" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The title of the buying guide.
 				   </xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <MaxLength>55</MaxLength>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="Text" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The text of the guide. If the guide is longer than
 						2000 characters, the text is cut off and it ends with "...".
 						See BuyingGuide.URL for a link to the full text of the review.
 				   </xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <MaxLength>2000</MaxLength>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="CreationTime" type="xs:dateTime" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The time and date when the guide was posted.
 				   </xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="UserID" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;BuyingGuideType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The author's eBay user ID.
 				   </xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -4981,7 +4978,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Indicates that the product has changed or will soon change (usually due to a
-						migration from one catalog to another catalog). Typically, this field is returned for up to 90 days for a given product. After that, the product either no longer returns this field or the product is no longer returned (depending on the state change). 
+						migration from one catalog to another catalog). Typically, this field is returned for up to 90 days for a given product. After that, the product either no longer returns this field or the product is no longer returned (depending on the state change).
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -5374,7 +5371,7 @@ which a user is registered and on which items can be listed.
 				This enumerated type contains a partial list of ISO 3166 standard two-letter codes that represent countries around the world.
 				&lt;br&gt;&lt;br&gt;
 				It is recommended that users use the &lt;b&gt;GeteBayDetails&lt;/b&gt; call of the Trading API to see the full list of currently supported country codes,
-				and the English names associated with each code (e.g., KY="Cayman Islands"). Call 
+				and the English names associated with each code (e.g., KY="Cayman Islands"). Call
 				&lt;b&gt;GeteBayDetails&lt;/b&gt; with &lt;b&gt;DetailName&lt;/b&gt; set to &lt;b&gt;Country&lt;/b&gt;, and then look for &lt;b&gt;CountryDetails.Country&lt;/b&gt; fields in the response.
 			</xs:documentation>
           <xs:appinfo>
@@ -7323,7 +7320,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
                   <CallName>FindProducts</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: DomainHistogram</Details>
@@ -7391,7 +7387,7 @@ which a user is registered and on which items can be listed.
 						See the eBay Features Guide for information about valid
 						ticket keywords for an external product ID.
 						Required when you pass a set of keywords as the external product ID.
-						Not applicable with FindItemsAdvanced or FindProducts. 
+						Not applicable with FindItemsAdvanced or FindProducts.
 						With FindItemsAdvanced, use TicketFinder instead.
 					</xs:documentation>
             </xs:annotation>
@@ -7510,7 +7506,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="Type" type="ns:ExternalProductCodeType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						The kind of identifier being used. The choices listed are for requests, 
+						The kind of identifier being used. The choices listed are for requests,
 						are required if Value is specified. For Half.com listing use cases, only
 						ISBN, UPC, and EAN are supported.&lt;br&gt;
 						&lt;br&gt;
@@ -7869,7 +7865,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Bid retractions count, for multiple predefined time periods preceding
-						the call. 
+						the call.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7884,7 +7880,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Negative feedback entries count, for multiple predefined time periods preceding
-						the call. 
+						the call.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7899,7 +7895,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Neutral feedback entries count, for multiple predefined time periods preceding
-						the call. 
+						the call.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7914,7 +7910,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Positive feedback entries count, for multiple predefined time periods
-						preceding the call. 
+						preceding the call.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7929,7 +7925,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Total feedback score, for multiple predefined time periods preceding the
-						call. 
+						call.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7975,7 +7971,7 @@ which a user is registered and on which items can be listed.
 						that buyers have left for a seller.
 						Sellers have access to the number of ratings they've received, as well as
 						to the averages of DSRs they've received in each
-						DSR area (i.e., to the average of ratings in the item-description area, etc.).  
+						DSR area (i.e., to the average of ratings in the item-description area, etc.).
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -8003,7 +7999,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="UniqueNeutralFeedbackCount" type="xs:long" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Total number of neutral Feedback comments received by the user, including weekly repeats. 
+						Total number of neutral Feedback comments received by the user, including weekly repeats.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -8069,7 +8065,7 @@ which a user is registered and on which items can be listed.
         <xs:annotation>
           <xs:documentation>
 				Applicable to sites that support the Detailed Seller Ratings feature.
-				The FeedbackRatingDetailCodeType is the list of areas for detailed seller ratings. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling. Users retrieve detailed ratings as averages of the ratings left by buyers. 
+				The FeedbackRatingDetailCodeType is the list of areas for detailed seller ratings. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling. Users retrieve detailed ratings as averages of the ratings left by buyers.
 			</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:token">
@@ -8090,7 +8086,7 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="ShippingTime">
             <xs:annotation>
               <xs:documentation>
-						Detailed seller rating in the area of "shipping time." Inapplicable to 
+						Detailed seller rating in the area of "shipping time." Inapplicable to
 						motor vehicle items.
 					</xs:documentation>
             </xs:annotation>
@@ -8099,7 +8095,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						Detailed seller rating in the area of "charges for shipping and handling."
-						Inapplicable to motor vehicle items. 
+						Inapplicable to motor vehicle items.
 					</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
@@ -8121,6 +8117,8 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="FindHalfProductsRequestType">
         <xs:annotation>
           <xs:documentation>
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindHalfProducts&lt;/b&gt; call is deprecated.
+				&lt;/span&gt;
 				Searches Half.com for stock product information (stock description
 				and Item Specifics), such as information about a particular
 				kind of DVD or book. Also, retrieves up to 30 Half.com listings associated
@@ -8138,7 +8136,7 @@ which a user is registered and on which items can be listed.
               <apiCallRefBaseURL>http://developer.ebay.com/devzone/half-finding/CallRef</apiCallRefBaseURL>
               <relatedCall>
                 <name>findHalfItems</name>
-                <summary>Searches Half.com for items associated with the specified product ID, 
+                <summary>Searches Half.com for items associated with the specified product ID,
 						returning as many as 1500 items per product. </summary>
               </relatedCall>
             </relatedCallsOther>
@@ -8151,6 +8149,8 @@ which a user is registered and on which items can be listed.
               <xs:element name="IncludeSelector" type="xs:string" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								Defines standard subsets of fields to return within the
 								response.&lt;br&gt;
 								&lt;br&gt;
@@ -8186,16 +8186,19 @@ which a user is registered and on which items can be listed.
                   <xs:appinfo>
                     <MaxLength/>
                     <PresentDetails>Yes</PresentDetails>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="AvailableItemsOnly" type="xs:boolean" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								If true, only retrieve data for products that have been used to
 								pre-fill active listings on the Half.com site.
 								If false, retrieve all products that match the query.
@@ -8211,16 +8214,19 @@ which a user is registered and on which items can be listed.
 							</xs:documentation>
                   <xs:appinfo>
                     <Default>false</Default>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="DomainName" type="xs:string" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								A domain to search in. This is like searching a section of
 								a catalog. If not specified, the product search is conducted
 								across all domains.
@@ -8247,16 +8253,19 @@ which a user is registered and on which items can be listed.
 								you only use DomainName with QueryKeywords.
 							</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								Use this to retrieve product details for one specific product.
 								Specify the ID as a string, and use the type attribute to
 								indicate the nature of the ID you are specifying.
@@ -8277,16 +8286,19 @@ which a user is registered and on which items can be listed.
 							</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>4000</MaxLength>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>Conditionally</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="QueryKeywords" type="xs:string" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								One or more keywords to search for. When you use a keyword search,
 								Half.com searches the product catalogs  for matching words in the
 								product title, description, and/or Item Specifics, and it returns
@@ -8322,16 +8334,19 @@ which a user is registered and on which items can be listed.
 								</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>350</MaxLength>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>Conditionally</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="SellerID" type="xs:string" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								The ID of a specific seller.
 								Specify this value in combination with ProductID
 								if you want search results to be filtered so that the items returned
@@ -8339,45 +8354,58 @@ which a user is registered and on which items can be listed.
 								To specify SellerID, use SellerID and ProductID together.
 							</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ProductSort" type="ns:ProductSortCodeType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								Sorts the list of products returned. This is mostly only useful
 								with QueryKeywords. (When you use ProductID, Half.com usually only returns one product.)
 							</xs:documentation>
                   <xs:appinfo>
                     <Default>Popularity</Default>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="SortOrder" type="ns:SortOrderCodeType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								Sorts the list of products returned.
 							</xs:documentation>
                   <xs:appinfo>
                     <Default>Descending</Default>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
+              <CallInfo>
+                <CallName>FindHalfProducts</CallName>
+                <RequiredInput>No</RequiredInput>
+              </CallInfo>
               <xs:element name="MaxEntries" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								Specifies the maximum number of products to return per page
 								in a single call. This is mostly only useful
 								with QueryKeywords. (When you use ProductID, Half.com usually only
@@ -8387,16 +8415,19 @@ which a user is registered and on which items can be listed.
                     <Min>1</Min>
                     <Max>20</Max>
                     <Default>1</Default>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="PageNumber" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								Specifies which page of data to return in the current call.
 								Specify a positive value equal to or lower than the number of
 								pages available (which you determine by examining the results of
@@ -8407,10 +8438,11 @@ which a user is registered and on which items can be listed.
                     <Min>1</Min>
                     <Max>2000</Max>
                     <Default>1</Default>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -8427,9 +8459,11 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="FindHalfProductsResponseType">
         <xs:annotation>
           <xs:documentation>
-			Returns stock product information in Half.com catalogs, such as
-			information about a particular DVD or book. Optionally,
-			also returns items that match the product.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindHalfProducts&lt;/b&gt; call is deprecated.
+				&lt;/span&gt;
+				Returns stock product information in Half.com catalogs, such as
+				information about a particular DVD or book. Optionally,
+				also returns items that match the product.
 			</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -8438,6 +8472,8 @@ which a user is registered and on which items can be listed.
               <xs:element name="DomainHistogram" type="ns:DomainHistogramType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								A histogram that lists the number of matching products found
 								and the domains in which they were found.
 								A &lt;i&gt;domain&lt;/i&gt; is essentially
@@ -8445,17 +8481,19 @@ which a user is registered and on which items can be listed.
 								(as determined by Half.com). Each domain has its own name and ID.
 							</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: DomainHistogram</Details>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="PageNumber" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								The number of the page of data returned. If many products
 								are found and multiple pages of results are available, use
 								this in combination with ApproximatePages and HasMore to decide
@@ -8466,17 +8504,19 @@ which a user is registered and on which items can be listed.
                   <xs:appinfo>
                     <Min>1</Min>
                     <Max>2000</Max>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: none</Details>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ApproximatePages" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								The total number of pages that can be returned, given the same
 								query and filters in the request. As FindHalfProducts only returns
 								up to 2000 products, the maximum possible value is theoretically
@@ -8485,32 +8525,36 @@ which a user is registered and on which items can be listed.
                   <xs:appinfo>
                     <Min>1</Min>
                     <Max>2000</Max>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: none</Details>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="MoreResults" type="xs:boolean" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								If true, more pages of results are available.
 								That is, PageNumber is less than ApproximatePages.
 							</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: none</Details>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="TotalProducts" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								The total number of matching products found.
 								(If more than 2000 products are found, the call fails
 								with an error.)
@@ -8518,47 +8562,44 @@ which a user is registered and on which items can be listed.
                   <xs:appinfo>
                     <Min>0</Min>
                     <Max>2000</Max>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: none</Details>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="Products" type="ns:HalfProductsType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-								An set of Half.com catalog products. This contains stock information about a
-								particular DVD, book, or other product.
-								When you use QueryKeywords in the request, FindHalfProducts returns a
-								maximum of 20 products per page.
-								When you use ProductID in the request, FindHalfProducts usually only
-								returns 1 product. ItemCount is only returned if you use ProductID with
-								IncludeSelector set to Items or Details.
-								Inthe rare case where more than one product matches the same ProductID,
-								FindHalfProducts will return all of those products.
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
+								An set of Half.com catalog products. This contains stock information about a particular DVD, book, or other product. When you use QueryKeywords in the request, FindHalfProducts returns a maximum of 20 products per page. When you use ProductID in the request, FindHalfProducts usually only returns 1 product. ItemCount is only returned if you use ProductID with IncludeSelector set to Items or Details. Inthe rare case where more than one product matches the same ProductID, FindHalfProducts will return all of those products.
 							</xs:documentation>
                   <xs:appinfo>
                     <MaxOccurs>20</MaxOccurs>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: none</Details>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ProductSearchURL" type="xs:anyURI" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+								&lt;/span&gt;
 								A URL for product search results that corresponds to your search request. This is similar to ItemSearchURL in FindItems and FindItemsAdvanced.
 							</xs:documentation>
                   <xs:appinfo>
-                    <CallInfo>
-                      <CallName>FindHalfProducts</CallName>
-                      <Details>IncludeSelector: none, Details, SearchDetails, ItemSpecifics, SellerInfo, ExpansionItemCount, CategoryHistogram</Details>
-                    </CallInfo>
+                    <NoCalls/>
+                    <DeprecationVersion>1027</DeprecationVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
+                    <EndOfLifeVersion>1033</EndOfLifeVersion>
+                    <UseInstead/>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -9282,10 +9323,9 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="FindReviewsAndGuidesRequestType">
         <xs:annotation>
           <xs:documentation>
-				Base request type for the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call
-				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call is deprecated.
 				&lt;/span&gt;
+				Base request type for the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call
 			</xs:documentation>
           <xs:appinfo>
             <Summary>
@@ -9303,6 +9343,8 @@ which a user is registered and on which items can be listed.
               <xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Use this to retrieve reviews (not guides) for one specific product.
 								Specify the ID as a string, and use the type attribute
 								to indicate the nature of the ID you are specifying.
@@ -9313,19 +9355,19 @@ which a user is registered and on which items can be listed.
 								ProductID and CategoryID cannot be used together.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="UserID" type="xs:string" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Retrieves reviews and guides written by the specified user.
 								&lt;br&gt;
 								&lt;br&gt;
@@ -9333,19 +9375,19 @@ which a user is registered and on which items can be listed.
 								ProductID and CategoryID cannot be used together).
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="CategoryID" type="xs:string" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Specify a single CategoryID to restrict your query to a specific Guide category.
 								&lt;br&gt;
 								&lt;br&gt;
@@ -9361,75 +9403,73 @@ which a user is registered and on which items can be listed.
 								ProductID and CategoryID cannot be used together.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="MaxResultsPerPage" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Specifies the maximum number of reviews per page (not guides) in the returned list. If not
 								specified, the default returns 5 results per page.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Default>5</Default>
-                      <Max>20</Max>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="PageNumber" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Specifies the number of the page of data to return in the current call.
 								Specify a positive value equal to or lower than the number of pages
 								available (which you determine by examining the results of your initial request).
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ReviewSort" type="ns:ReviewSortCodeType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Include ReviewSort in your request if you want to sort by a parameter,
 								such as CreationTime. See the SortOrder field for values for specifying
 								that results are returned in ascending or descending order.
 								(By default, results are returned in descending order.)
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="SortOrder" type="ns:SortOrderCodeType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Sorts search results in ascending or descending order, in conjunction
 								with the value you specify in ReviewsSort. The default is descending
 								order.
@@ -9439,14 +9479,11 @@ which a user is registered and on which items can be listed.
 								reviews are returned first.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <Default>Descending</Default>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <RequiredInput>No</RequiredInput>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -9463,10 +9500,9 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="FindReviewsAndGuidesResponseType">
         <xs:annotation>
           <xs:documentation>
-				Base response type for the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call
-				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call is deprecated.
 				&lt;/span&gt;
+				Base response type for the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call
 			</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -9475,70 +9511,72 @@ which a user is registered and on which items can be listed.
               <xs:element name="ReviewCount" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Number of returned reviews.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="BuyingGuideCount" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Number of returned buying guides.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ReviewerRank" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Rank of reviewer if using user search.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="TotalHelpfulnessVotes" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Number of helpfulness votes if using user search.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								The eBay or external IDs associated with the product.
 								Use the Reference value as input to search for the same product
 								in the future, or use the ISBN, EAN, or UPC value (if returned).
@@ -9547,35 +9585,35 @@ which a user is registered and on which items can be listed.
 								returned when Product is returned.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ReviewsAndGuidesURL" type="xs:anyURI" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								URL to the reviews and guides page.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="PageNumber" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								The number of the page of data returned. If many products
 								are found and multiple pages of results are available, use
 								this in combination with TotalPages to decide
@@ -9584,39 +9622,37 @@ which a user is registered and on which items can be listed.
 								2000 (if you were to set MaxResultsPerPage to 1 in the request).
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <Min>1</Min>
-                    <Max>2000</Max>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="TotalPages" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Indicates the total number of pages of data
 								that could be returned by repeated requests. Returned with a
 								value of 0 if no pages are available.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="BuyingGuideDetails" type="ns:BuyingGuideDetailsType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Contains information for up to 5 buying guides that match the
 								query. Buying guides provide useful information about shopping
 								in a particular domain, like Digital Cameras.
@@ -9628,45 +9664,43 @@ which a user is registered and on which items can be listed.
 								Count limited by MaxResultsPerPage in request.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Always</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="ReviewDetails" type="ns:ReviewDetailsType" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Contains information about review details. Count limited by MaxResultsPerPage in request.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
               <xs:element name="PositiveHelpfulnessVotes" type="xs:int" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+								&lt;/span&gt;
 								Number of helpfulness votes if using user search.
 							</xs:documentation>
                   <xs:appinfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallInfo>
-                      <CallName>FindReviewsAndGuides</CallName>
-                      <Returned>Conditionally</Returned>
-                    </CallInfo>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -9718,7 +9752,7 @@ which a user is registered and on which items can be listed.
 									the call's response time (decrease performance).
 									&lt;b&gt;Applicable values&lt;/b&gt;:
 									&lt;p class="ename"&gt;&amp;bull;&amp;nbsp;&amp;nbsp; ChildCategories&lt;/p&gt;
-										&lt;p class="edef"&gt;Include the first level of child categories for 
+										&lt;p class="edef"&gt;Include the first level of child categories for
 										the specified parent.&lt;/p&gt;
 								</xs:documentation>
                   <xs:appinfo>
@@ -9873,7 +9907,7 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="GetItemStatusResponseType">
         <xs:annotation>
           <xs:documentation>
-			   Returns status information for all items in a list. Some of the Item information 
+			   Returns status information for all items in a list. Some of the Item information
 				 is returned in an SimpleItemArrayType object, that can include zero, one, or multiple ItemType objects.
 			</xs:documentation>
         </xs:annotation>
@@ -9929,9 +9963,9 @@ which a user is registered and on which items can be listed.
 								code&gt;&amp;ItemID=130310421484,300321408208,370214653822...&lt;/code&gt;
 								) for convenience.
 								&lt;br&gt;&lt;br&gt;
-								You can determine an item's ID by calling findItemsAdvanced (&lt;a 
-								href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html" 
-								&gt;Finding API&lt;/a&gt;) or from the  eBay Web site. Provide ItemID for 
+								You can determine an item's ID by calling findItemsAdvanced (&lt;a
+								href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+								&gt;Finding API&lt;/a&gt;) or from the  eBay Web site. Provide ItemID for
 								every item for which you want information.
 							</xs:documentation>
                   <xs:appinfo>
@@ -10054,8 +10088,8 @@ which a user is registered and on which items can be listed.
 				that insurance cost can only be determined once the final item price is known
 				when the listing ends. To determine whether a listing has ended, use GetSingleItem.
 				It is best to call GetShippingCosts only after determining via GetSingleItem
-				or findItemsAdvanced (&lt;a 
-				href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html" 
+				or findItemsAdvanced (&lt;a
+				href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
 				&gt;Finding API&lt;/a&gt;) that the item actually has shipping cost information.
 			</xs:documentation>
           <xs:appinfo>
@@ -10416,7 +10450,7 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="GetUserProfileRequestType">
         <xs:annotation>
           <xs:documentation>
-					Retrieves user information based on the user ID you specify. The response contains detailed information about a user. You can specify the types of user information you want in the response. 
+					Retrieves user information based on the user ID you specify. The response contains detailed information about a user. You can specify the types of user information you want in the response.
 			</xs:documentation>
           <xs:appinfo>
             <Summary>
@@ -10430,7 +10464,7 @@ which a user is registered and on which items can be listed.
               <xs:element name="UserID" type="xs:string" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-										Specifies the user whose data will returned by the call. 
+										Specifies the user whose data will returned by the call.
 								</xs:documentation>
                   <xs:appinfo>
                     <CallInfo>
@@ -10586,7 +10620,7 @@ which a user is registered and on which items can be listed.
           <xs:documentation>
 				The Timestamp field indicates the official eBay system time in GMT.
 				The value returned represents the date and time when eBay processed the request.
-				The value is in the ISO 8601 date-time format (YYYY-MM-DDTHH:MM:SS.SSSZ). 
+				The value is in the ISO 8601 date-time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
 			</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -10602,28 +10636,34 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="HalfCatalogProductType">
         <xs:annotation>
           <xs:documentation>
-			Information about an Half.com catalog product.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+				&lt;/span&gt;
+				Information about an Half.com catalog product.
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
           <xs:element name="Title" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						The title of the product, as specified in the catalog.
 						Always returned when Product is returned.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="DetailsURL" type="xs:anyURI" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Fully qualified URL for optional information about the product,
 						such as a movie's description or film credits. This information
 						is hosted through the Half.com Web site and it cannot be edited.
@@ -10634,17 +10674,19 @@ which a user is registered and on which items can be listed.
 						but it may be safest to check for the existence of this field.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="StockPhotoURL" type="xs:anyURI" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Fully qualified URL for a stock image (if any) that is associated
 						with the Half.com catalog product. The URL is for the image Half.com
 						usually displays in product search results (usually 70px tall).
@@ -10653,34 +10695,38 @@ which a user is registered and on which items can be listed.
 						Only returned if a URL is available for the product.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ShippingCostSummary" type="ns:ShippingCostSummaryType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Contains basic shipping-related costs for the item. If Item.Quantity is greater
 						than 1, this is the shipping cost for one item. If the seller offers a choice of
 						more than one shipping service (such as USPS Ground or Expediated), this is the
 						cost of the "first" shipping option (usually the lowest cost option).
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: Items</Details>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="DisplayStockPhotos" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						If true, your application can attempt to display stock photos that
 						are returned. If false, your application should not attempt to display
 						any stock photos that are returned. This recommendation is useful for
@@ -10691,17 +10737,19 @@ which a user is registered and on which items can be listed.
 						Always returned when Product is returned.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ItemCount" type="xs:int" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Total number of listings on the Half.com site that use stock information from
 						this catalog product. This value can be greater than the number of listings
 						returned in ItemArray.
@@ -10718,18 +10766,20 @@ which a user is registered and on which items can be listed.
               <xs:appinfo>
                 <Min>0</Min>
                 <Max/>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
-						The Half.com ID or the ISBN, EAN, or UPC value (if returned) associated with the product. 
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
+						The Half.com ID or the ISBN, EAN, or UPC value (if returned) associated with the product.
 						The ISBN, EAN, and UPC values can also be useful as keys
 						if your application is comparing products across different sites.
 						Always returned when Product is returned.
@@ -10741,34 +10791,38 @@ which a user is registered and on which items can be listed.
 						-->
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="DomainName" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						The name of the domain in which the product was found.
 						If the product is mapped to multiple domains, Half.com returns
 						the most applicable domain (as determined by Half.com).
 						Always returned when Product is returned.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ItemSpecifics" type="ns:NameValueListArrayType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						A list of name/value pairs that are included in the product's
 						pre-filled Item Specifics. These indicate common aspects or
 						characteristics of the product, such as Publisher (for a book).
@@ -10778,17 +10832,19 @@ which a user is registered and on which items can be listed.
 						existence of this node.)
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ItemArray" type="ns:SimpleItemArrayType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						A list of active items that were listed with the requested product.
 						Results are sorted by current price (lowest first),
 						then by recent positive feedback (highest first).
@@ -10798,17 +10854,19 @@ which a user is registered and on which items can be listed.
 						product has matching items that are currently active on Half.com.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: Items</Details>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ReviewCount" type="xs:int" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						The total number of reviews that are available for this product
 						on the Half.com Web site. This can be greater than the number of
 						reviews returned by FindProducts. In a future release, we will provide
@@ -10816,30 +10874,30 @@ which a user is registered and on which items can be listed.
 						Always returned when Product is returned.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Min>0</Min>
-                  <Max/>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="MinPrice" type="ns:AmountType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						The minimum price for all active items listed under this product.
 						This field is only returned when QueryKeywords is specified in the request.
 					</xs:documentation>
               <xs:appinfo>
                 <Min>0</Min>
                 <Max/>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -10854,6 +10912,8 @@ which a user is registered and on which items can be listed.
       <xs:simpleType name="HalfItemConditionCodeType">
         <xs:annotation>
           <xs:documentation>
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+				&lt;/span&gt;
 				Controls values for item condition, especially for Books catalog.
 			</xs:documentation>
         </xs:annotation>
@@ -10861,6 +10921,8 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="BrandNew">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						New, unread, unused and in perfect condition.
 					</xs:documentation>
             </xs:annotation>
@@ -10868,8 +10930,10 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="LikeNew">
             <xs:annotation>
               <xs:documentation>
-						Item still in original packaging, no wear and tear, all 
-						facets of the product are intact.  (Could easily be mistaken 
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
+						Item still in original packaging, no wear and tear, all
+						facets of the product are intact.  (Could easily be mistaken
 						for brand new.)
 					</xs:documentation>
             </xs:annotation>
@@ -10877,8 +10941,10 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="VeryGood">
             <xs:annotation>
               <xs:documentation>
-						Doesn't look brand new but has no easily noticeable damage 
-						and very minimal wear and tear.  (You would give it to a 
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
+						Doesn't look brand new but has no easily noticeable damage
+						and very minimal wear and tear.  (You would give it to a
 						good friend as a gift)
 					</xs:documentation>
             </xs:annotation>
@@ -10886,7 +10952,9 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="Good">
             <xs:annotation>
               <xs:documentation>
-						Very minimal damage to the item and still includes all accessories 
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
+						Very minimal damage to the item and still includes all accessories
 						such as dust jackets, liner notes, and cases.
 						(You would use it yourself, but wouldn't necessarily give it as a gift)
 					</xs:documentation>
@@ -10895,6 +10963,8 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="Acceptable">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Some damage to the item but integrity still intact.  May be missing an
 						accessory. (Item beaten up a bit but it works)
 					</xs:documentation>
@@ -10903,6 +10973,8 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="Used">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Some damage to the item and visibly used.
 					</xs:documentation>
             </xs:annotation>
@@ -10924,13 +10996,17 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="HalfProductsType">
         <xs:annotation>
           <xs:documentation>
-			Information about an eBay catalog product.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfProductsType&lt;/b&gt; and the &lt;b&gt;Product&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+				&lt;/span&gt;
+				Information about an eBay catalog product.
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
           <xs:element name="Product" type="ns:HalfCatalogProductType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfProductsType&lt;/b&gt; and the &lt;b&gt;Product&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						A set of Half.com catalog products. This contains stock information about a
 						particular DVD, book, or other product.
 						When you use QueryKeywords in the request, FindHalfProducts returns a
@@ -10939,14 +11015,14 @@ which a user is registered and on which items can be listed.
 						returns 1 product. ItemCount is only returned when ProductID is used
 						in the request and the IncludeSelector is set to Items or Details.
 						In the rare case where more than one product matches the same ProductID,
-						FindProducts will return all of those products. 
+						FindProducts will return all of those products.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Details>IncludeSelector: none</Details>
-                  <Returned>Always</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <DeprecationVersion>1027</DeprecationVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
+                <EndOfLifeVersion>1033</EndOfLifeVersion>
+                <UseInstead/>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -10979,7 +11055,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
                   <CallName>FindProducts</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: DomainHistogram</Details>
@@ -11001,7 +11076,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
                   <CallName>FindProducts</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: DomainHistogram</Details>
@@ -11285,7 +11359,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="Compatibility" type="ns:ItemCompatibilityType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
-						Contains details for an individual compatible application, consisting of a list of name-value pairs and related compatibility notes. 
+						Contains details for an individual compatible application, consisting of a list of name-value pairs and related compatibility notes.
 						&lt;br&gt;&lt;br&gt;
 						Parts Compatibility is supported in limited Parts &amp; Accessories categories, on the eBay Motors (US) site (site ID 100) only.
 					</xs:documentation>
@@ -11311,7 +11385,7 @@ which a user is registered and on which items can be listed.
           <xs:documentation>
 				All information corresponding to an individual compatibility by application.
 				&lt;br&gt;&lt;br&gt;
-				Parts Compatibility is supported in limited Parts &amp; Accessories categories, on the eBay Motors (US) site (site ID 100) only. If a 
+				Parts Compatibility is supported in limited Parts &amp; Accessories categories, on the eBay Motors (US) site (site ID 100) only. If a
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -11496,7 +11570,7 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="StoresFixedPrice">
             <xs:annotation>
               <xs:documentation>
-						This value is no longer applicable. 
+						This value is no longer applicable.
 						<!-- This enumeration value should no longer be used in any Shopping API calls. The &lt;b&gt;FixedPriceItem&lt;/b&gt; listing type has replaced the &lt;b&gt;StoresFixedPrice&lt;/b&gt; listing type on all eBay sites on March 30, 2010.
 						&lt;br&gt;&lt;br&gt;
                   -->
@@ -11628,20 +11702,20 @@ which a user is registered and on which items can be listed.
           <xs:element name="NameValueList" type="ns:NameValueListType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
-						This list is an array of Item Specifics, which are category-specific 
-						fields that the seller added to describe the listing. The names of 
-						these fields are different for items in different categories, so 
+						This list is an array of Item Specifics, which are category-specific
+						fields that the seller added to describe the listing. The names of
+						these fields are different for items in different categories, so
 						they're returned in a generic name/value structure.
 						&lt;br&gt;&lt;br&gt;
 						For example, Item Specifics for a car might include a field like
-						Make=Toyota (where Make is returned in Name, and Toyota is returned 
-						in Value) and Model=Prius (where Model is returned in Name, and 
+						Make=Toyota (where Make is returned in Name, and Toyota is returned
+						in Value) and Model=Prius (where Model is returned in Name, and
 						Prius is returned in Value).&lt;br&gt;
 						&lt;br&gt;
 						In multi-variation listings, the same name cannot appear in both
 						the VariationSpecifics node and in the ItemSpecifics node.
 						&lt;br&gt;&lt;br&gt;
-						For FindProducts, this can also be an Item Specific that is defined 
+						For FindProducts, this can also be an Item Specific that is defined
 						for a product. That is, Item Specifics can be returned both for
 						items and products in FindProducts.
 					</xs:documentation>
@@ -11663,11 +11737,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Conditionally</Returned>
                   <Details>IncludeSelector: Variations</Details>
                   <Context>Item.Variations</Context>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: none</Details>
                 </CallInfo>
                 <CallInfo>
                   <CallName>FindProducts</CallName>
@@ -11724,11 +11793,6 @@ which a user is registered and on which items can be listed.
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
                 <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
                   <CallName>GetSingleItem</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Conditionally</Returned>
@@ -11782,11 +11846,6 @@ which a user is registered and on which items can be listed.
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
                 <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
                   <CallName>GetSingleItem</CallName>
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Conditionally</Returned>
@@ -11820,11 +11879,11 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="PickUpInStoreDetailsType">
         <xs:annotation>
           <xs:documentation>
-				Complex type defining the &lt;b&gt;PickupInStoreDetails&lt;/b&gt; container, that is returned in &lt;b&gt;GetShippingCosts&lt;/b&gt; if the In-Store Pickup option is enabled for the listing. 
+				Complex type defining the &lt;b&gt;PickupInStoreDetails&lt;/b&gt; container, that is returned in &lt;b&gt;GetShippingCosts&lt;/b&gt; if the In-Store Pickup option is enabled for the listing.
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;span class="tablenote"&gt;
-				&lt;strong&gt;Note:&lt;/strong&gt; At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings. 
-				&lt;/span&gt; 
+				&lt;strong&gt;Note:&lt;/strong&gt; At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
+				&lt;/span&gt;
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -11855,7 +11914,7 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="PicturesType">
         <xs:annotation>
           <xs:documentation>
-			Defines variation-specific pictures associated with one 
+			Defines variation-specific pictures associated with one
 			VariationSpecificName (e.g., Color) whose values differ across variations.
 			</xs:documentation>
         </xs:annotation>
@@ -11863,11 +11922,11 @@ which a user is registered and on which items can be listed.
           <xs:element name="VariationSpecificName" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						One aspect of the variations that will be illustrated in the 
-						pictures for all variations. For example, if each variation 
-						is visually distinguished by color and the pictures show 
+						One aspect of the variations that will be illustrated in the
+						pictures for all variations. For example, if each variation
+						is visually distinguished by color and the pictures show
 						the different colors available, then specify "Color" as the name.
-						The name must match one of the names specified in the 
+						The name must match one of the names specified in the
 						variation specifics.
 					</xs:documentation>
               <xs:appinfo>
@@ -11883,17 +11942,17 @@ which a user is registered and on which items can be listed.
           <xs:element name="VariationSpecificPictureSet" type="ns:VariationSpecificPictureSetType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
-						One or more pictures that help buyers distinguish the Variations. 
-						Multiple picture sets can be specified. For example, suppose a 
-						listing contains blue and black color variations, and 
-						VariationSpecificName=Color. In this case, one picture set could 
-						contain pictures of the blue shirts (e.g., front view, back view, 
-						and close-up of a trim detail), and another picture set could 
+						One or more pictures that help buyers distinguish the Variations.
+						Multiple picture sets can be specified. For example, suppose a
+						listing contains blue and black color variations, and
+						VariationSpecificName=Color. In this case, one picture set could
+						contain pictures of the blue shirts (e.g., front view, back view,
+						and close-up of a trim detail), and another picture set could
 						contain pictures of the black shirts.&lt;br&gt;
 						&lt;br&gt;
-						Sellers do not necessarily provide pictures for all values that 
-						correspond to the variation specific name. 
-						For example, a listing could have pictures depicting the blue and 
+						Sellers do not necessarily provide pictures for all values that
+						correspond to the variation specific name.
+						For example, a listing could have pictures depicting the blue and
 						black color variations, but not the pink variations.
 					</xs:documentation>
               <xs:appinfo>
@@ -12120,12 +12179,12 @@ which a user is registered and on which items can be listed.
               <xs:documentation>
 						The global reference ID for an eBay catalog product.
 						A reference ID is a fixed reference to a product
-						(regardless of version). 
+						(regardless of version).
 						One reference ID can be associated with multiple CatalogItem IDs.
 						To determine valid reference IDs for products to use as input to FindProducts, first call
 						FindProducts with QueryKeywords (or ProductID).
 						Each product in the response includes a reference ID.&lt;br&gt;&lt;br&gt;
-						If you specify one of these products in a request, the call may return the product with a warning, 
+						If you specify one of these products in a request, the call may return the product with a warning,
 						or it may return an error if the product has been deleted.
 					</xs:documentation>
             </xs:annotation>
@@ -12155,29 +12214,30 @@ which a user is registered and on which items can be listed.
             <xs:attribute name="type" type="ns:ProductIDCodeType">
               <xs:annotation>
                 <xs:documentation>
- 							The nature of identifier being used. For FindHalfProducts and FindProducts, only Reference, ISBN, UPC, and EAN are supported. Required when ProductID is specified.
+ 							The nature of identifier being used. For &lt;b&gt;FindProducts&lt;/b&gt;, only Reference, ISBN, UPC, and EAN are supported. Required when &lt;b&gt;ProductID&lt;/b&gt; is specified.
 						</xs:documentation>
                 <xs:appinfo>
                   <CallInfo>
-                    <CallName>FindHalfProducts</CallName>
                     <CallName>FindProducts</CallName>
                     <AllValuesExcept>CatalogItem, Keywords</AllValuesExcept>
                     <RequiredInput>Conditionally</RequiredInput>
                     <Returned>Always</Returned>
                   </CallInfo>
                   <CallInfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallName>FindReviewsAndGuides</CallName>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                     <AllValuesExcept>CatalogItem, Keywords</AllValuesExcept>
                     <RequiredInput>Conditionally</RequiredInput>
                   </CallInfo>
                   <CallInfo>
+                    <NoCalls/>
+                    <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
-                    <EndOfLifeVersion>981</EndOfLifeVersion>
-                    <DeprecationDetails>Avoid</DeprecationDetails>
-                    <CallName>FindReviewsAndGuides</CallName>
+                    <EndOfLifeVersion>1027</EndOfLifeVersion>
+                    <DeprecationDetails>NoOp</DeprecationDetails>
                     <Returned>Conditionally</Returned>
                   </CallInfo>
                 </xs:appinfo>
@@ -12261,7 +12321,7 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						The product details have been updated.
-						If your application currently uses the product for listing or searching, 
+						If your application currently uses the product for listing or searching,
 						we recommend that you check to make sure the product data still meets your needs.
 					</xs:documentation>
             </xs:annotation>
@@ -12274,7 +12334,7 @@ which a user is registered and on which items can be listed.
 						and its details have been updated based on the new catalog data.
 						The product reference ID remains the same
 						(but the longer product ID string may have changed).
-						If your application currently uses the product for searching, 
+						If your application currently uses the product for searching,
 						we recommend that you check to make sure the product data still meets your needs.
 					</xs:documentation>
             </xs:annotation>
@@ -12282,11 +12342,11 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="UpdateNoDetails">
             <xs:annotation>
               <xs:documentation>
-						This product was previously available in an earlier catalog, 
+						This product was previously available in an earlier catalog,
 						but it has not been mapped to a product in the catalog that eBay
-						is currently using. It can still be used for searching, but 
+						is currently using. It can still be used for searching, but
 						it may contain fewer details than other products.
-						If your application currently uses the product for searching, 
+						If your application currently uses the product for searching,
 						we recommend that you check to make sure the product data still meets your needs.
 						Not applicable to Half.com.
 					</xs:documentation>
@@ -12295,11 +12355,11 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="Merge">
             <xs:annotation>
               <xs:documentation>
-						Some information in this product is scheduled to be merged into another product 
-						in the catalog that eBay (or Half.com) is currently using. This product may 
+						Some information in this product is scheduled to be merged into another product
+						in the catalog that eBay (or Half.com) is currently using. This product may
 						be removed from the system at any time.
-						If your application currently uses the product for searching, 
-						we recommend that you update your application to use a product that is not 
+						If your application currently uses the product for searching,
+						we recommend that you update your application to use a product that is not
 						scheduled to be merged or deleted.
 					</xs:documentation>
             </xs:annotation>
@@ -12308,8 +12368,8 @@ which a user is registered and on which items can be listed.
             <xs:annotation>
               <xs:documentation>
 						This product is marked for deletion, and it will not be mapped to another product.
-						If your application currently uses the product for searching, 
-						we recommend that you update your application to use a product that is not 
+						If your application currently uses the product for searching,
+						we recommend that you update your application to use a product that is not
 						scheduled to be merged or deleted.
 					</xs:documentation>
             </xs:annotation>
@@ -12369,7 +12429,7 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="QuantityInfo">
         <xs:annotation>
           <xs:documentation>
-				Type defining the &lt;b&gt;QuantityInfo&lt;/b&gt; container, which consists of the 
+				Type defining the &lt;b&gt;QuantityInfo&lt;/b&gt; container, which consists of the
 				&lt;b&gt;MinimumRemnantSet&lt;/b&gt; field, which sets the minimum amount of event tickets that can
 				remain in the fixed-price listing's inventory after a buyer purchases one or more tickets (but
 				not all) from the listing.
@@ -12381,25 +12441,25 @@ which a user is registered and on which items can be listed.
               <xs:documentation>
 						This field enables the seller to avoid being left with 1 item in a multi-quantity, fixed-
 						priced event ticket listing. A typical use case is event tickets in reserved,
-						adjacent seats, or items that typically only sell if more than 
-						1 can be purchased at once. 
+						adjacent seats, or items that typically only sell if more than
+						1 can be purchased at once.
 						&lt;br&gt; &lt;br&gt;
-						At listing time, sellers specify the minimum number of items that 
-						should remain if a buyer doesn't purchase all the items. 
-						Based on the value of &lt;b&gt;MinimumRemnantSet&lt;/b&gt; and the listing's 
+						At listing time, sellers specify the minimum number of items that
+						should remain if a buyer doesn't purchase all the items.
+						Based on the value of &lt;b&gt;MinimumRemnantSet&lt;/b&gt; and the listing's
 						available quantity (Quantity-QuantitySold), eBay calculates the quantity of tickets
-						a buyer can purchase. 
-						For example, suppose a seller lists 5 tickets, and wants at least 
-						2 tickets remaining for the final buyer to purchase. 
-						In this case, the seller would set &lt;b&gt;MinimumRemnantSet&lt;/b&gt; to '2'. 
-						This means a buyer can purchase 1, 2, 3, or 5 tickets, but not 4 
+						a buyer can purchase.
+						For example, suppose a seller lists 5 tickets, and wants at least
+						2 tickets remaining for the final buyer to purchase.
+						In this case, the seller would set &lt;b&gt;MinimumRemnantSet&lt;/b&gt; to '2'.
+						This means a buyer can purchase 1, 2, 3, or 5 tickets, but not 4
 						(because 4 would leave the seller with 1 ticket).&lt;br&gt;
 						&lt;br&gt;
 						To remove this restriction when revising or relisting item, the seller would
 						set the &lt;b&gt;MinimumRemnantSet&lt;/b&gt; value to '1'.&lt;br&gt;
 						&lt;br&gt;
-						This field is currently only applicable for event ticket listings in US and CA, but 
-						may apply to other categories in the future. It is only returned if set by the seller 
+						This field is currently only applicable for event ticket listings in US and CA, but
+						may apply to other categories in the future. It is only returned if set by the seller
 						in the listing.
 					</xs:documentation>
               <xs:appinfo>
@@ -12429,7 +12489,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="Refund" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						This string value indicates whether the seller is only willing to provide a refund to the buyer ('MoneyBack') in the case of a return, or if the seller is allowing the buyer to choose between getting the refund or getting an item exchange ('MoneyBackOrExchange') or item replacement ('MoneyBackOrReplacement'). 
+						This string value indicates whether the seller is only willing to provide a refund to the buyer ('MoneyBack') in the case of a return, or if the seller is allowing the buyer to choose between getting the refund or getting an item exchange ('MoneyBackOrExchange') or item replacement ('MoneyBackOrReplacement').
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -12460,7 +12520,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="ReturnsAccepted" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						This string value indicates whether the seller accepts returns ('ReturnsAccepted') or does not accept returns ('ReturnsNotAccepted'). 
+						This string value indicates whether the seller accepts returns ('ReturnsAccepted') or does not accept returns ('ReturnsNotAccepted').
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -12565,7 +12625,7 @@ which a user is registered and on which items can be listed.
           <xs:element name="RestockingFeeValue" type="xs:token" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Display string that indicates the restocking fee charged by the 						
+						Display string that indicates the restocking fee charged by the
 						seller for returned items. This value is directly related to the
 						&lt;b&gt;RestockingFeeValueOption&lt;/b&gt; value, with the difference
 						being that applications can use &lt;b&gt;RestockingFeeValue&lt;/b&gt;
@@ -12609,47 +12669,46 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="ReviewDetailsType">
         <xs:annotation>
           <xs:documentation>
-				Contains product reviews written by eBay members.
-				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
 				&lt;/span&gt;
+				Contains product reviews written by eBay members.
 			 </xs:documentation>
         </xs:annotation>
         <xs:sequence>
           <xs:element name="AverageRating" type="xs:float" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The product's average rating (out of 5) based on all reviews.
 						For example, a value like 4.5 would mean the average rating
 						is 4.5 out of 5. (See ReviewCount for the total number of reviews.)
 					</xs:documentation>
               <xs:appinfo>
-                <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
                 <Min>0</Min>
                 <Max>5</Max>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <UseInstead/>
+                <DeprecationVersion>971</DeprecationVersion>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="Review" type="ns:ReviewType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						An eBay member's review of the product.
 					</xs:documentation>
               <xs:appinfo>
-                <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
                 <MaxOccurs>20</MaxOccurs>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <UseInstead/>
+                <DeprecationVersion>971</DeprecationVersion>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -12664,16 +12723,17 @@ which a user is registered and on which items can be listed.
       <xs:simpleType name="ReviewSortCodeType">
         <xs:annotation>
           <xs:documentation>
-				Enumeration type that contains the values in which product reviews may be sorted in the response.
-				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewSortCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
 				&lt;/span&gt;
+				Enumeration type that contains the values in which product reviews may be sorted in the response.
 			</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:token">
           <xs:enumeration value="CreationTime">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewSortCodeType&lt;/b&gt; and its enumeration values are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						Sorts reviews by creation time, in ascending or descending order.
 					</xs:documentation>
             </xs:annotation>
@@ -12681,6 +12741,8 @@ which a user is registered and on which items can be listed.
           <xs:enumeration value="CustomCode">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewSortCodeType&lt;/b&gt; and its enumeration values are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						Reserved for values that are not available in the version of the schema
 						you are using. This means if in a newer version of the API eBay adds a new
 						value to &lt;b&gt;ProductSortCodeList&lt;/b&gt; type and the request was using
@@ -12699,16 +12761,17 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="ReviewType">
         <xs:annotation>
           <xs:documentation>
-				A product review written by an eBay member.
-				&lt;br/&gt;&lt;br/&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Due to ongoing architectural and design changes of Buying Guides and Product Reviews on the site, the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call has been staged for deprecation. As of July 1, 2016, any issues with this call will no longer be supported, and this call will be shut down completely on August 1, 2016.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
 				&lt;/span&gt;
+				A product review written by an eBay member.
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
           <xs:element name="URL" type="xs:anyURI" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						A link to the full review on the eBay Web site.
 						This URL optimized for natural search: "_W0QQ" is like "?"
 						(question mark), "QQ" is like "&amp;" (ampersand),
@@ -12720,99 +12783,97 @@ which a user is registered and on which items can be listed.
 						&lt;/span&gt;
 					</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="Title" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The title of the review.
 					</xs:documentation>
               <xs:appinfo>
-                <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
                 <MaxLength>55</MaxLength>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <UseInstead/>
+                <DeprecationVersion>971</DeprecationVersion>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="Rating" type="xs:int" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The eBay member's rating of the product.
 					</xs:documentation>
               <xs:appinfo>
-                <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
                 <Min>0</Min>
                 <Max>5</Max>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <UseInstead/>
+                <DeprecationVersion>971</DeprecationVersion>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="Text" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The text of the review. If the review is longer than
 						2000 characters, the text is cut off and it ends with "...".
 						See Review.URL for a link to the full text of the review.
 					</xs:documentation>
               <xs:appinfo>
-                <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
                 <MaxLength>2000</MaxLength>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <NoCalls/>
+                <UseInstead/>
+                <DeprecationVersion>971</DeprecationVersion>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="UserID" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The reviewer's eBay user ID.
 					</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="CreationTime" type="xs:dateTime" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
+						&lt;/span&gt;
 						The time and date when the reviewer posted the review.
 					</xs:documentation>
               <xs:appinfo>
+                <NoCalls/>
+                <UseInstead/>
                 <DeprecationVersion>971</DeprecationVersion>
-                <EndOfLifeVersion>981</EndOfLifeVersion>
-                <DeprecationDetails>Avoid</DeprecationDetails>
-                <CallInfo>
-                  <CallName>FindReviewsAndGuides</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -12943,13 +13004,13 @@ which a user is registered and on which items can be listed.
           <xs:element name="QuantitySoldByPickupInStore" type="xs:int" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						This field indicates the total quantity of that corresponding item variation (for example, large blue shirts) sold and picked up by buyers using the In-Store Pickup option. This value is the total quantity of this item variation purchased by one or more buyers using the In-Store Pickup option, and is not the total number of In-Store Pickup orders for that item variation. So, if two buyers selected the In-Store Pickup option, but each of these buyers bought a quantity of five of these item variations (in same purchase), the &lt;b&gt;Item.Variations.Variation.SellingStatus.QuantitySoldByPickupInStore&lt;/b&gt; value would be '10' and not '2'. 
+						This field indicates the total quantity of that corresponding item variation (for example, large blue shirts) sold and picked up by buyers using the In-Store Pickup option. This value is the total quantity of this item variation purchased by one or more buyers using the In-Store Pickup option, and is not the total number of In-Store Pickup orders for that item variation. So, if two buyers selected the In-Store Pickup option, but each of these buyers bought a quantity of five of these item variations (in same purchase), the &lt;b&gt;Item.Variations.Variation.SellingStatus.QuantitySoldByPickupInStore&lt;/b&gt; value would be '10' and not '2'.
 						&lt;br&gt;
 						&lt;br&gt;
-						This field will only be returned if the listing is eligible for In-Store Pickup. 
+						This field will only be returned if the listing is eligible for In-Store Pickup.
 						&lt;br/&gt;&lt;br/&gt;
 						&lt;span class="tablenote"&gt;
-						&lt;strong&gt;Note:&lt;/strong&gt; At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings. 
+						&lt;strong&gt;Note:&lt;/strong&gt; At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
 							&lt;/span&gt;
 					</xs:documentation>
               <xs:appinfo>
@@ -13837,6 +13898,8 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="SimpleItemArrayType">
         <xs:annotation>
           <xs:documentation>
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;SimpleItemArrayType&lt;/b&gt; and the &lt;b&gt;Item&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+				&lt;/span&gt;
 				Container for a list of items. Can contain zero, one, or multiple
 				SimpleItemType objects, each of which conveys the data for one item listing.
 			</xs:documentation>
@@ -13845,14 +13908,16 @@ which a user is registered and on which items can be listed.
           <xs:element name="Item" type="ns:SimpleItemType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;SimpleItemArrayType&lt;/b&gt; and the &lt;b&gt;Item&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Contains data for an item listing.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
+                <NoCalls/>
+                <UseInstead/>
+                <DeprecationVersion>971</DeprecationVersion>
+                <EndOfLifeVersion>1027</EndOfLifeVersion>
+                <DeprecationDetails>NoOp</DeprecationDetails>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -13866,7 +13931,7 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="SimpleItemType">
         <xs:annotation>
           <xs:documentation>
-				Contains information for an item.
+				Complex type that contains the details of an eBay listing.
 			</xs:documentation>
           <xs:appinfo>
             <allValuesExcept>GetItFast</allValuesExcept>
@@ -13876,11 +13941,11 @@ which a user is registered and on which items can be listed.
           <xs:element name="BestOfferEnabled" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Whether the seller will accept a best offer for this item.
-						This feature enables a buyer to make a lower-priced binding offer on a
-						fixed price item. Buyers can't see how many offers have been made
-						(only the seller can see this information). To make a best offer on a
-						listing, use the eBay Web site.
+						This boolean field indicates whether the seller will accept a Best Offer for the item. The Best Offer feature allows a buyer to make a lower-priced, binding offer on an item. Buyers can't see how many offers have been made (only the seller can see this information).
+						&lt;br/&gt;&lt;br/&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt;
+						Historically, the Best Offer feature has not been available for auction listings, but beginning with Version 1027, sellers in the US, UK, and DE sites will be able to offer the Best Offer feature in auction listings. The seller can offer Buy It Now or Best Offer in an auction listing, but not both.
+						&lt;/span&gt;
 					</xs:documentation>
               <xs:appinfo>
                 <SeeLink>
@@ -14007,11 +14072,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14167,19 +14227,14 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ListingType" type="ns:ListingTypeCodeType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						The format of the listing, such as online auction, fixed price,
-						or advertisement format.
+						The format of the listing, such as auction, fixed price,
+						or classified ad format.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -14381,11 +14436,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: Details</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -14400,11 +14450,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14520,11 +14565,6 @@ which a user is registered and on which items can be listed.
                   <CallName>GetMultipleItems</CallName>
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: Details</Details>
-                </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -14818,9 +14858,6 @@ which a user is registered and on which items can be listed.
 						listing, and if the seller has also chosen to make the listing's hit count publicly
 						visible. This field is retrieved asynchronously. If you believe the item has a
 						publicly visible hit count, but this field is not returned, retry the call.
-						&lt;br&gt;
-						&lt;br&gt;
-						Not applicable to Half.com
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -14999,11 +15036,6 @@ which a user is registered and on which items can be listed.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
-                <CallInfo>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
                   <Returned>Always</Returned>
@@ -15052,11 +15084,6 @@ which a user is registered and on which items can be listed.
                   <Returned>Always</Returned>
                   <Details>IncludeSelector: none</Details>
                 </CallInfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -15073,16 +15100,13 @@ which a user is registered and on which items can be listed.
           <xs:element name="HalfItemCondition" type="ns:HalfItemConditionCodeType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; This field is being  deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
+						&lt;/span&gt;
 						Returns the Half.com condition code for the item. For example, "brand new,"
 						"used," etc.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
-              </xs:appinfo>
+					</xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="SellerComments" type="xs:string" minOccurs="0">
@@ -15092,12 +15116,7 @@ which a user is registered and on which items can be listed.
 						did not make any comments.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
-              </xs:appinfo>
+					</xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ReturnPolicy" type="ns:ReturnPolicyType" minOccurs="0">
@@ -15316,8 +15335,6 @@ which a user is registered and on which items can be listed.
 						items being listed.) Important: Lot items can be listed only in lot-enabled
 						categories. GetCategories returns lot size disabled with a value of true
 						for categories that do not support lots.
-						&lt;br /&gt;&lt;br /&gt;
-						Not applicable to Half.com.
 					</xs:documentation>
               <xs:appinfo>
                 <Max>100000</Max>
@@ -15746,11 +15763,7 @@ which a user is registered and on which items can be listed.
 					&lt;b&gt;For revising and relisting only:&lt;/b&gt;
 					To remove a SKU when you revise or relist an item, use DeletedField.
 					(You cannot remove a SKU when Item.InventoryTrackingMethod is set
-					to SKU.)&lt;br&gt;
-					&lt;br&gt;
-					For GetMyeBaySelling, this is only returned if set.
-					&lt;br&gt;
-					Not applicable to Half.com.
+					to SKU.)
 				</xs:documentation>
               <xs:appinfo>
                 <MaxLength>50</MaxLength>
@@ -15766,16 +15779,11 @@ which a user is registered and on which items can be listed.
           <xs:element name="NewBestOffer" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						This boolean field will be returned as 'true' if a fixed-price listing is requiring immediate payment, and the item's category supports Immediate Payment for Best Offers.  Initially, Immediate Payment for Best Offers will be supported by the Computers &amp; Tablets, Jewelry &amp; Watches, and Art categories, but this feature will get enabled in more categories going forward.
-						&lt;br/&gt;&lt;br/&gt;
-						If the Immediate Payment for Best Offers feature is enabled for a fixed-price listing, and a buyer's Best Offer for the item is accepted by the seller, that buyer will be expected to pay immediately for the item, or that buyer will run the risk of losing the item to another buyer since that item will remain on sale until payment is made.
+						This field is deprecated.
 					</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
-                  <CallName>GetSingleItem</CallName>
-                  <CallName>GetMultipleItems</CallName>
-                  <Returned>Always</Returned>
-                  <Details>IncludeSelector: Details</Details>
+                  <NoCalls/>
                 </CallInfo>
               </xs:appinfo>
             </xs:annotation>
@@ -15898,16 +15906,8 @@ which a user is registered and on which items can be listed.
               <xs:documentation>
 						The URL of the seller's eBay Store page. Not returned if the seller does not
 						have an eBay store.
-						&lt;br&gt;&lt;br&gt;
-						FindProducts only returned a default URL at the time of this writing.
-						FindHalfProducts returns the URL of the seller's Half.com Shop page.
 					</xs:documentation>
               <xs:appinfo>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
                 <CallInfo>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
@@ -15922,18 +15922,9 @@ which a user is registered and on which items can be listed.
               <xs:documentation>
 						The name of the seller's eBay Store. Not returned if the seller does not
 						have an eBay store.
-						&lt;br&gt;&lt;br&gt;
-						FindProducts returns an empty value for all items at the time of this writing.
-						FindHalfProducts returns the name of seller's Half.com Shop, which is the
-						SellerID.
 					</xs:documentation>
               <xs:appinfo>
                 <MaxLength>200</MaxLength>
-                <CallInfo>
-                  <CallName>FindHalfProducts</CallName>
-                  <Returned>Conditionally</Returned>
-                  <Details>IncludeSelector: Items</Details>
-                </CallInfo>
                 <CallInfo>
                   <CallName>GetMultipleItems</CallName>
                   <CallName>GetSingleItem</CallName>
@@ -16492,12 +16483,12 @@ which a user is registered and on which items can be listed.
       <xs:complexType name="VariationsType">
         <xs:annotation>
           <xs:documentation>
-					Variations are multiple similar (but not identical) items in a 
-					single fixed-price listing. 
-					For example, a single listing could contain multiple items of the 
-					same brand and model that vary by color and size (like "Blue, Large" and "Black, Medium"). Each variation can have its own quantity and 
-					price. For example, a listing could include 10 "Blue, Large" 
-					variations and 20 "Black, Medium" variations. 
+					Variations are multiple similar (but not identical) items in a
+					single fixed-price listing.
+					For example, a single listing could contain multiple items of the
+					same brand and model that vary by color and size (like "Blue, Large" and "Black, Medium"). Each variation can have its own quantity and
+					price. For example, a listing could include 10 "Blue, Large"
+					variations and 20 "Black, Medium" variations.
 			</xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -16506,7 +16497,7 @@ which a user is registered and on which items can be listed.
               <xs:documentation>
 						Contains data that distinguishes one variation from another.
 						For example, if the items vary by color and size, each Variation
-						node specifies a combination of one of those colors and 
+						node specifies a combination of one of those colors and
 						sizes.
 					</xs:documentation>
               <xs:appinfo>
@@ -16525,14 +16516,14 @@ which a user is registered and on which items can be listed.
 					Contains a set of pictures that correspond to one of the
 					variation specifics, such as Color. For example, if a listing
 					has blue and black color variations, a listing could specify the
-					name Color as an organizing mechanism for all the pictures, 
-					and then include a set of pictures for the blue variations and 
+					name Color as an organizing mechanism for all the pictures,
+					and then include a set of pictures for the blue variations and
 					another set of pictures for the black variations.&lt;br&gt;
 					&lt;br&gt;
-					&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; 
+					&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt;
 					Only one Pictures node is currently returned for a listing.
-					However, the node has been defined as unbounded (repeatable) in 
-					the schema to allow for different use cases for some calls or sites 
+					However, the node has been defined as unbounded (repeatable) in
+					the schema to allow for different use cases for some calls or sites
 					in the future.&lt;/span&gt;
 					</xs:documentation>
               <xs:appinfo>
@@ -16549,23 +16540,23 @@ which a user is registered and on which items can be listed.
           <xs:element name="VariationSpecificsSet" type="ns:NameValueListArrayType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						A list of all variation names and values that are defined on 
+						A list of all variation names and values that are defined on
 						the item. This could include values that were previously
 						defined (but no longer for sale).&lt;br&gt;
 						&lt;br&gt;
-						eBay uses this list to configure variation selection widgets 
-						that appear on eBay's View Item page. 
+						eBay uses this list to configure variation selection widgets
+						that appear on eBay's View Item page.
 						For example, if Color and Size are names in the list, then
-						eBay's View Item page displays Color and Size drop-down lists 
+						eBay's View Item page displays Color and Size drop-down lists
 						to help a buyer choose a variation of interest.&lt;br&gt;
 						&lt;br&gt;
 						The order in which the names and values are returned
 						matches the order in which the selection widgets appear on
 						the View Item page.
-						For example, if the names "Color", then "Size", and then 
-						"Sleeve Style" are returned, the View Item page shows drop-down 
+						For example, if the names "Color", then "Size", and then
+						"Sleeve Style" are returned, the View Item page shows drop-down
 						lists with those labels in that order. For "Size", if the values
-						returned are "S", "M", and then "L", the View Item page 
+						returned are "S", "M", and then "L", the View Item page
 						shows the values in that order in the Size drop-down list.
 					</xs:documentation>
               <xs:appinfo>
@@ -16583,23 +16574,11 @@ which a user is registered and on which items can be listed.
       </xs:complexType>
     </xs:schema>
   </wsdl:types>
-  <wsdl:message name="FindHalfProductsResponse">
-    <wsdl:part name="FindHalfProductsResponse" element="ns:FindHalfProductsResponse"/>
-  </wsdl:message>
-  <wsdl:message name="FindHalfProductsRequest">
-    <wsdl:part name="FindHalfProductsRequest" element="ns:FindHalfProductsRequest"/>
-  </wsdl:message>
   <wsdl:message name="FindProductsResponse">
     <wsdl:part name="FindProductsResponse" element="ns:FindProductsResponse"/>
   </wsdl:message>
   <wsdl:message name="FindProductsRequest">
     <wsdl:part name="FindProductsRequest" element="ns:FindProductsRequest"/>
-  </wsdl:message>
-  <wsdl:message name="FindReviewsAndGuidesResponse">
-    <wsdl:part name="FindReviewsAndGuidesResponse" element="ns:FindReviewsAndGuidesResponse"/>
-  </wsdl:message>
-  <wsdl:message name="FindReviewsAndGuidesRequest">
-    <wsdl:part name="FindReviewsAndGuidesRequest" element="ns:FindReviewsAndGuidesRequest"/>
   </wsdl:message>
   <wsdl:message name="GetCategoryInfoResponse">
     <wsdl:part name="GetCategoryInfoResponse" element="ns:GetCategoryInfoResponse"/>
@@ -16644,17 +16623,9 @@ which a user is registered and on which items can be listed.
     <wsdl:part name="GeteBayTimeRequest" element="ns:GeteBayTimeRequest"/>
   </wsdl:message>
   <wsdl:portType name="ShoppingInterface">
-    <wsdl:operation name="FindHalfProducts">
-      <wsdl:input message="ns:FindHalfProductsRequest"/>
-      <wsdl:output message="ns:FindHalfProductsResponse"/>
-    </wsdl:operation>
     <wsdl:operation name="FindProducts">
       <wsdl:input message="ns:FindProductsRequest"/>
       <wsdl:output message="ns:FindProductsResponse"/>
-    </wsdl:operation>
-    <wsdl:operation name="FindReviewsAndGuides">
-      <wsdl:input message="ns:FindReviewsAndGuidesRequest"/>
-      <wsdl:output message="ns:FindReviewsAndGuidesResponse"/>
     </wsdl:operation>
     <wsdl:operation name="GetCategoryInfo">
       <wsdl:input message="ns:GetCategoryInfoRequest"/>
@@ -16687,25 +16658,7 @@ which a user is registered and on which items can be listed.
   </wsdl:portType>
   <wsdl:binding name="ShoppingBinding" type="ns:ShoppingInterface">
     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="FindHalfProducts">
-      <wsdlsoap:operation soapAction=""/>
-      <wsdl:input>
-        <wsdlsoap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output>
-        <wsdlsoap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="FindProducts">
-      <wsdlsoap:operation soapAction=""/>
-      <wsdl:input>
-        <wsdlsoap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output>
-        <wsdlsoap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="FindReviewsAndGuides">
       <wsdlsoap:operation soapAction=""/>
       <wsdl:input>
         <wsdlsoap:body use="literal"/>
@@ -16780,7 +16733,7 @@ which a user is registered and on which items can be listed.
   </wsdl:binding>
   <wsdl:service name="Shopping">
     <wsdl:documentation>
-      <Version>1007</Version>
+      <Version>1027</Version>
     </wsdl:documentation>
     <wsdl:port binding="ns:ShoppingBinding" name="Shopping">
       <wsdlsoap:address location="http://open.api.ebay.com/shopping"/>
