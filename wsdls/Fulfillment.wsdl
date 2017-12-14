@@ -853,6 +853,7 @@
           <xs:element name="shippingCarrierCode" type="xs:string"/>
           <xs:element name="shippingServiceCode" type="xs:string"/>
           <xs:element name="shipTo" type="ns:Contact"/>
+          <xs:element name="shipToReferenceId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="SoldFormatEnum">
