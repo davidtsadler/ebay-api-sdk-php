@@ -25,3 +25,9 @@
     <wsdl:output message="ns:GetSuggestedCategoriesRestResponse"/>
   </wsdl:operation>
 </wsdl:portType>
+<wsdl:portType>
+  <wsdl:operation name="GetItemAspectsForCategory" method="GET" resource="category_tree/{category_tree_id}/get_item_aspects_for_category">
+    <wsdl:input message="ns:GetItemAspectsForCategoryRestRequest"/>
+    <wsdl:output message="ns:GetItemAspectsForCategoryRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>

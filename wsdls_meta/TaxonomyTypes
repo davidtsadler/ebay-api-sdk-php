@@ -92,3 +92,21 @@
   </xs:complexContent>
 </xs:complexType>
 
+<xs:element name="GetItemAspectsForCategoryRestRequest" type="ns:GetItemAspectsForCategoryRestRequest"/>
+<xs:element name="GetItemAspectsForCategoryRestResponse" type="ns:GetItemAspectsForCategoryRestResponse"/>
+<xs:complexType name="GetItemAspectsForCategoryRestRequest">
+<xs:sequence>
+  <xs:element name="category_id" type="xs:string" valid="string" required="true"/>
+  <xs:element name="category_tree_id" type="xs:string" valid="string" required="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetItemAspectsForCategoryRestResponse" restResponse="true">
+<xs:complexContent>
+  <xs:extension base="ns:AspectMetadata">
+    <xs:sequence>
+      <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:extension>
+</xs:complexContent>
+</xs:complexType>

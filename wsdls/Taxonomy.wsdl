@@ -10,6 +10,48 @@
           <xs:element name="categoryTreeNodeLevel" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="Aspect">
+        <xs:sequence>
+          <xs:element name="aspectConstraint" type="ns:AspectConstraint"/>
+          <xs:element name="aspectValues" type="ns:AspectValue" maxOccurs="unbounded"/>
+          <xs:element name="localizedAspectName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AspectConstraint">
+        <xs:sequence>
+          <xs:element name="aspectDataType" type="xs:string"/>
+          <xs:element name="aspectEnabledForVariations" type="xs:boolean"/>
+          <xs:element name="aspectFormat" type="xs:string"/>
+          <xs:element name="aspectMode" type="xs:string"/>
+          <xs:element name="aspectRequired" type="xs:boolean"/>
+          <xs:element name="itemToAspectCardinality" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AspectDataTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DATE"/>
+          <xs:enumeration value="NUMBER"/>
+          <xs:enumeration value="STRING"/>
+          <xs:enumeration value="STRING_ARRAY"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="AspectMetadata">
+        <xs:sequence>
+          <xs:element name="aspects" type="ns:Aspect" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="AspectModeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="FREE_TEXT"/>
+          <xs:enumeration value="SELECTION_ONLY"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="AspectValue">
+        <xs:sequence>
+          <xs:element name="localizedValue" type="xs:string"/>
+          <xs:element name="valueConstraints" type="ns:ValueConstraint" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="BaseCategoryTree">
         <xs:sequence>
           <xs:element name="categoryTreeId" type="xs:string"/>
@@ -61,6 +103,12 @@
           <xs:element name="parentCategoryTreeNodeHref" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:simpleType name="ItemToAspectCardinalityEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="MULTI"/>
+          <xs:enumeration value="SINGLE"/>
+        </xs:restriction>
+      </xs:simpleType>
       <xs:simpleType name="MarketplaceIdEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="EBAY_AT"/>
@@ -86,6 +134,12 @@
           <xs:enumeration value="EBAY_US"/>
         </xs:restriction>
       </xs:simpleType>
+      <xs:complexType name="ValueConstraint">
+        <xs:sequence>
+          <xs:element name="applicableForLocalizedAspectName" type="xs:string"/>
+          <xs:element name="applicableForLocalizedAspectValues" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="ErrorDetailV3">
         <xs:sequence>
           <xs:element name="category" type="xs:string"/>
@@ -175,6 +229,24 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
+      <xs:element name="GetItemAspectsForCategoryRestRequest" type="ns:GetItemAspectsForCategoryRestRequest"/>
+      <xs:element name="GetItemAspectsForCategoryRestResponse" type="ns:GetItemAspectsForCategoryRestResponse"/>
+      <xs:complexType name="GetItemAspectsForCategoryRestRequest">
+        <xs:sequence>
+          <xs:element name="category_id" type="xs:string" valid="string" required="true"/>
+          <xs:element name="category_tree_id" type="xs:string" valid="string" required="true"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetItemAspectsForCategoryRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:AspectMetadata">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
     </xs:schema>
   </wsdl:types>
   <wsdl:documentation>
@@ -202,6 +274,12 @@
     <wsdl:operation name="GetSuggestedCategories" method="GET" resource="category_tree/{category_tree_id}/get_category_suggestions">
       <wsdl:input message="ns:GetSuggestedCategoriesRestRequest"/>
       <wsdl:output message="ns:GetSuggestedCategoriesRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetItemAspectsForCategory" method="GET" resource="category_tree/{category_tree_id}/get_item_aspects_for_category">
+      <wsdl:input message="ns:GetItemAspectsForCategoryRestRequest"/>
+      <wsdl:output message="ns:GetItemAspectsForCategoryRestResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
