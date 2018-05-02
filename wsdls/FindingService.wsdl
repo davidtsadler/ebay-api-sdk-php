@@ -7,7 +7,7 @@
       <xs:complexType name="GetVersionRequest">
         <xs:annotation>
           <xs:documentation>
-						Returns the current version of the service. This simple call can be used to
+						This call returns the current version of the service. This simple call can be used to
 						monitor the service for availability. This call has no input parameters and
 						the response contains only the standard output fields.
 					</xs:documentation>
@@ -158,10 +158,10 @@
 										words in context with each other. If you are using a URL request and
 										your keyword query consists of multiple words, use "%20" to separate
 										the words. For example, use "Harry%20Potter" to search for items
-										containing those words in any order. Queries aren't case-sensitive,
+										containing those words in any order. Queries aren't case-sensitive, 
 										so it doesn't matter whether you use uppercase or lowercase letters.
 										&lt;br&gt;&lt;br&gt;
-										The words "and" and "or" are treated like any other word (and not their
+					                    The words "and" and "or" are treated like any other word (and not their
 										logical connotation). Only use "and", "or", or "the" if you are
 										searching for listings containing those specific words.
 										&lt;br&gt;&lt;br&gt;
@@ -229,8 +229,8 @@
                 <xs:annotation>
                   <xs:documentation>
 										Aspect filters refine (limit) the number of items returned by a find
-										request. Obtain input values for aspectFilter fields from an
-										aspectHistogramContainer returned in the response of a previous
+										request. Obtain input values for &lt;b&gt;aspectFilter&lt;/b&gt; fields from an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt; returned in the response of a previous
 										query.
 										&lt;br&gt;&lt;br&gt;
 										By issuing a series of find queries, you can continually refine the
@@ -238,11 +238,11 @@
 										the aspect values returned in one response as the input values to
 										your next query.
 										&lt;br&gt;&lt;br&gt;
-										For example, the aspectHistogramContainer in a response on Men's
+										For example, the &lt;b&gt;aspectHistogramContainer&lt;/b&gt; in a response on Men's
 										Shoes could contain an aspect of Size, along with "aspect values" for
 										the different sizes currently available in Men's Shoes. By populating
-										aspectFilter fields with the values returned in an
-										aspectHistogramContainer, you can hone the item results returned by
+										&lt;b&gt;aspectFilter&lt;/b&gt; fields with the values returned in an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt;, you can hone the item results returned by
 										your new query.
 										&lt;br&gt;&lt;br&gt;
 									</xs:documentation>
@@ -274,7 +274,7 @@
 										in a response.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -316,11 +316,16 @@
 										Input ISBN, UPC, EAN, or ReferenceID (ePID) to specify the type of
 										product for which you want to search.
 										&lt;br&gt;&lt;br&gt;
-										For example, to search using an ISBN, specify productID.type=ISBN and
+										For example, to search using an ISBN, specify &lt;b&gt;productID.type&lt;/b&gt;=&lt;code&gt;ISBN&lt;/code&gt; and
 										set productID.value to an ISBN value. To search using an eBay Product
-										Reference ID, specify productID.type= ReferenceID and set
+										Reference ID, specify &lt;b&gt;productID.type&lt;/b&gt;=&lt;code&gt;ReferenceID&lt;/code&gt; and set
 										productID.value to an ePID value (also known as an Bay Product
-										Reference ID). If you do not know the ePID value for a product, use &lt;b class="con"&gt;FindProducts&lt;/b&gt; in the eBay Shopping API to retrieve the desired ePID.
+										Reference ID). If you do not know the ePID value for a product, use
+										&lt;b class="con"&gt;FindProducts&lt;/b&gt; in the eBay Shopping API to retrieve the desired ePID:
+										&lt;br&gt;&lt;br&gt;
+										&lt;a
+										href=" http://developer.ebay.com/DevZone/shopping/docs/CallRef/FindProducts.html"
+										&gt; FindProducts&lt;/a&gt;
 									</xs:documentation>
                   <xs:appinfo>
                     <CallInfo>
@@ -356,14 +361,14 @@
 										returned if there are no matching items or if the search is
 										restricted to a single leaf category.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										 The category IDs returned for items in search results are for the
 										 leaf categories in which the items are listed. If you use these
 										 category IDs as input, the response will not return a category
 										 histogram.
 										&lt;/span&gt;
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										 When searching the eBay Motors site, category histograms may not be
 										 available for some parent categories. In these cases, aspect
 										 histograms should be used to refine search results. This behavior is
@@ -438,8 +443,8 @@
 					</xs:documentation>
           <xs:appinfo>
             <Summary>
-							Checks specified keywords and returns correctly spelled keywords for best
-							search results.
+							Checks specified keywords and returns correctly spelled keywords for best search
+							results.
 						</Summary>
             <RelatedCalls>findItemsAdvanced,findItemsByKeywords,findItemsIneBayStores</RelatedCalls>
           </xs:appinfo>
@@ -529,7 +534,7 @@
           <xs:documentation>
 						Returns items based on a keyword query and returns details for matching
 						items. Item filters can be used to restrict search results. Aspect filters
-						can be used to further refine results. Use outputSelector to expand the
+						can be used to further refine results. Use the &lt;b&gt;outputSelector&lt;/b&gt; to expand the
 						amount of data returned for each matching item.
 					</xs:documentation>
           <xs:appinfo>
@@ -554,6 +559,12 @@
 										the words. For example, use "Harry%20Potter" to search for items
 										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
+										&lt;br&gt;&lt;br&gt;
+										You can incorporate wildcards in a multi-word search. For example,
+										"ap*%20ip*" returns results for "apple ipod" among other matches. The
+										words "and" and "or" are treated like any other word (and not their
+										logical connotation). Only use "and", "or", or "the" if you are
+										searching for listings containing those specific words.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>350. The maximum length for a single word is 98.
@@ -590,8 +601,8 @@
                 <xs:annotation>
                   <xs:documentation>
 										Aspect filters refine (limit) the number of items returned by a find
-										request. Obtain input values for aspectFilter fields from an
-										aspectHistogramContainer returned in the response of a previous
+										request. Obtain input values for the &lt;b&gt;aspectFilter&lt;/b&gt; fields from an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt; returned in the response of a previous
 										query.
 										&lt;br&gt;&lt;br&gt;
 										By issuing a series of find queries,
@@ -599,11 +610,11 @@
 										this by repeating a query using the aspect values returned in one
 										response as the input values to your next query.
 										&lt;br&gt;&lt;br/&gt;
-										For example, the aspectHistogramContainer in a response on
+										For example, the &lt;b&gt;aspectHistogramContainer&lt;/b&gt; in a response on
 										Men's Shoes could contain an aspect of Size, along with "aspect
 										values" for the different sizes currently available in Men's Shoes.
-										By populating aspectFilter fields with the values returned in an
-										aspectHistogramContainer, you can refine the item results returned by
+										By populating the &lt;b&gt;aspectFilter&lt;/b&gt; fields with the values returned in an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt;, you can refine the item results returned by
 										your new query.
 									</xs:documentation>
                   <xs:appinfo>
@@ -634,7 +645,7 @@
 										default set of data.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more item information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more item information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -690,7 +701,7 @@
 										more category histograms are returned. A category histogram is not
 										returned if the search query returns no matching items.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 											When searching the eBay Motors site, category histograms may not be
 											available for some parent categories. In these cases, aspect
 											histograms should be used to refine search results. This behavior
@@ -777,6 +788,9 @@
 										class="con"&gt;GetCategoryInfo&lt;/b&gt; call.
 										&lt;br&gt;&lt;br&gt;
 										Up to three (3) categories can be specified.
+										&lt;br&gt;&lt;br&gt;
+										Category searches are not supported on the eBay Italy site (global ID
+										EBAY-IT) at this time.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>10</MaxLength>
@@ -813,8 +827,8 @@
                 <xs:annotation>
                   <xs:documentation>
 										Aspect filters refine (limit) the number of items returned by a find
-										request. Obtain input values for aspectFilter fields from an
-										aspectHistogramContainer returned in the response of a previous
+										request. Obtain input values for the &lt;b&gt;aspectFilter&lt;/b&gt; fields from an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt; returned in the response of a previous
 										query.
 										&lt;br&gt;&lt;br&gt;
 										By issuing a series of find queries, you can continually refine the
@@ -822,11 +836,11 @@
 										the aspect values returned in one response as the input values to
 										your next query.
 										&lt;br&gt;&lt;br&gt;
-										For example, the aspectHistogramContainer in a response on Men's
+										For example, the &lt;b&gt;aspectHistogramContainer&lt;/b&gt; in a response on Men's
 										Shoes could contain an aspect of Size, along with "aspect values" for
 										the different sizes currently available in Men's Shoes. By populating
-										aspectFilter fields with the values returned in an
-										aspectHistogramContainer, you can refine the item results returned by
+										&lt;b&gt;aspectFilter&lt;/b&gt; fields with the values returned in an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt;, you can refine the item results returned by
 										your new query.
 									</xs:documentation>
                   <xs:appinfo>
@@ -857,7 +871,7 @@
 										in a response.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -912,14 +926,14 @@
 										Response container for a category histogram. This container is
 										returned only when the specified category has children categories.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 											The category IDs returned for items in search results are for the
 											leaf categories in which the items are listed. If you use a leaf
 											category ID as input, the response will not return a category
 											histogram.
 										&lt;/span&gt;
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 											When searching the eBay Motors site, category histograms may not be
 											available for some parent categories. In these cases, aspect
 											histograms should be used to refine search results. This behavior
@@ -1009,6 +1023,13 @@
 										the words. For example, use "Harry%20Potter" to search for items
 										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
+										&lt;br&gt;&lt;br&gt;
+										You can incorporate wildcards in a multi-word search. For example,
+										"ap*%20ip*" returns results for "apple ipod" among other matches. The
+										words "and" and "or" are treated like any other word (and not their
+										logical connotation). Only use "and", "or", or "the" if you are
+										searching for listings containing those specific words.
+										&lt;br&gt;&lt;br&gt;
 										&lt;b class="con"&gt;findItemsAdvanced&lt;/b&gt; requires that you
 										specify &lt;b class="con"&gt;keywords&lt;/b&gt;  and/or a &lt;b
 										class="con"&gt;categoryId&lt;/b&gt; in the request. The exception to
@@ -1052,6 +1073,9 @@
 										filter can be used without specifying either &lt;b class="con"&gt;
 										keywords&lt;/b&gt; or &lt;b class="con"&gt;categoryId&lt;/b&gt; to
 										retrieve all active items for the specified seller.
+										&lt;br&gt;&lt;br&gt;
+										Category searches are not supported on the eBay Italy site (global ID
+										EBAY-IT) at this time.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>10</MaxLength>
@@ -1088,8 +1112,8 @@
                 <xs:annotation>
                   <xs:documentation>
 										Aspect filters refine (limit) the number of items returned by a find
-										request. Obtain input values for aspectFilter fields from an
-										aspectHistogramContainer returned in the response of a previous
+										request. Obtain input values for the &lt;b&gt;aspectFilter&lt;/b&gt; fields from an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt; returned in the response of a previous
 										query.
 										&lt;br&gt;&lt;br&gt;
 										By issuing a series of find queries, you can continually refine the
@@ -1097,11 +1121,11 @@
 										the aspect values returned in one response as the input values to
 										your next query.
 										&lt;br&gt;&lt;br&gt;
-										For example, the aspectHistogramContainer in a response on Men's
+										For example, the &lt;b&gt;aspectHistogramContainer&lt;/b&gt; in a response on Men's
 										Shoes could contain an aspect of Size, along with "aspect values" for
 										the different sizes currently available in Men's Shoes. By populating
-										aspectFilter fields with the values returned in an
-										aspectHistogramContainer, you can refine the item results returned by
+										&lt;b&gt;aspectFilter&lt;/b&gt; fields with the values returned in an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt;, you can refine the item results returned by
 										your new query.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1132,7 +1156,7 @@
 										in a response.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -1208,14 +1232,14 @@
 										returned if there are no matching items or if the search is
 										restricted to a single leaf category.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										The category IDs returned for items in search results are for the
 										leaf categories in which the items are listed. If you use these
 										category IDs as input, the response will not return a category
 										histogram.
 										&lt;/span&gt;
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										When searching the eBay Motors site, category histograms may not be
 										available for some parent categories. In these cases, aspect
 										histograms should be used to refine search results. This behavior is
@@ -1251,7 +1275,7 @@
 										Response container for condition histograms.
 										&lt;br&gt;
 										&lt;br&gt;
-										Not returned when &lt;b&gt;Condition&lt;/b&gt; is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
+										Not returned when Condition is specified in &lt;b&gt;itemFilter&lt;/b&gt;.
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
@@ -1340,7 +1364,7 @@
 										in a response.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -1451,6 +1475,12 @@
 										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
 										&lt;br&gt;&lt;br&gt;
+										You can incorporate wildcards in a multi-word search. For example,
+										"ap*%20ip*" returns results for "apple ipod" among other matches. The
+										words "and" and "or" are treated like any other word (and not their
+										logical connotation). Only use "and", "or", or "the" if you are
+										searching for listings containing those specific words.
+										&lt;br&gt;&lt;br&gt;
 										You must specify keywords when you are searching across all eBay
 										stores. That is, &lt;b class="con"&gt;keywords&lt;/b&gt; is required
 										if &lt;b class="con"&gt;storeName&lt;/b&gt; is not specified in the
@@ -1465,7 +1495,7 @@
                       <SeeLink>
                         <URL>../Concepts/FindingAPIGuide.html#usekeywords</URL>
                         <Title>Searching by Keywords</Title>
-                        <For>more information about searching by keywords</For>
+                        <For>a list of valid wildcard characters</For>
                       </SeeLink>
                     </CallInfo>
                   </xs:appinfo>
@@ -1478,11 +1508,12 @@
 										or can be used with keywords to search for specific items in an eBay
 										store. If you do not specify keywords, you must specify storeName.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-										Store names are case sensitive. Also, if the store name contains an
-										ampersand (&amp;), you must use the &amp; character entity (&amp;
-										amp;) in its place.
-										&lt;/span&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+										Store names are case sensitive and must be an exact match. For example, 
+										if a store name contains an
+										ampersand (&amp;), you must use the &amp; character entity (&amp; amp;) in its place.
+										You can use the Shopping API &lt;b&gt;GetUserProfile&lt;/b&gt; call to find the exact name of the store. &lt;/span&gt;
+										
 										If you do not specify &lt;b class="con"&gt;storeName&lt;/b&gt; in the
 										request, the search is across all eBay stores. When searching across
 										all stores, you must specify keywords.
@@ -1520,7 +1551,7 @@
 										in a response.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -1546,8 +1577,8 @@
                 <xs:annotation>
                   <xs:documentation>
 										Aspect filters refine (limit) the number of items returned by a find
-										request. Obtain input values for aspectFilter fields from an
-										aspectHistogramContainer returned in the response of a previous
+										request. Obtain input values for the &lt;b&gt;aspectFilter&lt;/b&gt; fields from an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt; returned in the response of a previous
 										query.
 										&lt;br&gt;&lt;br&gt;
 										By issuing a series of find queries, you can continually refine the
@@ -1555,11 +1586,11 @@
 										the aspect values returned in one response as the input values to
 										your next query.
 										&lt;br&gt;&lt;br/&gt;
-										For example, the aspectHistogramContainer in a response on
+										For example, the &lt;b&gt;aspectHistogramContainer&lt;/b&gt; in a response on
 										Men's Shoes could contain an aspect of Size, along with "aspect
 										values" for the different sizes currently available in Men's Shoes.
-										By populating aspectFilter fields with the values returned in an
-										aspectHistogramContainer, you can refine the item results returned by
+										By populating the &lt;b&gt;aspectFilter&lt;/b&gt; fields with the values returned in an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt;, you can refine the item results returned by
 										your new query.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1569,7 +1600,7 @@
                       <SeeLink>
                         <URL>#Response.aspectHistogramContainer</URL>
                         <Title>aspectHistogramContainer</Title>
-                        <For>more information on aspects, aspect values, and categories.</For>
+                        <For>more information on aspects, aspect values, and domains.</For>
                       </SeeLink>
                       <SeeLink>
                         <URL>findItemsByCategory.html#sampleaspectHist</URL>
@@ -1609,6 +1640,9 @@
 										class="con"&gt;GetCategoryInfo&lt;/b&gt; call.
 										&lt;br&gt;&lt;br&gt;
 										Up to three (3) categories can be specified.
+										&lt;br&gt;&lt;br&gt;
+										Category searches are not supported on the eBay Italy site (global ID
+										EBAY-IT) at this time.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>10</MaxLength>
@@ -1646,14 +1680,14 @@
 										returned if there are no matching items or if the search is
 										restricted to a single leaf category.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										The category IDs returned for items in search results are for the
 										leaf categories in which the items are listed. If you use these
 										category IDs as input, the response will not return a category
 										histogram.
 										&lt;/span&gt;
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										When searching the eBay Motors site, category histograms may not be
 										available for some parent categories. In these cases, aspect
 										histograms should be used to refine search results. This behavior is
@@ -1774,8 +1808,8 @@
                 <xs:annotation>
                   <xs:documentation>
 										Aspect filters refine (limit) the number of items returned by a find
-										request. Obtain input values for aspectFilter fields from an
-										aspectHistogramContainer returned in the response of a previous
+										request. Obtain input values for the &lt;b&gt;aspectFilter&lt;/b&gt; fields from an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt; returned in the response of a previous
 										query.
 										&lt;br&gt;&lt;br&gt;
 										By issuing a series of find queries, you can continually refine the
@@ -1783,11 +1817,11 @@
 										the aspect values returned in one response as the input values to
 										your next query.
 										&lt;br&gt;&lt;br&gt;
-										For example, the aspectHistogramContainer in a response on Men's
+										For example, the &lt;b&gt;aspectHistogramContainer&lt;/b&gt; in a response on Men's
 										Shoes could contain an aspect of Size, along with "aspect values" for
 										the different sizes currently available in Men's Shoes. By populating
-										aspectFilter fields with the values returned in an
-										aspectHistogramContainer, you can refine the item results returned by
+										&lt;b&gt;aspectFilter&lt;/b&gt; fields with the values returned in an
+										&lt;b&gt;aspectHistogramContainer&lt;/b&gt;, you can refine the item results returned by
 										your new query.
 									</xs:documentation>
                   <xs:appinfo>
@@ -1816,7 +1850,7 @@
 										in a response.
 										&lt;br&gt;&lt;br&gt;
 										If you don't specify this field, eBay returns a default set of item
-										fields. Use outputSelector to include more information in the
+										fields. Use the &lt;b&gt;outputSelector&lt;/b&gt; to include more information in the
 										response. The additional data is grouped into discrete nodes. You can
 										specify multiple nodes by including this field multiple times, as
 										needed, in the request.
@@ -1851,14 +1885,14 @@
 										returned if there are no matching items or if the search is
 										restricted to a single leaf category.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										 The category IDs returned for items in search results are for the
 										 leaf categories in which the items are listed. If you use these
 										 category IDs as input, the response will not return a category
 										 histogram.
 										&lt;/span&gt;
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										 When searching the eBay Motors site, category histograms may not be
 										 available for some parent categories. In these cases, aspect
 										 histograms should be used to refine search results. This behavior is
@@ -1927,6 +1961,9 @@
 										site, eBay returns an invalid-category error message. To determine
 										valid categories, use the Shopping API &lt;b
 										class="con"&gt;GetCategoryInfo&lt;/b&gt; call.
+										&lt;br&gt;&lt;br&gt;
+										Retrieving histograms by category is not supported on the eBay Italy
+										site (global ID EBAY-IT) at this time.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>10</MaxLength>
@@ -1961,7 +1998,7 @@
 										Response container for category histograms. This container is
 										returned only when the specified category has children categories.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 											Category histograms may not be available for some parent categories
 											on the eBay Motors site.
 										&lt;/span&gt;
@@ -1994,8 +2031,7 @@
 										Response container for condition histograms.
 										Returned for leaf and parent categories.&lt;br&gt;
 										&lt;br&gt;
-										Only returned when you search the eBay US site (as of
-										February 2011). International items in US search results
+										Only returned when you search the eBay US site. International items in US search results
 										are included in the histogram counts.
 									</xs:documentation>
                   <xs:appinfo>
@@ -2038,7 +2074,7 @@
 										response, but does not specify the details to return for each
 										listing.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										No more than 10,000 items can be retrieved for a given search,
 										regardless of how many matches are found. This limit is enforced
 										by the maximum page number allowed (100) and the maximum entries per
@@ -2070,6 +2106,8 @@
 										class="con"&gt;buyerPostalCode&lt;/b&gt; and item filters for &lt;b
 										class="con"&gt;MaxDistance&lt;/b&gt; and &lt;b
 										class="con"&gt;LocalSearch&lt;/b&gt;.
+										&lt;br&gt;&lt;br&gt;This is also &lt;b&gt;required&lt;/b&gt; for any country that supports local
+										shipping regions in order for the correct shipping cost to be determined.
 									</xs:documentation>
                   <xs:appinfo>
                     <CallInfo>
@@ -2216,7 +2254,7 @@
 										results on the web site will use the same pagination as the API
 										search results.
 										&lt;br&gt;&lt;br&gt;
-										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 										eBay URLs returned in fields, such as &lt;b
 										class="con"&gt;viewItemURL&lt;/b&gt;, are subject to syntax and other
 										changes without notice. To avoid problems in your application when
@@ -2347,7 +2385,7 @@
 								earn money from eBay for driving traffic to eBay. This field is required
 								if you specify a tracking ID. Depending on your tracking partner, specify
 								one of the following values. Not all partners are valid for all sites.
-								For PlaceOffer, only the eBay Partner Network and Mediaplex are valid:
+								For &lt;b class="con"&gt;PlaceOffer&lt;/b&gt;, only the eBay Partner Network and Mediaplex are valid:
 								&lt;br&gt;
 								&lt;br&gt;2 = Be Free
 								&lt;br&gt;3 = Affilinet
@@ -2503,7 +2541,7 @@
 								returned if there are no matching items or if the search is restricted to
 								a single leaf category.
 								&lt;br&gt;&lt;br&gt;
-								For getHistograms, the category histogram contains the total item count
+								For &lt;b class="con"&gt;getHistograms&lt;/b&gt;, the category histogram contains the total item count
 								for the specified category and item counts for the child categories
 								containing the most item listings. A category histogram is not returned
 								if the specified category is a leaf category.
@@ -2763,7 +2801,7 @@
         <xs:annotation>
           <xs:documentation>
 						Use aspect filters to refine the number of results returned in a response.
-						Populate the aspectFilter container with aspect values obtained from the
+						Populate the &lt;b&gt;aspectFilter&lt;/b&gt; container with aspect values obtained from the
 						response of a query that returns an aspectHistogram.
 					</xs:documentation>
         </xs:annotation>
@@ -3023,7 +3061,7 @@
 				</xs:documentation>
           <xs:appinfo>
             <typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services">
-					</typeLibrarySource>
+						</typeLibrarySource>
           </xs:appinfo>
         </xs:annotation>
         <xs:restriction base="xs:string">
@@ -3113,7 +3151,7 @@
 								Sorts items by Best Match, which is based on community buying activity
 								and other relevance-based factors.
 								&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 								eBay site search results sorted by Best Match may not match the API
 								search results sorted by Best Match. The site Best Match algorithm takes
 								into account additional factors, such as user information, not available
@@ -3133,7 +3171,7 @@
             <xs:annotation>
               <xs:documentation>
 								Sorts items by distance from the buyer in ascending order. The request
-								must also include a buyerPostalCode.
+								must also include a &lt;b&gt;buyerPostalCode&lt;/b&gt;.
 							</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
@@ -3182,7 +3220,9 @@
 								Sorts items by the number of bids they have received, with items that
 								have received the most bids first.
 								&lt;br&gt;&lt;br&gt;
-								To sort by bid count, you must specify a listing type filter
+								Sorting by bid count is supported on the eBay US (global ID EBAY-US),
+								eBay Germany (global ID EBAY-DE), and eBay Australia (global ID EBAY-AU)
+								sites only. To sort by bid count, you must specify a listing type filter
 								to limit results to auction listings only (such as, &lt;code&gt;&amp;
 								itemFilter.name=ListingType&amp;itemFilter.value=Auction&lt;/code&gt;).
 							</xs:documentation>
@@ -3194,7 +3234,9 @@
 								Sorts items by the number of bids they have received, with items that
 								have received the fewest bids first.
 								&lt;br&gt;&lt;br&gt;
-								To sort by bid count, you must specify a listing type filter
+								Sorting by bid count is supported on the eBay US (global ID EBAY-US),
+								eBay Germany (global ID EBAY-DE), and eBay Australia (global ID EBAY-AU)
+								sites only. To sort by bid count, you must specify a listing type filter
 								to limit results to auction listings only (such as, &lt;code&gt;&amp;
 								itemFilter.name=ListingType&amp;itemFilter.value=Auction&lt;/code&gt;).
 							</xs:documentation>
@@ -3244,6 +3286,18 @@
 							</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
+          <xs:enumeration value="WatchCountDecreaseSort">
+            <xs:annotation>
+              <xs:documentation>
+								Sorts items by watch count in decreasing order for the given site.
+								The items with highest watch count appear earlier in results than those
+								with lower watch count. &lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+								The watch count value of the item
+								is not retuned in the response.&lt;/span&gt;
+							</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
         </xs:restriction>
       </xs:simpleType>
       <xs:complexType name="ProductId">
@@ -3261,9 +3315,8 @@
             <xs:attribute use="required" name="type" type="xs:string">
               <xs:annotation>
                 <xs:documentation>
-									The nature of the identifier being used. Applies to findCompletedItems and
-									findItemsByProduct. For findItemsByProduct, search
-									by a single type.
+									The nature of the product identifier being used. Applies to findCompletedItems and
+									findItemsByProduct. 
 									&lt;dl&gt;
 									&lt;dt&gt;
 										&lt;strong&gt;productId values:&lt;/strong&gt;
@@ -3272,11 +3325,10 @@
 										ReferenceID
 									&lt;/dt&gt;
 									&lt;dd&gt;
-										The global reference ID (ePID) for an eBay catalog product. A reference ID is a
-										fixed reference to a product, regardless of version. Use FindProducts in the
+										The eBay Product ID (ePID) for an eBay catalog product. Use FindProducts in the
 										Shopping API to determine valid ePID values that you can use as input to
 										findItemsByProduct or findCompletedItems. Each product in the response includes
-										its reference ID.
+										its ePID.
 									&lt;/dd&gt;
 									&lt;dt&gt;
 										ISBN
@@ -3336,18 +3388,18 @@
           <xs:element minOccurs="0" name="paramName" type="xs:token">
             <xs:annotation>
               <xs:documentation>
-								In addition to filter Name/Value pairs, some itemFilters use an
+								In addition to filter Name/Value pairs, some &lt;b&gt;itemFilter&lt;/b&gt;s use an
 								additional parameter Name/Value pair. Specifically, filters that use
 								currency values (MaxPrice and MinPrice) make use of addition parameters.
-								When you use these itemFilters, set paramName to Currency and provide the
+								When you use these &lt;b&gt;itemFilter&lt;/b&gt;s, set &lt;b class="con"&gt;paramName&lt;/b&gt; to Currency and provide the
 								currency ID in paramValue.
 								&lt;br&gt;&lt;br&gt;
-								For example, if you use the MaxPrice itemFilter, you will need to specify
+								For example, if you use the MaxPrice &lt;b&gt;itemFilter&lt;/b&gt;, you will need to specify
 								a parameter Name of Currency with a parameter Value that specifies the
 								type of currency desired.
 								&lt;br&gt;&lt;br&gt;
-								Note that for MaxPrice and MinPrice itemFilters, the default value for
-								paramName is Currency.
+								Note that for MaxPrice and MinPrice &lt;b&gt;itemFilter&lt;/b&gt;s, the default value for
+								&lt;b class="con"&gt;paramName&lt;/b&gt; is Currency.
 							</xs:documentation>
               <xs:appinfo>
                 <ListBasedOn/>
@@ -3366,14 +3418,15 @@
           <xs:element minOccurs="0" name="paramValue" type="xs:string">
             <xs:annotation>
               <xs:documentation>
-								The currency value associated with the respective itemFilter parameter
+								The currency value associated with the respective &lt;b&gt;itemFilter&lt;/b&gt; parameter
 								Name.
 								&lt;br&gt;&lt;br&gt;
-								Usually paramName is set to Currency and paramValue is set to the
+								Usually &lt;b class="con"&gt;paramName&lt;/b&gt; is set to &lt;code&gt;Currency&lt;/code&gt; and &lt;b&gt;paramValue&lt;/b&gt; is set to the
 								currency type in which the monetary transaction occurs.
 								&lt;br&gt;&lt;br&gt;
-								Note that for MaxPrice and MinPrice itemFilters, the default value for
-								paramValue is USD.
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; For &lt;b&gt;MaxPrice&lt;/b&gt; and &lt;b&gt;MinPrice&lt;/b&gt; 
+								&lt;b&gt;itemFilter&lt;/b&gt;s, the default value for
+								&lt;b&gt;paramValue&lt;/b&gt; is USD.&lt;/span&gt;
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -3396,9 +3449,54 @@
           <xs:element name="name" type="tns:ItemFilterType" maxOccurs="1" minOccurs="1">
             <xs:annotation>
               <xs:documentation>
-								Specify the name of the item filter you want to use. The itemFilter name
-								must have a corresponding value. You can apply multiple itemFilter
+								Specify the name of the item filter you want to use. The &lt;b&gt;itemFilter&lt;/b&gt; name
+								must have a corresponding value. You can apply multiple &lt;b&gt;itemFilter&lt;/b&gt;
 								Name/Value pairs in a single request.
+								&lt;br&gt;&lt;br&gt;
+								&lt;b&gt;Item Filter Names&lt;/b&gt;:
+								&lt;br&gt;&lt;br&gt;
+								&lt;ul&gt;
+								&lt;li&gt;AvailableTo&lt;/li&gt;
+								&lt;li&gt;BestOfferOnly&lt;/li&gt;
+								&lt;li&gt;CharityOnly&lt;/li&gt;
+								&lt;li&gt;Condition&lt;/li&gt;
+								&lt;li&gt;Currency&lt;/li&gt;
+								&lt;li&gt;EndTimeFrom&lt;/li&gt;
+								&lt;li&gt;EndTimeTo&lt;/li&gt;
+								&lt;li&gt;ExcludeAutoPay&lt;/li&gt;
+								&lt;li&gt;ExcludeCategory&lt;/li&gt;
+								&lt;li&gt;ExcludeSeller&lt;/li&gt;
+								&lt;li&gt;ExpeditedShippingType&lt;/li&gt;
+								&lt;li&gt;FeaturedOnly&lt;/li&gt;
+								&lt;li&gt;FeedbackScoreMax&lt;/li&gt;
+								&lt;li&gt;FeedbackScoreMin&lt;/li&gt;
+								&lt;li&gt;FreeShippingOnly&lt;/li&gt;
+								&lt;li&gt;GetItFastOnly&lt;/li&gt;
+								&lt;li&gt;HideDuplicateItems&lt;/li&gt;
+								&lt;li&gt;ListedIn&lt;/li&gt;
+								&lt;li&gt;ListingType&lt;/li&gt;
+								&lt;li&gt;LocalPickupOnly&lt;/li&gt;
+								&lt;li&gt;LocalSearchOnly&lt;/li&gt;
+								&lt;li&gt;LocatedIn&lt;/li&gt;
+								&lt;li&gt;LotsOnly&lt;/li&gt;
+								&lt;li&gt;MaxBids&lt;/li&gt;
+								&lt;li&gt;MaxDistance&lt;/li&gt;
+								&lt;li&gt;MaxHandlingTime&lt;/li&gt;
+								&lt;li&gt;MaxPrice&lt;/li&gt;
+								&lt;li&gt;MaxQuantity&lt;/li&gt;
+								&lt;li&gt;MinBids&lt;/li&gt;
+								&lt;li&gt;MinPrice&lt;/li&gt;
+								&lt;li&gt;MinQuantity&lt;/li&gt;
+								&lt;li&gt;ModTimeFrom&lt;/li&gt;
+								&lt;li&gt;PaymentMethod&lt;/li&gt;
+								&lt;li&gt;ReturnsAcceptedOnly&lt;/li&gt;
+								&lt;li&gt;Seller&lt;/li&gt;
+								&lt;li&gt;SellerBusinessType&lt;/li&gt;
+								&lt;li&gt;TopRatedSellerOnly&lt;/li&gt;
+								&lt;li&gt;ValueBoxInventory&lt;/li&gt;
+								&lt;li&gt;WorldOfGoodOnly&lt;/li&gt;
+								&lt;/ul&gt;
+
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -3646,10 +3744,9 @@
 								Technical Support may ask you for the version value if you work with them
 								to troubleshoot issues.
 								&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
 									The version in use is normally the latest release version, as specified
-									in the release notes. Note that eBay releases the API to international
-									sites about a week after the API version is released to the US site.
+									in the release notes. &lt;/span&gt;
 								&lt;/span&gt;
 							</xs:documentation>
               <xs:appinfo>
@@ -4101,7 +4198,7 @@
 								response. The number of data pages is determined by the total number of
 								items matching the request search criteria (returned in
 								paginationOutput.totalEntries) divided by the number of entries to
-								display in each response (entriesPerPage). You can return up to the first
+								display in each response (&lt;b&gt;entriesPerPage&lt;/b&gt;). You can return up to the first
 								100 pages of the result set by issuing multiple requests and specifying,
 								in sequence, the pages to return.
 							</xs:documentation>
@@ -4125,11 +4222,11 @@
             <xs:annotation>
               <xs:documentation>
 								Specifies the maximum number of entries to return in a single call. If
-								the number of entries found on the specified pageNumber is less than the
+								the number of entries found on the specified &lt;b&gt;pageNumber&lt;/b&gt; is less than the
 								value specified here, the number of items returned will be less than the
-								value of entriesPerPage. This indicates the end of the result set.
+								value of &lt;b&gt;entriesPerPage&lt;/b&gt;. This indicates the end of the result set.
 								&lt;br&gt;&lt;br&gt;
-								If entriesPerPage is set to a number greater than 100, the default value,
+								If &lt;b&gt;entriesPerPage&lt;/b&gt; is set to a number greater than 100, the default value,
 								100, will be used.
 							</xs:documentation>
               <xs:appinfo>
@@ -4174,19 +4271,19 @@
 								The subset of item data returned in the current response. Search results
 								are divided into sets, or "pages," of item data. The number of pages is
 								equal to the total number of items matching the search criteria divided
-								by the value specified for entriesPerPage in the request. The response
+								by the value specified for &lt;b&gt;entriesPerPage&lt;/b&gt; in the request. The response
 								for a request contains one "page" of item data.
 								&lt;br&gt; &lt;br&gt;
 								This returned value indicates the page number of item data returned (a
 								subset of the complete result set). If this field contains 1, the
 								response contains the first page of item data (the default). If the value
-								returned in totalEntries is less than the value for entriesPerPage,
-								pageNumber returns 1 and the response contains the entire result set.
+								returned in totalEntries is less than the value for &lt;b&gt;entriesPerPage&lt;/b&gt;,
+								&lt;b&gt;pageNumber&lt;/b&gt; returns 1 and the response contains the entire result set.
 								&lt;br&gt; &lt;br&gt;
-								The value of pageNumber is normally equal to the value input for
-								paginationInput.pageNumber. However, if the number input for pageNumber
+								The value of &lt;b&gt;pageNumber&lt;/b&gt; is normally equal to the value input for
+								&lt;b&gt;paginationInput.pageNumber&lt;/b&gt;. However, if the number input for &lt;b&gt;pageNumber&lt;/b&gt;
 								is greater than the total possible pages of output, eBay returns the last
-								page of item data in the result set, and the value for pageNumber is set
+								page of item data in the result set, and the value for &lt;b&gt;pageNumber&lt;/b&gt; is set
 								to the respective (last) page number.
 							</xs:documentation>
               <xs:appinfo>
@@ -4211,13 +4308,13 @@
               <xs:documentation>
 								The maximum number of items that can be returned in the response. This
 								number is always equal to the value input for
-								paginationInput.entriesPerPage.
+								&lt;b&gt;paginationInput.entriesPerPage&lt;/b&gt;.
 								&lt;br&gt; &lt;br&gt;
 								The end of the result set has been reached if the number specified for
-								entriesPerPage is greater than the number of items found on the specified
-								pageNumber. In this case, there will be fewer items returned than the
+								&lt;b&gt;entriesPerPage&lt;/b&gt; is greater than the number of items found on the specified
+								&lt;b&gt;pageNumber&lt;/b&gt;. In this case, there will be fewer items returned than the
 								number specified in entriesPerPage. This can be determined by comparing
-								the entriesPerPage value with the value returned in the count attribute
+								the &lt;b&gt;entriesPerPage&lt;/b&gt; value with the value returned in the count attribute
 								for the searchResult field.
 							</xs:documentation>
               <xs:appinfo>
@@ -4241,9 +4338,9 @@
             <xs:annotation>
               <xs:documentation>
 								The total number of pages of data that could be returned by repeated
-								search requests. Note that if you modify the value of
-								inputPagination.entriesPerPage in a request, the value output for
-								totalPages will change. A value of "0" is returned if eBay does not find
+								search requests. &lt;b&gt;Note: &lt;/b&gt; If you modify the value of
+								&lt;b&gt;inputPagination.entriesPerPage&lt;/b&gt; in a request, the value output for
+								&lt;b&gt;totalPages&lt;/b&gt; will change. A value of "0" is returned if eBay does not find
 								any items that match the search criteria.
 							</xs:documentation>
               <xs:appinfo>
@@ -4267,7 +4364,7 @@
             <xs:annotation>
               <xs:documentation>
 								The total number of items found that match the search criteria in your
-								request. Depending on the input value for entriesPerPage, the response
+								request. Depending on the input value for &lt;b&gt;entriesPerPage&lt;/b&gt;, the response
 								might include only a portion (a page) of the entire result set. A value
 								of "0" is returned if eBay does not find any items that match the search
 								criteria.
@@ -4655,8 +4752,8 @@
 								&amp;nbsp;&amp;nbsp;&amp;nbsp;
 								- Auctions (Auction Items and Auction BIN items)&lt;br&gt;
 								&amp;nbsp;&amp;nbsp;&amp;nbsp;
-								- Fixed Price (Fixed Price, Multi-quantity Fixed Price, and Fixed
-								Price with Best Offer Format items)&lt;br&gt;
+								- Fixed Price (Fixed Price, Multi-quantity Fixed Price, Fixed
+								Price with Best Offer, and Store Inventory Format items)&lt;br&gt;
 								&amp;nbsp;&amp;nbsp;&amp;nbsp;
 								- Classified Ads&lt;br&gt;
 								&lt;br&gt;
@@ -4676,21 +4773,20 @@
             <xs:annotation>
               <xs:documentation>
 								&lt;a name="AvailableTo"&gt;&lt;/a&gt;
-								Limits items to those available to the specified country only. The item
-								filter &lt;b&gt;AvailableTo&lt;/b&gt; cannot be used with either the  
-								&lt;b&gt;LocatedIn&lt;/b&gt; nor the &lt;b&gt;MaxDistance&lt;/b&gt; item filter.
+								Limits items to those available to the specified country only. Item
+								filter LocatedIn cannot be used together with item filter AvailableTo.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Expects the two-letter ISO 3166 country code to indicate the country
 								where the item is located. For English names that correspond to each code
-								(for example, KY="Cayman Islands"), see the ISO site:
+								(e.g., KY="Cayman Islands"), see the ISO site:
 								&lt;br&gt;
 								&lt;a
-								href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm"&gt;
-								http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm&lt;/a&gt;.
+								href="https://www.iso.org/obp/ui/#search/code/"&gt;
+								https://www.iso.org/obp/ui/#search/code/&lt;/a&gt;.
 								&lt;br&gt;&lt;br&gt;
 							</xs:documentation>
             </xs:annotation>
@@ -4705,14 +4801,14 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Expects the two-letter ISO 3166 country code to indicate the country
 								where the item is located. For English names that correspond to each code
 								(for example, KY="Cayman Islands"), see the ISO site:
 								&lt;br&gt;
-								&lt;a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm"&gt;
-								http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm&lt;/a&gt;.
+								&lt;a href="https://www.iso.org/obp/ui/#search/code/"&gt;
+								https://www.iso.org/obp/ui/#search/code/&lt;/a&gt;.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Note: &lt;/b&gt;Multiple values are allowed. Up to 25 countries
 								can be specified.
@@ -4729,7 +4825,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -4749,7 +4845,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -4761,11 +4857,11 @@
               <xs:documentation>
 								&lt;a name="ListingType"&gt;&lt;/a&gt;
 								Filters items based listing type information. Default behavior is to
-								return all matching items.
+								return all matching items, except Store Inventory format listings.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								&lt;blockquote&gt;
 								&lt;dl&gt;
@@ -4783,7 +4879,10 @@
 								&lt;dd&gt;Retrieves Classified Ad format (i.e., Classified and AdFormat
 								listing type) listings only.&lt;/dd&gt;
 								&lt;dt&gt;FixedPrice&lt;/dt&gt;
-								&lt;dd&gt;Retrieves matching fixed price items only.  &lt;/dd&gt;
+								&lt;dd&gt;Retrieve matching fixed price items only. Excludes Store
+								Inventory format items. &lt;/dd&gt;
+								&lt;dt&gt;StoreInventory&lt;/dt&gt;
+								&lt;dd&gt;Retrieve Store Inventory format items only.&lt;/dd&gt;
 								&lt;dt&gt;All&lt;/dt&gt;
 								&lt;dd&gt;Retrieves matching items for any listing type.&lt;/dd&gt;
 								&lt;/blockquote&gt;
@@ -4798,6 +4897,7 @@
 								&amp;itemFilter(0).name=ListingType&lt;br&gt;
 								&amp;itemFilter(0).value(0)=AuctionWithBIN&lt;br&gt;
 								&amp;itemFilter(0).value(1)=FixedPrice&lt;br&gt;
+								&amp;itemFilter(0).value(2)=StoreInventory&lt;br&gt;
 								...
 								&lt;/pre&gt;
 								&lt;br&gt;
@@ -4813,7 +4913,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -4829,7 +4929,7 @@
 								greater than or equal to the MinBids value.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Integer greater than or equal to 0.
 								&lt;br&gt;&lt;br&gt;
@@ -4845,7 +4945,7 @@
 								greater than or equal to the MinBids value.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Integer greater than or equal to 0.
 								&lt;br&gt;&lt;br&gt;
@@ -4865,7 +4965,7 @@
 								greater than or equal to MinPrice.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#decimal"&gt;decimal&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#decimal"&gt;decimal&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Decimal values greater than or equal to 0.0.
 								&lt;br&gt;&lt;br&gt;
@@ -4885,7 +4985,7 @@
 								greater than or equal to MinPrice.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#decimal"&gt;decimal&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#decimal"&gt;decimal&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Decimal values greater than or equal to 0.0.
 								&lt;br&gt;&lt;br&gt;
@@ -4900,7 +5000,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):
 								&lt;/b&gt;&lt;br&gt;
 								&lt;blockquote&gt;
 								&lt;dl&gt;
@@ -4927,7 +5027,7 @@
 								must be greater than or equal to the MinQuantity value.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Integer greater than or equal to 1.
 								&lt;br&gt;&lt;br&gt;
@@ -4943,7 +5043,7 @@
 								value must be greater than or equal to the MinQuantity value.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Integer greater than or equal to 1.
 								&lt;br&gt;&lt;br&gt;
@@ -4961,7 +5061,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Valid seller names.
 								&lt;br&gt;&lt;br&gt;
@@ -4991,7 +5091,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Valid seller names.
 								&lt;br&gt;&lt;br&gt;
@@ -5020,7 +5120,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Valid category IDs.
 								&lt;br&gt;&lt;br&gt;
@@ -5049,7 +5149,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -5111,7 +5211,7 @@
 								&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):
 								&lt;/b&gt;&lt;br&gt;
 								&lt;blockquote&gt;
 								&lt;dl&gt;
@@ -5148,9 +5248,13 @@
 								The TopRatedSellerOnly item filter cannot be used together with either
 								the Seller or ExcludeSeller item filters.
 								&lt;br&gt;&lt;br&gt;
+								The TopRatedSellerOnly item filter is supported for the following sites
+								only: US (EBAY-US), Motors (EBAY-MOTOR), UK (EBAY-GB), IE (EBAY-IE), DE
+								(EBAY-DE), AT (EBAY-AT), and CH (EBAY-CH).
+								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -5165,7 +5269,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -5182,7 +5286,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -5232,7 +5336,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Expedited, OneDayShipping
 								&lt;br&gt;&lt;br&gt;
@@ -5261,7 +5365,7 @@
 								in the API.)
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Integer greater than or equal to 1.
 								&lt;br&gt;&lt;br&gt;
@@ -5287,7 +5391,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -5314,7 +5418,7 @@
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								1, 0
 								&lt;br&gt;&lt;br&gt;
@@ -5355,7 +5459,7 @@
 								Specify a time in the future.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#dateTime"&gt;dateTime&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#dateTime"&gt;dateTime&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Specify the time in GMT.
 								&lt;br&gt;&lt;br&gt;
@@ -5370,7 +5474,7 @@
 								Specify a time in the future.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html#dateTime"&gt;dateTime&lt;/a&gt;):&lt;/b&gt;
+								href="../types/simpleTypes.html#dateTime"&gt;dateTime&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Specify the time in GMT.
 								&lt;br&gt;&lt;br&gt;
@@ -5667,8 +5771,8 @@
       <xs:complexType name="Condition">
         <xs:annotation>
           <xs:documentation>
-				Information that describes an item's condition.
-			</xs:documentation>
+						Information that describes an item's condition.
+					</xs:documentation>
           <xs:appinfo>
             <typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services">
 				</typeLibrarySource>
@@ -5683,11 +5787,9 @@
 							In item results, this is only returned when the seller listed the
 							item with a condition ID.
 							Some categories don't support or require condition IDs
-							(for example, most Antiques categories don't). Also, until spring 2011,
-							some GTC listings may define the item condition in item specifics
-							instead, so no ID is returned.&lt;br&gt;
+							(for example, most Antiques categories don't). &lt;br&gt;
 							&lt;br&gt;
-							If you specify Condition in itemFilter, the response returns items
+							If you specify Condition in &lt;b&gt;itemFilter&lt;/b&gt;, the response returns items
 							with the correctly matching condition(s), even if conditionId is
 							not returned. For example, if you specify a value of "New"
 							or "1000" in the item filter, the response only returns new items.
@@ -5726,7 +5828,7 @@
 							(not necessarily the site on which they're viewed).&lt;br&gt;
 							&lt;br&gt;
 							In item results, this is only returned when the seller specified the item's condition
-							using a structured format eBay recognizes (for example, conditionId or an
+							using a structured format eBay recognizes (e.g., conditionId or an
 							older item specifics format).&lt;br&gt;
 							&lt;br&gt;
 							&lt;b&gt;When conditionId is also present:&lt;/b&gt;
@@ -5798,8 +5900,8 @@
       <xs:complexType name="Distance">
         <xs:annotation>
           <xs:documentation>
-				Distance, used for local searches.
-			</xs:documentation>
+						Distance, used for local searches.
+					</xs:documentation>
           <xs:appinfo>
             <typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services">
 				</typeLibrarySource>
@@ -5810,9 +5912,9 @@
             <xs:attribute name="unit" type="xs:string">
               <xs:annotation>
                 <xs:documentation>
-							Unit of measure used in a distance calculation. Units can be in either
-							kilometers or miles, depending on the Global ID.
-						</xs:documentation>
+									Unit of measure used in a distance calculation. Units can be in either
+									kilometers or miles, depending on the Global ID.
+								</xs:documentation>
                 <xs:appinfo>
                   <CallInfo>
                     <CallName>findCompletedItems</CallName>
@@ -5843,8 +5945,8 @@
           <xs:element name="galleryURL" minOccurs="1" maxOccurs="3" type="tns:GalleryURL">
             <xs:annotation>
               <xs:documentation>
-							URL for a single item image thumbnail of a specific size.
-					</xs:documentation>
+										URL for a single item image thumbnail of a specific size.
+								</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -5864,7 +5966,7 @@
       <xs:simpleType name="GallerySizeEnum">
         <xs:annotation>
           <xs:documentation>
-				Values that can be used to describe relative sizes of item thumbnail images.
+						Values that can be used to describe relative sizes of item thumbnail images.
 			</xs:documentation>
           <xs:appinfo>
             <typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services">
@@ -5875,22 +5977,22 @@
           <xs:enumeration value="Small">
             <xs:annotation>
               <xs:documentation>
-						Small sized thumbnail image. Small images are up to 80 pixels on the longest side.
-					</xs:documentation>
+								Small sized thumbnail image. Small images are up to 80 pixels on the longest side.
+							</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="Medium">
             <xs:annotation>
               <xs:documentation>
-						Medium sized thumbnail image  Medium images are up to 96 pixels on the longest side.
-					</xs:documentation>
+								Medium sized thumbnail image  Medium images are up to 96 pixels on the longest side.
+							</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="Large">
             <xs:annotation>
               <xs:documentation>
-						Large sized thumbnail image. Large images are up to 140 pixels on the longest side.
-					</xs:documentation>
+								Large sized thumbnail image. Large images are up to 140 pixels on the longest side.
+							</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
         </xs:restriction>
@@ -5910,9 +6012,9 @@
             <xs:attribute name="gallerySize" use="required" type="tns:GallerySizeEnum">
               <xs:annotation>
                 <xs:documentation>
-							Relative size (Large, Medium, or Small) of the image thumbnail for the
-							item.
-						</xs:documentation>
+									Relative size (Large, Medium, or Small) of the image thumbnail for the
+									item.
+								</xs:documentation>
                 <xs:appinfo>
                   <CallInfo>
                     <CallName>findCompletedItems</CallName>
@@ -5943,12 +6045,12 @@
           <xs:element minOccurs="0" name="bestOfferEnabled" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>
-						Shows whether or not the seller will accept a best offer for the
-						associated item. Best Offer allows a buyer to make a lower-priced binding
-						offer on a fixed price item. Buyers cannot see how many offers have been
-						made (only the seller can see this information). To make a best offer on
-						a listing, use the eBay Web site.
-					</xs:documentation>
+								Shows whether or not the seller will accept a best offer for the
+								associated item. Best Offer allows a buyer to make a lower-priced binding
+								offer on a fixed price item. Buyers cannot see how many offers have been
+								made (only the seller can see this information). To make a best offer on
+								a listing, use the eBay Web site.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -5966,16 +6068,16 @@
           <xs:element minOccurs="0" name="buyItNowAvailable" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>
-						Applies only to auction listings that were listed with a Buy It Now
-						price. Buy It Now lets a user purchase the item at a fixed price,
-						effectively ending the auction. On most sites, the Buy It Now option is
-						removed (and this value returns false) once a valid bid is made on the
-						associated item (a valid bid could be a bid above the reserve price).
-						&lt;br&gt;&lt;br&gt;
-						buyItNowAvailable will return "false" if the listing type is anything but
-						"AuctionWithBIN". Please ignore buyItNowAvailable for fixed-price
-						listings.
-					</xs:documentation>
+								Applies only to auction listings that were listed with a Buy It Now
+								price. Buy It Now lets a user purchase the item at a fixed price,
+								effectively ending the auction. On most sites, the Buy It Now option is
+								removed (and this value returns false) once a valid bid is made on the
+								associated item (a valid bid could be a bid above the reserve price).
+								&lt;br&gt;&lt;br&gt;
+								buyItNowAvailable will return "false" if the listing type is anything but
+								"AuctionWithBIN". Please ignore buyItNowAvailable for fixed-price
+								listings.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -5993,16 +6095,17 @@
           <xs:element minOccurs="0" name="buyItNowPrice" type="tns:Amount">
             <xs:annotation>
               <xs:documentation>
-						The Buy It Now Price of the item (if any), in the currency of the site on
-						which the item was listed. You can use this field to determine if the
-						item was originally listed with Buy It Now, even if the Buy It Now option
-						is no longer available for the item.
-						&lt;br&gt;&lt;br&gt;
-						For Basic Fixed-Price (FixedPrice), Ad Format (AdFormat), and Classified Ad (Classified)
-						listings, currentPrice	is the current fixed price.
-						&lt;br&gt;&lt;br&gt;
-						Only returned if an item was listed with Buy It Now.
-					</xs:documentation>
+								The Buy It Now Price of the item (if any), in the currency of the site on
+								which the item was listed. You can use this field to determine if the
+								item was originally listed with Buy It Now, even if the Buy It Now option
+								is no longer available for the item.
+								&lt;br&gt;&lt;br&gt;
+								For Basic Fixed-Price (FixedPrice), Store Inventory (StoreInventory), Ad
+								Format (AdFormat), and Classified Ad (Classified) listings, currentPrice
+								is the current fixed price.
+								&lt;br&gt;&lt;br&gt;
+								Only returned if an item was listed with Buy It Now.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6020,17 +6123,17 @@
           <xs:element minOccurs="0" name="convertedBuyItNowPrice" type="tns:Amount">
             <xs:annotation>
               <xs:documentation>
-						The listing's Buy It Now Price (if any), converted into the currency of
-						the site to which you sent your search request. For active items, refresh
-						this value every 24 hours to pick up changes in conversion rates (if this
-						value has been converted).
-						&lt;br&gt;&lt;br&gt;
-						Price fields are returned as doubles, not necessarily in the traditional
-						monetary format of the site's country. For example, a US Dollar value
-						might be returned as 3.880001 instead of 3.88.
-						&lt;br&gt;&lt;br&gt;
-						Only returned if an item was listed with Buy It Now.
-					</xs:documentation>
+								The listing's Buy It Now Price (if any), converted into the currency of
+								the site to which you sent your search request. For active items, refresh
+								this value every 24 hours to pick up changes in conversion rates (if this
+								value has been converted).
+								&lt;br&gt;&lt;br&gt;
+								Price fields are returned as doubles, not necessarily in the traditional
+								monetary format of the site's country. For example, a US Dollar value
+								might be returned as 3.880001 instead of 3.88.
+								&lt;br&gt;&lt;br&gt;
+								Only returned if an item was listed with Buy It Now.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6048,13 +6151,15 @@
           <xs:element minOccurs="0" name="startTime" type="xs:dateTime">
             <xs:annotation>
               <xs:documentation>
-						Time stamp that eBay recorded as the moment the listing was made
-						available. This value is returned in GMT, the ISO 8601 date and time
-						format (YYYY-MM-DDTHH:MM:SS.SSSZ). See the "dateTime" type for
-						information about the time format, and for details on converting to and
-						from the GMT time zone. Note that it is possible for startTime to be
-						different from the value returned by GetSingleItem.
-					</xs:documentation>
+								Time stamp that eBay recorded as the moment the listing was made
+								available. This value is returned in GMT, the ISO 8601 date and time
+								format (YYYY-MM-DDTHH:MM:SS.SSSZ). See the &lt;b&gt;dateTime&lt;/b&gt; type for
+								information about the time format, and for details on converting to and
+								from the GMT time zone. 
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; It is possible for &lt;b&gt;startTime&lt;/b&gt; to be
+								different from the value returned by &lt;b&gt;GetSingleItem&lt;/b&gt;.&lt;/span&gt;
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6072,19 +6177,19 @@
           <xs:element minOccurs="0" name="endTime" type="xs:dateTime">
             <xs:annotation>
               <xs:documentation>
-						Time stamp specifying when the listing is scheduled to end, or the
-						actual end time if the item listing has ended. This value is returned in
-						GMT, the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ). See
-						the "dateTime" type for information about the time format, and for
-						details on converting to and from the GMT time zone.
-						&lt;br&gt;&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-							For items that are "Good Till Canceled," this value is 5 minutes later
-							than the actual end time of the item. This difference in time is
-							intended to facilitate the renewal of these items' end times (which
-							occurs every 30 days).
-						&lt;/span&gt;
-					</xs:documentation>
+								Time stamp specifying when the listing is scheduled to end, or the
+								actual end time if the item listing has ended. This value is returned in
+								GMT, the ISO 8601 date and time format (YYYY-MM- DDTHH:MM:SS.SSSZ). See
+								the &lt;b&gt;dateTime&lt;/b&gt; type for information about the time format, and for
+								details on converting to and from the GMT time zone.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+									For items that are "Good Till Canceled," this value is 5 minutes later
+									than the actual end time of the item. This difference in time is
+									intended to facilitate the renewal of these items' end times (which
+									occurs every 30 days).&lt;/span&gt;
+								&lt;/span&gt;
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6102,64 +6207,75 @@
           <xs:element minOccurs="0" name="listingType" type="xs:token">
             <xs:annotation>
               <xs:documentation>
-						The format of the listing, such as online auction, fixed price, or
-						advertisement.
-						&lt;dl&gt;
-							&lt;dt&gt;
-								&lt;strong&gt;listingType values:&lt;/strong&gt;
-							&lt;/dt&gt;
-							&lt;dt&gt;
-								AdFormat
-							&lt;/dt&gt;
-							&lt;dd&gt;
-								Advertisement to solicit inquiries on listings such as real estate.
-								Permits no bidding on that item, service, or property. To express
-								interest, a buyer fills out a contact form that eBay forwards to the
-								seller as a lead. This format does not enable buyers and sellers to
-								transact online through eBay and eBay Feedback is not available for
-								ad format listings.
-							&lt;/dd&gt;
-							&lt;dt&gt;
-								Auction
-							&lt;/dt&gt;
-							&lt;dd&gt;
-								Competitive-bid online auction format. Buyers engage in competitive
-								bidding, although Buy It Now may be offered as long as no valid bids
-								have been placed. Online auctions are listed on eBay.com; they can
-								also be listed in a seller's eBay Store if the seller is a Store
-								owner.
-							&lt;/dd&gt;
-							&lt;dt&gt;
-								AuctionWithBIN
-							&lt;/dt&gt;
-							&lt;dd&gt;
-								Same as Auction format, but Buy It Now is enabled. AuctionWithBIN
-								changes to Auction if a valid bid has been placed on the item. Valid
-								bids include bids that are equal to or above any specified reserve
-								price.
-							&lt;/dd&gt;
-							&lt;dt&gt;
-								Classified
-							&lt;/dt&gt;
-							&lt;dd&gt;
-								Classified Ads connect buyers and sellers, who then complete the sale
-								outside of eBay. This format does not enable buyers and sellers to
-								transact online through eBay and eBay Feedback is not available for
-								these listing types.
-							&lt;/dd&gt;
-							&lt;dt&gt;
-								FixedPrice
-							&lt;/dt&gt;
-							&lt;dd&gt;
-								A fixed-price listing. Auction-style bidding is not allowed. On some
-								sites, this auction format is also known as "Buy It Now Only" (not to
-								be confused with the Buy It Now option available with competitive-
-								bidding auctions). Fixed-price listings appear on eBay.com; they can
-								also be listed in a seller's eBay Store if the seller is a Store
-								owner.
-							&lt;/dd&gt;
-						&lt;/dl&gt;
-					</xs:documentation>
+								The format of the listing, such as online auction, fixed price, or
+								advertisement.
+								&lt;dl&gt;
+									&lt;dt&gt;
+										&lt;strong&gt;listingType values:&lt;/strong&gt;
+									&lt;/dt&gt;
+									&lt;dt&gt;
+										AdFormat
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										Advertisement to solicit inquiries on listings such as real estate.
+										Permits no bidding on that item, service, or property. To express
+										interest, a buyer fills out a contact form that eBay forwards to the
+										seller as a lead. This format does not enable buyers and sellers to
+										transact online through eBay and eBay Feedback is not available for
+										ad format listings.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										Auction
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										Competitive-bid online auction format. Buyers engage in competitive
+										bidding, although Buy It Now may be offered as long as no valid bids
+										have been placed. Online auctions are listed on eBay.com; they can
+										also be listed in a seller's eBay Store if the seller is a Store
+										owner.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										AuctionWithBIN
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										Same as Auction format, but Buy It Now is enabled. AuctionWithBIN
+										changes to Auction if a valid bid has been placed on the item. Valid
+										bids include bids that are equal to or above any specified reserve
+										price.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										Classified
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										Classified Ads connect buyers and sellers, who then complete the sale
+										outside of eBay. This format does not enable buyers and sellers to
+										transact online through eBay and eBay Feedback is not available for
+										these listing types.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										FixedPrice
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										A fixed-price listing. Auction-style bidding is not allowed. On some
+										sites, this auction format is also known as "Buy It Now Only" (not to
+										be confused with the Buy It Now option available with competitive-
+										bidding auctions). Fixed-price listings appear on eBay.com; they can
+										also be listed in a seller's eBay Store if the seller is a Store
+										owner.
+									&lt;/dd&gt;
+									&lt;dt&gt;
+										StoreInventory
+									&lt;/dt&gt;
+									&lt;dd&gt;
+										A fixed-price format for eBay Store sellers. Store Inventory listings
+										appear after other listings in regular browse and search item
+										listings on eBay. Store items have a lower Insertion Fee and longer
+										listing durations. This selling type can only be specified by sellers
+										who have an eBay Store. Store Inventory listings are listed on
+										eBay.com as well as in the seller's eBay Store.
+									&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xs:documentation>
               <xs:appinfo>
                 <ListBasedOn/>
                 <CallInfo>
@@ -6178,9 +6294,9 @@
           <xs:element minOccurs="0" name="gift" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>
-						If true, a generic gift icon displays next the listing's title in search
-						and browse pages.
-					</xs:documentation>
+								If true, a generic gift icon displays next the listing's title in search
+								and browse pages.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6236,9 +6352,9 @@
           <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
             <xs:annotation>
               <xs:documentation>
-						Name of the item as it appears in the listing title, or in search and
-						browse results.
-					</xs:documentation>
+								Name of the item as it appears in the listing title, or in search and
+								browse results.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6256,11 +6372,11 @@
           <xs:element minOccurs="0" name="globalId" type="xs:token">
             <xs:annotation>
               <xs:documentation>
-						The identifier for the site on which the item is listed. Returns a Global
-						ID, which is a unique identifier that specifies the combination of the
-						site, language, and territory. In other eBay APIs (such as the Shopping
-						API), this value is know as the site ID.
-					</xs:documentation>
+								The identifier for the site on which the item is listed. Returns a Global
+								ID, which is a unique identifier that specifies the combination of the
+								site, language, and territory. In other eBay APIs (such as the Shopping
+								API), this value is know as the site ID.
+							</xs:documentation>
               <xs:appinfo>
                 <ListBasedOn/>
                 <CallInfo>
@@ -6276,7 +6392,7 @@
                     <URL>Enums/GlobalIdList.html</URL>
                     <Title>Global ID Values</Title>
                     <For>a list of possible enumeration values and how they map to eBay
-								sites</For>
+										sites</For>
                   </SeeLink>
                 </CallInfo>
               </xs:appinfo>
@@ -6285,9 +6401,9 @@
           <xs:element minOccurs="0" name="subtitle" type="xs:string">
             <xs:annotation>
               <xs:documentation>
-						Subtitle of the item. Only returned if the seller included a subtitle for
-						the listing.
-					</xs:documentation>
+								Subtitle of the item. Only returned if the seller included a subtitle for
+								the listing.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6305,9 +6421,10 @@
           <xs:element minOccurs="0" name="primaryCategory" type="tns:Category">
             <xs:annotation>
               <xs:documentation>
-						Details about the first (or only) category in which the item is listed.
-						Note that items can be listed in more than a single category.
-					</xs:documentation>
+								Details about the first (or only) category in which the item is listed.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; Items can be listed in more than a single category.&lt;/span&gt;
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6325,10 +6442,10 @@
           <xs:element minOccurs="0" name="secondaryCategory" type="tns:Category">
             <xs:annotation>
               <xs:documentation>
-						Details about the second category in which the item is listed. This
-						element is not returned if the seller did not specify a secondary
-						category.
-					</xs:documentation>
+								Details about the second category in which the item is listed. This
+								element is not returned if the seller did not specify a secondary
+								category.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6346,10 +6463,10 @@
           <xs:element minOccurs="0" name="galleryURL" type="xs:anyURI">
             <xs:annotation>
               <xs:documentation>
-						URL for the Gallery thumbnail image. Returned only if the seller
-						uploaded images for the item or the item was listed using a product
-						identifier.
-					</xs:documentation>
+								URL for the Gallery thumbnail image. Returned only if the seller
+								uploaded images for the item or the item was listed using a product
+								identifier.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6367,12 +6484,12 @@
           <xs:element minOccurs="0" name="galleryInfoContainer" type="tns:GalleryInfoContainer">
             <xs:annotation>
               <xs:documentation>
-						Contains three URLs for item thumbnail images in standard sizes. Not
-						returned if the item has no images. That is, if the item was not listed
-						using a product identifier and the seller has not uploaded images, the
-						container will not be returned, even when the outputSelector is set to
-						GalleryInfo.
-					</xs:documentation>
+								Contains three URLs for item thumbnail images in standard sizes. Not
+								returned if the item has no images. That is, if the item was not listed
+								using a product identifier and the seller has not uploaded images, the
+								container will not be returned, even when the &lt;b&gt;outputSelector&lt;/b&gt; is set to
+								GalleryInfo.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6390,25 +6507,25 @@
           <xs:element minOccurs="0" name="viewItemURL" type="xs:anyURI">
             <xs:annotation>
               <xs:documentation>
-						The URL to view this specific listing on eBay.
-						&lt;br&gt;&lt;br&gt;
-						The returned URL is optimized to support natural search. That is, the URL
-						is designed to make items on eBay easier to find via popular internet
-						search engines. The URL includes the item title along with other
-						optimizations.
-						&lt;br&gt;&lt;br&gt;
-						If you enabled affiliate tracking in the call, viewItemURL contains a
-						string that includes affiliate tracking information.
-						&lt;br&gt;&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-						eBay URLs returned in fields, such as &lt;b
-						class="con"&gt;viewItemURL&lt;/b&gt;, are subject to syntax and other
-						changes without notice. To avoid problems in your application when eBay
-						alters the URL format, we advise you to avoid parsing eBay URLs
-						programmatically. We strive to ensure that other fields in the response
-						contain all the information that is encoded in the URL, and more.
-						&lt;/span&gt;
-					</xs:documentation>
+								The URL to view this specific listing on eBay.
+								&lt;br&gt;&lt;br&gt;
+								The returned URL is optimized to support natural search. That is, the URL
+								is designed to make items on eBay easier to find via popular internet
+								search engines. The URL includes the item title along with other
+								optimizations.
+								&lt;br&gt;&lt;br&gt;
+								If you enabled affiliate tracking in the call, viewItemURL contains a
+								string that includes affiliate tracking information.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+								eBay URLs returned in fields, such as &lt;b
+								class="con"&gt;viewItemURL&lt;/b&gt;, are subject to syntax and other
+								changes without notice. To avoid problems in your application when eBay
+								alters the URL format, we advise you to avoid parsing eBay URLs
+								programmatically. We strive to ensure that other fields in the response
+								contain all the information that is encoded in the URL, and more.
+								&lt;/span&gt;
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6431,9 +6548,9 @@
           <xs:element minOccurs="0" name="charityId" type="xs:string">
             <xs:annotation>
               <xs:documentation>
-						A unique identification number assigned by eBay to a registered
-						non-profit charity organization.
-					</xs:documentation>
+								A unique identification number assigned by eBay to a registered
+								non-profit charity organization.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6456,23 +6573,23 @@
           <xs:element minOccurs="0" name="productId" type="tns:ProductId">
             <xs:annotation>
               <xs:documentation>
-						Unique identifier for the eBay catalog product with which the item was
-						listed. An eBay catalog product consists of pre-filled Item Specifics,
-						additional descriptive information, plus a stock photo (if available).
-						These product details are used to pre-fill item information, which is
-						used to describe the item and can also help surface the item in searches.
-						&lt;br&gt;&lt;br&gt;
-						eBay supports the following types of product ID types: ISBN, UPC, EAN,
-						and ReferenceID (ePID, also known as an eBay Product Reference ID).
-						ReferenceID values are returned when available. A UPC, ISBN, or EAN
-						product identifier will be returned only when a ReferenceID is not
-						available.
-						&lt;br&gt;&lt;br&gt;
-						This productId value can be used as input with findItemsByProduct to
-						retrieve items that were listed with the specified eBay catalog product.
-						&lt;br&gt;&lt;br&gt;
-						This field is only returned when a product was used to list the item.
-					</xs:documentation>
+								Unique identifier for the eBay catalog product with which the item was
+								listed. An eBay catalog product consists of pre-filled Item Specifics,
+								additional descriptive information, plus a stock photo (if available).
+								These product details are used to pre-fill item information, which is
+								used to describe the item and can also help surface the item in searches.
+								&lt;br&gt;&lt;br&gt;
+								eBay supports the following types of product ID types: ISBN, UPC, EAN,
+								and ReferenceID (ePID, also known as an eBay Product Reference ID).
+								ReferenceID values are returned when available. A UPC, ISBN, or EAN
+								product identifier will be returned only when a ReferenceID is not
+								available.
+								&lt;br&gt;&lt;br&gt;
+								This productId value can be used as input with findItemsByProduct to
+								retrieve items that were listed with the specified eBay catalog product.
+								&lt;br&gt;&lt;br&gt;
+								This field is only returned when a product was used to list the item.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6490,16 +6607,16 @@
           <xs:element minOccurs="0" maxOccurs="unbounded" name="paymentMethod" type="xs:token">
             <xs:annotation>
               <xs:documentation>
-						Identifies the payment method (or methods) the seller will accept for the
-						item (such as PayPal).
-						&lt;br&gt;&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-						If the seller accepts only PayPal, the buyer can still pay with a
-						credit card. PayPal supports major credit cards.
-						&lt;/span&gt;
-						Payment methods are not applicable to eBay Real Estate advertisement
-						listings or other Classified Ad listing formats.
-					</xs:documentation>
+								Identifies the payment method (or methods) the seller will accept for the
+								item (such as PayPal).
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+								If the seller accepts only PayPal, the buyer can still pay with a
+								credit card. PayPal supports major credit cards.
+								&lt;/span&gt;
+								Payment methods are not applicable to eBay Real Estate advertisement
+								listings or other Classified Ad listing formats.
+							</xs:documentation>
               <xs:appinfo>
                 <ListBasedOn/>
                 <CallInfo>
@@ -6523,27 +6640,27 @@
           <xs:element minOccurs="0" name="autoPay" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>
-						If true, the seller requires immediate payment for the item. If false (or
-						not specified), immediate payment is not requested. Buyers must have a
-						PayPal account to purchase items that require immediate payment.
-						&lt;br&gt;&lt;br&gt;
-						A seller can choose to require immediate payment for Fixed Price and Buy
-						It Now listings. If a Buy It
-						Now item ends as an auction (that is, if the Buy It Now option is removed
-						due to bids being placed on the listing), the immediate payment
-						requirement does not apply.
-						&lt;br&gt;&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-						The value of the AutoPay flag indicates the seller's stated preference
-						only. It does not indicate whether the listing is still a candidate for
-						purchase via immediate payment. For example, if a listing receives bids
-						and no longer qualifies for immediate payment, the value of the AutoPay
-						flag does not change.
-						&lt;/span&gt;
-						&lt;br&gt;
-						Only applicable to items listed on PayPal-enabled sites and in categories
-						that support immediate payment.
-					</xs:documentation>
+								If true, the seller requires immediate payment for the item. If false (or
+								not specified), immediate payment is not requested. Buyers must have a
+								PayPal account to purchase items that require immediate payment.
+								&lt;br&gt;&lt;br&gt;
+								A seller can choose to require immediate payment for Fixed Price and Buy
+								It Now listings, including eBay Stores Inventory listings. If a Buy It
+								Now item ends as an auction (that is, if the Buy It Now option is removed
+								due to bids being placed on the listing), the immediate payment
+								requirement does not apply.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+								The value of the AutoPay flag indicates the seller's stated preference
+								only. It does not indicate whether the listing is still a candidate for
+								purchase via immediate payment. For example, if a listing receives bids
+								and no longer qualifies for immediate payment, the value of the AutoPay
+								flag does not change.
+								&lt;/span&gt;
+								&lt;br&gt;
+								Only applicable to items listed on PayPal-enabled sites and in categories
+								that support immediate payment.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6561,11 +6678,11 @@
           <xs:element minOccurs="0" name="postalCode" type="xs:string">
             <xs:annotation>
               <xs:documentation>
-						The postal code where the listed item is located. This field is returned
-						only if a postal code has been specified by the seller. eBay proximity
-						and local search behavior can use the combination of buyerPostalCode and
-						postalCode values.
-					</xs:documentation>
+								The postal code where the listed item is located. This field is returned
+								only if a postal code has been specified by the seller. eBay proximity
+								and local search behavior can use the combination of &lt;b&gt;buyerPostalCode&lt;/b&gt; and
+								 &lt;b&gt;postalCode&lt;/b&gt; values.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6583,9 +6700,9 @@
           <xs:element minOccurs="0" name="location" type="xs:string">
             <xs:annotation>
               <xs:documentation>
-						Physical location of the item, as specified by the seller. This gives a
-						general indication from where the item will be shipped (or delivered).
-					</xs:documentation>
+								Physical location of the item, as specified by the seller. This gives a
+								general indication from where the item will be shipped (or delivered).
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6603,10 +6720,10 @@
           <xs:element minOccurs="0" name="country" type="xs:token">
             <xs:annotation>
               <xs:documentation>
-						Two-letter ISO 3166 country code to indicate the country where the item
-						is located (for example, "US" for the United States or "GB" for the United
-						Kingdom).
-					</xs:documentation>
+								Two-letter ISO 3166 country code to indicate the country where the item
+								is located (e.g., "US" for the United States or "GB" for the United
+								Kingdom).
+							</xs:documentation>
               <xs:appinfo>
                 <ListBasedOn/>
                 <CallInfo>
@@ -6619,7 +6736,7 @@
                   <Details>outputSelector: none</Details>
                   <Returned>Conditionally</Returned>
                   <SeeLink>
-                    <URL>http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm</URL>
+                    <URL>https://www.iso.org/obp/ui/#search/code/</URL>
                     <Title>English country names and code elements</Title>
                     <For>country names and corresponding ISO 3166 codes</For>
                   </SeeLink>
@@ -6630,10 +6747,10 @@
           <xs:element minOccurs="0" name="storeInfo" type="tns:Storefront">
             <xs:annotation>
               <xs:documentation>
-						Information about the eBay store in which the item is listed. Only
-						returned if the item is listed in a store and StoreInfo is specified in
-						the outputSelector field in the request.
-					</xs:documentation>
+								Information about the eBay store in which the item is listed. Only
+								returned if the item is listed in a store and StoreInfo is specified in
+								the &lt;b&gt;outputSelector&lt;/b&gt; field in the request.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6651,9 +6768,9 @@
           <xs:element minOccurs="0" name="sellerInfo" type="tns:SellerInfo">
             <xs:annotation>
               <xs:documentation>
-						Information about the item's seller. Only returned if SellerInfo is
-						specified in the outputSelector field in the request.
-					</xs:documentation>
+								Information about the item's seller. Only returned if SellerInfo is
+								specified in the &lt;b&gt;outputSelector&lt;/b&gt; field in the request.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6671,8 +6788,8 @@
           <xs:element minOccurs="0" name="shippingInfo" type="tns:ShippingInfo">
             <xs:annotation>
               <xs:documentation>
-						Container for data about a listing's shipping details.
-					</xs:documentation>
+								Container for data about a listing's shipping details.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6690,9 +6807,9 @@
           <xs:element minOccurs="0" name="sellingStatus" type="tns:SellingStatus">
             <xs:annotation>
               <xs:documentation>
-						Specifies the item's selling status with regards to eBay's processing
-						workflow.
-					</xs:documentation>
+								Specifies the item's selling status with regards to eBay's processing
+								workflow.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6710,9 +6827,9 @@
           <xs:element minOccurs="0" name="listingInfo" type="tns:ListingInfo">
             <xs:annotation>
               <xs:documentation>
-						The format type of the listing, such as online auction, fixed price, or
-						advertisement.
-					</xs:documentation>
+								The format type of the listing, such as online auction, fixed price, or
+								advertisement.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6730,8 +6847,8 @@
           <xs:element minOccurs="0" name="returnsAccepted" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>
-					This is set to true if the seller accepts return of the item.
-					</xs:documentation>
+							This is set to true if the seller accepts return of the item.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findItemsAdvanced</CallName>
@@ -6748,13 +6865,13 @@
           <xs:element name="galleryPlusPictureURL" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						URL for the Gallery Plus image. The size of Gallery Plus images (up to
-						500 pixels on the longest side) is bigger than the size of standard
-						gallery images. In site search results, you can view the Gallery Plus
-						image by hovering over or clicking the Enlarge link or magnifying glass
-						icon. This field is only returned when the seller has opted for
-						the Gallery Plus option for the given item.
-					</xs:documentation>
+								URL for the Gallery Plus image. The size of Gallery Plus images (up to
+								500 pixels on the longest side) is bigger than the size of standard
+								gallery images. In site search results, you can view the Gallery Plus
+								image by hovering over or clicking the Enlarge link or magifying glass
+								icon. This field is only returned when the seller has opted for
+								the Gallery Plus option for the given item.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6772,27 +6889,27 @@
           <xs:element name="compatibility" type="xs:string" maxOccurs="1" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						This field returns terms from the keywords in the request that match
-						values in one of the item's compatible applications (vehicles). If the
-						keywords match more than one compatible application for an item, the
-						field returns "Two or more of your vehicles" to indicate multiple
-						matches.
-						&lt;br&gt;&lt;br&gt;
-						For example, keyword queries that contain vehicle details, such as make
-						and model (for example, Honda Accord), in addition to keywords for the part or
-						accessory, will search through structured parts compatibility information
-						for matching listings. If an item has a 2007 Honda Accord (any trim or
-						engine) specified as a compatible application, and the item matches the
-						part or accessory terms in the query, this field will return the matching
-						terms from the query (i.e., Honda Accord).
-						&lt;br&gt;&lt;br&gt;
-						Parts compatibility is an eBay feature that uses structured data to
-						associate compatible assemblies with parts and accessories listed on
-						eBay. For example, parts compatibility enables sellers to specify
-						accurately and comprehensively the vehicles on which a side mirror or a
-						rim fit. Parts compatibility improves search relevancy and frees up item
-						titles and descriptions for more useful descriptions of the part.
-					</xs:documentation>
+								This field returns terms from the keywords in the request that match
+								values in one of the item's compatible applications (vehicles). If the
+								keywords match more than one compatible application for an item, the
+								field returns "Two or more of your vehicles" to indicate multiple
+								matches.
+								&lt;br&gt;&lt;br&gt;
+								For example, keyword queries that contain vehicle details, such as make
+								and model (e.g., Honda Accord), in addition to keywords for the part or
+								accessory, will search through structured parts compatibility information
+								for matching listings. If an item has a 2017 Honda Accord (any trim or
+								engine) specified as a compatible application, and the item matches the
+								part or accessory terms in the query, this field will return the matching
+								terms from the query (i.e., Honda Accord).
+								&lt;br&gt;&lt;br&gt;
+								Parts compatibility is an eBay feature that uses structured data to
+								associate compatible assemblies with parts and accessories listed on
+								eBay. For example, parts compatibility enables sellers to specify
+								accurately and comprehensively the vehicles on which a side mirror or a
+								rim fit. Parts compatibility improves search relevancy and frees up item
+								titles and descriptions for more useful descriptions of the part.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findItemsAdvanced</CallName>
@@ -6803,7 +6920,7 @@
                 </CallInfo>
                 <SeeLink>
                   <Title>Listing Items with Parts Compatibility</Title>
-                  <URL>http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/CompatibleParts.html</URL>
+                  <URL>https://developer.ebay.com/DevZone/guides/ebayfeatures/Development/CompatibleParts.html</URL>
                 </SeeLink>
               </xs:appinfo>
             </xs:annotation>
@@ -6811,17 +6928,17 @@
           <xs:element minOccurs="0" name="distance" type="tns:Distance">
             <xs:annotation>
               <xs:documentation>
-						The distance that the item is from the buyer, calculated using
-						buyerPostalCode. The unit for distance varies by site, and is either
-						miles or kilometers. If the country whose site you are searching uses
-						kilometers to measure distance (for example, India/EBAY-IN), the unit is
-						kilometers. If the site is either the US or UK, the distance unit is
-						miles.
-						&lt;br&gt;&lt;br&gt;
-						This value is only returned for distance-based searches. You must specify
-						a buyerPostalCode and either sort by Distance, or use a combination of
-						the MaxDistance LocalSearch itemFilters.
-					</xs:documentation>
+								The distance that the item is from the buyer, calculated using
+								 &lt;b&gt;buyerPostalCode&lt;/b&gt;. The unit for distance varies by site, and is either
+								miles or kilometers. If the country whose site you are searching uses
+								kilometers to measure distance (for example, India/EBAY-IN), the unit is
+								kilometers. If the site is either the US or UK, the distance unit is
+								miles.
+								&lt;br&gt;&lt;br&gt;
+								This value is only returned for distance-based searches. You must specify
+								a &lt;b&gt;buyerPostalCode&lt;/b&gt; and either sort by Distance, or use a combination of
+								the MaxDistance LocalSearch &lt;b&gt;itemFilter&lt;/b&gt;s.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6839,26 +6956,26 @@
           <xs:element name="condition" type="tns:Condition" maxOccurs="1" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-						Contains information about the item's condition.
-						Only returned when the seller listed the item with an
-						item condition.&lt;br&gt;
-						&lt;br&gt;
-						Different categories can support different
-						condition choices. If a listing is in two categories,
-						the seller uses condition details that are supported in
-						the primary category. Thus, even if two nearly identical
-						items are found in the same category search, they could support
-						different condition details if they have different
-						primary categories.
-						For example, suppose Seller A lists a concert T-shirt
-						in clothing, and also in music accessories as the
-						secondary category. Seller B lists an identical shirt in
-						music accessories only.
-						If you search against the music accessories category,
-						you will find both items, but seller A's shirt may have
-						condition details that are slightly different from seller B's
-						shirt, because the listings have different primary categories.
-					</xs:documentation>
+								Contains information about the item's condition.
+								Only returned when the seller listed the item with an
+								item condition.&lt;br&gt;
+								&lt;br&gt;
+								Different categories can support different
+								condition choices. If a listing is in two categories,
+								the seller uses condition details that are supported in
+								the primary category. Thus, even if two nearly identical
+								items are found in the same category search, they could support
+								different condition details if they have different
+								primary categories.
+								For example, suppose Seller A lists a concert T-shirt
+								in clothing, and also in music accessories as the
+								secondary category. Seller B lists an identical shirt in
+								music accessories only.
+								If you search against the music accessories category,
+								you will find both items, but seller A's shirt may have
+								condition details that are slightly different from seller B's
+								shirt, because the listings have different primary categories.
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findCompletedItems</CallName>
@@ -6920,7 +7037,7 @@
             <xs:annotation>
               <xs:documentation>
 						URL to a picture of the item that is 800x800 pixels in size.
-					</xs:documentation>
+							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
                   <CallName>findItemsByCategory</CallName>
@@ -7047,13 +7164,32 @@
 								energy efficiency rating in the item specifics.
 								&lt;br&gt;&lt;br&gt;
 								Applicable to the eBay Germany site (EBAY-DE) only.
-						</xs:documentation>
+							</xs:documentation>
               <xs:appinfo>
                 <SeeLink>
                   <Title>eBay Germany Legal Portal</Title>
                   <URL>http://pages.ebay.de/eek</URL>
                   <For>more information about energy efficiency ratings and related EU regulations</For>
                 </SeeLink>
+                <CallInfo>
+                  <CallName>findItemsByCategory</CallName>
+                  <CallName>findItemsAdvanced</CallName>
+                  <CallName>findItemsByKeywords</CallName>
+                  <CallName>findItemsIneBayStores</CallName>
+                  <CallName>findItemsByProduct</CallName>
+                  <CallName>findCompletedItems</CallName>
+                  <Details>outputSelector: none</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="eBayPlusEnabled" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>
+								Indicates whether the item is an ebayPlus item. 
+								This field is returned for the following sites only: DE (EBAY-DE)								</xs:documentation>
+              <xs:appinfo>
                 <CallInfo>
                   <CallName>findItemsByCategory</CallName>
                   <CallName>findItemsAdvanced</CallName>
@@ -7254,7 +7390,10 @@
 								&lt;li&gt;Has earned a track record of excellent service&lt;/li&gt;
 								&lt;/ul&gt;
 								eBay regularly reviews the performance of these sellers to confirm
-								that they continue to meet the program's requirements.
+								they continue to meet the program's requirements.
+								&lt;br&gt;&lt;br&gt;
+								This field is returned for the following sites only: US (EBAY-US), Motors
+								(EBAY-MOTOR), DE (EBAY-DE), AT (EBAY-AT), and CH (EBAY-CH).
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7308,8 +7447,9 @@
 								bid price if the listing has no bids, or the current high bid if the
 								listing has bids. A Buy It Now price has no effect on currentPrice.
 								&lt;br&gt;&lt;br&gt;
-								For Basic Fixed-Price (FixedPrice), Ad Format (AdFormat), and Classified Ad (Classified)
-								listings, currentPrice is the current fixed price.
+								For Basic Fixed-Price (FixedPrice), Store Inventory (StoreInventory), Ad
+								Format (AdFormat), and Classified Ad (Classified) listings, currentPrice
+								is the current fixed price.
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7385,7 +7525,7 @@
 									&lt;dd&gt;
 										The listing is still live. It is also possible that the auction has
 										recently ended, but eBay has not completed the final processing
-										(for example, the high bidder is still being determined).
+										(e.g., the high bidder is still being determined).
 									&lt;/dd&gt;
 									&lt;dt&gt;
 										Canceled
@@ -7570,9 +7710,6 @@
 										The seller did not specify the shipping type.
 									&lt;/dd&gt;
 								&lt;/dl&gt;
-								&lt;span class="tablenote"&gt;
-								&lt;strong&gt;Note:&lt;/strong&gt; The international leg of the Global Shipping Program is always considered to be a calculated shipping type, and it is entirely the responsibility of the international shipping provider. If Global Shipping is available for an item, and the seller chooses to provide the Flat shipping type domestically for that item, this field will return a value of &lt;code&gt;FlatDomesticCalculatedInternational&lt;/code&gt; to account for both legs of the shipment. If the seller offers the item with Calculated domestic shipping, this field will return a value of &lt;code&gt;Calculated&lt;/code&gt;, which also accounts for both legs of the shipment. For a purely domestic shipment, you can ignore the information about the international leg.
-								&lt;/span&gt;
 							</xs:documentation>
               <xs:appinfo>
                 <ListBasedOn/>
@@ -7619,9 +7756,7 @@
           <xs:element minOccurs="0" name="expeditedShipping" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>
-                        This is returned set to true if expedited shipping is available for the item.
-								&lt;br/&gt;&lt;br/&gt;
-                        This field is returned only for items listed on the eBay US site.
+							This is returned set to true if expedited shipping is available for the item.
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7640,8 +7775,6 @@
             <xs:annotation>
               <xs:documentation>
 								This is returned set to true if one-day shipping is available for the item.
-								&lt;br/&gt;&lt;br/&gt;
-                        This field is returned only for items listed on the eBay US site.
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -7660,8 +7793,6 @@
             <xs:annotation>
               <xs:documentation>
 								The number of days it will take the seller to ship this item.
-								&lt;br/&gt;&lt;br/&gt;
-                        This field is returned only for items listed on the eBay US site.
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>

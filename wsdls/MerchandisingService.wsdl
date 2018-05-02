@@ -17,9 +17,9 @@
       <xs:complexType name="GetVersionRequest">
         <xs:annotation>
           <xs:documentation>
-						Returns the current version of the service. This simple call can be used to 
-						monitor the service for availability. This call has no input parameters and 
-						the response contains only the standard output fields. 
+						Returns the current version of the service. This simple call can be used to
+						monitor the service for availability. This call has no input parameters and
+						the response contains only the standard output fields.
 					</xs:documentation>
           <xs:appinfo>
             <Summary>
@@ -34,7 +34,7 @@
       <xs:complexType name="GetVersionResponse">
         <xs:annotation>
           <xs:documentation>
-						Response container for the getVersion call. 
+						Response container for the getVersion call.
 					</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -64,7 +64,7 @@
 										Specifies the maximum number of entries to return in a single call.
 										If the number of entries that can be returned is less than the value
 										you specify, the lower number is returned. Values less than 1 or
-										greater than 50 (or 20 in the case of 
+										greater than 50 (or 20 in the case of
 										&lt;b class="con"&gt;getTopSellingProduct&lt;/b&gt;s) will be
 										ignored.
 									</xs:documentation>
@@ -78,6 +78,7 @@
                       <CallName>getSimilarItems</CallName>
                       <RequiredInput>No</RequiredInput>
                     </CallInfo>
+                    <!-- PRIVATE -->
                     <CallInfo>
                       <Min>1</Min>
                       <Max>20</Max>
@@ -85,6 +86,7 @@
                       <CallName>getTopSellingProducts</CallName>
                       <RequiredInput>No</RequiredInput>
                     </CallInfo>
+                    <!-- PRIVATE -->
                   </xs:appinfo>
                 </xs:annotation>
               </xs:element>
@@ -96,7 +98,7 @@
 										response that includes your affiliate tracking information in the
 										correct format. When a user clicks through these URLs to eBay and
 										performs certain tasks, you may get an affiliate commission.
-										&lt;br&gt;&lt;br&gt; 
+										&lt;br&gt;&lt;br&gt;
 										See the &lt;a href="https://www.ebaypartnernetwork.com/"
 										target="_blank"&gt;eBay Partner Network&lt;/a&gt; for information
 										about commissions.
@@ -123,8 +125,8 @@
 						from the preceding day. Ranking of the most watched items is calculated with
 						the latest watch count information.
 						&lt;br&gt;&lt;br&gt;
-						Only active items are returned. Auction items are returned only when they 
-						have one or more bids. 
+						Only active items are returned. Auction items are returned only when they
+						have one or more bids.
 					</xs:documentation>
           <xs:appinfo>
             <Summary>
@@ -183,14 +185,29 @@
       <xs:complexType name="GetTopSellingProductsRequest">
         <xs:annotation>
           <xs:documentation>
-						Retrieves the 20 top selling products on eBay, unless &lt;b class="con"&gt;
+						&lt;br&gt;
+						&lt;table&gt;
+						&lt;style&gt;
+						td.importantbox {
+							color: #990000;
+							background-color: #FFFFCC;
+							padding: 4px;
+							border: thin solid #990000;
+						}
+						&lt;/style&gt;
+						&lt;tbody&gt;&lt;tr&gt;
+						&lt;td class="importantbox" bgcolor="#ffff00"&gt;
+
+						&lt;b&gt;Important:&lt;/b&gt; This API call is no longer actively managed and cannot be relied upon to retrieve current product data, and in some cases, will not retrieve any data. As an alternative to this call, we recommend using the &lt;a href="https://developer.ebay.com/api-docs/buy/marketing/resources/merchandised_product/methods/getMerchandisedProducts" target="_blank"&gt;getMerchandisedProducts&lt;/a&gt; call of the &lt;b&gt;Buy Marketing API&lt;/b&gt;.
+
+						&lt;/td&gt;
+						&lt;/tr&gt;
+						&lt;/tbody&gt;&lt;/table&gt;
+&lt;br&gt;
+						&lt;p&gt;Retrieves the 20 top selling products on eBay, unless &lt;b class="con"&gt;
 						maxResults&lt;/b&gt; is used to specify a smaller result set. Products in the
 						response are sorted in sales rank order, with the top selling products first.
-						There are no call-specific input parameters for this call.
-						&lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; 
-						The &lt;b class="con"&gt;getTopSellingProducts&lt;/b&gt; call does not work
-						for the following global IDs (eBay sites): EBAY-FRBE (eBay Belgium, French),
-						EBAY-NLBE (eBay Belgium, Dutch), or BAY-AU (eBay Australia). &lt;/p&gt;
+						There are no call-specific input parameters for this call.&lt;/p&gt;
 					</xs:documentation>
           <xs:appinfo>
             <Summary>
@@ -257,8 +274,8 @@
                   <xs:documentation>
 										Specifies the category used to determine related categories from
 										which to retrieve item listings. This field takes the same category
-										ID data as used with other eBay APIs. 
-										&lt;br&gt;&lt;br&gt; 
+										ID data as used with other eBay APIs.
+										&lt;br&gt;&lt;br&gt;
 										Category IDs are site-specific. If the specified category ID doesn't
 										match an existing category for the site, an invalid-category error
 										message is returned. To determine valid categories, you can use
@@ -297,7 +314,7 @@
               <xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
                 <xs:annotation>
                   <xs:documentation>
-										Filters items based on the allowed set of name value pairs. 
+										Filters items based on the allowed set of name value pairs.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>19</MaxLength>
@@ -322,9 +339,9 @@
 						specified in the required keywords field. Items in the results are sorted by
 						Best Match, which is based on community buying activity and other relevance-
 						based factors.
-						&lt;p class="tablenote"&gt;&lt;b&gt;Important:&lt;/b&gt; 
+						&lt;p class="tablenote"&gt;&lt;b&gt;Important:&lt;/b&gt;
 						The &lt;b class="con"&gt;getDeals&lt;/b&gt; call is not returning any item
-						recommendations. Refer to the 
+						recommendations. Refer to the
 						&lt;a href="http://dev-forums.ebay.com/thread.jspa?threadID=500006256"&gt;
 						getDeals call not returning results&lt;/a&gt; thread in the eBay Shopping and
 						Merchandising API Production System Announcements board for more information,
@@ -377,23 +394,23 @@
       <xs:complexType name="GetSimilarItemsRequest">
         <xs:annotation>
           <xs:documentation>
-						For a specified item, retrieves recommended similar items. 
-						Items are considered similar if they can serve as a replacement for the 
-						specified item. Similar items from a catalog are associated with the same 
-						product. For items not associated with a product, similarity with other 
-						items is determined from keywords in the title and attribute value matches. 
-						This call can be used to recommend items to buyers who have lost items they 
-						were bidding on, or to recommend items as alternatives for watched items that 
+						For a specified item, retrieves recommended similar items.
+						Items are considered similar if they can serve as a replacement for the
+						specified item. Similar items from a catalog are associated with the same
+						product. For items not associated with a product, similarity with other
+						items is determined from keywords in the title and attribute value matches.
+						This call can be used to recommend items to buyers who have lost items they
+						were bidding on, or to recommend items as alternatives for watched items that
 						have ended.
 						&lt;br&gt;&lt;br&gt;
-						The recommended similar items returned can be restricted by category, maximum 
-						price, or end time for the listing. 
+						The recommended similar items returned can be restricted by category, maximum
+						price, or end time for the listing.
 						&lt;br&gt;&lt;br&gt;
-						The request must contain itemId. 
+						The request must contain itemId.
 					</xs:documentation>
           <xs:appinfo>
             <Summary>
-							Retrieves items that are similar to the specified item. 
+							Retrieves items that are similar to the specified item.
 						</Summary>
           </xs:appinfo>
         </xs:annotation>
@@ -449,18 +466,18 @@
               <xs:element name="listingType" type="xs:token" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-										Filters items based on the format of the listing. 
-										If listingType is not specified, all listing types can be returned 
-										unless another relevant filter is specified. 
+										Filters items based on the format of the listing.
+										If listingType is not specified, all listing types can be returned
+										unless another relevant filter is specified.
 										&lt;br&gt;&lt;br&gt;
 										&lt;dl&gt;
 										&lt;lh&gt;Applicable values:&lt;br&gt;&lt;/lh&gt;
 										&lt;dt&gt;AdType&lt;/dt&gt;
-										&lt;dd&gt;Advertisement to solicit inquiries on listings such as real 
-										estate. Permits no bidding on that item, service, or property. To 
-										express interest, a buyer fills out a contact form that eBay forwards 
-										to the the seller as a lead. This format does not enable buyers and 
-										sellers to transact online through eBay, and eBay Feedback is not 
+										&lt;dd&gt;Advertisement to solicit inquiries on listings such as real
+										estate. Permits no bidding on that item, service, or property. To
+										express interest, a buyer fills out a contact form that eBay forwards
+										to the the seller as a lead. This format does not enable buyers and
+										sellers to transact online through eBay, and eBay Feedback is not
 										available for ad format listings.&lt;/dd&gt;
 										&lt;dt&gt;Chinese&lt;/dt&gt;
 										&lt;dd&gt;Single-quantity online auction format. A Chinese auction
@@ -509,9 +526,9 @@
               <xs:element name="endTimeTo" type="xs:dateTime" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-										Limits the results to items ending before the specified time. 
-										within a time range. If you are specifying a time range with 
-										EndTimeFrom, EndTimeFrom must be specified (with a value equal 
+										Limits the results to items ending before the specified time.
+										within a time range. If you are specifying a time range with
+										EndTimeFrom, EndTimeFrom must be specified (with a value equal
 										to or earlier than EndTimeTo). Specify the time in GMT.
 									</xs:documentation>
                   <xs:appinfo>
@@ -526,9 +543,9 @@
               <xs:element name="endTimeFrom" type="xs:dateTime" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-										Limits the results to items ending after the specified time. 
-										Specify a time in the future. If you specify a time in the past, 
-										the current time is used. Specify the time in GMT. 
+										Limits the results to items ending after the specified time.
+										Specify a time in the future. If you specify a time in the past,
+										the current time is used. Specify the time in GMT.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>19</MaxLength>
@@ -558,7 +575,7 @@
               <xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
                 <xs:annotation>
                   <xs:documentation>
-										Filters items based on the allowed set of name value pairs. 
+										Filters items based on the allowed set of name value pairs.
 									</xs:documentation>
                   <xs:appinfo>
                     <MaxLength>19</MaxLength>
@@ -599,10 +616,10 @@
             <xs:annotation>
               <xs:documentation>
 								Information for an error or warning that occurred when eBay processed the
-								request. Not returned when responseStatus is Success. See &lt;a 
-								href="http://developer.ebay.com/DevZone/merchandising/docs/CallRef/Errors/ErrorMessages.html" 
-								title="All error messages by code number"&gt;Errors by Number&lt;/a&gt; 
-								for a list of errors and warnings that can be returned by Merchandising 
+								request. Not returned when responseStatus is Success. See &lt;a
+								href="http://developer.ebay.com/DevZone/merchandising/docs/CallRef/Errors/ErrorMessages.html"
+								title="All error messages by code number"&gt;Errors by Number&lt;/a&gt;
+								for a list of errors and warnings that can be returned by Merchandising
 								API calls.
 							</xs:documentation>
               <xs:appinfo>
@@ -617,8 +634,8 @@
             <xs:annotation>
               <xs:documentation>
 							The version of the response payload schema. Indicates the version of the
-							schema that eBay used to process the request. Developer Technical Support 
-							may ask you for the version value when you work with them to troubleshoot 
+							schema that eBay used to process the request. Developer Technical Support
+							may ask you for the version value when you work with them to troubleshoot
 							issues.
 						</xs:documentation>
               <xs:appinfo>
@@ -633,9 +650,9 @@
             <xs:annotation>
               <xs:documentation>
 								This value represents the date and time when eBay processed the
-								request. The time zone of this value is &lt;a 
+								request. The time zone of this value is &lt;a
 								href="types/simpleTypes.html#dateTime"&gt;GMT&lt;/a&gt;
-								and the format is the ISO 8601 date and time format 
+								and the format is the ISO 8601 date and time format
 								(YYYY-MM-DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about
 								this time format and converting to and from the GMT time zone.
 							</xs:documentation>
@@ -735,7 +752,9 @@
       <xs:complexType name="MerchandisingServiceProductResponse">
         <xs:annotation>
           <xs:documentation>
-						This is a response for calls that return Product
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; This type and the &lt;b&gt;productRecommendations&lt;/b&gt; container are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+						&lt;/span&gt;
+						This complex type is used by the base response of the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call.
 					</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -744,8 +763,8 @@
               <xs:element name="productRecommendations" type="tns:ProductRecommendations" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-										Array of products. Recommendations. Returned when there are products
-										that match the search criteria.
+										&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; This container is no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional. &lt;/span&gt;
+										An array of top selling products. This container is returned when there are one or more products that match the search criteria.
 									</xs:documentation>
                   <xs:appinfo>
                     <CallInfo>
@@ -788,6 +807,8 @@
       <xs:complexType name="ProductRecommendations">
         <xs:annotation>
           <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; This type and the &lt;b&gt;product&lt;/b&gt; container are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+						&lt;/span&gt;
 						List of suggested products sorted by sales rank, with top selling products
 						listed first.
 					</xs:documentation>
@@ -796,6 +817,8 @@
           <xs:element name="product" nillable="true" type="tns:Product" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; This container is no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								An eBay catalog product. This contains stock information about a
 								particular DVD, camera, set of golf clubs, or other product. Returned
 								when there is at least one product that matches the search criteria.
@@ -957,7 +980,7 @@
 								Numeric ID of the first (or only) category in which the item is listed.
 								(Listings can appear in more than one category.)&lt;br&gt;
 								&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; Currently, the
-								Merchandising API calls do not return a listing's secondary category, if 
+								Merchandising API calls do not return a listing's secondary category, if
 								any.&lt;/span&gt;
 							</xs:documentation>
               <xs:appinfo>
@@ -1189,31 +1212,10 @@
           <xs:element name="discountPriceInfo" type="tns:DiscountPriceInfo" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-								This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price
-								(MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings and auction listings with the Buy
-								It Now opton. STP is available on the US, UK, and German (DE) sites, while MAP is available only on the US site.
-								&lt;br /&gt; &lt;br /&gt;
-								Discount pricing is available to qualified sellers (and their associated developers) who
-								participate in the Discount Pricing Program. Once qualified, sellers receive a
-								"special account flag" (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation
-								items. Sellers should contact their account manager or Customer Service to
-								see if they qualify for the Strikethrough Pricing program.
-								&lt;br&gt;&lt;br&gt;
-								As a seller listing Discount Price items, you are required to maintain records of your discount
-								pricing in the event you are called upon to substantiate your item pricing. The following
-								link details your legal obligations when you utilize Discount Pricing to sell items: &lt;a href=
-								"http://pages.ebay.com/help/sell/strike-through.html"&gt;Strikethrough Pricing Requirements
-								&lt;/a&gt;
-								&lt;br&gt;&lt;br&gt;
-								&lt;b&gt;For AddFixedPriceItem, RelistFixedPriceItem, ReviseFixedPriceItem, and
-								VerifyAddFixedPriceItem:&lt;/b&gt;
-								If you are listing variations (MSKU items), use Variation.DiscountPriceInfo for each variation.
+								The format type of the listing, such as online auction, fixed price, or
+								advertisement.
 							</xs:documentation>
               <xs:appinfo>
-                <SeeLink>
-                  <Title>Displaying Discount Pricing Information to Buyers</Title>
-                  <URL>http://developer.ebay.com/DevZone/XML/docs/WebHelp/index.htm?context=eBay_XML_API&amp;topic=DiscountPricing</URL>
-                </SeeLink>
                 <CallInfo>
                   <CallName>getMostWatchedItems</CallName>
                   <CallName>getSimilarItems</CallName>
@@ -1230,93 +1232,13 @@
       </xs:complexType>
       <xs:complexType name="DiscountPriceInfo">
         <xs:annotation>
-          <xs:documentation>
-						Using this container, a seller can supply original retail price and discount 
-						price for an item to clarify the discount treatment (also known as strike-through 
-						pricing). This only applies to fixed-price listings and auction listings with 
-						the Buy It Now option. This feature is available for large enterprise sellers 
-						via white list. A seller can provide discount treatment regardless of whether 
-						the listing includes a SKU. 
-					</xs:documentation>
+          <xs:documentation/>
         </xs:annotation>
         <xs:sequence>
-          <xs:element name="originalRetailPrice" type="tns:Amount">
-            <xs:annotation>
-              <xs:documentation>
-								The actual retail price set by the manufacturer (OEM). eBay does not maintain 
-								or validate the OriginalRetailPrice supplied by the seller. OriginalRetailPrice 
-								should always be more than StartPrice. Compare the StartPrice/BuyItNowPrice to 
-								OriginalRetailPrice to determine the amount of savings to the buyer. 
-							</xs:documentation>
-              <xs:appinfo>
-                <CallInfo>
-                  <CallName>getMostWatchedItems</CallName>
-                  <CallName>getSimilarItems</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="pricingTreatment" type="tns:PriceTreatmentEnum">
-            <xs:annotation>
-              <xs:documentation>
-								Based on OriginalRetailPrice, MinimumAdvertisedPrice, and StartPrice values, eBay 
-								identifies whether the listing falls under MAP or STP (aka OriginalRetailPrice). 
-								GetItem returns this for items listed with one of these discount pricing treatments. 
-								GetSellerList returns the DiscountPriceInfo container. This field is not applicable for 
-								Add/Revise/Relist calls. 
-							</xs:documentation>
-              <xs:appinfo>
-                <CallInfo>
-                  <CallName>getMostWatchedItems</CallName>
-                  <CallName>getSimilarItems</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="soldOnEbay" type="xs:boolean" default="false" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>
-								Used by the eBay UK and eBay Germany (DE) sites, this flag indicates that the discount price 
-								(specified as StartPrice) is the price for which the seller offered the same (or similar) item 
-								for sale on a Web site or offline store other than eBay in the previous 30 days. The discount 
-								price is always in reference to the seller's own price for the item. 
-								&lt;br/&gt;&lt;br/&gt;
-								If this field is set to 'true', eBay displays 'Was*' in the UK and 'Ursprunglich*' in 
-								Germany, next to the discounted price of the item. In the event both SoldOffeBay and 
-								SoldOneBay fields are set, SoldOneBay takes precedence. 
-							</xs:documentation>
-              <xs:appinfo>
-                <CallInfo>
-                  <CallName>getMostWatchedItems</CallName>
-                  <CallName>getSimilarItems</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="soldOffEbay" type="xs:boolean" default="false" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>
-								Used by the eBay UK and eBay Germany (DE) sites, this flag indicates that the discount price 
-								(specified as StartPrice) is the price for which the seller offered the same (or similar) 
-								item for sale on a Web site or offline store other than eBay in the previous 30 days. 
-								The discount price is always in reference to the seller's own price for the item. 
-								&lt;br/&gt;&lt;br/&gt;								
-								If this field is set to 'true', eBay displays 'Was*' in the UK and 'Ursprunglich*' 
-								in Germany, next to the discounted price of the item. In the event both SoldOffeBay and 
-								SoldOneBay fields are set, SoldOneBay takes precedence. 
-							</xs:documentation>
-              <xs:appinfo>
-                <CallInfo>
-                  <CallName>getMostWatchedItems</CallName>
-                  <CallName>getSimilarItems</CallName>
-                  <Returned>Conditionally</Returned>
-                </CallInfo>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
+          <xs:element name="originalRetailPrice" type="tns:Amount"/>
+          <xs:element name="pricingTreatment" type="tns:PriceTreatmentEnum"/>
+          <xs:element name="soldOnEbay" type="xs:boolean" default="false" minOccurs="0"/>
+          <xs:element name="soldOffEbay" type="xs:boolean" default="false" minOccurs="0"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="PriceTreatmentEnum">
@@ -1350,6 +1272,8 @@
       <xs:complexType name="Product">
         <xs:annotation>
           <xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; This type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+						&lt;/span&gt;
 						An eBay catalog product. This contains stock information about a particular
 						DVD, camera, set of golf clubs, or other product.
 					</xs:documentation>
@@ -1358,6 +1282,8 @@
           <xs:element name="productId" type="tns:ProductId">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								The eBay or external IDs associated with the product. Use the Reference
 								value as input to search for the same product in the future, or use the
 								ISBN, EAN, or UPC value (if returned). The productId values can be used
@@ -1382,16 +1308,16 @@
                   <RelatedCall>
                     <Name>FindProducts</Name>
                     <Summary>
-											When product ID is specified, retrieve product details for one 
-											specific product. Specify the ID as a string, and use the type 
+											When product ID is specified, retrieve product details for one
+											specific product. Specify the ID as a string, and use the type
 											attribute to indicate the nature of the ID you are specifying.
 										</Summary>
                   </RelatedCall>
                   <RelatedCall>
                     <Name>FindReviewsAndGuides</Name>
                     <Summary>
-											When product ID is specified, retrieves reviews (not guides) for 
-											one specific product. Specify the ID as a string, and use the type 
+											When product ID is specified, retrieves reviews (not guides) for
+											one specific product. Specify the ID as a string, and use the type
 											attribute to indicate the nature of the ID you are specifying.
 										</Summary>
                   </RelatedCall>
@@ -1407,6 +1333,8 @@
           <xs:element name="title" type="xs:string">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								The title of the product, as specified in the catalog. Always returned
 								when Product is returned.
 							</xs:documentation>
@@ -1421,6 +1349,8 @@
           <xs:element name="productURL" type="xs:anyURI">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								Fully qualified URL for optional information about the product, such as a
 								movie's description or film credits. This information is hosted through
 								the eBay Web site and it cannot be edited. Portions of the content are
@@ -1441,6 +1371,8 @@
           <xs:element name="catalogName" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								Name of the catalog the product is in. Only returned if product is in a
 								catalog.
 							</xs:documentation>
@@ -1455,6 +1387,8 @@
           <xs:element name="imageURL" type="xs:anyURI" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								Fully qualified URL for a stock image (if any) associated with the eBay
 								catalog product. The URL is for the image eBay usually displays in
 								product search results (usually 70px tall). It may be helpful to
@@ -1472,6 +1406,8 @@
           <xs:element name="reviewCount" type="xs:long" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								The total number of reviews available for this product on the eBay Web
 								site. Always returned when product is returned.
 							</xs:documentation>
@@ -1486,6 +1422,8 @@
           <xs:element name="priceRangeMin" type="tns:Amount" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								The lowest price for items listed as this product.
 							</xs:documentation>
               <xs:appinfo>
@@ -1499,6 +1437,8 @@
           <xs:element name="priceRangeMax" type="tns:Amount" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
+								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;Product&lt;/b&gt; type and all of its fields are no longer applicable, as the &lt;b&gt;getTopSellingProducts&lt;/b&gt; call is no longer functional.
+								&lt;/span&gt;
 								The highest price for items listed as this product.
 							</xs:documentation>
               <xs:appinfo>
@@ -1705,7 +1645,7 @@
         <xs:annotation>
           <xs:documentation>
 						Reduce the number of items returned by a request using itemFilters.
-						Use the itemFilter container to specify itemFilter Name/Value pairs. 
+						Use the itemFilter container to specify itemFilter Name/Value pairs.
 					</xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -1720,14 +1660,14 @@
 								that specifies the World of Good category. This restricts the item
 								recommendations to items available in the specified World of Good
 								category only.
-								&lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; 
+								&lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt;
 								To locate a specific World of Good category, go to the
 								worldofgood.ebay.com home page. Top-level categories are listed under
 								Shop by Category on the left-hand side of the page. Click the category
 								you want to use to restrict your search results. The resultant URL
 								contains the category ID as a numeric value, appearing before "/list" at
 								the end of the URL (e.g.,
-								http://worldofgood.ebay.com/Belts-Hats-Scarves-Shawls/&lt;b&gt;40&lt;/b&gt;/list). 
+								http://worldofgood.ebay.com/Belts-Hats-Scarves-Shawls/&lt;b&gt;40&lt;/b&gt;/list).
 								If a category has children categories, they will be displayed under the
 								Category on the left-hand side of the page. The numeric category ID can
 								be determined from the URL for child categories in the same fashion.
@@ -1746,7 +1686,7 @@
           <xs:element name="paramValue" type="xs:string" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
-								The value for the parameter name used in an item filter. 
+								The value for the parameter name used in an item filter.
 								&lt;br&gt;&lt;br&gt;
 								For example, if your item filter is WorldOfGoodOnly (true), you can
 								further restrict the item recommendations in the response to items
@@ -1781,7 +1721,7 @@
           <xs:element name="value" type="xs:string" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>
-								The value associated with the respective item filter name. 
+								The value associated with the respective item filter name.
 							</xs:documentation>
               <xs:appinfo>
                 <CallInfo>
@@ -1811,8 +1751,8 @@
 								If true, returns only items listed in the World of Good marketplace.
 								Defaults to false.
 								&lt;br&gt;&lt;br&gt;
-								&lt;b&gt;Allowed values (&lt;a 
-								class="defn_type" 
+								&lt;b&gt;Allowed values (&lt;a
+								class="defn_type"
 								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
@@ -1825,8 +1765,8 @@
       <xs:complexType name="ErrorMessage">
         <xs:annotation>
           <xs:documentation>
-						ErrorMessage to indicate any Error/Warning that occured as part of service 
-						call. Any run time error will not be reported here, but will be reported as 
+						ErrorMessage to indicate any Error/Warning that occured as part of service
+						call. Any run time error will not be reported here, but will be reported as
 						part of a SOAP fault.
 					</xs:documentation>
         </xs:annotation>
