@@ -108,9 +108,9 @@ const createWsdl = (serviceUrl, filename) => {
 
   const isEnumUrl = (url) => {
     return (
-        url.search(/Enum.html$/) !== -1
-        || url.search(/OrderFulfillmentStatus.html$/) !== -1
-        || url.search(/FulfillmentInstructionsType.html$/) !== -1
+        url.search(/Enum.html$/) !== -1 ||
+        url.search(/OrderFulfillmentStatus.html$/) !== -1 ||
+        url.search(/FulfillmentInstructionsType.html$/) !== -1
     );
   };
 
