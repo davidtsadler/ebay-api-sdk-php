@@ -20,7 +20,7 @@ const createWsdl = (serviceUrl, filename) => {
         }
     } while (trys < MAX_RETRIES);
 
-    console.log(`To many retries for ${url}`);
+    console.log(`Too many retries for ${url}`);
     return null;
   };
 
