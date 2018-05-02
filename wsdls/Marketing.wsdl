@@ -7,7 +7,7 @@
           <xs:element name="adId" type="xs:string"/>
           <xs:element name="bidPercentage" type="xs:string"/>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
-          <xs:element name="inventoryReferenceType" type="ns:InventoryReferenceTypeEnum"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
           <xs:element name="listingId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
@@ -41,7 +41,7 @@
       <xs:complexType name="AdResponse">
         <xs:sequence>
           <xs:element name="adId" type="xs:string"/>
-          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="ns:cs-:ErrorDetailV3" maxOccurs="unbounded"/>
           <xs:element name="href" type="xs:string"/>
           <xs:element name="listingId" type="xs:string"/>
           <xs:element name="statusCode" type="xs:integer"/>
@@ -52,7 +52,13 @@
           <xs:element name="ads" type="ns:Ad" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="Amount">
+      <xs:complexType name="pls:Amount">
+        <xs:sequence>
+          <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sme:Amount">
         <xs:sequence>
           <xs:element name="currency" type="ns:CurrencyCodeEnum"/>
           <xs:element name="value" type="xs:string"/>
@@ -60,7 +66,7 @@
       </xs:complexType>
       <xs:complexType name="BaseResponse">
         <xs:sequence>
-          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="warnings" type="ns:cs-r:ErrorDetailV3" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="BulkAdResponse">
@@ -284,7 +290,7 @@
           <xs:element name="campaignStatus" type="ns:CampaignStatusEnum"/>
           <xs:element name="endDate" type="xs:string"/>
           <xs:element name="fundingStrategy" type="ns:FundingStrategy"/>
-          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
           <xs:element name="startDate" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
@@ -292,7 +298,7 @@
         <xs:sequence>
           <xs:element name="autoSelectFutureInventory" type="xs:boolean"/>
           <xs:element name="criterionType" type="ns:CriterionTypeEnum"/>
-          <xs:element name="selectionRules" type="ns:SelectionRule" maxOccurs="unbounded"/>
+          <xs:element name="selectionRules" type="ns:pls:SelectionRule" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CampaignPagedCollection">
@@ -322,7 +328,7 @@
           <xs:element name="campaigns" type="ns:Campaign" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:simpleType name="CategoryScopeEnum">
+      <xs:simpleType name="pls:CategoryScopeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="MARKETPLACE"/>
           <xs:enumeration value="STORE"/>
@@ -346,15 +352,15 @@
         <xs:sequence>
           <xs:element name="bidPercentage" type="xs:string"/>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
-          <xs:element name="inventoryReferenceType" type="ns:InventoryReferenceTypeEnum"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CreateAdsByInventoryReferenceResponse">
         <xs:sequence>
           <xs:element name="ads" type="ns:AdReference" maxOccurs="unbounded"/>
-          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="ns:cs-:ErrorDetailV3" maxOccurs="unbounded"/>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
-          <xs:element name="inventoryReferenceType" type="ns:InventoryReferenceTypeEnum"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
           <xs:element name="statusCode" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
@@ -364,13 +370,19 @@
           <xs:element name="campaignName" type="xs:string"/>
           <xs:element name="endDate" type="xs:string"/>
           <xs:element name="fundingStrategy" type="ns:FundingStrategy"/>
-          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
           <xs:element name="startDate" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="CriterionTypeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="INVENTORY_PARTITION"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="sme:CategoryScopeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="MARKETPLACE"/>
+          <xs:enumeration value="STORE"/>
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="DataTypeEnum">
@@ -409,7 +421,7 @@
       <xs:complexType name="DeleteAdResponse">
         <xs:sequence>
           <xs:element name="adId" type="xs:string"/>
-          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="ns:cs-:ErrorDetailV3" maxOccurs="unbounded"/>
           <xs:element name="listingId" type="xs:string"/>
           <xs:element name="statusCode" type="xs:integer"/>
         </xs:sequence>
@@ -417,22 +429,22 @@
       <xs:complexType name="DeleteAdsByInventoryReferenceRequest">
         <xs:sequence>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
-          <xs:element name="inventoryReferenceType" type="ns:InventoryReferenceTypeEnum"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="DeleteAdsByInventoryReferenceResponse">
         <xs:sequence>
           <xs:element name="adIds" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="ns:cs-:ErrorDetailV3" maxOccurs="unbounded"/>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
-          <xs:element name="inventoryReferenceType" type="ns:InventoryReferenceTypeEnum"/>
+          <xs:element name="inventoryReferenceType" type="ns:pls:InventoryReferenceTypeEnum"/>
           <xs:element name="statusCode" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="DiscountBenefit">
         <xs:sequence>
-          <xs:element name="amountOffItem" type="ns:Amount"/>
-          <xs:element name="amountOffOrder" type="ns:Amount"/>
+          <xs:element name="amountOffItem" type="ns:sme:Amount"/>
+          <xs:element name="amountOffOrder" type="ns:sme:Amount"/>
           <xs:element name="percentageOffItem" type="xs:string"/>
           <xs:element name="percentageOffOrder" type="xs:string"/>
         </xs:sequence>
@@ -446,14 +458,14 @@
       </xs:complexType>
       <xs:complexType name="DiscountSpecification">
         <xs:sequence>
-          <xs:element name="forEachAmount" type="ns:Amount"/>
+          <xs:element name="forEachAmount" type="ns:sme:Amount"/>
           <xs:element name="forEachQuantity" type="xs:integer"/>
-          <xs:element name="minAmount" type="ns:Amount"/>
+          <xs:element name="minAmount" type="ns:sme:Amount"/>
           <xs:element name="minQuantity" type="xs:integer"/>
           <xs:element name="numberOfDiscountedItems" type="xs:integer"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="ErrorDetailV3">
+      <xs:complexType name="cs-:ErrorDetailV3">
         <xs:sequence>
           <xs:element name="category" type="xs:string"/>
           <xs:element name="domain" type="xs:string"/>
@@ -462,11 +474,30 @@
           <xs:element name="longMessage" type="xs:string"/>
           <xs:element name="message" type="xs:string"/>
           <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:cs-:ErrorParameterV3" maxOccurs="unbounded"/>
           <xs:element name="subdomain" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="ErrorParameterV3">
+      <xs:complexType name="cs-:ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cs-r:ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:cs-r:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cs-r:ErrorParameterV3">
         <xs:sequence>
           <xs:element name="name" type="xs:string"/>
           <xs:element name="value" type="xs:string"/>
@@ -489,7 +520,7 @@
           <xs:element name="discountRules" type="ns:DiscountRule" maxOccurs="unbounded"/>
           <xs:element name="endDate" type="xs:string"/>
           <xs:element name="inventoryCriterion" type="ns:InventoryCriterion"/>
-          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
           <xs:element name="name" type="xs:string"/>
           <xs:element name="priority" type="ns:PromotionPriorityEnum"/>
           <xs:element name="promotionId" type="xs:string"/>
@@ -512,10 +543,16 @@
       <xs:complexType name="InventoryReference">
         <xs:sequence>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
-          <xs:element name="inventoryReferenceType" type="ns:InventoryReferenceTypeEnum"/>
+          <xs:element name="inventoryReferenceType" type="ns:plse:InventoryReferenceTypeEnum"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:simpleType name="InventoryReferenceTypeEnum">
+      <xs:simpleType name="pls:InventoryReferenceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_ITEM"/>
+          <xs:enumeration value="INVENTORY_ITEM_GROUP"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="plse:InventoryReferenceTypeEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="INVENTORY_ITEM"/>
           <xs:enumeration value="INVENTORY_ITEM_GROUP"/>
@@ -541,13 +578,19 @@
           <xs:element name="inventoryReferenceId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:simpleType name="sme:InventoryReferenceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="INVENTORY_ITEM"/>
+          <xs:enumeration value="INVENTORY_ITEM_GROUP"/>
+        </xs:restriction>
+      </xs:simpleType>
       <xs:complexType name="ItemPromotion">
         <xs:sequence>
           <xs:element name="description" type="xs:string"/>
           <xs:element name="discountRules" type="ns:DiscountRule" maxOccurs="unbounded"/>
           <xs:element name="endDate" type="xs:string"/>
           <xs:element name="inventoryCriterion" type="ns:InventoryCriterion"/>
-          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
           <xs:element name="name" type="xs:string"/>
           <xs:element name="priority" type="ns:PromotionPriorityEnum"/>
           <xs:element name="promotionImageUrl" type="xs:string"/>
@@ -557,7 +600,7 @@
       </xs:complexType>
       <xs:complexType name="ListingDetail">
         <xs:sequence>
-          <xs:element name="currentPrice" type="ns:Amount"/>
+          <xs:element name="currentPrice" type="ns:sme:Amount"/>
           <xs:element name="freeShipping" type="xs:boolean"/>
           <xs:element name="inventoryReferenceId" type="xs:string"/>
           <xs:element name="inventoryReferenceType" type="xs:string"/>
@@ -570,7 +613,52 @@
           <xs:element name="title" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:simpleType name="MarketplaceIdEnum">
+      <xs:simpleType name="ba:MarketplaceIdEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_CN"/>
+          <xs:enumeration value="EBAY_CZ"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_DK"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FI"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_GR"/>
+          <xs:enumeration value="EBAY_HALF_US"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_HU"/>
+          <xs:enumeration value="EBAY_ID"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IL"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_JP"/>
+          <xs:enumeration value="EBAY_MOTORS_US"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_NO"/>
+          <xs:enumeration value="EBAY_NZ"/>
+          <xs:enumeration value="EBAY_PE"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_PR"/>
+          <xs:enumeration value="EBAY_PT"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SE"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_TH"/>
+          <xs:enumeration value="EBAY_TW"/>
+          <xs:enumeration value="EBAY_US"/>
+          <xs:enumeration value="EBAY_VN"/>
+          <xs:enumeration value="EBAY_ZA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="bas:MarketplaceIdEnum">
         <xs:restriction base="xs:token">
           <xs:enumeration value="EBAY_AT"/>
           <xs:enumeration value="EBAY_AU"/>
@@ -625,7 +713,7 @@
         <xs:sequence>
           <xs:element name="description" type="xs:string"/>
           <xs:element name="endDate" type="xs:string"/>
-          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="marketplaceId" type="ns:ba:MarketplaceIdEnum"/>
           <xs:element name="name" type="xs:string"/>
           <xs:element name="priority" type="ns:PromotionPriorityEnum"/>
           <xs:element name="promotionHref" type="xs:string"/>
@@ -637,21 +725,21 @@
       </xs:complexType>
       <xs:complexType name="PromotionReportDetail">
         <xs:sequence>
-          <xs:element name="averageItemDiscount" type="ns:Amount"/>
-          <xs:element name="averageItemRevenue" type="ns:Amount"/>
-          <xs:element name="averageOrderDiscount" type="ns:Amount"/>
-          <xs:element name="averageOrderRevenue" type="ns:Amount"/>
+          <xs:element name="averageItemDiscount" type="ns:sme:Amount"/>
+          <xs:element name="averageItemRevenue" type="ns:sme:Amount"/>
+          <xs:element name="averageOrderDiscount" type="ns:sme:Amount"/>
+          <xs:element name="averageOrderRevenue" type="ns:sme:Amount"/>
           <xs:element name="averageOrderSize" type="xs:string"/>
-          <xs:element name="baseSale" type="ns:Amount"/>
+          <xs:element name="baseSale" type="ns:sme:Amount"/>
           <xs:element name="itemsSoldQuantity" type="xs:integer"/>
           <xs:element name="numberOfOrdersSold" type="xs:integer"/>
           <xs:element name="percentageSalesLift" type="xs:string"/>
           <xs:element name="promotionHref" type="xs:string"/>
           <xs:element name="promotionId" type="xs:string"/>
           <xs:element name="promotionReportId" type="xs:string"/>
-          <xs:element name="promotionSale" type="ns:Amount"/>
-          <xs:element name="totalDiscount" type="ns:Amount"/>
-          <xs:element name="totalSale" type="ns:Amount"/>
+          <xs:element name="promotionSale" type="ns:sme:Amount"/>
+          <xs:element name="totalDiscount" type="ns:sme:Amount"/>
+          <xs:element name="totalSale" type="ns:sme:Amount"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="PromotionsPagedCollection">
@@ -762,16 +850,16 @@
         <xs:sequence>
           <xs:element name="excludeInventoryItems" type="ns:InventoryItem" maxOccurs="unbounded"/>
           <xs:element name="excludeListingIds" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="selectionRules" type="ns:SelectionRule" maxOccurs="unbounded"/>
+          <xs:element name="selectionRules" type="ns:sme:SelectionRule" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="SummaryReportResponse">
         <xs:sequence>
-          <xs:element name="baseSale" type="ns:Amount"/>
+          <xs:element name="baseSale" type="ns:sme:Amount"/>
           <xs:element name="lastUpdated" type="xs:string"/>
           <xs:element name="percentageSalesLift" type="xs:string"/>
-          <xs:element name="promotionSale" type="ns:Amount"/>
-          <xs:element name="totalSale" type="ns:Amount"/>
+          <xs:element name="promotionSale" type="ns:sme:Amount"/>
+          <xs:element name="totalSale" type="ns:sme:Amount"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="SortField">
@@ -780,14 +868,24 @@
           <xs:element name="field" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
-      <xs:complexType name="SelectionRule">
+      <xs:complexType name="pls:SelectionRule">
         <xs:sequence>
           <xs:element name="brands" type="xs:string" maxOccurs="unbounded"/>
           <xs:element name="categoryIds" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="categoryScope" type="ns:CategoryScopeEnum"/>
+          <xs:element name="categoryScope" type="ns:pls:CategoryScopeEnum"/>
           <xs:element name="listingConditionIds" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="maxPrice" type="ns:Amount"/>
-          <xs:element name="minPrice" type="ns:Amount"/>
+          <xs:element name="maxPrice" type="ns:pls:Amount"/>
+          <xs:element name="minPrice" type="ns:pls:Amount"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sme:SelectionRule">
+        <xs:sequence>
+          <xs:element name="brands" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="categoryIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="categoryScope" type="ns:sme:CategoryScopeEnum"/>
+          <xs:element name="listingConditionIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="maxPrice" type="ns:sme:Amount"/>
+          <xs:element name="minPrice" type="ns:sme:Amount"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="TaskStatusEnum">

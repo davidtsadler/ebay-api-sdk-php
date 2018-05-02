@@ -502,7 +502,6 @@
           <xs:element name="packageWeightAndSize" type="ns:PackageWeightAndSize"/>
           <xs:element name="product" type="ns:Product"/>
           <xs:element name="sku" type="xs:string"/>
-          <xs:element name="groupIds" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="InventoryItemGroup">
@@ -791,7 +790,6 @@
           <xs:element name="subtitle" type="xs:string"/>
           <xs:element name="title" type="xs:string"/>
           <xs:element name="upc" type="xs:string" maxOccurs="unbounded"/>
-          <xs:element name="epid" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ProductFamilyProperties">
@@ -808,12 +806,6 @@
           <xs:element name="epid" type="xs:string"/>
           <xs:element name="gtin" type="xs:string"/>
           <xs:element name="ktype" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="PublishByInventoryItemGroupRequest">
-        <xs:sequence>
-          <xs:element name="inventoryItemGroupKey" type="xs:string"/>
-          <xs:element name="marketplaceId" type="ns:MarketplaceEnum"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="PublishResponse">
@@ -919,12 +911,6 @@
           <xs:enumeration value="POUND"/>
         </xs:restriction>
       </xs:simpleType>
-      <xs:complexType name="WithdrawResponse">
-        <xs:sequence>
-          <xs:element name="listingId" type="xs:string"/>
-          <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:complexType>
       <xs:complexType name="ErrorParameterV3">
         <xs:sequence>
           <xs:element name="name" type="xs:string"/>

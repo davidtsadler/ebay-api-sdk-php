@@ -664,7 +664,7 @@
           <xs:element name="marketingPrice" type="ns:MarketingPrice"/>
           <xs:element name="pickupOptions" type="ns:PickupOptionSummary" maxOccurs="unbounded"/>
           <xs:element name="price" type="ns:ConvertedAmount"/>
-          <xs:element name="seller" type="ns:Seller"/>
+          <xs:element name="seller" type="ns:Seller_0"/>
           <xs:element name="shippingOptions" type="ns:ShippingOptionSummary" maxOccurs="unbounded"/>
           <xs:element name="thumbnailImages" type="ns:Image" maxOccurs="unbounded"/>
           <xs:element name="title" type="xs:string"/>
@@ -811,6 +811,14 @@
           <xs:element name="sellerProvidedLegalAddress" type="ns:LegalAddress"/>
           <xs:element name="termsOfService" type="xs:string"/>
           <xs:element name="vatDetails" type="ns:VatDetail" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Seller_0">
+        <xs:sequence>
+          <xs:element name="feedbackPercentage" type="xs:string"/>
+          <xs:element name="feedbackScore" type="xs:integer"/>
+          <xs:element name="sellerAccountType" type="xs:string"/>
+          <xs:element name="username" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ShipToLocation">

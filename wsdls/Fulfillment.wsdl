@@ -501,7 +501,6 @@
           <xs:element name="importCharges" type="ns:Amount"/>
           <xs:element name="shippingCost" type="ns:Amount"/>
           <xs:element name="shippingIntermediationFee" type="ns:Amount"/>
-          <xs:element name="discountAmount" type="ns:Amount"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ErrorDetailV3">
@@ -584,7 +583,7 @@
           <xs:element name="properties" type="ns:LineItemProperties"/>
           <xs:element name="purchaseMarketplaceId" type="ns:MarketplaceIdEnum"/>
           <xs:element name="quantity" type="xs:integer"/>
-          <xs:element name="refunds" type="ns:LineItemRefund" maxOccurs="unbounded"/>
+          <xs:element name="refunds" type="ns:LineItemRefund"/>
           <xs:element name="sku" type="xs:string"/>
           <xs:element name="soldFormat" type="ns:SoldFormatEnum"/>
           <xs:element name="taxes" type="ns:Tax" maxOccurs="unbounded"/>
@@ -790,7 +789,7 @@
           <xs:element name="deliveryCost" type="ns:Amount"/>
           <xs:element name="deliveryDiscount" type="ns:Amount"/>
           <xs:element name="fee" type="ns:Amount"/>
-          <xs:element name="priceDiscount" type="ns:Amount"/>
+          <xs:element name="priceDiscountSubtotal" type="ns:Amount"/>
           <xs:element name="priceSubtotal" type="ns:Amount"/>
           <xs:element name="tax" type="ns:Amount"/>
           <xs:element name="total" type="ns:Amount"/>
@@ -830,7 +829,6 @@
           <xs:element name="shipmentTrackingNumber" type="xs:string"/>
           <xs:element name="shippedDate" type="xs:string"/>
           <xs:element name="shippingCarrierCode" type="xs:string"/>
-          <xs:element name="shippingServiceCode" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ShippingFulfillmentDetails">
@@ -853,7 +851,6 @@
           <xs:element name="shippingCarrierCode" type="xs:string"/>
           <xs:element name="shippingServiceCode" type="xs:string"/>
           <xs:element name="shipTo" type="ns:Contact"/>
-          <xs:element name="shipToReferenceId" type="xs:string"/>
         </xs:sequence>
       </xs:complexType>
       <xs:simpleType name="SoldFormatEnum">
