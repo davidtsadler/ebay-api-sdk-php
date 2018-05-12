@@ -20,7 +20,7 @@ const createWsdl = (serviceUrl, filename) => {
         }
     } while (trys < MAX_RETRIES);
 
-    console.log(`To many retries for ${url}`);
+    console.log(`Too many retries for ${url}`);
     return null;
   };
 
@@ -108,9 +108,9 @@ const createWsdl = (serviceUrl, filename) => {
 
   const isEnumUrl = (url) => {
     return (
-        url.search(/Enum.html$/) !== -1
-        || url.search(/OrderFulfillmentStatus.html$/) !== -1
-        || url.search(/FulfillmentInstructionsType.html$/) !== -1
+        url.search(/Enum.html$/) !== -1 ||
+        url.search(/OrderFulfillmentStatus.html$/) !== -1 ||
+        url.search(/FulfillmentInstructionsType.html$/) !== -1
     );
   };
 
