@@ -1,0 +1,53 @@
+<wsdl:documentation>
+  <Version>v1_beta</Version>
+</wsdl:documentation>
+<wsdl:portType>
+  <wsdl:operation name="GetProduct" method="GET" resource="product/{epid}">
+    <wsdl:input message="ns:GetProductRestRequest"/>
+    <wsdl:output message="ns:GetProductRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:portType>
+  <wsdl:operation name="Search" method="GET" resource="product_summary/search">
+    <wsdl:input message="ns:SearchRestRequest"/>
+    <wsdl:output message="ns:SearchRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:portType>
+  <wsdl:operation name="GetProductMetadata" method="GET" resource="get_product_metadata">
+    <wsdl:input message="ns:GetProductMetadataRestRequest"/>
+    <wsdl:output message="ns:GetProductMetadataRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:portType>
+  <wsdl:operation name="GetProductMetadataForCategories" method="GET" resource="get_product_metadata_for_categories">
+    <wsdl:input message="ns:GetProductMetadataForCategoriesRestRequest"/>
+    <wsdl:output message="ns:GetProductMetadataForCategoriesRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:portType>
+  <wsdl:operation name="GetChangeRequest" method="GET" resource="change_request/{change_request_id}">
+    <wsdl:input message="ns:GetChangeRequestRestRequest"/>
+    <wsdl:output message="ns:GetChangeRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:portType>
+  <wsdl:operation name="GetChangeRequests" method="GET" resource="change_request">
+    <wsdl:input message="ns:GetChangeRequestsRestRequest"/>
+    <wsdl:output message="ns:GetChangeRequestsRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:portType>
+  <wsdl:operation name="CreateChangeRequest" method="PUT" resource="change_request">
+    <wsdl:input message="ns:CreateChangeRequestRestRequest"/>
+    <wsdl:output message="ns:CreateChangeRequestRestResponse"/>
+  </wsdl:operation>
+</wsdl:portType>
+
+

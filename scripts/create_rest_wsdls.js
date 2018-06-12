@@ -3,6 +3,27 @@ const fs = require('fs');
 const request = require('sync-request');
 const cheerio = require('cheerio');
 
+const writeWsdl = (types, filename) => {
+  const extraTypes = fs.readFileSync(`wsdls_meta/${filename}Types`, 'utf8');
+  const operations = fs.readFileSync(`wsdls_meta/${filename}Operations`, 'utf8');
+
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<wsdl:definitions',
+    ' xmlns:xs="http://www.w3.org/2001/XMLSchema"',
+    ' xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"',
+    '>',
+    '<wsdl:types><xs:schema>',
+    types.join(''),
+    extraTypes,
+    '</xs:schema></wsdl:types>',
+    operations,
+    '</wsdl:definitions>'
+  ].join('');
+
+  fs.writeFile(`wsdls/${filename}.wsdl`, xml);
+};
+
 const createWsdl = (serviceUrl, filename) => {
   console.log(serviceUrl);
 
@@ -123,24 +144,8 @@ const createWsdl = (serviceUrl, filename) => {
   };
 
   const types = getTypeEnumLinks().map(processTypeEnum);
-  const extraTypes = fs.readFileSync(`wsdls_meta/${filename}Types`, 'utf8');
-  const operations = fs.readFileSync(`wsdls_meta/${filename}Operations`, 'utf8');
 
-  const xml = [
-    '<?xml version="1.0" encoding="UTF-8"?>',
-    '<wsdl:definitions',
-    ' xmlns:xs="http://www.w3.org/2001/XMLSchema"',
-    ' xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"',
-    '>',
-    '<wsdl:types><xs:schema>',
-    types.join(''),
-    extraTypes,
-    '</xs:schema></wsdl:types>',
-    operations,
-    '</wsdl:definitions>'
-  ].join('');
-
-  fs.writeFile(`wsdls/${filename}.wsdl`, xml);
+  writeWsdl(types, filename);
 };
 
 createWsdl(
@@ -197,3 +202,6 @@ createWsdl(
   'https://developer.ebay.com/Devzone/post-order',
   'PostOrder'
 );
+
+writeWsdl([], 'Catalog');
+

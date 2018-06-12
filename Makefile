@@ -99,6 +99,12 @@ transform:
 		destDirectory=$(TRANSFORMED)/Browse/
 	@saxonb-xslt								\
 		-ext:on								\
+		-s:$(WSDLS)/Catalog.wsdl					\
+		-xsl:$(XSL)/restSdk.xsl						\
+		service=Catalog							\
+		destDirectory=$(TRANSFORMED)/Catalog/
+	@saxonb-xslt								\
+		-ext:on								\
 		-s:$(WSDLS)/SellerProfilesManagementService.wsdl		\
 		-xsl:$(XSL)/sdk.xsl						\
 		service=BusinessPoliciesManagement				\

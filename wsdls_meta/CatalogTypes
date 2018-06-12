@@ -1,0 +1,563 @@
+<xs:element name="GetProductRestRequest" type="ns:GetProductRestRequest"/>
+<xs:element name="GetProductRestResponse" type="ns:GetProductRestResponse"/>
+<xs:complexType name="GetProductRestRequest">
+  <xs:sequence>
+    <xs:element name="epid" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetProductRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:Product">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="SearchRestRequest" type="ns:SearchRestRequest"/>
+<xs:element name="SearchRestResponse" type="ns:SearchRestResponse"/>
+<xs:complexType name="SearchRestRequest">
+  <xs:sequence>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="fieldgroups" type="xs:string" valid="string"/>
+    <xs:element name="aspect_filter" type="xs:string" valid="string"/>
+    <xs:element name="category_ids" type="xs:string" valid="string"/>
+    <xs:element name="mpn" type="xs:string" valid="string"/>
+    <xs:element name="gtin" type="xs:string" valid="string"/>
+    <xs:element name="q" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="SearchRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ProductSearchResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetProductMetadataRestRequest" type="ns:GetProductMetadataRestRequest"/>
+<xs:element name="GetProductMetadataRestResponse" type="ns:GetProductMetadataRestResponse"/>
+<xs:complexType name="GetProductMetadataRestRequest">
+  <xs:sequence>
+    <xs:element name="other_applicable_category_ids" type="xs:string" valid="string"/>
+    <xs:element name="primary_category_id" type="xs:string" valid="string" />
+    <xs:element name="epid" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetProductMetadataRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ProductMetadata">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetProductMetadataForCategoriesRestRequest" type="ns:GetProductMetadataForCategoriesRestRequest"/>
+<xs:element name="GetProductMetadataForCategoriesRestResponse" type="ns:GetProductMetadataForCategoriesRestResponse"/>
+<xs:complexType name="GetProductMetadataForCategoriesRestRequest">
+  <xs:sequence>
+    <xs:element name="other_applicable_category_ids" type="xs:string" valid="string"/>
+    <xs:element name="primary_category_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetProductMetadataForCategoriesRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ProductMetadataForCategories">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetChangeRequestRestRequest" type="ns:GetChangeRequestRestRequest"/>
+<xs:element name="GetChangeRequestRestResponse" type="ns:GetChangeRequestRestResponse"/>
+<xs:complexType name="GetChangeRequestRestRequest">
+  <xs:sequence>
+    <xs:element name="change_request_id" type="xs:string" valid="string" required="true"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetChangeRequestRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:ChangeRequest">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="GetChangeRequestsRestRequest" type="ns:GetChangeRequestsRestRequest"/>
+<xs:element name="GetChangeRequestsRestResponse" type="ns:GetChangeRequestsRestResponse"/>
+<xs:complexType name="GetChangeRequestsRestRequest">
+  <xs:sequence>
+    <xs:element name="offset" type="xs:string" valid="string"/>
+    <xs:element name="limit" type="xs:string" valid="string"/>
+    <xs:element name="filter" type="xs:string" valid="string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="GetChangeRequestsRestResponse" restResponse="true">
+  <xs:complexContent>
+    <xs:extension base="ns:GetChangeRequestsResponse">
+      <xs:sequence>
+        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="CreateChangeRequestRestRequest" type="ns:CreateChangeRequestRestRequest"/>
+<xs:element name="CreateChangeRequestRestResponse" type="ns:CreateChangeRequestRestResponse"/>
+<xs:complexType name="CreateChangeRequestRestRequest">
+  <xs:complexContent>
+    <xs:extension base="ns:CreateChangeRequestPayload">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CreateChangeRequestRestResponse" restResponse="true">
+  <xs:sequence>
+    <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+    <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ErrorDetailV3">
+  <xs:sequence>
+    <xs:element name="category" type="xs:string"/>
+    <xs:element name="domain" type="xs:string"/>
+    <xs:element name="errorId" type="xs:integer"/>
+    <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="longMessage" type="xs:string"/>
+    <xs:element name="message" type="xs:string"/>
+    <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+    <xs:element name="subdomain" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="ErrorParameterV3">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Aspect">
+  <xs:sequence>
+    <xs:element name="localizedName" type="xs:string"/>
+    <xs:element name="localizedValues" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="AspectDataTypeEnum">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="DATE"/>
+    <xs:enumeration value="NUMBER"/>
+    <xs:enumeration value="STRING"/>
+    <xs:enumeration value="STRING_ARRAY"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="AspectDistribution">
+  <xs:sequence>
+    <xs:element name="aspectValueDistributions" type="ns:AspectValueDistribution" maxOccurs="unbounded"/>
+    <xs:element name="localizedAspectName" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AspectFilter">
+  <xs:sequence>
+    <xs:element name="categoryId" type="xs:string"/>
+    <xs:element name="filters" type="ns:FilterField" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="AspectModeEnum">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="FREE_TEXT"/>
+    <xs:enumeration value="SELECTION_ONLY"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="AspectValueDistribution">
+  <xs:sequence>
+    <xs:element name="localizedAspectValue" type="xs:string"/>
+    <xs:element name="matchCount" type="xs:integer"/>
+    <xs:element name="refinementHref" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CategoryAspect">
+  <xs:sequence>
+    <xs:element name="aspectHelpText" type="xs:string"/>
+    <xs:element name="constraint" type="ns:ProductAspectConstraint" maxOccurs="unbounded"/>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="values" type="ns:CategoryAspectValue" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CategoryAspectValue">
+  <xs:sequence>
+    <xs:element name="value" type="xs:string"/>
+    <xs:element name="valueConstraints" type="ns:ValueConstraint" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ChangeRequest">
+  <xs:sequence>
+    <xs:element name="changeRequestId" type="xs:string"/>
+    <xs:element name="changeRequestStatus" type="ns:ChangeRequestStatus"/>
+    <xs:element name="changeRequestType" type="ns:ChangeRequestType"/>
+    <xs:element name="creationDate" type="xs:string"/>
+    <xs:element name="expectedCompletionDate" type="xs:string"/>
+    <xs:element name="processResolution" type="ns:ProcessResolution"/>
+    <xs:element name="processStatusMessage" type="xs:string"/>
+    <xs:element name="reasonForChangeRequest" type="xs:string"/>
+    <xs:element name="referenceId" type="xs:string"/>
+    <xs:element name="referenceType" type="ns:ReferenceType"/>
+    <xs:element name="resolutionDate" type="xs:string"/>
+    <xs:element name="suggestedProduct" type="ns:SuggestedProduct"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="ChangeRequestStatus">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="APPROVED"/>
+    <xs:enumeration value="APPROVED_WITH_MODIFICATIONS"/>
+    <xs:enumeration value="REJECTED"/>
+    <xs:enumeration value="SUBMITTED"/>
+    <xs:enumeration value="UNDER_EXTENDED_REVIEW"/>
+    <xs:enumeration value="UNDER_REVIEW"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="ChangeRequestType">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="PRODUCT_CREATION"/>
+    <xs:enumeration value="PRODUCT_UPDATE"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="ConflictingProduct">
+  <xs:sequence>
+    <xs:element name="conflictCode" type="xs:string"/>
+    <xs:element name="differentiatingAspects" type="ns:ProductAspect" maxOccurs="unbounded"/>
+    <xs:element name="epid" type="xs:string"/>
+    <xs:element name="reason" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Correction">
+  <xs:sequence>
+    <xs:element name="aspectValues" type="ns:CorrectionAspectValues"/>
+    <xs:element name="correctionCode" type="xs:string"/>
+    <xs:element name="productAttribute" type="ns:CorrectionProductAttribute"/>
+    <xs:element name="reason" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CorrectionAspectValue">
+  <xs:sequence>
+    <xs:element name="newValue" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CorrectionAspectValues">
+  <xs:sequence>
+    <xs:element name="aspectName" type="xs:string"/>
+    <xs:element name="values" type="ns:CorrectionAspectValue" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CorrectionProductAttribute">
+  <xs:sequence>
+    <xs:element name="attributeName" type="ns:ProductAttributeName"/>
+    <xs:element name="newValue" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CreateChangeRequestPayload">
+  <xs:sequence>
+    <xs:element name="changeRequestType" type="ns:ChangeRequestType"/>
+    <xs:element name="reasonForChangeRequest" type="xs:string"/>
+    <xs:element name="referenceId" type="xs:string"/>
+    <xs:element name="referenceType" type="ns:ReferenceType"/>
+    <xs:element name="suggestedProduct" type="ns:SuggestedProduct"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="FilterField">
+  <xs:sequence>
+    <xs:element name="field" type="xs:string"/>
+    <xs:element name="negated" type="xs:boolean"/>
+    <xs:element name="range" type="ns:RangeValue"/>
+    <xs:element name="set" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="value" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetChangeRequestsResponse">
+  <xs:sequence>
+    <xs:element name="changeRequests" type="ns:ChangeRequest" maxOccurs="unbounded"/>
+    <xs:element name="href" type="xs:string"/>
+    <xs:element name="limit" type="xs:integer"/>
+    <xs:element name="next" type="xs:string"/>
+    <xs:element name="offset" type="xs:integer"/>
+    <xs:element name="prev" type="xs:string"/>
+    <xs:element name="total" type="xs:integer"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Image">
+  <xs:sequence>
+    <xs:element name="height" type="xs:integer"/>
+    <xs:element name="imageUrl" type="xs:string"/>
+    <xs:element name="width" type="xs:integer"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="ItemToAspectCardinalityEnum">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="MULTI"/>
+    <xs:enumeration value="SINGLE"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="ProcessResolution">
+  <xs:sequence>
+    <xs:element name="conflictingProducts" type="ns:ConflictingProduct" maxOccurs="unbounded"/>
+    <xs:element name="corrections" type="ns:Correction" maxOccurs="unbounded"/>
+    <xs:element name="epid" type="xs:string"/>
+    <xs:element name="productHref" type="xs:string"/>
+    <xs:element name="violations" type="ns:Violation" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Product">
+  <xs:sequence>
+    <xs:element name="additionalImages" type="ns:Image" maxOccurs="unbounded"/>
+    <xs:element name="aspects" type="ns:Aspect" maxOccurs="unbounded"/>
+    <xs:element name="brand" type="xs:string"/>
+    <xs:element name="description" type="xs:string"/>
+    <xs:element name="ean" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="epid" type="xs:string"/>
+    <xs:element name="gtin" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="image" type="ns:Image"/>
+    <xs:element name="isbn" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="mpn" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="otherApplicableCategoryIds" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="primaryCategoryId" type="xs:string"/>
+    <xs:element name="productWebUrl" type="xs:string"/>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="upc" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="version" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductAspect">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductAspectConstraint">
+  <xs:sequence>
+    <xs:element name="aspectDataType" type="ns:AspectDataTypeEnum"/>
+    <xs:element name="aspectFormat" type="xs:string"/>
+    <xs:element name="aspectMode" type="ns:AspectModeEnum"/>
+    <xs:element name="aspectRequired" type="xs:boolean"/>
+    <xs:element name="productToAspectCardinality" type="ns:ItemToAspectCardinalityEnum"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductAspectValue">
+  <xs:sequence>
+    <xs:element name="value" type="xs:string"/>
+    <xs:element name="valueConstraints" type="ns:ValueConstraint" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="ProductAttributeName">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="ASPECT_NAME"/>
+    <xs:enumeration value="BRAND"/>
+    <xs:enumeration value="CATEGORY"/>
+    <xs:enumeration value="DESCRIPTION"/>
+    <xs:enumeration value="EAN"/>
+    <xs:enumeration value="GENERAL"/>
+    <xs:enumeration value="IMAGE"/>
+    <xs:enumeration value="ISBN"/>
+    <xs:enumeration value="MPN"/>
+    <xs:enumeration value="TITLE"/>
+    <xs:enumeration value="UPC"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="ProductIdentifier">
+  <xs:sequence>
+    <xs:element name="constraint" type="ns:ProductIdentifierConstraint"/>
+    <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductIdentifierConstraint">
+  <xs:sequence>
+    <xs:element name="mode" type="ns:AspectModeEnum" maxOccurs="unbounded"/>
+    <xs:element name="required" type="xs:boolean"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductIdentifierForProductMetadata">
+  <xs:sequence>
+    <xs:element name="constraint" type="ns:ProductIdentifierConstraint"/>
+    <xs:element name="valueAssociatedWithProduct" type="xs:string"/>
+    <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductMetadata">
+  <xs:sequence>
+    <xs:element name="aspects" type="ns:ProductMetadataAspect" maxOccurs="unbounded"/>
+    <xs:element name="brand" type="ns:ProductIdentifierForProductMetadata"/>
+    <xs:element name="mpn" type="ns:ProductIdentifierForProductMetadata"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductMetadataAspect">
+  <xs:sequence>
+    <xs:element name="aspectHelpText" type="xs:string"/>
+    <xs:element name="constraint" type="ns:ProductAspectConstraint"/>
+    <xs:element name="droppable" type="xs:boolean"/>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="values" type="ns:ProductAspectValue" maxOccurs="unbounded"/>
+    <xs:element name="valuesAssociatedWithProduct" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductMetadataForCategories">
+  <xs:sequence>
+    <xs:element name="aspects" type="ns:CategoryAspect" maxOccurs="unbounded"/>
+    <xs:element name="brand" type="ns:ProductIdentifier"/>
+    <xs:element name="mpn" type="ns:ProductIdentifier"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductSearchResponse">
+  <xs:sequence>
+    <xs:element name="href" type="xs:string"/>
+    <xs:element name="limit" type="xs:integer"/>
+    <xs:element name="next" type="xs:string"/>
+    <xs:element name="offset" type="xs:integer"/>
+    <xs:element name="prev" type="xs:string"/>
+    <xs:element name="productSummaries" type="ns:ProductSummary" maxOccurs="unbounded"/>
+    <xs:element name="refinement" type="ns:Refinement"/>
+    <xs:element name="total" type="xs:integer"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ProductSummary">
+  <xs:sequence>
+    <xs:element name="additionalImages" type="ns:Image" maxOccurs="unbounded"/>
+    <xs:element name="aspects" type="ns:Aspect" maxOccurs="unbounded"/>
+    <xs:element name="brand" type="xs:string"/>
+    <xs:element name="description" type="xs:string"/>
+    <xs:element name="ean" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="epid" type="xs:string"/>
+    <xs:element name="gtin" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="image" type="ns:Image"/>
+    <xs:element name="isbn" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="mpn" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="productHref" type="xs:string"/>
+    <xs:element name="productWebUrl" type="xs:string"/>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="upc" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RangeValue">
+  <xs:sequence>
+    <xs:element name="end" type="xs:string"/>
+    <xs:element name="exclusiveEnd" type="xs:boolean"/>
+    <xs:element name="exclusiveStart" type="xs:boolean"/>
+    <xs:element name="range" type="xs:boolean"/>
+    <xs:element name="start" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="ReferenceType">
+  <xs:restriction base="xs:token">
+    <xs:enumeration value="INVENTORY_ITEM"/>
+    <xs:enumeration value="LISTING"/>
+    <xs:enumeration value="LISTING_DRAFT"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="Refinement">
+  <xs:sequence>
+    <xs:element name="aspectDistributions" type="ns:AspectDistribution" maxOccurs="unbounded"/>
+    <xs:element name="dominantCategoryId" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SuggestedProduct">
+  <xs:sequence>
+    <xs:element name="additionalImageUrls" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="aspects" type="ns:Aspect" maxOccurs="unbounded"/>
+    <xs:element name="brand" type="xs:string"/>
+    <xs:element name="description" type="xs:string"/>
+    <xs:element name="ean" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="epid" type="xs:string"/>
+    <xs:element name="imageUrl" type="xs:string"/>
+    <xs:element name="isbn" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="mpn" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="otherApplicableCategoryIds" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="primaryCategoryId" type="xs:string"/>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="upc" type="xs:string" maxOccurs="unbounded"/>
+    <xs:element name="version" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ValueConstraint">
+  <xs:sequence>
+    <xs:element name="applicableForAspectName" type="xs:string"/>
+    <xs:element name="applicableForAspectValues" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Violation">
+  <xs:sequence>
+    <xs:element name="aspectsValues" type="ns:ViolationAspectValues" maxOccurs="unbounded"/>
+    <xs:element name="productAttribute" type="ns:ViolationProductAttribute"/>
+    <xs:element name="reason" type="xs:integer"/>
+    <xs:element name="violationCode" type="xs:integer"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ViolationAspectValues">
+  <xs:sequence>
+    <xs:element name="aspectName" type="xs:string"/>
+    <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ViolationProductAttribute">
+  <xs:sequence>
+    <xs:element name="name" type="ns:ProductAttributeName"/>
+    <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
