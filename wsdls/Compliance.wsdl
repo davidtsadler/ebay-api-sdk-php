@@ -1,201 +1,193 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><xs:schema><xs:element name="GetListingViolationsSummaryRestRequest" type="ns:GetListingViolationsSummaryRestRequest"/>
-<xs:element name="GetListingViolationsSummaryRestResponse" type="ns:GetListingViolationsSummaryRestResponse"/>
-<xs:complexType name="GetListingViolationsSummaryRestRequest">
-  <xs:sequence>
-    <xs:element name="compliance_type" type="xs:string" valid="string"/>
-  </xs:sequence>
-</xs:complexType>
-<xs:complexType name="GetListingViolationsSummaryRestResponse" restResponse="true">
-  <xs:complexContent>
-    <xs:extension base="ns:ComplianceSummary">
-      <xs:sequence>
-        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-
-<xs:element name="GetListingViolationsRestRequest" type="ns:GetListingViolationsRestRequest"/>
-<xs:element name="GetListingViolationsRestResponse" type="ns:GetListingViolationsRestResponse"/>
-<xs:complexType name="GetListingViolationsRestRequest">
-  <xs:sequence>
-    <xs:element name="limit" type="xs:integer" valid="integer"/>
-    <xs:element name="listing_id" type="xs:string" valid="string"/>
-    <xs:element name="offset" type="xs:integer" valid="integer"/>
-    <xs:element name="compliance_type" type="xs:string" valid="string"/>
-  </xs:sequence>
-</xs:complexType>
-<xs:complexType name="GetListingViolationsRestResponse" restResponse="true">
-  <xs:complexContent>
-    <xs:extension base="ns:PagedComplianceViolationCollection">
-      <xs:sequence>
-        <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-        <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-
-<xs:complexType name="ErrorDetailV3">
-  <xs:sequence>
-    <xs:element name="category" type="xs:string"/>
-    <xs:element name="domain" type="xs:string"/>
-    <xs:element name="errorId" type="xs:integer"/>
-    <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
-    <xs:element name="longMessage" type="xs:string"/>
-    <xs:element name="message" type="xs:string"/>
-    <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
-    <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
-    <xs:element name="subdomain" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
-<xs:complexType name="ErrorParameterV3">
-  <xs:sequence>
-    <xs:element name="name" type="xs:string"/>
-    <xs:element name="value" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ComplianceDetail">
-  <xs:sequence>
-    <xs:element name="reasonCode" type="xs:string"/>
-    <xs:element name="message" type="xs:string"/>
-    <xs:element name="variation" type="ns:VariationDetails"/>
-    <xs:element name="violationData" type="ns:NameValueList" maxOccurs="unbounded"/>
-    <xs:element name="correctiveRecommendations" type="ns:CorrectiveRecommendations"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ComplianceSummary">
-  <xs:sequence>
-    <xs:element name="violationSummaries" type="ns:ComplianceSummaryInfo" maxOccurs="unbounded"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ComplianceSummaryInfo">
-  <xs:sequence>
-    <xs:element name="complianceType" type="ns:ComplianceTypeEnum"/>
-    <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
-    <xs:element name="listingCount" type="xs:integer"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:simpleType name="ComplianceTypeEnum">
-  <xs:restriction base="xs:token">
-    <xs:enumeration value="OUTSIDE_EBAY_BUYING_AND_SELLING"/>
-    <xs:enumeration value="HTTPS"/>
-    <xs:enumeration value="PRODUCT_ADOPTION"/>
-  </xs:restriction>
-</xs:simpleType>
-
-<xs:complexType name="ComplianceViolation">
-  <xs:sequence>
-    <xs:element name="complianceType" type="ns:ComplianceTypeEnum"/>
-    <xs:element name="listingId" type="xs:string"/>
-    <xs:element name="sku" type="xs:string"/>
-    <xs:element name="offerId" type="xs:string"/>
-    <xs:element name="violations" type="ns:ComplianceDetail" maxOccurs="unbounded"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="CorrectiveRecommendations">
-  <xs:sequence>
-    <xs:element name="productRecommendation" type="ns:ProductRecommendation"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:simpleType name="MarketplaceIdEnum">
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="EBAY_AT"/>
-      <xs:enumeration value="EBAY_AU"/>
-      <xs:enumeration value="EBAY_BE"/>
-      <xs:enumeration value="EBAY_CA"/>
-      <xs:enumeration value="EBAY_CH"/>
-      <xs:enumeration value="EBAY_CN"/>
-      <xs:enumeration value="EBAY_CZ"/>
-      <xs:enumeration value="EBAY_DE"/>
-      <xs:enumeration value="EBAY_DK"/>
-      <xs:enumeration value="EBAY_ES"/>
-      <xs:enumeration value="EBAY_FI"/>
-      <xs:enumeration value="EBAY_FR"/>
-      <xs:enumeration value="EBAY_GB"/>
-      <xs:enumeration value="EBAY_GR"/>
-      <xs:enumeration value="EBAY_HALF_US"/>
-      <xs:enumeration value="EBAY_HK"/>
-      <xs:enumeration value="EBAY_HU"/>
-      <xs:enumeration value="EBAY_ID"/>
-      <xs:enumeration value="EBAY_IE"/>
-      <xs:enumeration value="EBAY_IL"/>
-      <xs:enumeration value="EBAY_IN"/>
-      <xs:enumeration value="EBAY_IT"/>
-      <xs:enumeration value="EBAY_JP"/>
-      <xs:enumeration value="EBAY_MOTORS_US"/>
-      <xs:enumeration value="EBAY_MY"/>
-      <xs:enumeration value="EBAY_NL"/>
-      <xs:enumeration value="EBAY_NO"/>
-      <xs:enumeration value="EBAY_NZ"/>
-      <xs:enumeration value="EBAY_PE"/>
-      <xs:enumeration value="EBAY_PH"/>
-      <xs:enumeration value="EBAY_PL"/>
-      <xs:enumeration value="EBAY_PR"/>
-      <xs:enumeration value="EBAY_PT"/>
-      <xs:enumeration value="EBAY_RU"/>
-      <xs:enumeration value="EBAY_SE"/>
-      <xs:enumeration value="EBAY_SG"/>
-      <xs:enumeration value="EBAY_TH"/>
-      <xs:enumeration value="EBAY_TW"/>
-      <xs:enumeration value="EBAY_US"/>
-      <xs:enumeration value="EBAY_VN"/>
-      <xs:enumeration value="EBAY_ZA"/>
-    </xs:restriction>
-</xs:simpleType>
-
-<xs:complexType name="NameValueList">
-  <xs:sequence>
-    <xs:element name="name" type="xs:string"/>
-    <xs:element name="value" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="PagedComplianceViolationCollection">
-  <xs:sequence>
-    <xs:element name="offset" type="xs:integer"/>
-    <xs:element name="href" type="xs:string"/>
-    <xs:element name="total" type="xs:integer"/>
-    <xs:element name="next" type="xs:string"/>
-    <xs:element name="prev" type="xs:string"/>
-    <xs:element name="limit" type="xs:integer"/>
-    <xs:element name="listingViolations" type="ns:ComplianceViolation" maxOccurs="unbounded"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ProductRecommendation">
-  <xs:sequence>
-    <xs:element name="epid" type="xs:string"/>
-  </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="VariationDetails">
-  <xs:sequence>
-    <xs:element name="sku" type="xs:string"/>
-    <xs:element name="variationAspects" type="ns:NameValueList" maxOccurs="unbounded"/>
-  </xs:sequence>
-</xs:complexType>
-</xs:schema></wsdl:types><wsdl:documentation>
-  <Version>v1</Version>
-</wsdl:documentation>
-<wsdl:portType>
-  <wsdl:operation name="GetListingViolationsSummary" method="GET" resource="listing_violation_summary">
-    <wsdl:input message="ns:GetListingViolationsSummaryRestRequest"/>
-    <wsdl:output message="ns:GetListingViolationsSummaryRestResponse"/>
-  </wsdl:operation>
-</wsdl:portType>
-
-<wsdl:portType>
-  <wsdl:operation name="GetListingViolations" method="GET" resource="listing_violation">
-    <wsdl:input message="ns:GetListingViolationsRestRequest"/>
-    <wsdl:output message="ns:GetListingViolationsRestResponse"/>
-  </wsdl:operation>
-</wsdl:portType>
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema>
+      <xs:element name="GetListingViolationsSummaryRestRequest" type="ns:GetListingViolationsSummaryRestRequest"/>
+      <xs:element name="GetListingViolationsSummaryRestResponse" type="ns:GetListingViolationsSummaryRestResponse"/>
+      <xs:complexType name="GetListingViolationsSummaryRestRequest">
+        <xs:sequence>
+          <xs:element name="compliance_type" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetListingViolationsSummaryRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:ComplianceSummary">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetListingViolationsRestRequest" type="ns:GetListingViolationsRestRequest"/>
+      <xs:element name="GetListingViolationsRestResponse" type="ns:GetListingViolationsRestResponse"/>
+      <xs:complexType name="GetListingViolationsRestRequest">
+        <xs:sequence>
+          <xs:element name="limit" type="xs:integer" valid="integer"/>
+          <xs:element name="listing_id" type="xs:string" valid="string"/>
+          <xs:element name="offset" type="xs:integer" valid="integer"/>
+          <xs:element name="compliance_type" type="xs:string" valid="string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetListingViolationsRestResponse" restResponse="true">
+        <xs:complexContent>
+          <xs:extension base="ns:PagedComplianceViolationCollection">
+            <xs:sequence>
+              <xs:element name="errors" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+              <xs:element name="warnings" type="ns:ErrorDetailV3" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ErrorDetailV3">
+        <xs:sequence>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="domain" type="xs:string"/>
+          <xs:element name="errorId" type="xs:integer"/>
+          <xs:element name="inputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="longMessage" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="outputRefIds" type="xs:string" maxOccurs="unbounded"/>
+          <xs:element name="parameters" type="ns:ErrorParameterV3" maxOccurs="unbounded"/>
+          <xs:element name="subdomain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameterV3">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ComplianceDetail">
+        <xs:sequence>
+          <xs:element name="reasonCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+          <xs:element name="variation" type="ns:VariationDetails"/>
+          <xs:element name="violationData" type="ns:NameValueList" maxOccurs="unbounded"/>
+          <xs:element name="correctiveRecommendations" type="ns:CorrectiveRecommendations"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ComplianceSummary">
+        <xs:sequence>
+          <xs:element name="violationSummaries" type="ns:ComplianceSummaryInfo" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ComplianceSummaryInfo">
+        <xs:sequence>
+          <xs:element name="complianceType" type="ns:ComplianceTypeEnum"/>
+          <xs:element name="marketplaceId" type="ns:MarketplaceIdEnum"/>
+          <xs:element name="listingCount" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ComplianceTypeEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="OUTSIDE_EBAY_BUYING_AND_SELLING"/>
+          <xs:enumeration value="HTTPS"/>
+          <xs:enumeration value="PRODUCT_ADOPTION"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ComplianceViolation">
+        <xs:sequence>
+          <xs:element name="complianceType" type="ns:ComplianceTypeEnum"/>
+          <xs:element name="listingId" type="xs:string"/>
+          <xs:element name="sku" type="xs:string"/>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element name="violations" type="ns:ComplianceDetail" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CorrectiveRecommendations">
+        <xs:sequence>
+          <xs:element name="productRecommendation" type="ns:ProductRecommendation"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="MarketplaceIdEnum">
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="EBAY_AT"/>
+          <xs:enumeration value="EBAY_AU"/>
+          <xs:enumeration value="EBAY_BE"/>
+          <xs:enumeration value="EBAY_CA"/>
+          <xs:enumeration value="EBAY_CH"/>
+          <xs:enumeration value="EBAY_CN"/>
+          <xs:enumeration value="EBAY_CZ"/>
+          <xs:enumeration value="EBAY_DE"/>
+          <xs:enumeration value="EBAY_DK"/>
+          <xs:enumeration value="EBAY_ES"/>
+          <xs:enumeration value="EBAY_FI"/>
+          <xs:enumeration value="EBAY_FR"/>
+          <xs:enumeration value="EBAY_GB"/>
+          <xs:enumeration value="EBAY_GR"/>
+          <xs:enumeration value="EBAY_HALF_US"/>
+          <xs:enumeration value="EBAY_HK"/>
+          <xs:enumeration value="EBAY_HU"/>
+          <xs:enumeration value="EBAY_ID"/>
+          <xs:enumeration value="EBAY_IE"/>
+          <xs:enumeration value="EBAY_IL"/>
+          <xs:enumeration value="EBAY_IN"/>
+          <xs:enumeration value="EBAY_IT"/>
+          <xs:enumeration value="EBAY_JP"/>
+          <xs:enumeration value="EBAY_MOTORS_US"/>
+          <xs:enumeration value="EBAY_MY"/>
+          <xs:enumeration value="EBAY_NL"/>
+          <xs:enumeration value="EBAY_NO"/>
+          <xs:enumeration value="EBAY_NZ"/>
+          <xs:enumeration value="EBAY_PE"/>
+          <xs:enumeration value="EBAY_PH"/>
+          <xs:enumeration value="EBAY_PL"/>
+          <xs:enumeration value="EBAY_PR"/>
+          <xs:enumeration value="EBAY_PT"/>
+          <xs:enumeration value="EBAY_RU"/>
+          <xs:enumeration value="EBAY_SE"/>
+          <xs:enumeration value="EBAY_SG"/>
+          <xs:enumeration value="EBAY_TH"/>
+          <xs:enumeration value="EBAY_TW"/>
+          <xs:enumeration value="EBAY_US"/>
+          <xs:enumeration value="EBAY_VN"/>
+          <xs:enumeration value="EBAY_ZA"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="NameValueList">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PagedComplianceViolationCollection">
+        <xs:sequence>
+          <xs:element name="offset" type="xs:integer"/>
+          <xs:element name="href" type="xs:string"/>
+          <xs:element name="total" type="xs:integer"/>
+          <xs:element name="next" type="xs:string"/>
+          <xs:element name="prev" type="xs:string"/>
+          <xs:element name="limit" type="xs:integer"/>
+          <xs:element name="listingViolations" type="ns:ComplianceViolation" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductRecommendation">
+        <xs:sequence>
+          <xs:element name="epid" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VariationDetails">
+        <xs:sequence>
+          <xs:element name="sku" type="xs:string"/>
+          <xs:element name="variationAspects" type="ns:NameValueList" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:documentation>
+    <Version>v1</Version>
+  </wsdl:documentation>
+  <wsdl:portType>
+    <wsdl:operation name="GetListingViolationsSummary" method="GET" resource="listing_violation_summary">
+      <wsdl:input message="ns:GetListingViolationsSummaryRestRequest"/>
+      <wsdl:output message="ns:GetListingViolationsSummaryRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType>
+    <wsdl:operation name="GetListingViolations" method="GET" resource="listing_violation">
+      <wsdl:input message="ns:GetListingViolationsRestRequest"/>
+      <wsdl:output message="ns:GetListingViolationsRestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
 </wsdl:definitions>

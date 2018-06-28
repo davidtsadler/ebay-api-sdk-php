@@ -148,7 +148,6 @@ const createWsdl = (serviceUrl, filename) => {
   writeWsdl(types, filename);
 };
 
-/*
 createWsdl(
   'https://developer.ebay.com/devzone/rest/api-ref/account',
   'Account'
@@ -205,6 +204,5 @@ createWsdl(
 );
 
 writeWsdl([], 'Catalog');
-*/
 writeWsdl([], 'Compliance');
 
