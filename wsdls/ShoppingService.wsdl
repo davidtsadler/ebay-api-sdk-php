@@ -12224,7 +12224,10 @@ which a user is registered and on which items can be listed.
                     <Returned>Always</Returned>
                   </CallInfo>
                   <CallInfo>
+                    <!--
+                    Preventing attribute from appearing in SDK.
                     <NoCalls/>
+                    -->
                     <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
                     <EndOfLifeVersion>1027</EndOfLifeVersion>
@@ -12233,7 +12236,10 @@ which a user is registered and on which items can be listed.
                     <RequiredInput>Conditionally</RequiredInput>
                   </CallInfo>
                   <CallInfo>
+                    <!--
+                    Preventing attribute from appearing in SDK.
                     <NoCalls/>
+                    -->
                     <UseInstead/>
                     <DeprecationVersion>971</DeprecationVersion>
                     <EndOfLifeVersion>1027</EndOfLifeVersion>
