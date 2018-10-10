@@ -492,6 +492,7 @@
         <xs:sequence>
           <xs:element name="companyName" type="xs:string"/>
           <xs:element name="contactAddress" type="ns:Address"/>
+          <xs:element name="email" type="xs:string"/>
           <xs:element name="fullName" type="xs:string"/>
           <xs:element name="primaryPhone" type="ns:PhoneNumber"/>
         </xs:sequence>
